@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fuji Soul Tours — Admin</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+  :root {
+    --shu: #C53D43;
+    --sumi: #1a1a1a;
+    --bg: #F8F8F6;
+    --card: #fff;
+    --border: #E8E4DE;
+    --hai: #6B6B6B;
+    --green: #2D8A4E;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--sumi); }
+
+  /* Layout */
+  .layout { display:flex; min-height:100vh; }
+  .sidebar {
+    width:240px; background:var(--sumi); color:#fff;
+    padding:24px 0; flex-shrink:0;
+    position:fixed; top:0; left:0; bottom:0;
+    overflow-y:auto;
+  }
+  .sidebar-logo {
+    font-size:16px; font-weight:700; padding:0 20px; margin-bottom:32px;
+  }
+  .sidebar-logo span { color:var(--shu); }
+  .sidebar-nav a {
+    display:flex; align-items:center; gap:10px;
+    padding:10px 20px; color:rgba(255,255,255,0.6);
+    text-decoration:none; font-size:13px; font-weight:500;
+    transition:all 0.15s; cursor:pointer;
+  }
+  .sidebar-nav a:hover, .sidebar-nav a.active {
+    color:#fff; background:rgba(255,255,255,0.08);
+  }
+  .sidebar-nav a.active { border-right:3px solid var(--shu); }
+  .sidebar-section {
+    font-size:10px; text-transform:uppercase; letter-spacing:1.5px;
+    color:rgba(255,255,255,0.3); padding:20px 20px 8px;
+  }
+
+  .main { flex:1; margin-left:240px; padding:32px; }
+  .main-header {
+    display:flex; justify-content:space-between; align-items:center;
+    margin-bottom:32px;
+  }
+  .main-header h1 { font-size:22px; font-weight:700; }
+  .badge { font-size:11px; background:rgba(45,138,78,0.1); color:var(--green);
+    padding:4px 10px; border-radius:12px; font-weight:600; }
+
+  /* Cards */
+  .card {
+    background:var(--card); border:1px solid var(--border);
+    border-radius:12px; padding:28px; margin-bottom:20px;
+  }
+  .card h2 {
+    font-size:15px; font-weight:700; margin-bottom:4px;
+  }
+  .card .sub { font-size:12px; color:var(--hai); margin-bottom:20px; }
+
+  /* Image slots */
+  .img-grid {
+    display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+    gap:16px;
+  }
+  .img-slot {
+    border:2px dashed var(--border); border-radius:10px;
+    aspect-ratio:16/10; display:flex; flex-direction:column;
+    align-items:center; justify-content:center;
+    position:relative; overflow:hidden; cursor:pointer;
+    transition:border-color 0.2s; background:var(--bg);
+  }
+  .img-slot:hover { border-color:var(--shu); }
+  .img-slot.has-image { border-style:solid; }
+  .img-slot img {
+    width:100%; height:100%; object-fit:cover;
+    position:absolute; top:0; left:0;
+  }
+  .img-slot .overlay {
+    position:absolute; inset:0;
+    background:rgba(0,0,0,0.5); display:none;
+    align-items:center; justify-content:center; gap:8px;
+  }
+  .img-slot:hover .overlay { display:flex; }
+  .img-slot .overlay button {
+    background:rgba(255,255,255,0.9); border:none; border-radius:6px;
+    padding:6px 12px; font-size:12px; font-weight:600; cursor:pointer;
+  }
+  .img-slot .overlay button.del { background:var(--shu); color:#fff; }
+  .img-slot .placeholder {
+    text-align:center; color:var(--hai); font-size:12px;
+  }
+  .img-slot .placeholder .icon { font-size:28px; margin-bottom:6px; display:block; }
+  .img-label {
+    font-size:12px; font-weight:600; margin-top:6px; color:var(--sumi);
+    text-align:center;
+  }
+
+  /* Input row */
+  .url-input-row {
+    display:flex; gap:8px; margin-top:16px;
+  }
+  .url-input-row input {
+    flex:1; padding:10px 14px; border:1px solid var(--border);
+    border-radius:8px; font-size:13px; font-family:inherit;
+    outline:none; transition:border-color 0.2s;
+  }
+  .url-input-row input:focus { border-color:var(--shu); }
+  .url-input-row button {
+    padding:10px 20px; background:var(--shu); color:#fff; border:none;
+    border-radius:8px; font-size:13px; font-weight:600; cursor:pointer;
+    white-space:nowrap; transition:background 0.2s;
+  }
+  .url-input-row button:hover { background:#a83038; }
+
+  /* Drop zone */
+  .drop-zone {
+    border:2px dashed var(--border); border-radius:12px;
+    padding:40px; text-align:center; margin-top:16px;
+    transition:all 0.2s; cursor:pointer;
+  }
+  .drop-zone:hover, .drop-zone.dragover {
+    border-color:var(--shu); background:rgba(197,61,67,0.03);
+  }
+  .drop-zone .icon { font-size:36px; margin-bottom:8px; }
+  .drop-zone p { font-size:13px; color:var(--hai); }
+  .drop-zone input[type=file] { display:none; }
+
+  /* Actions bar */
+  .actions-bar {
+    position:fixed; bottom:0; left:240px; right:0;
+    background:var(--card); border-top:1px solid var(--border);
+    padding:16px 32px; display:flex; justify-content:space-between;
+    align-items:center; z-index:50;
+  }
+  .actions-bar .status { font-size:13px; color:var(--hai); }
+  .actions-bar .btns { display:flex; gap:12px; }
+  .btn-secondary {
+    padding:10px 20px; background:var(--bg); color:var(--sumi); border:1px solid var(--border);
+    border-radius:8px; font-size:13px; font-weight:600; cursor:pointer;
+  }
+  .btn-primary {
+    padding:10px 24px; background:var(--shu); color:#fff; border:none;
+    border-radius:8px; font-size:13px; font-weight:600; cursor:pointer;
+  }
+  .btn-primary:hover { background:#a83038; }
+
+  /* Preview */
+  .preview-frame {
+    width:100%; height:500px; border:1px solid var(--border);
+    border-radius:12px; margin-top:16px;
+  }
+
+  /* Export code block */
+  .code-block {
+    background:var(--sumi); color:#9FE2BF; border-radius:10px;
+    padding:20px; font-family:monospace; font-size:12px;
+    line-height:1.6; overflow-x:auto; margin-top:16px;
+    position:relative; white-space:pre-wrap; word-break:break-all;
+  }
+  .copy-btn {
+    position:absolute; top:10px; right:10px;
+    background:rgba(255,255,255,0.15); border:none; color:#fff;
+    padding:4px 10px; border-radius:6px; font-size:11px; cursor:pointer;
+  }
+
+  /* Toast */
+  .toast {
+    position:fixed; bottom:80px; right:32px;
+    background:var(--sumi); color:#fff;
+    padding:12px 20px; border-radius:8px;
+    font-size:13px; font-weight:500;
+    transform:translateY(20px); opacity:0;
+    transition:all 0.3s; z-index:100;
+  }
+  .toast.show { transform:translateY(0); opacity:1; }
+
+  /* Sections */
+  .section-panel { display:none; }
+  .section-panel.active { display:block; }
+
+  /* Responsive */
+  @media(max-width:768px) {
+    .sidebar { display:none; }
+    .main { margin-left:0; }
+    .actions-bar { left:0; }
+  }
+
+  .help-text {
+    font-size:12px; color:var(--hai); line-height:1.7;
+    background:rgba(197,61,67,0.04); padding:16px 20px;
+    border-radius:8px; margin-bottom:20px;
+    border-left:3px solid var(--shu);
+  }
+</style>
+</head>
+<body>
+
+<div class="layout">
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">Fuji <span>Soul</span> Admin</div>
+    <nav class="sidebar-nav">
+      <div class="sidebar-section">写真管理</div>
+      <a class="active" data-section="hero" onclick="showSection('hero')">🖼 ヒーロー画像</a>
+      <a data-section="gallery" onclick="showSection('gallery')">📸 ギャラリー</a>
+      <a data-section="routes" onclick="showSection('routes')">🗺 ルートカード</a>
+      <a data-section="stops" onclick="showSection('stops')">📍 ツアーストップ</a>
+      <a data-section="host" onclick="showSection('host')">👤 ガイド写真</a>
+      <div class="sidebar-section">設定</div>
+      <a data-section="instagram" onclick="showSection('instagram')">📱 Instagram連携</a>
+      <a data-section="export" onclick="showSection('export')">💾 エクスポート</a>
+      <a data-section="guide" onclick="showSection('guide')">📖 デプロイガイド</a>
+    </nav>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="main" style="padding-bottom:80px;">
+
+    <div class="main-header">
+      <h1 id="sectionTitle">ヒーロー画像</h1>
+      <span class="badge" id="statusBadge">未保存の変更あり</span>
+    </div>
+
+    <!-- ===== HERO ===== -->
+    <div class="section-panel active" id="panel-hero">
+      <div class="card">
+        <h2>ヒーロー背景画像</h2>
+        <p class="sub">サイト上部の大きな背景画像。横幅1600px以上推奨。</p>
+        <div class="help-text">
+          💡 <strong>画像URL の取得方法:</strong><br>
+          ・Instagramの写真 → 投稿を開く → ⋯ → 「リンクをコピー」<br>
+          ・Google Driveの写真 → 共有 → 「リンクを知っている全員」→ リンクをコピー<br>
+          ・<a href="https://imgbb.com/" target="_blank" style="color:var(--shu);">imgBB</a>（無料画像ホスト）にアップロード → 直リンクをコピー<br>
+          ・Cloudflare R2 / Cloudinary (無料枠あり) もおすすめ
+        </div>
+        <div class="img-grid">
+          <div>
+            <div class="img-slot" id="hero-bg-slot" onclick="promptURL('hero','backgroundImage')">
+              <div class="placeholder"><span class="icon">📷</span>クリックしてURL入力</div>
+            </div>
+            <div class="img-label">背景画像</div>
+          </div>
+        </div>
+        <div class="url-input-row">
+          <input type="text" id="hero-bg-input" placeholder="画像URLを貼り付け (https://...)">
+          <button onclick="setImage('hero','backgroundImage',document.getElementById('hero-bg-input').value)">設定</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== GALLERY ===== -->
+    <div class="section-panel" id="panel-gallery">
+      <div class="card">
+        <h2>ギャラリー写真</h2>
+        <p class="sub">メインギャラリーに表示する写真。最大12枚推奨。ドラッグで並び替え可能。</p>
+        <div class="img-grid" id="gallery-grid">
+          <!-- Dynamically filled -->
+        </div>
+        <div class="url-input-row">
+          <input type="text" id="gallery-url" placeholder="画像URLを貼り付け">
+          <input type="text" id="gallery-alt" placeholder="説明 (例: Shiraito Falls)" style="max-width:200px;">
+          <button onclick="addGalleryImage()">追加</button>
+        </div>
+        <div class="drop-zone" id="galleryDrop">
+          <div class="icon">📂</div>
+          <p>画像URLを複数行で貼り付けて一括追加<br>
+          <small>（1行に1URL）</small></p>
+          <textarea id="bulkUrls" style="width:100%;height:80px;margin-top:12px;border:1px solid var(--border);border-radius:8px;padding:10px;font-size:12px;resize:vertical;" placeholder="https://example.com/photo1.jpg&#10;https://example.com/photo2.jpg&#10;https://example.com/photo3.jpg"></textarea>
+          <button onclick="bulkAddGallery()" style="margin-top:8px;padding:8px 16px;background:var(--shu);color:#fff;border:none;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;">一括追加</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== ROUTES ===== -->
+    <div class="section-panel" id="panel-routes">
+      <div class="card">
+        <h2>ルートカード写真</h2>
+        <p class="sub">3つのルート（Classic / Culture / Photo）のカード画像</p>
+        <div class="img-grid">
+          <div>
+            <div class="img-slot" onclick="promptURL('routes','classic')">
+              <div class="placeholder"><span class="icon">⛩️</span>Classic Route</div>
+            </div>
+            <div class="img-label">Classic</div>
+            <div class="url-input-row" style="margin-top:8px;">
+              <input type="text" id="route-classic-input" placeholder="URL">
+              <button onclick="setNestedImage('routes','classic',document.getElementById('route-classic-input').value)">設定</button>
+            </div>
+          </div>
+          <div>
+            <div class="img-slot" onclick="promptURL('routes','culture')">
+              <div class="placeholder"><span class="icon">🍵</span>Culture Route</div>
+            </div>
+            <div class="img-label">Culture</div>
+            <div class="url-input-row" style="margin-top:8px;">
+              <input type="text" id="route-culture-input" placeholder="URL">
+              <button onclick="setNestedImage('routes','culture',document.getElementById('route-culture-input').value)">設定</button>
+            </div>
+          </div>
+          <div>
+            <div class="img-slot" onclick="promptURL('routes','photo')">
+              <div class="placeholder"><span class="icon">📸</span>Photo Route</div>
+            </div>
+            <div class="img-label">Photo</div>
+            <div class="url-input-row" style="margin-top:8px;">
+              <input type="text" id="route-photo-input" placeholder="URL">
+              <button onclick="setNestedImage('routes','photo',document.getElementById('route-photo-input').value)">設定</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== STOPS ===== -->
+    <div class="section-panel" id="panel-stops">
+      <div class="card">
+        <h2>ツアーストップ写真</h2>
+        <p class="sub">各ストップのサムネイル画像</p>
+        <div class="img-grid" id="stops-grid">
+          <!-- filled by JS -->
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== HOST ===== -->
+    <div class="section-panel" id="panel-host">
+      <div class="card">
+        <h2>ガイドプロフィール写真</h2>
+        <p class="sub">「Your Guide」セクションに表示</p>
+        <div class="img-grid">
+          <div>
+            <div class="img-slot" style="aspect-ratio:1;" onclick="promptURL('host','portrait')">
+              <div class="placeholder"><span class="icon">👤</span>プロフィール写真</div>
+            </div>
+            <div class="url-input-row" style="margin-top:8px;">
+              <input type="text" id="host-portrait-input" placeholder="URL">
+              <button onclick="setNestedImage('host','portrait',document.getElementById('host-portrait-input').value)">設定</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== INSTAGRAM ===== -->
+    <div class="section-panel" id="panel-instagram">
+      <div class="card">
+        <h2>Instagram リール埋め込み</h2>
+        <p class="sub">サイトに表示したいリールのURLを追加</p>
+        <div id="reels-list"></div>
+        <div class="url-input-row">
+          <input type="text" id="reel-url" placeholder="https://www.instagram.com/reel/xxxxx/">
+          <button onclick="addReel()">追加</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== EXPORT ===== -->
+    <div class="section-panel" id="panel-export">
+      <div class="card">
+        <h2>images.js にエクスポート</h2>
+        <p class="sub">設定した内容を images.js のコードとして出力します。コピーして images.js を上書きしてください。</p>
+        <button class="btn-primary" onclick="generateExport()" style="margin-bottom:16px;">コード生成</button>
+        <div class="code-block" id="exportCode">
+          // 「コード生成」ボタンを押してください
+          <button class="copy-btn" onclick="copyExport()">コピー</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== DEPLOY GUIDE ===== -->
+    <div class="section-panel" id="panel-guide">
+      <div class="card">
+        <h2>無料デプロイガイド</h2>
+        <p class="sub">サイトを無料で公開する手順</p>
+
+        <div style="margin-top:20px;">
+          <h3 style="font-size:16px; font-weight:700; margin-bottom:12px;">Step 1: GitHubアカウントを作る</h3>
+          <p style="font-size:14px; color:var(--hai); line-height:1.8; margin-bottom:20px;">
+            <a href="https://github.com/signup" target="_blank" style="color:var(--shu);">github.com/signup</a> でアカウント作成（無料）。<br>
+            新しいリポジトリを作成 → リポジトリ名は「fuji-soul-tours」でOK。
+          </p>
+
+          <h3 style="font-size:16px; font-weight:700; margin-bottom:12px;">Step 2: ファイルをアップロード</h3>
+          <p style="font-size:14px; color:var(--hai); line-height:1.8; margin-bottom:20px;">
+            リポジトリの「Add file」→「Upload files」で以下をアップロード:<br>
+            <code style="background:#f0f0f0; padding:2px 6px; border-radius:4px;">index.html</code>,
+            <code style="background:#f0f0f0; padding:2px 6px; border-radius:4px;">images.js</code>,
+            <code style="background:#f0f0f0; padding:2px 6px; border-radius:4px;">admin.html</code>
+          </p>
+
+          <h3 style="font-size:16px; font-weight:700; margin-bottom:12px;">Step 3: Vercelでデプロイ（無料）</h3>
+          <p style="font-size:14px; color:var(--hai); line-height:1.8; margin-bottom:20px;">
+            <a href="https://vercel.com" target="_blank" style="color:var(--shu);">vercel.com</a> → Sign Up with GitHub<br>
+            → 「Add New Project」→ 先ほどのリポジトリを選択 → Deploy<br>
+            → 数秒で <code style="background:#f0f0f0; padding:2px 6px; border-radius:4px;">fuji-soul-tours.vercel.app</code> のようなURLで公開される！
+          </p>
+
+          <h3 style="font-size:16px; font-weight:700; margin-bottom:12px;">Step 4: 独自ドメインの設定（任意）</h3>
+          <p style="font-size:14px; color:var(--hai); line-height:1.8; margin-bottom:20px;">
+            ドメインを買う場合（年間約¥1,500〜）:<br>
+            → <a href="https://www.namecheap.com" target="_blank" style="color:var(--shu);">Namecheap</a> or
+            <a href="https://www.cloudflare.com/products/registrar/" target="_blank" style="color:var(--shu);">Cloudflare Registrar</a> で購入<br>
+            → 例: <code style="background:#f0f0f0; padding:2px 6px; border-radius:4px;">fujisoultours.com</code><br>
+            → Vercel の Settings → Domains → ドメインを追加<br>
+            → 表示されるDNSレコードをドメイン管理画面で設定<br>
+            → SSL証明書はVercelが自動設定（無料）
+          </p>
+
+          <h3 style="font-size:16px; font-weight:700; margin-bottom:12px;">Step 5: 画像ホスティング（無料）</h3>
+          <p style="font-size:14px; color:var(--hai); line-height:1.8; margin-bottom:20px;">
+            画像はサイトに直接置かず、CDNで配信がベスト:<br>
+            → <a href="https://imgbb.com" target="_blank" style="color:var(--shu);">imgBB</a> — 無料、URLコピーするだけ<br>
+            → <a href="https://cloudinary.com" target="_blank" style="color:var(--shu);">Cloudinary</a> — 無料枠25GB、画像の自動リサイズも可能<br>
+            → そのURLをこの管理画面から設定
+          </p>
+
+          <div style="background:#E8F5E9; padding:20px; border-radius:10px; margin-top:20px;">
+            <h4 style="font-size:14px; color:var(--green); margin-bottom:8px;">💰 コストまとめ</h4>
+            <p style="font-size:13px; color:var(--hai); line-height:1.8;">
+              ホスティング（Vercel）: <strong>¥0</strong><br>
+              SSL証明書: <strong>¥0</strong>（Vercel自動）<br>
+              画像CDN（imgBB/Cloudinary）: <strong>¥0</strong><br>
+              ドメイン（任意）: <strong>約¥1,500/年</strong><br>
+              JTB Bokun（予約機能）: <strong>¥1,900〜/月</strong><br>
+              <br>
+              <strong>合計: ¥0〜¥1,900/月</strong>（Viatorの22%手数料 → 1.5〜3.5%に！）
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ACTIONS BAR -->
+<div class="actions-bar">
+  <div class="status" id="changeStatus">変更をエクスポートしてください →</div>
+  <div class="btns">
+    <button class="btn-secondary" onclick="resetAll()">リセット</button>
+    <button class="btn-primary" onclick="showSection('export'); generateExport();">💾 エクスポート</button>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+// State
+let config = {
+  hero: { backgroundImage: "", overlayImages: [] },
+  gallery: [],
+  routes: { classic:{image:""}, culture:{image:""}, photo:{image:""} },
+  stops: { shiraito:{image:""}, sengen:{image:""}, yakisoba:{image:""}, sake:{image:""}, tea:{image:""}, beer:{image:""}, tanuki:{image:""} },
+  host: { portrait: "" },
+  instagram: { handle:"fujisoultours", reels:[] }
+};
+
+const stopNames = {
+  shiraito: "Shiraito Falls (白糸の滝)",
+  sengen: "Sengen Shrine (浅間神社)",
+  yakisoba: "Yakisoba (焼きそば)",
+  sake: "Sake Brewery (酒蔵)",
+  tea: "Tea Experience (茶道)",
+  beer: "Craft Beer (地ビール)",
+  tanuki: "Lake Tanuki (田貫湖)"
+};
+
+// Load from localStorage
+try {
+  const saved = localStorage.getItem('fst_config');
+  if (saved) config = JSON.parse(saved);
+} catch(e) {}
+
+function save() {
+  localStorage.setItem('fst_config', JSON.stringify(config));
+  document.getElementById('statusBadge').textContent = '未保存の変更あり';
+  document.getElementById('statusBadge').style.background = 'rgba(197,61,67,0.1)';
+  document.getElementById('statusBadge').style.color = '#C53D43';
+}
+
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+// Section nav
+function showSection(id) {
+  document.querySelectorAll('.section-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('panel-'+id).classList.add('active');
+  document.querySelectorAll('.sidebar-nav a').forEach(a => a.classList.remove('active'));
+  document.querySelector(`[data-section="${id}"]`)?.classList.add('active');
+  const titles = {
+    hero:'ヒーロー画像', gallery:'ギャラリー', routes:'ルートカード',
+    stops:'ツアーストップ', host:'ガイド写真', instagram:'Instagram連携',
+    export:'エクスポート', guide:'デプロイガイド'
+  };
+  document.getElementById('sectionTitle').textContent = titles[id] || id;
+}
+
+// Image setting
+function setImage(section, key, url) {
+  if (!url) return;
+  config[section][key] = url.trim();
+  save();
+  renderAll();
+  toast('✓ 画像を設定しました');
+}
+function setNestedImage(section, key, url) {
+  if (!url) return;
+  if (!config[section][key]) config[section][key] = {};
+  if (typeof config[section][key] === 'object') {
+    config[section][key].image = url.trim();
+  } else {
+    config[section][key] = url.trim();
+  }
+  save();
+  renderAll();
+  toast('✓ 画像を設定しました');
+}
+
+function promptURL(section, key) {
+  const url = prompt('画像URLを入力:');
+  if (url) {
+    if (section === 'hero') setImage(section, key, url);
+    else setNestedImage(section, key, url);
+  }
+}
+
+// Gallery
+function addGalleryImage() {
+  const url = document.getElementById('gallery-url').value.trim();
+  const alt = document.getElementById('gallery-alt').value.trim();
+  if (!url) return;
+  config.gallery.push({ url, alt: alt || 'Tour photo', caption: '' });
+  document.getElementById('gallery-url').value = '';
+  document.getElementById('gallery-alt').value = '';
+  save(); renderGallery();
+  toast('✓ ギャラリーに追加しました');
+}
+function bulkAddGallery() {
+  const text = document.getElementById('bulkUrls').value;
+  const urls = text.split('\n').map(u => u.trim()).filter(u => u.startsWith('http'));
+  urls.forEach(url => {
+    config.gallery.push({ url, alt: 'Tour photo', caption: '' });
+  });
+  document.getElementById('bulkUrls').value = '';
+  save(); renderGallery();
+  toast(`✓ ${urls.length}枚追加しました`);
+}
+function removeGalleryImage(idx) {
+  config.gallery.splice(idx, 1);
+  save(); renderGallery();
+}
+
+// Reels
+function addReel() {
+  const url = document.getElementById('reel-url').value.trim();
+  if (!url) return;
+  config.instagram.reels.push(url);
+  document.getElementById('reel-url').value = '';
+  save(); renderReels();
+  toast('✓ リール追加しました');
+}
+function removeReel(idx) {
+  config.instagram.reels.splice(idx, 1);
+  save(); renderReels();
+}
+
+// Renders
+function renderAll() {
+  renderHero(); renderGallery(); renderStops(); renderReels();
+}
+function renderHero() {
+  const slot = document.getElementById('hero-bg-slot');
+  const url = config.hero.backgroundImage;
+  if (url) {
+    slot.innerHTML = `<img src="${url}" onerror="this.parentElement.innerHTML='<div class=placeholder><span class=icon>⚠️</span>画像読み込みエラー</div>'"><div class="overlay"><button onclick="event.stopPropagation();promptURL('hero','backgroundImage')">変更</button><button class="del" onclick="event.stopPropagation();config.hero.backgroundImage='';save();renderHero();">削除</button></div>`;
+    slot.classList.add('has-image');
+  } else {
+    slot.innerHTML = '<div class="placeholder"><span class="icon">📷</span>クリックしてURL入力</div>';
+    slot.classList.remove('has-image');
+  }
+}
+function renderGallery() {
+  const grid = document.getElementById('gallery-grid');
+  grid.innerHTML = '';
+  config.gallery.forEach((img, i) => {
+    grid.innerHTML += `
+      <div>
+        <div class="img-slot has-image">
+          <img src="${img.url}" onerror="this.style.display='none'">
+          <div class="overlay">
+            <button class="del" onclick="removeGalleryImage(${i})">削除</button>
+          </div>
+        </div>
+        <div class="img-label">${img.alt || 'Photo '+(i+1)}</div>
+      </div>`;
+  });
+}
+function renderStops() {
+  const grid = document.getElementById('stops-grid');
+  grid.innerHTML = '';
+  Object.entries(stopNames).forEach(([key, name]) => {
+    const url = config.stops[key]?.image || '';
+    grid.innerHTML += `
+      <div>
+        <div class="img-slot ${url?'has-image':''}" onclick="promptURL('stops','${key}')">
+          ${url ? `<img src="${url}"><div class="overlay"><button onclick="event.stopPropagation();promptURL('stops','${key}')">変更</button><button class="del" onclick="event.stopPropagation();config.stops['${key}'].image='';save();renderStops();">削除</button></div>` : `<div class="placeholder"><span class="icon">📷</span>${name}</div>`}
+        </div>
+        <div class="img-label">${name}</div>
+        <div class="url-input-row" style="margin-top:6px;">
+          <input type="text" id="stop-${key}-input" placeholder="URL" value="${url}">
+          <button onclick="setNestedImage('stops','${key}',document.getElementById('stop-${key}-input').value)">設定</button>
+        </div>
+      </div>`;
+  });
+}
+function renderReels() {
+  const list = document.getElementById('reels-list');
+  list.innerHTML = '';
+  config.instagram.reels.forEach((url, i) => {
+    list.innerHTML += `
+      <div style="display:flex;align-items:center;gap:10px;padding:10px;background:var(--bg);border-radius:8px;margin-bottom:8px;">
+        <span style="font-size:13px;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${url}</span>
+        <button onclick="removeReel(${i})" style="background:var(--shu);color:#fff;border:none;border-radius:6px;padding:4px 10px;font-size:11px;cursor:pointer;">削除</button>
+      </div>`;
+  });
+}
+
+// Export
+function generateExport() {
+  const code = `const SITE_CONFIG = ${JSON.stringify(config, null, 2)};`;
+  document.getElementById('exportCode').innerHTML = code + `\n<button class="copy-btn" onclick="copyExport()">コピー</button>`;
+}
+function copyExport() {
+  const code = `const SITE_CONFIG = ${JSON.stringify(config, null, 2)};`;
+  navigator.clipboard.writeText(code).then(() => toast('✓ クリップボードにコピーしました'));
+}
+
+function resetAll() {
+  if (confirm('すべての設定をリセットしますか？')) {
+    localStorage.removeItem('fst_config');
+    location.reload();
+  }
+}
+
+// Init
+renderAll();
+</script>
+
+</body>
+</html>
