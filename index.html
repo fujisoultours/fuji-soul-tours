@@ -573,7 +573,30 @@
     opacity: 1; transform: translateY(0);
   }
 .dest-carousel-wrap{position:relative;overflow:hidden;margin-top:32px}.dest-carousel{display:flex;gap:20px;overflow-x:auto;scroll-behavior:smooth;padding:8px 0 16px;scrollbar-width:none}.dest-carousel::-webkit-scrollbar{display:none}.dest-card{min-width:260px;max-width:260px;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.07);flex-shrink:0;transition:transform .2s}.dest-card:hover{transform:translateY(-4px)}.dest-img{height:180px;background:var(--usu-hai);display:flex;align-items:center;justify-content:center;color:#aaa;font-size:14px}.dest-img::after{content:"Photo coming soon"}.dest-info{display:flex;justify-content:space-between;padding:10px 16px 0;font-size:13px}.dest-num{font-weight:700;color:var(--shu)}.dest-time{color:#888}.dest-card h3{font-size:15px;font-weight:600;padding:6px 16px 4px;margin:0;color:var(--sumi)}.dest-card p{font-size:13px;color:#666;padding:0 16px 16px;margin:0;line-height:1.5}.dest-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:2;background:rgba(255,255,255,.9);border:1px solid var(--usu-hai);border-radius:50%;width:40px;height:40px;font-size:24px;cursor:pointer;display:flex;align-items:center;justify-content:center}.dest-prev{left:4px}.dest-next{right:4px}.route-tabs{display:flex;gap:8px;margin-top:32px;flex-wrap:wrap;justify-content:center}.route-tab{padding:10px 22px;border:1.5px solid var(--usu-hai);border-radius:100px;background:none;cursor:pointer;font-size:14px;font-weight:500;color:var(--sumi);font-family:inherit;transition:all .2s}.route-tab:hover{border-color:var(--shu);color:var(--shu)}.route-tab.active{background:var(--shu);color:#fff;border-color:var(--shu)}.faq-a-chart{max-height:0}.faq-item.open .faq-a-chart{max-height:600px}
-  </style>
+  
+    /* Model Course Timeline */
+    .model-tab-btn { padding: 8px 20px; border: 2px solid var(--shu); border-radius: 25px; background: white; color: var(--shu); font-weight: 600; cursor: pointer; font-size: 0.9rem; transition: all 0.2s; }
+    .model-tab-btn.active { background: var(--shu); color: white; }
+    .model-tab-btn:hover { background: var(--shu); color: white; }
+    .model-timeline { position: relative; padding-left: 40px; }
+    .model-stop { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 0.5rem; }
+    .model-time { min-width: 70px; text-align: right; font-size: 0.85rem; color: var(--hai); }
+    .model-dur { display: block; font-size: 0.75rem; color: var(--shu); font-weight: 600; }
+    .model-dot { width: 14px; height: 14px; border-radius: 50%; background: var(--hai); margin-top: 4px; flex-shrink: 0; }
+    .model-detail h4 { margin: 0 0 2px; font-size: 0.95rem; }
+    .model-detail p { margin: 0; font-size: 0.82rem; color: var(--hai); }
+    .model-travel { padding-left: 86px; margin: 0.3rem 0; font-size: 0.8rem; color: var(--hai); border-left: 2px dashed var(--usu-hai); margin-left: 77px; padding: 4px 0 4px 20px; }
+    /* Route Table */
+    .route-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    .route-table th { text-align: left; padding: 8px 12px; font-size: 0.75rem; color: var(--hai); letter-spacing: 0.05em; border-bottom: 1px solid var(--usu-hai); }
+    .route-table td { padding: 10px 12px; border-bottom: 1px solid var(--kinari); }
+    .route-table tr:last-child td { border-bottom: none; }
+    .buffer-row td { background: var(--kinari); color: var(--hai); font-size: 0.85rem; font-style: italic; }
+    .route-tab { padding: 8px 18px; border: 2px solid var(--usu-hai); border-radius: 25px; background: white; color: var(--hai); cursor: pointer; font-size: 0.85rem; transition: all 0.2s; }
+    .route-tab.active { border-color: var(--shu); background: var(--shu); color: white; font-weight: 600; }
+    .route-tab:hover { border-color: var(--shu); }
+    .dest-arrow { cursor: pointer; z-index: 2; }
+</style>
 </head>
 <body>
 
@@ -642,80 +665,157 @@
 <!-- CONCEPT -->
 <section class="section-gap" id="concept">
   <div class="container fade-in">
-    <div class="section-label">Concept</div>
-    <h2 class="section-title">Perfect for Tokyo ↔ Kyoto/Osaka Travelers</h2>
-    <p class="section-desc">
-      Shin-Fuji Station is just 1 hour from Tokyo by Shinkansen. Turn your travel day into a Mt. Fuji cultural experience — and still arrive in Kyoto with plenty of time to explore.
-    </p>
+    <p class="section-label">CONCEPT</p>
+    <h2 class="section-title">Stop at Mt. Fuji on Your Shinkansen Day</h2>
+    <p class="section-desc">Shin-Fuji Station is a quick Kodama stop between Tokyo and Kyoto. Turn your travel day into a Mt. Fuji cultural experience — and still arrive with plenty of time to explore.</p>
 
-    <div class="route-tabs"><button class="route-tab active" data-route="tokyo-kyoto">Tokyo → Kyoto/Osaka</button><button class="route-tab" data-route="kyoto-tokyo">Kyoto/Osaka → Tokyo</button><button class="route-tab" data-route="tokyo-roundtrip">Tokyo ⇄ Tokyo</button></div><div class="concept-box route-panel active" id="route-tokyo-kyoto"><div class="concept-route"><span>Tokyo</span><span class="arrow">→</span><span class="time">1h</span><span class="arrow">→</span><span class="highlight">Shin-Fuji (4h Tour)</span><span class="arrow">→</span><span class="time">2h</span><span class="arrow">→</span><span>Kyoto</span></div><table class="timetable"><tr><th>Time</th><th>Activity</th><th>Location</th></tr><tr><td>8:57 AM</td><td>Depart Tokyo</td><td>Tokyo Station</td></tr><tr><td>10:03 AM</td><td>Arrive &amp; Meet Guide</td><td>Shin-Fuji Station</td></tr><tr><td>10:20 – 2:20 PM</td><td>Mt. Fuji Tour</td><td>Hidden spots &amp; cultural dives</td></tr><tr><td>2:37 PM</td><td>Depart for Kyoto</td><td>Shin-Fuji Station</td></tr><tr><td>4:37 PM</td><td>Arrive Kyoto ✓</td><td>Kyoto Station</td></tr></table></div><div class="concept-box route-panel" id="route-kyoto-tokyo" style="display:none"><div class="concept-route"><span>Kyoto/Osaka</span><span class="arrow">→</span><span class="time">2h</span><span class="arrow">→</span><span class="highlight">Shin-Fuji (4h Tour)</span><span class="arrow">→</span><span class="time">1h</span><span class="arrow">→</span><span>Tokyo</span></div><table class="timetable"><tr><th>Time</th><th>Activity</th><th>Location</th></tr><tr><td>8:37 AM</td><td>Depart Kyoto</td><td>Kyoto Station</td></tr><tr><td>10:37 AM</td><td>Arrive &amp; Meet Guide</td><td>Shin-Fuji Station</td></tr><tr><td>10:50 – 2:50 PM</td><td>Mt. Fuji Tour</td><td>Hidden spots &amp; cultural dives</td></tr><tr><td>3:07 PM</td><td>Depart for Tokyo</td><td>Shin-Fuji Station</td></tr><tr><td>4:07 PM</td><td>Arrive Tokyo ✓</td><td>Tokyo Station</td></tr></table></div><div class="concept-box route-panel" id="route-tokyo-roundtrip" style="display:none"><div class="concept-route"><span>Tokyo</span><span class="arrow">→</span><span class="time">1h</span><span class="arrow">→</span><span class="highlight">Shin-Fuji (4h Tour)</span><span class="arrow">→</span><span class="time">1h</span><span class="arrow">→</span><span>Tokyo</span></div><table class="timetable"><tr><th>Time</th><th>Activity</th><th>Location</th></tr><tr><td>8:57 AM</td><td>Depart Tokyo</td><td>Tokyo Station</td></tr><tr><td>10:03 AM</td><td>Arrive &amp; Meet Guide</td><td>Shin-Fuji Station</td></tr><tr><td>10:20 – 2:20 PM</td><td>Mt. Fuji Tour</td><td>Hidden spots &amp; cultural dives</td></tr><tr><td>2:37 PM</td><td>Depart for Tokyo</td><td>Shin-Fuji Station</td></tr><tr><td>3:37 PM</td><td>Arrive Tokyo ✓</td><td>Tokyo Station</td></tr></table></div>
-</section>
+    <div class="route-tabs" style="display:flex;gap:8px;justify-content:center;margin:2rem 0 1.5rem;flex-wrap:wrap;">
+      <button class="route-tab active" onclick="switchRouteTab(0)">Tokyo → Kyoto/Osaka</button>
+      <button class="route-tab" onclick="switchRouteTab(1)">Kyoto/Osaka → Tokyo</button>
+      <button class="route-tab" onclick="switchRouteTab(2)">Tokyo → Tokyo</button>
+    </div>
+    <hr style="border:none;border-top:1px solid var(--usu-hai);margin-bottom:2rem;">
 
-<!-- ROUTES -->
-<section class="section-gap" id="destinations"><div class="container fade-in"><div class="section-label">Destinations</div><h2 class="section-title">Tour Destinations</h2><p class="section-desc">Pick 3–4 destinations from the list. Your guide will craft the perfect route based on weather, season, and your interests.</p><div class="dest-carousel-wrap"><button class="dest-arrow dest-prev" aria-label="Previous">‹</button><div class="dest-carousel"><div class="dest-card"><div class="dest-img" data-dest="1"></div><div class="dest-info"><span class="dest-num">#1</span><span class="dest-time">15–60 min</span></div><h3>Hidden Viewpoints</h3><p>Multiple secret Mt. Fuji photo spots, selected based on weather and season conditions</p></div><div class="dest-card"><div class="dest-img" data-dest="2"></div><div class="dest-info"><span class="dest-num">#2</span><span class="dest-time">30–60 min</span></div><h3>Sacred Shrine</h3><p>Historic shrine at the foot of Mt. Fuji with optional Shinto purification experience</p></div><div class="dest-card"><div class="dest-img" data-dest="3"></div><div class="dest-info"><span class="dest-num">#3</span><span class="dest-time">30–45 min</span></div><h3>Award-Winning Local Lunch</h3><p>Regional soul food — a beloved local specialty you can only find in this area</p></div><div class="dest-card"><div class="dest-img" data-dest="4"></div><div class="dest-info"><span class="dest-num">#4</span><span class="dest-time">20–90 min</span></div><h3>UNESCO Heritage Center</h3><p>Interactive exhibitions and modern architecture celebrating Mt. Fuji’s cultural legacy</p></div><div class="dest-card"><div class="dest-img" data-dest="5"></div><div class="dest-info"><span class="dest-num">#5</span><span class="dest-time">30–60 min</span></div><h3>Traditional Matcha Experience</h3><p>Authentic matcha at a traditional tea house in a serene setting</p></div><div class="dest-card"><div class="dest-img" data-dest="6"></div><div class="dest-info"><span class="dest-num">#6</span><span class="dest-time">~20 min</span></div><h3>Lakeside Viewing Spot</h3><p>Scenic lake with Mt. Fuji backdrop — famous for its mirror-like “Double Fuji” reflection</p></div><div class="dest-card"><div class="dest-img" data-dest="7"></div><div class="dest-info"><span class="dest-num">#7</span><span class="dest-time">30–60 min</span></div><h3>Sacred Waterfall</h3><p>UNESCO-listed site with 150+ streams of natural spring water from Mt. Fuji</p></div><div class="dest-card"><div class="dest-img" data-dest="8"></div><div class="dest-info"><span class="dest-num">#8</span><span class="dest-time">20–30 min</span></div><h3>Kimono Rental Experience</h3><p>Dress in a traditional kimono for a memorable photo opportunity (reservation required)</p></div><div class="dest-card"><div class="dest-img" data-dest="9"></div><div class="dest-info"><span class="dest-num">#9</span><span class="dest-time">20–60 min</span></div><h3>Local Craft Beer Taproom</h3><p>Craft beers brewed with pristine water from the Mt. Fuji region</p></div><div class="dest-card"><div class="dest-img" data-dest="10"></div><div class="dest-info"><span class="dest-num">#10</span><span class="dest-time">~20 min</span></div><h3>Local Sake Tasting</h3><p>Sake brewed with Mt. Fuji snowmelt water — a regional specialty</p></div><div class="dest-card"><div class="dest-img" data-dest="11"></div><div class="dest-info"><span class="dest-num">#11</span><span class="dest-time">15–30 min</span></div><h3>Mochi Gelato &amp; Matcha Latte</h3><p>Locally-sourced gelato and matcha drinks — the perfect sweet break</p></div></div><button class="dest-arrow dest-next" aria-label="Next">›</button></div></div></section>
+    <div class="route-panel" id="route-0">
+      <div style="display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:1.5rem;font-size:0.95rem;">
+        <span>Tokyo</span><span style="color:var(--hai);">→</span><span style="color:var(--hai);">1h</span><span style="color:var(--hai);">→</span>
+        <span style="background:var(--shu);color:white;padding:6px 16px;border-radius:20px;font-weight:600;">Shin-Fuji (4h Tour)</span>
+        <span style="color:var(--hai);">→</span><span style="color:var(--hai);">~1h buffer</span><span style="color:var(--hai);">→</span><span style="color:var(--hai);">2.5h</span><span style="color:var(--hai);">→</span><span>Kyoto</span>
+      </div>
+      <table class="route-table"><thead><tr><th>TIME</th><th>ACTIVITY</th><th>LOCATION</th></tr></thead><tbody>
+        <tr><td><strong>7:03 AM</strong></td><td>Depart Tokyo</td><td>Tokyo Station (Kodama)</td></tr>
+        <tr><td><strong>8:10 AM</strong></td><td>Arrive & Meet Guide</td><td>Shin-Fuji Station</td></tr>
+        <tr><td><strong>8:15 – 12:15</strong></td><td>🗼 Mt. Fuji Tour</td><td>Hidden spots & cultural dives</td></tr>
+        <tr class="buffer-row"><td>12:15 – 13:08</td><td>☕ Free time (buffer)</td><td>Station area — lunch, souvenirs</td></tr>
+        <tr><td><strong>13:08 PM</strong></td><td>Depart for Kyoto</td><td>Shin-Fuji Station (Kodama)</td></tr>
+        <tr><td><strong>15:34 PM</strong></td><td>Arrive Kyoto ✓</td><td>Kyoto Station</td></tr>
+      </tbody></table>
+    </div>
 
-<!-- ITINERARY -->
-<section class="section-gap" id="itinerary">
-  <div class="container fade-in">
-    <div class="section-label">Itinerary</div>
-    <h2 class="section-title">Tour Stops</h2>
-    <p class="section-desc">7 handpicked locations — your guide will select the best combination based on your preferences and conditions.</p>
+    <div class="route-panel" id="route-1" style="display:none;">
+      <div style="display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:1.5rem;font-size:0.95rem;">
+        <span>Kyoto</span><span style="color:var(--hai);">→</span><span style="color:var(--hai);">2.5h</span><span style="color:var(--hai);">→</span>
+        <span style="background:var(--shu);color:white;padding:6px 16px;border-radius:20px;font-weight:600;">Shin-Fuji (4h Tour)</span>
+        <span style="color:var(--hai);">→</span><span style="color:var(--hai);">~1h buffer</span><span style="color:var(--hai);">→</span><span style="color:var(--hai);">1h</span><span style="color:var(--hai);">→</span><span>Tokyo</span>
+      </div>
+      <table class="route-table"><thead><tr><th>TIME</th><th>ACTIVITY</th><th>LOCATION</th></tr></thead><tbody>
+        <tr><td><strong>6:01 AM</strong></td><td>Depart Kyoto</td><td>Kyoto Station (Kodama)</td></tr>
+        <tr><td><strong>8:27 AM</strong></td><td>Arrive & Meet Guide</td><td>Shin-Fuji Station</td></tr>
+        <tr><td><strong>8:30 – 12:30</strong></td><td>🗼 Mt. Fuji Tour</td><td>Hidden spots & cultural dives</td></tr>
+        <tr class="buffer-row"><td>12:30 – 13:39</td><td>☕ Free time (buffer)</td><td>Station area — lunch, souvenirs</td></tr>
+        <tr><td><strong>13:39 PM</strong></td><td>Depart for Tokyo</td><td>Shin-Fuji Station (Kodama)</td></tr>
+        <tr><td><strong>14:47 PM</strong></td><td>Arrive Tokyo ✓</td><td>Tokyo Station</td></tr>
+      </tbody></table>
+    </div>
 
-    <div style="margin-top:36px; display:flex; flex-direction:column; gap:12px;">
-      <div style="display:flex; gap:20px; padding:20px; background:#fff; border:1px solid var(--usu-hai); border-radius:10px; align-items:flex-start;">
-        <div style="font-size:13px; font-weight:700; color:var(--shu); white-space:nowrap; min-width:32px;">01</div>
-        <div>
-          <h4 style="font-size:15px; font-weight:600; margin-bottom:4px;">Shiraito Falls</h4>
-          <p style="font-size:13px; color:var(--hai);">Mt. Fuji's snowmelt emerges as thousands of fine "white threads" forming a broad curtain of water. ~20 min · Free</p>
-        </div>
+    <div class="route-panel" id="route-2" style="display:none;">
+      <div style="display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:1.5rem;font-size:0.95rem;">
+        <span>Tokyo</span><span style="color:var(--hai);">→</span><span style="color:var(--hai);">1h</span><span style="color:var(--hai);">→</span>
+        <span style="background:var(--shu);color:white;padding:6px 16px;border-radius:20px;font-weight:600;">Shin-Fuji (4h Tour)</span>
+        <span style="color:var(--hai);">→</span><span style="color:var(--hai);">~1h buffer</span><span style="color:var(--hai);">→</span><span style="color:var(--hai);">1h</span><span style="color:var(--hai);">→</span><span>Tokyo</span>
       </div>
-      <div style="display:flex; gap:20px; padding:20px; background:#fff; border:1px solid var(--usu-hai); border-radius:10px; align-items:flex-start;">
-        <div style="font-size:13px; font-weight:700; color:var(--shu); white-space:nowrap; min-width:32px;">02</div>
-        <div>
-          <h4 style="font-size:15px; font-weight:600; margin-bottom:4px;">Fujisan Hongu Sengen Taisha Shrine</h4>
-          <p style="font-size:13px; color:var(--hai);">The principal shrine for Mt. Fuji worship. Walk beneath vermilion gates and cedars to Wakutama-ike spring. ~20 min · Free</p>
-        </div>
-      </div>
-      <div style="display:flex; gap:20px; padding:20px; background:#fff; border:1px solid var(--usu-hai); border-radius:10px; align-items:flex-start;">
-        <div style="font-size:13px; font-weight:700; color:var(--shu); white-space:nowrap; min-width:32px;">03</div>
-        <div>
-          <h4 style="font-size:15px; font-weight:600; margin-bottom:4px;">Omiya Yokocho — Fujinomiya Yakisoba</h4>
-          <p style="font-size:13px; color:var(--hai);">Award-winning local soul food. Chewy steamed noodles on a sizzling griddle with pork cracklings. ~20 min</p>
-        </div>
-      </div>
-      <div style="display:flex; gap:20px; padding:20px; background:#fff; border:1px solid var(--usu-hai); border-radius:10px; align-items:flex-start;">
-        <div style="font-size:13px; font-weight:700; color:var(--shu); white-space:nowrap; min-width:32px;">04</div>
-        <div>
-          <h4 style="font-size:15px; font-weight:600; margin-bottom:4px;">Fuji Takasago Sake Brewery</h4>
-          <p style="font-size:13px; color:var(--hai);">The same snowmelt from Mt. Fuji becomes sake. Taste several varieties and learn about water softness & rice polishing. ~20 min · Free</p>
-        </div>
-      </div>
-      <div style="display:flex; gap:20px; padding:20px; background:#fff; border:1px solid var(--usu-hai); border-radius:10px; align-items:flex-start;">
-        <div style="font-size:13px; font-weight:700; color:var(--shu); white-space:nowrap; min-width:32px;">05</div>
-        <div>
-          <h4 style="font-size:15px; font-weight:600; margin-bottom:4px;">Kobayashien — Tea Experience</h4>
-          <p style="font-size:13px; color:var(--hai);">Authentic Shizuoka green tea nurtured by Mt. Fuji's spring water. Traditional Japanese house overlooking a garden. ~20 min</p>
-        </div>
-      </div>
-      <div style="display:flex; gap:20px; padding:20px; background:#fff; border:1px solid var(--usu-hai); border-radius:10px; align-items:flex-start;">
-        <div style="font-size:13px; font-weight:700; color:var(--shu); white-space:nowrap; min-width:32px;">06</div>
-        <div>
-          <h4 style="font-size:15px; font-weight:600; margin-bottom:4px;">Fujiyama Hunter's Beer Tap Room</h4>
-          <p style="font-size:13px; color:var(--hai);">Local small-batch craft beers brewed with Mt. Fuji spring water and organic local grains. 6–7 rotating taps. ~20 min</p>
-        </div>
-      </div>
-      <div style="display:flex; gap:20px; padding:20px; background:#fff; border:1px solid var(--usu-hai); border-radius:10px; align-items:flex-start;">
-        <div style="font-size:13px; font-weight:700; color:var(--shu); white-space:nowrap; min-width:32px;">07</div>
-        <div>
-          <h4 style="font-size:15px; font-weight:600; margin-bottom:4px;">Lake Tanuki</h4>
-          <p style="font-size:13px; color:var(--hai);">Mt. Fuji reflected on still waters — the stunning "Double Fuji" mirror image. Weather permitting. ~20 min · Free</p>
-        </div>
-      </div>
+      <table class="route-table"><thead><tr><th>TIME</th><th>ACTIVITY</th><th>LOCATION</th></tr></thead><tbody>
+        <tr><td><strong>7:03 AM</strong></td><td>Depart Tokyo</td><td>Tokyo Station (Kodama)</td></tr>
+        <tr><td><strong>8:10 AM</strong></td><td>Arrive & Meet Guide</td><td>Shin-Fuji Station</td></tr>
+        <tr><td><strong>8:15 – 12:15</strong></td><td>🗼 Mt. Fuji Tour</td><td>Hidden spots & cultural dives</td></tr>
+        <tr class="buffer-row"><td>12:15 – 13:09</td><td>☕ Free time (buffer)</td><td>Station area — lunch, souvenirs</td></tr>
+        <tr><td><strong>13:09 PM</strong></td><td>Depart for Tokyo</td><td>Shin-Fuji Station (Kodama)</td></tr>
+        <tr><td><strong>14:17 PM</strong></td><td>Arrive Tokyo ✓</td><td>Tokyo Station</td></tr>
+      </tbody></table>
     </div>
   </div>
 </section>
 
-<!-- WEATHER FLEXIBILITY -->
+<section class="section-gap" id="destinations"><div class="container fade-in">
+<p class="section-label">Destinations</p>
+<h2 class="section-title">Tour Destinations</h2>
+
+<h3 style="font-size:1.1rem;color:var(--shu);margin:2.5rem 0 1rem;font-weight:600;">Hidden Viewpoints & Lakeside</h3>
+<p class="section-desc" style="margin-bottom:1.2rem;">We select the best viewpoints based on weather, season, and timing.</p>
+<div class="dest-carousel-wrap">
+<button class="dest-arrow dest-prev" onclick="scrollCarousel(this,-1)">&lsaquo;</button>
+<div class="dest-carousel" id="carousel-views">
+<div class="dest-card"><div class="dest-img" style="background:var(--kinari);display:flex;align-items:center;justify-content:center;color:var(--hai);font-size:0.85rem;">Photo coming soon</div><div class="dest-info"><span class="dest-num">#1</span><span class="dest-time">15–30 min</span><h4>Panoramic Bridge View</h4><p>Elevated Mt. Fuji view near the station, perfect for arrival photos</p></div></div>
+<div class="dest-card"><div class="dest-img" style="background:var(--kinari);display:flex;align-items:center;justify-content:center;color:var(--hai);font-size:0.85rem;">Photo coming soon</div><div class="dest-info"><span class="dest-num">#2</span><span class="dest-time">15–30 min</span><h4>Highland Park Viewpoint</h4><p>Peaceful local park with unobstructed Fuji views, away from tourist crowds</p></div></div>
+<div class="dest-card"><div class="dest-img" style="background:var(--kinari);display:flex;align-items:center;justify-content:center;color:var(--hai);font-size:0.85rem;">Photo coming soon</div><div class="dest-info"><span class="dest-num">#3</span><span class="dest-time">15–45 min</span><h4>Dramatic Plateau View</h4><p>Up-close dramatic Fuji panorama from an elevated plateau</p></div></div>
+<div class="dest-card"><div class="dest-img" style="background:var(--kinari);display:flex;align-items:center;justify-content:center;color:var(--hai);font-size:0.85rem;">Photo coming soon</div><div class="dest-info"><span class="dest-num">#4</span><span class="dest-time">20–45 min</span><h4>Lakeside Viewing Spot</h4><p>Mt. Fuji reflected on still waters — the stunning “Double Fuji” mirror image</p></div></div>
+</div>
+<button class="dest-arrow dest-next" onclick="scrollCarousel(this,1)">&rsaquo;</button>
+</div>
+
+<h3 style="font-size:1.1rem;color:var(--shu);margin:2.5rem 0 1rem;font-weight:600;">Local & Cultural Experiences</h3>
+<p class="section-desc" style="margin-bottom:1.2rem;">Immerse yourself in authentic Fuji-area culture, food, and traditions.</p>
+<div class="dest-carousel-wrap">
+<button class="dest-arrow dest-prev" onclick="scrollCarousel(this,-1)">&lsaquo;</button>
+<div class="dest-carousel" id="carousel-culture">
+<div class="dest-card"><div class="dest-img" style="background:var(--kinari);display:flex;align-items:center;justify-content:center;color:var(--hai);font-size:0.85rem;">Photo coming soon</div><div class="dest-info"><span class="dest-num">#1</span><span class="dest-time">20–25 min</span><h4>Sacred Shrine</h4><p>Principal shrine for Mt. Fuji worship with optional Shinto purification</p></div></div>
+<div class="dest-card"><div class="dest-img" style="background:var(--kinari);display:flex;align-items:center;justify-content:center;color:var(--hai);font-size:0.85rem;">Photo coming soon</div><div class="dest-info"><span class="dest-num">#2</span><span class="dest-time">20–30 min</span><h4>Award-Winning Local Lunch</h4><p>Regional soul food — a beloved local specialty you can only find in this area</p></div></div>
+<div class="dest-card"><div class="dest-img" style="background:var(--kinari);display:flex;align-items:center;justify-content:center;color:var(--hai);font-size:0.85rem;">Photo coming soon</div><div class="dest-info"><span class="dest-num">#3</span><span class="dest-time">15–20 min</span><h4>UNESCO Heritage Center</h4><p>Interactive exhibits on Mt. Fuji’s cultural and natural significance. Reflection pond + red torii gate.</p></div></div>
+<div class="dest-card"><div class="dest-img" style="background:var(--kinari);display:flex;align-items:center;justify-content:center;color:var(--hai);font-size:0.85rem;">Photo coming soon</div><div class="dest-info"><span class="dest-num">#4</span><span class="dest-time">25–60 min</span><h4>Traditional Matcha Experience</h4><p>Choose from 3 options:</p><ul style="margin:0.3rem 0 0 1rem;font-size:0.82rem;color:var(--hai);"><li><strong>Café Matcha</strong> — ¥900/person, 30 min</li><li><strong>Hands-On Preparation</strong> — ¥3,000/person, 60 min</li><li><strong>Tea Ceremony with Master</strong> — ¥20,000/group, 60 min</li></ul></div></div>
+<div class="dest-card"><div class="dest-img" style="background:var(--kinari);display:flex;align-items:center;justify-content:center;color:var(--hai);font-size:0.85rem;">Photo coming soon</div><div class="dest-info"><span class="dest-num">#5</span><span class="dest-time">20–30 min</span><h4>Sacred Waterfall</h4><p>Mt. Fuji’s snowmelt cascading in delicate white threads — a UNESCO natural wonder</p></div></div>
+<div class="dest-card"><div class="dest-img" style="background:var(--kinari);display:flex;align-items:center;justify-content:center;color:var(--hai);font-size:0.85rem;">Photo coming soon</div><div class="dest-info"><span class="dest-num">#6</span><span class="dest-time">20–30 min</span><h4>Kimono Rental Experience</h4><p>Wear a traditional kimono and take photos with Mt. Fuji as your backdrop</p></div></div>
+<div class="dest-card"><div class="dest-img" style="background:var(--kinari);display:flex;align-items:center;justify-content:center;color:var(--hai);font-size:0.85rem;">Photo coming soon</div><div class="dest-info"><span class="dest-num">#7</span><span class="dest-time">20 min</span><h4>Local Craft Beer Taproom</h4><p>Small-batch craft beers brewed with Mt. Fuji spring water and organic local grains</p></div></div>
+<div class="dest-card"><div class="dest-img" style="background:var(--kinari);display:flex;align-items:center;justify-content:center;color:var(--hai);font-size:0.85rem;">Photo coming soon</div><div class="dest-info"><span class="dest-num">#8</span><span class="dest-time">20 min</span><h4>Local Sake Tasting</h4><p>Sample locally brewed sake made with pure Mt. Fuji spring water</p></div></div>
+<div class="dest-card"><div class="dest-img" style="background:var(--kinari);display:flex;align-items:center;justify-content:center;color:var(--hai);font-size:0.85rem;">Photo coming soon</div><div class="dest-info"><span class="dest-num">#9</span><span class="dest-time">15–20 min</span><h4>Mochi Gelato & Matcha Latte</h4><p>Sweet treats featuring local mochi and premium matcha</p></div></div>
+</div>
+<button class="dest-arrow dest-next" onclick="scrollCarousel(this,1)">&rsaquo;</button>
+</div>
+</div></section>
+
+<section class="section-gap" id="itinerary">
+  <div class="container fade-in">
+    <p class="section-label">ITINERARY</p>
+    <h2 class="section-title">Model Courses</h2>
+    <p class="section-desc">Your guide tailors the route based on weather, season, and your preferences. Here are two sample 4-hour itineraries.</p>
+
+    <div style="display:flex;gap:12px;margin:1.5rem 0 2rem;justify-content:center;">
+      <button class="model-tab-btn active" onclick="switchModelTab(0)">5 Stops — Highlights</button>
+      <button class="model-tab-btn" onclick="switchModelTab(1)">3 Stops — Relaxed</button>
+    </div>
+
+    <div class="model-tab-panel" id="model-panel-0">
+      <p style="color:var(--hai);font-size:0.9rem;margin-bottom:1.5rem;text-align:center;">For someone who wants to see as much as possible in 4 hours.</p>
+      <div class="model-timeline">
+        <div class="model-stop"><div class="model-time"><strong>0:00</strong></div><div class="model-dot"></div><div class="model-detail"><h4>Meet Your Guide</h4><p>In front of the station gate</p></div></div>
+        <div class="model-travel"><span>🚗 15 min drive</span></div>
+        <div class="model-stop"><div class="model-time"><strong>0:15</strong><span class="model-dur">15 min</span></div><div class="model-dot" style="background:var(--shu);"></div><div class="model-detail"><h4>Mt. Fuji Viewspot</h4><p>Up-close dramatic Fuji panorama • Free</p></div></div>
+        <div class="model-travel"><span>🚗 35 min drive</span></div>
+        <div class="model-stop"><div class="model-time"><strong>1:05</strong><span class="model-dur">20 min</span></div><div class="model-dot" style="background:#c0392b;"></div><div class="model-detail"><h4>Sacred Shrine Visit</h4><p>Principal shrine for Mt. Fuji worship • Free</p></div></div>
+        <div class="model-travel"><span>🚗 5 min drive</span></div>
+        <div class="model-stop"><div class="model-time"><strong>1:30</strong><span class="model-dur">20 min</span></div><div class="model-dot" style="background:#e67e22;"></div><div class="model-detail"><h4>Award-Winning Local Lunch</h4><p>Famous regional soul food noodles • ¥900/person</p></div></div>
+        <div class="model-travel"><span>🚗 5 min drive</span></div>
+        <div class="model-stop"><div class="model-time"><strong>1:55</strong><span class="model-dur">15 min</span></div><div class="model-dot" style="background:var(--shu);"></div><div class="model-detail"><h4>UNESCO Heritage Center</h4><p>Reflection pond + red torii gate, exhibits • ¥300/person</p></div></div>
+        <div class="model-travel"><span>🚗 20 min drive</span></div>
+        <div class="model-stop"><div class="model-time"><strong>2:30</strong><span class="model-dur">25 min</span></div><div class="model-dot" style="background:#27ae60;"></div><div class="model-detail"><h4>Traditional Matcha Experience</h4><p>Authentic matcha + traditional sweets • ¥900/person</p></div></div>
+        <div class="model-travel"><span>🚗 20 min drive</span></div>
+        <div class="model-stop"><div class="model-time"><strong>3:15</strong></div><div class="model-dot"></div><div class="model-detail"><h4>Return to Station</h4><p>Arrive back with time to spare for your next train</p></div></div>
+      </div>
+      <p style="background:var(--kinari);padding:1rem;border-radius:8px;font-size:0.85rem;color:var(--hai);margin-top:1.5rem;"><strong>Guest note:</strong> This is for someone who wants to do as much as possible in a 4-hour tour. All listed costs are paid separately on-site (not included in tour price).</p>
+    </div>
+
+    <div class="model-tab-panel" id="model-panel-1" style="display:none;">
+      <p style="color:var(--hai);font-size:0.9rem;margin-bottom:1.5rem;text-align:center;">For someone who wants to take time at each stop.</p>
+      <div class="model-timeline">
+        <div class="model-stop"><div class="model-time"><strong>0:00</strong></div><div class="model-dot"></div><div class="model-detail"><h4>Meet Your Guide</h4><p>In front of the station gate</p></div></div>
+        <div class="model-travel"><span>🚗 50 min drive</span></div>
+        <div class="model-stop"><div class="model-time"><strong>0:50</strong><span class="model-dur">45 min</span></div><div class="model-dot" style="background:var(--shu);"></div><div class="model-detail"><h4>Lakeside Mt. Fuji Viewspot</h4><p>Fuji reflection on lake surface (clear days) • Free</p></div></div>
+        <div class="model-travel"><span>🚗 35 min drive</span></div>
+        <div class="model-stop"><div class="model-time"><strong>2:10</strong><span class="model-dur">25 min</span></div><div class="model-dot" style="background:#c0392b;"></div><div class="model-detail"><h4>Sacred Shrine Visit</h4><p>Principal shrine for Mt. Fuji worship • Free</p></div></div>
+        <div class="model-travel"><span>🚗 25 min drive</span></div>
+        <div class="model-stop"><div class="model-time"><strong>3:00</strong><span class="model-dur">40 min</span></div><div class="model-dot" style="background:#27ae60;"></div><div class="model-detail"><h4>Traditional Matcha Experience</h4><p>Authentic matcha + traditional sweets • ¥900/person</p></div></div>
+        <div class="model-travel"><span>🚗 20 min drive</span></div>
+        <div class="model-stop"><div class="model-time"><strong>4:00</strong></div><div class="model-dot"></div><div class="model-detail"><h4>Return to Station</h4><p>Arrive back with time to spare for your next train</p></div></div>
+      </div>
+      <p style="background:var(--kinari);padding:1rem;border-radius:8px;font-size:0.85rem;color:var(--hai);margin-top:1.5rem;"><strong>Guest note:</strong> This is for someone who wants to take time in each stop. All listed costs are paid separately on-site (not included in tour price).</p>
+    </div>
+
+    <div style="background:linear-gradient(135deg, var(--shu) 0%, var(--shu-dark) 100%);color:white;padding:1.2rem 1.5rem;border-radius:12px;margin-top:2rem;text-align:center;">
+      <strong>⏰ Tour Hour Extension Available</strong><br>
+      <span style="font-size:0.9rem;opacity:0.9;">Want more time? Book the standard 4-hour tour first, then inquire about extending.</span>
+    </div>
+  </div>
+</section>
+
 <section class="section-gap">
   <div class="container fade-in">
     <div class="section-label">Flexibility</div>
@@ -903,19 +1003,80 @@
         <button class="faq-q">What time does the tour start?</button>
         <div class="faq-a"><p>Flexible — we adjust the start time based on your train schedule. Available 8:00 AM – 5:00 PM. Just let us know your preferred arrival time.</p></div>
       </div>
-      <div class="faq-item"><button class="faq-q">When Can You See Mt. Fuji?<span>+</span></button><div class="faq-a faq-a-chart"><p>Average days of visibility per month (2015–2024). Morning is best — 37.3% visible days annually.</p><div class="vis-chart">
-      <div class="vis-bars" id="visBars">
-        <!-- filled by JS -->
+      <div class="faq-item">
+  <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">When Can You See Mt. Fuji? <span>+</span></button>
+  <div class="faq-a">
+    <p>Mt. Fuji is visible approximately 40% of the year. Visibility varies by season:</p>
+    <div style="max-width:500px;margin:1rem auto;">
+      <div style="display:flex;align-items:end;gap:6px;height:160px;margin-bottom:0.5rem;">
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;">
+          <span style="font-size:0.7rem;font-weight:600;color:var(--sumi);">73%</span>
+          <div style="width:100%;background:var(--shu);border-radius:4px 4px 0 0;height:73%;"></div>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;">
+          <span style="font-size:0.7rem;font-weight:600;color:var(--sumi);">63%</span>
+          <div style="width:100%;background:var(--shu);border-radius:4px 4px 0 0;height:63%;opacity:0.85;"></div>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;">
+          <span style="font-size:0.7rem;font-weight:600;color:var(--sumi);">43%</span>
+          <div style="width:100%;background:var(--shu);border-radius:4px 4px 0 0;height:43%;opacity:0.7;"></div>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;">
+          <span style="font-size:0.7rem;font-weight:600;color:var(--sumi);">33%</span>
+          <div style="width:100%;background:var(--shu);border-radius:4px 4px 0 0;height:33%;opacity:0.55;"></div>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;">
+          <span style="font-size:0.7rem;font-weight:600;color:var(--sumi);">23%</span>
+          <div style="width:100%;background:var(--shu);border-radius:4px 4px 0 0;height:23%;opacity:0.4;"></div>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;">
+          <span style="font-size:0.7rem;font-weight:600;color:var(--sumi);">17%</span>
+          <div style="width:100%;background:var(--shu);border-radius:4px 4px 0 0;height:17%;opacity:0.35;"></div>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;">
+          <span style="font-size:0.7rem;font-weight:600;color:var(--sumi);">13%</span>
+          <div style="width:100%;background:var(--shu);border-radius:4px 4px 0 0;height:13%;opacity:0.3;"></div>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;">
+          <span style="font-size:0.7rem;font-weight:600;color:var(--sumi);">17%</span>
+          <div style="width:100%;background:var(--shu);border-radius:4px 4px 0 0;height:17%;opacity:0.35;"></div>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;">
+          <span style="font-size:0.7rem;font-weight:600;color:var(--sumi);">27%</span>
+          <div style="width:100%;background:var(--shu);border-radius:4px 4px 0 0;height:27%;opacity:0.5;"></div>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;">
+          <span style="font-size:0.7rem;font-weight:600;color:var(--sumi);">47%</span>
+          <div style="width:100%;background:var(--shu);border-radius:4px 4px 0 0;height:47%;opacity:0.7;"></div>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;">
+          <span style="font-size:0.7rem;font-weight:600;color:var(--sumi);">60%</span>
+          <div style="width:100%;background:var(--shu);border-radius:4px 4px 0 0;height:60%;opacity:0.8;"></div>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;">
+          <span style="font-size:0.7rem;font-weight:600;color:var(--sumi);">70%</span>
+          <div style="width:100%;background:var(--shu);border-radius:4px 4px 0 0;height:70%;opacity:0.9;"></div>
+        </div>
       </div>
-      <div class="vis-legend">
-        <span><span class="dot" style="background:var(--shu);"></span> Best (15+ days)</span>
-        <span><span class="dot" style="background:#D4826A;"></span> Good (9–14 days)</span>
-        <span><span class="dot" style="background:var(--usu-hai);"></span> Low (&lt;9 days)</span>
+      <div style="display:flex;gap:6px;">
+        <div style="flex:1;text-align:center;font-size:0.65rem;color:var(--hai);">Jan</div>
+        <div style="flex:1;text-align:center;font-size:0.65rem;color:var(--hai);">Feb</div>
+        <div style="flex:1;text-align:center;font-size:0.65rem;color:var(--hai);">Mar</div>
+        <div style="flex:1;text-align:center;font-size:0.65rem;color:var(--hai);">Apr</div>
+        <div style="flex:1;text-align:center;font-size:0.65rem;color:var(--hai);">May</div>
+        <div style="flex:1;text-align:center;font-size:0.65rem;color:var(--hai);">Jun</div>
+        <div style="flex:1;text-align:center;font-size:0.65rem;color:var(--hai);">Jul</div>
+        <div style="flex:1;text-align:center;font-size:0.65rem;color:var(--hai);">Aug</div>
+        <div style="flex:1;text-align:center;font-size:0.65rem;color:var(--hai);">Sep</div>
+        <div style="flex:1;text-align:center;font-size:0.65rem;color:var(--hai);">Oct</div>
+        <div style="flex:1;text-align:center;font-size:0.65rem;color:var(--hai);">Nov</div>
+        <div style="flex:1;text-align:center;font-size:0.65rem;color:var(--hai);">Dec</div>
       </div>
     </div>
-  </div></div></div>
-    </div>
+    <p style="font-size:0.85rem;color:var(--hai);text-align:center;"><strong>Best months:</strong> Nov–Feb (60–73%) &nbsp;•&nbsp; <strong>Summer:</strong> 13–17% (rainy/humid)</p>
+    <p style="font-size:0.85rem;color:var(--hai);margin-top:0.5rem;">Even when Mt. Fuji hides in the clouds, the cultural depth makes this tour rewarding. Your guide adjusts the route to maximize your experience regardless of visibility.</p>
   </div>
+</div>
 </section>
 
 <!-- PRICING / BOOK -->
@@ -1120,8 +1281,35 @@ if (typeof SITE_CONFIG !== 'undefined') {
 <script src="reviews.js"></script>
 
   <!-- Bokun Widget Loader -->
-  <script type="text/javascript" src="https://widgets.bokun.io/assets/javascripts/apps/build/BokunWidgetsLoader.js?bookingChannelUUID=9c7daabb-e81c-4ae1-b504-5451a5ca69ff" async>document.querySelectorAll('.dest-prev').forEach(b=>{b.addEventListener('click',()=>{b.closest('.dest-carousel-wrap').querySelector('.dest-carousel').scrollBy({left:-280,behavior:'smooth'})})});document.querySelectorAll('.dest-next').forEach(b=>{b.addEventListener('click',()=>{b.closest('.dest-carousel-wrap').querySelector('.dest-carousel').scrollBy({left:280,behavior:'smooth'})})});document.querySelectorAll('.route-tab').forEach(t=>{t.addEventListener('click',()=>{document.querySelectorAll('.route-tab').forEach(x=>x.classList.remove('active'));t.classList.add('active');var r=t.dataset.route;document.querySelectorAll('.route-panel').forEach(p=>{p.style.display='none';p.classList.remove('active')});var p=document.getElementById('route-'+r);if(p){p.style.display='';p.classList.add('active')}})});
-  </script>
+  <script type="text/javascript" src="https://widgets.bokun.io/assets/javascripts/apps/build/BokunWidgetsLoader.js?bookingChannelUUID=9c7daabb-e81c-4ae1-b504-5451a5ca69ff" async>function scrollCarousel(btn, dir) {
+  var wrap = btn.parentElement;
+  var carousel = wrap.querySelector('.dest-carousel');
+  var card = carousel.querySelector('.dest-card');
+  if (!card) return;
+  var cardW = card.offsetWidth || 280;
+  var gap = 20;
+  carousel.scrollBy({ left: dir * (cardW + gap), behavior: 'smooth' });
+}
+function switchRouteTab(n) {
+  var tabs = document.querySelectorAll(".route-tab");
+  tabs.forEach(function(t){ t.classList.remove("active"); });
+  tabs[n].classList.add("active");
+  for (var i = 0; i < 3; i++) {
+    var panel = document.getElementById("route-" + i);
+    if (panel) panel.style.display = (i === n) ? "block" : "none";
+  }
+}
+function switchModelTab(n) {
+  var tabs = document.querySelectorAll(".model-tab-btn");
+  tabs.forEach(function(t){ t.classList.remove("active"); });
+  tabs[n].classList.add("active");
+  for (var i = 0; i < 2; i++) {
+    var panel = document.getElementById("model-panel-" + i);
+    if (panel) panel.style.display = (i === n) ? "block" : "none";
+  }
+}
+
+</script>
   <style>
     #bokun_418f34f4_28e2_4185_85e4_7aa761106072 {
       display: block !important; width: 100% !important; max-width: 480px !important;
