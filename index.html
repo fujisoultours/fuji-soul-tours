@@ -1349,11 +1349,13 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
 // ===== CURRENCY SELECTOR =====
 const PRICES = {
-  JPY: { display: '¥31,874 ~', code: '+81' },
-  USD: { display: '$213 ~',    code: '+1'  },
-  AUD: { display: 'A$329 ~',  code: '+61' },
-  CAD: { display: 'C$290 ~',  code: '+1'  }
+  JPY: { display: '¥31,874 ~', code: '+81', phoneCC: 'JP' },
+  USD: { display: '$213 ~',    code: '+1',  phoneCC: 'US' },
+  AUD: { display: 'A$329 ~',  code: '+61', phoneCC: 'AU' },
+  CAD: { display: 'C$290 ~',  code: '+1',  phoneCC: 'CA' }
 };
+const BOKUN_BASE = 'https://widgets.bokun.io/online-sales/9c7daabb-e81c-4ae1-b504-5451a5ca69ff/experience/1171469?partialView=1';
+
 function setCurrency(currency) {
   const p = PRICES[currency];
   document.getElementById('priceDisplay').textContent = p.display;
@@ -1361,6 +1363,13 @@ function setCurrency(currency) {
   document.querySelectorAll('.currency-btn').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.currency === currency);
   });
+  // Update Bokun widget URL so currency + phone country code are pre-selected
+  const bokunBtn = document.getElementById('bokun_418f34f4_28e2_4185_85e4_7aa761106072');
+  if (bokunBtn) {
+    bokunBtn.setAttribute('data-src',
+      BOKUN_BASE + '&currency=' + currency + '&phoneCountryCode=' + p.phoneCC
+    );
+  }
 }
 
 // ===== REFUND FORM =====
