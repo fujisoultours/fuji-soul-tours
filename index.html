@@ -7,9 +7,8 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
 <link rel="apple-touch-icon" href="/favicon.png">
 <meta name="description" content="Turn your Shinkansen travel day into a Mt. Fuji cultural highlight. 4-hour private tour from Shin-Fuji Station with a local-born guide.">
-<script src="images.js"></script>
 <style>
-  @import url('https://fonts.googleapicom/css2?famly=Noto+Serif+JP:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap');
 
   :root {
     --shu: #0077B6;
@@ -1431,102 +1430,6 @@ function submitDateChange(e) {
   document.getElementById('change-success').style.display = 'block';
 }
 
-// ===== Load images from SITE_CONFIG (images.js) =====
-if (typeof SITE_CONFIG !== 'undefined') {
-  const cfg = SITE_CONFIG;
-
-  // Hero background
-  if (cfg.hero && cfg.hero.backgroundImage) {
-    const hero = document.querySelector('.hero');
-    hero.style.setProperty('--hero-bg', `url(${cfg.hero.backgroundImage})`);
-    hero.classList.add('has-bg');
-  }
-
-  // Gallery
-  if (cfg.gallery && cfg.gallery.length > 0) {
-    document.getElementById('gallery-section').style.display = 'block';
-    const scroll = document.getElementById('galleryScroll');
-    cfg.gallery.forEach(img => {
-      scroll.innerHTML += `
-        <div class="gallery-item">
-          <img src="${img.url}" alt="${img.alt || ''}" loading="lazy">
-          ${img.alt ? `<div class="caption">${img.alt}</div>` : ''}
-        </div>`;
-    });
-  }
-
-  // Route card images
-  if (cfg.routes) {
-    const routeCards = document.querySelectorAll('.route-card');
-    const routeKeys = ['classic','culture','photo'];
-    routeCards.forEach((card, i) => {
-      const key = routeKeys[i];
-      const imgUrl = cfg.routes[key]?.image;
-      if (imgUrl) {
-        const imgEl = document.createElement('div');
-        imgEl.style.cssText = 'width:100%;height:140px;border-radius:8px;overflow:hidden;margin-bottom:16px;';
-        imgEl.innerHTML = `<img src="${imgUrl}" style="width:100%;height:100%;object-fit:cover;" loading="lazy">`;
-        card.insertBefore(imgEl, card.firstChild);
-      }
-    });
-  }
-
-  // Itinerary stop images
-  if (cfg.stops) {
-    const stopKeys = ['shiraito','sengen','yakisoba','sake','tea','beer','tanuki'];
-    const stopEls = document.querySelectorAll('#itinerary + .section-gap .container > div > div, #itinerary ~ .section-gap:first-of-type .container > div > div');
-    // Simpler approach: find all itinerary items
-    const itinItems = document.querySelectorAll('[style*="display:flex"][style*="gap:20px"][style*="padding:20px"]');
-    itinItems.forEach((item, i) => {
-      const key = stopKeys[i];
-      if (key && cfg.stops[key]?.image) {
-        const imgDiv = document.createElement('div');
-        imgDiv.style.cssText = 'width:80px;height:60px;border-radius:8px;overflow:hidden;flex-shrink:0;';
-        imgDiv.innerHTML = `<img src="${cfg.stops[key].image}" style="width:100%;height:100%;object-fit:cover;" loading="lazy">`;
-        item.insertBefore(imgDiv, item.children[1]);
-      }
-    });
-  }
-
-  // Host portrait
-  if (cfg.host && cfg.host.portrait) {
-    const hostSection = document.querySelector('.host-section');
-    if (hostSection) {
-      const imgDiv = document.createElement('div');
-      imgDiv.style.cssText = 'width:200px;height:200px;border-radius:50%;overflow:hidden;flex-shrink:0;border:3px solid var(--usu-hai);';
-      imgDiv.innerHTML = `<img src="${cfg.host.portrait}" style="width:100%;height:100%;object-fit:cover;">`;
-      hostSection.insertBefore(imgDiv, hostSection.firstChild);
-    }
-  }
-
-  // Instagram reels
-  if (cfg.instagram && cfg.instagram.reels && cfg.instagram.reels.length > 0) {
-    const reelsSection = document.createElement('section');
-    reelsSection.className = 'section-gap';
-    reelsSection.innerHTML = `
-      <div class="container fade-in">
-        <div class="section-label">Videos</div>
-        <h2 class="section-title">See It in Action</h2>
-        <p class="section-desc">Follow us on <a href="https://instagram.com/${cfg.instagram.handle}" target="_blank" style="color:var(--shu);">@${cfg.instagram.handle}</a></p>
-        <div style="display:flex;gap:16px;overflow-x:auto;margin-top:24px;padding-bottom:16px;">
-          ${cfg.instagram.reels.map(url => `
-            <div style="flex:0 0 320px;">
-              <blockquote class="instagram-media" data-instgrm-permalink="${url}" style="width:100%;"></blockquote>
-            </div>`).join('')}
-        </div>
-      </div>`;
-    // Insert before FAQ
-    const faqSection = document.getElementById('faq');
-    if (faqSection) faqSection.parentElement.insertBefore(reelsSection, faqSection);
-    // Load Instagram embed script
-    if (!document.querySelector('script[src*="instagram.com/embed"]')) {
-      const s = document.createElement('script');
-      s.src = 'https://www.instagram.com/embed.js';
-      s.async = true;
-      document.body.appendChild(s);
-    }
-  }
-}
 </script>
 
 <script src="reviews.js"></script>
