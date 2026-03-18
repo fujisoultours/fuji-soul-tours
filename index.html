@@ -1410,7 +1410,7 @@ const BOKUN_BASE = 'https://widgets.bokun.io/online-sales/9c7daabb-e81c-4ae1-b50
 function setCurrency(currency) {
   const p = PRICES[currency];
   document.getElementById('priceDisplay').textContent = p.display;
-  document.getElementById('phoneCode').textContent = p.code;
+  var pc = document.getElementById('phoneCode'); if (pc) pc.textContent = p.code;
   document.querySelectorAll('.currency-btn').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.currency === currency);
   });
