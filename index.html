@@ -79,6 +79,17 @@
     transition: background 0.2s;
   }
   .nav-cta:hover { background: #a83038 !important; }
+
+  .nav-cta-mobile {
+    display: none;
+    background: var(--shu); color: #fff;
+    padding: 7px 16px; border-radius: 6px;
+    font-weight: 600; font-size: 12px;
+    text-decoration: none; white-space: nowrap;
+    transition: background 0.2s;
+  }
+  .nav-cta-mobile:hover { background: #a83038; }
+
   .hamburger {
     display: none; background: none; border: none; cursor: pointer;
     width: 28px; height: 20px; position: relative;
@@ -639,6 +650,9 @@
       gap: 16px;
     }
     .hamburger { display: block; }
+    .nav-cta-mobile { display: inline-block; }
+    .nav-links .nav-cta { display: none; }
+    .nav-logo img { height: 40px; }
     .hero { padding: 120px 20px 60px; }
     .hero-stats { gap: 24px; }
     .concept-box { padding: 28px 20px; }
@@ -736,6 +750,7 @@
     <button class="hamburger" id="hamburger" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
+    <a href="#book" class="nav-cta-mobile" onclick="var b=document.getElementById('bokun_418f34f4_28e2_4185_85e4_7aa761106072');if(b){b.click();return false;}">Book Now</a>
     <div class="nav-links" id="navLinks">
       <a href="#concept">Concept</a>
       <a href="#itinerary">Itinerary</a>
