@@ -1202,8 +1202,8 @@
 <section class="section-gap" id="manage">
   <div class="container fade-in">
     <div class="section-label">Manage Booking</div>
-    <h2 class="section-title">Refunds & Date Changes</h2>
-    <p class="section-desc">Need to cancel or reschedule? Use the forms below and we'll respond within a few hours.</p>
+    <h2 class="section-title">Cancellations & Date Changes</h2>
+    <p class="section-desc">Need to cancel or reschedule? See your options below.</p>
 
     <div class="cancellation-policy-box" style="margin-top:32px;">
       <h3>📋 Cancellation Policy</h3>
@@ -1230,22 +1230,17 @@
 
     <div class="manage-grid">
       <div class="manage-card">
-        <h3>💰 Request a Refund</h3>
-        <p class="policy-note">Full refund if you cancel with at least 24 hours notice before your scheduled tour. No refund within 24 hours.</p>
-        <form class="manage-form" id="refundForm" onsubmit="submitRefund(event)">
-          <label for="refund-ref">Booking Reference *</label>
-          <input type="text" id="refund-ref" placeholder="e.g. FUJ-12345678" required>
-          <label for="refund-name">Your Name *</label>
-          <input type="text" id="refund-name" placeholder="Full name as on booking" required>
-          <label for="refund-email">Email Address *</label>
-          <input type="email" id="refund-email" placeholder="your@email.com" required>
-          <label for="refund-date">Tour Date *</label>
-          <input type="date" id="refund-date" required>
-          <label for="refund-reason">Reason for Cancellation</label>
-          <textarea id="refund-reason" placeholder="Optional — helps us improve our service"></textarea>
-          <button type="submit" class="manage-submit">Submit Refund Request →</button>
-          <div class="form-success" id="refund-success">✓ Your refund request has been sent! We'll respond to your email within a few hours.</div>
-        </form>
+        <h3>❌ Cancel Your Booking</h3>
+        <p class="policy-note">You can cancel directly from your booking confirmation email — look for the <strong>"Manage my booking"</strong> link that was sent to you after booking.</p>
+        <div style="background:rgba(255,255,255,0.07);border-radius:10px;padding:20px;margin-top:16px;">
+          <p style="margin:0 0 10px;font-size:0.95rem;font-weight:600;">How to cancel:</p>
+          <ol style="margin:0;padding-left:20px;font-size:0.9rem;line-height:1.8;color:var(--text-muted);">
+            <li>Open your booking confirmation email</li>
+            <li>Click <strong style="color:var(--text);">"Manage my booking"</strong></li>
+            <li>Select Cancel — refund is automatic if 24+ hours before the tour</li>
+          </ol>
+        </div>
+        <p style="margin-top:16px;font-size:0.85rem;color:var(--text-muted);">Can't find the email? <a href="mailto:fujisoultours@gmail.com" style="color:var(--shu);">Contact us</a> and we'll help.</p>
       </div>
 
       <div class="manage-card">
@@ -1280,7 +1275,7 @@
   <div class="footer-links">
     <a href="mailto:fujisoultours@gmail.com">Email</a>
     <a href="https://www.instagram.com/fujisoultours" target="_blank" rel="noopener">Instagram</a>
-    <a href="#manage">Refund / Change Date</a>
+    <a href="#manage">Cancel / Change Date</a>
   </div>
   <p class="footer-copy">© 2026 Fuji Soul Tours. All rights reserved.</p>
 </footer>
@@ -1370,20 +1365,6 @@ function setCurrency(currency) {
       BOKUN_BASE + '&currency=' + currency + '&phoneCountryCode=' + p.phoneCC
     );
   }
-}
-
-// ===== REFUND FORM =====
-function submitRefund(e) {
-  e.preventDefault();
-  const ref    = document.getElementById('refund-ref').value.trim();
-  const name   = document.getElementById('refund-name').value.trim();
-  const email  = document.getElementById('refund-email').value.trim();
-  const date   = document.getElementById('refund-date').value;
-  const reason = document.getElementById('refund-reason').value.trim();
-  const subject = encodeURIComponent('Refund Request – ' + ref);
-  const body = encodeURIComponent('REFUND REQUEST\n==============\nBooking Reference: ' + ref + '\nName: ' + name + '\nReply-to Email: ' + email + '\nTour Date: ' + date + '\nReason: ' + (reason || 'Not specified') + '\n\n---\nSent from fujisoultours.com');
-  window.location.href = 'mailto:fujisoultours@gmail.com?subject=' + subject + '&body=' + body;
-  document.getElementById('refund-success').style.display = 'block';
 }
 
 // ===== DATE CHANGE FORM =====
