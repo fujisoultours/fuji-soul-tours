@@ -717,6 +717,7 @@
   .dest-booking.rec { color: #e65100; }
   .dest-card p { font-size: 13px; color: #666; margin: 0; line-height: 1.55; }
 </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.css">
 </head>
 <body>
 
@@ -1294,11 +1295,11 @@
           <label for="change-email">Email Address *</label>
           <input type="email" id="change-email" placeholder="your@email.com" required>
           <label for="change-current-date">Current Tour Date *</label>
-          <input type="text" id="change-current-date" placeholder="e.g. 2026-04-15" required>
+          <input type="text" id="change-current-date" placeholder="YYYY-MM-DD" required>
           <label for="change-new-date">Preferred New Date *</label>
-          <input type="text" id="change-new-date" placeholder="e.g. 2026-04-22" required>
+          <input type="text" id="change-new-date" placeholder="YYYY-MM-DD" required>
           <label for="change-alt-date">Alternative Date (optional)</label>
-          <input type="text" id="change-alt-date" placeholder="e.g. 2026-04-29">
+          <input type="text" id="change-alt-date" placeholder="YYYY-MM-DD">
           <label for="change-message">Message</label>
           <textarea id="change-message" placeholder="Any additional details or preferences"></textarea>
           <button type="submit" class="manage-submit">Submit Date Change Request →</button>
@@ -1571,5 +1572,12 @@ function switchModelTab(n) {
     #bokun_418f34f4_28e2_4185_85e4_7aa761106072:active { background: #004A75 !important; }
     #bokun_418f34f4_28e2_4185_85e4_7aa761106072:disabled { opacity: 0.7; cursor: wait !important; }
   </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.js"></script>
+<script>
+  var fpOpts = { dateFormat: "Y-m-d", minDate: "today", disableMobile: false };
+  flatpickr("#change-current-date", Object.assign({}, fpOpts, { minDate: null }));
+  flatpickr("#change-new-date", fpOpts);
+  flatpickr("#change-alt-date", fpOpts);
+</script>
 </body>
 </html>
