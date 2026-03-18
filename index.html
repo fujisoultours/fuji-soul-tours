@@ -1244,8 +1244,9 @@
         <button class="currency-btn" data-currency="CAD" onclick="setCurrency('CAD')">CAD C$</button>
         <button class="currency-btn active" data-currency="JPY" onclick="setCurrency('JPY')">JPY ¥</button>
       </div>
-      <div class="price" id="priceDisplay">¥31,874 ~</div>
+      <div class="price" id="priceDisplay">¥22,724 ~</div>
       <p class="price-note">per person · Price varies by group size</p>
+      <p style="margin-top:8px;font-size:13px;font-weight:600;color:#2ecc71;letter-spacing:0.3px;">🏷️ Lowest Price Guarantee</p>
       <p class="phone-hint" id="phoneHint">📱 When booking, enter your phone number with country code <strong id="phoneCode">+81</strong></p>
 
       <!-- TODO: Replace with Bokun widget -->
@@ -1391,10 +1392,10 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
 // ===== CURRENCY SELECTOR =====
 const PRICES = {
-  JPY: { display: '¥31,874 ~', code: '+81', phoneCC: 'JP' },
-  USD: { display: '$213 ~',    code: '+1',  phoneCC: 'US' },
-  AUD: { display: 'A$329 ~',  code: '+61', phoneCC: 'AU' },
-  CAD: { display: 'C$290 ~',  code: '+1',  phoneCC: 'CA' }
+  JPY: { display: '¥22,724 ~', code: '+81', phoneCC: 'JP' },
+  USD: { display: '$152 ~',    code: '+1',  phoneCC: 'US' },
+  AUD: { display: 'A$235 ~',  code: '+61', phoneCC: 'AU' },
+  CAD: { display: 'C$207 ~',  code: '+1',  phoneCC: 'CA' }
 };
 const BOKUN_BASE = 'https://widgets.bokun.io/online-sales/9c7daabb-e81c-4ae1-b504-5451a5ca69ff/experience/1171469?partialView=1';
 
