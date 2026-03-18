@@ -43,7 +43,7 @@ const REVIEWS = [
   const avg = (REVIEWS.reduce((s, r) => s + r.stars, 0) / REVIEWS.length).toFixed(1);
   const countEl = document.querySelector('.hero-badge');
   if (countEl) {
-    countEl.textContent = '★ ' + avg + ' Rated · ' + REVIEWS.length + ' Reviews · Private Tour';
+    countEl.textContent = '★ ' + avg + ' Rated · Private Tour';
   }
 
   REVIEWS.forEach(r => {
