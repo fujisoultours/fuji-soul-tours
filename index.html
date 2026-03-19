@@ -40,7 +40,7 @@
 
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    font-size: 32px;
+    font-size: 42px;
     color: var(--sumi);
     background: var(--shiro);
     line-height: 1.7;
@@ -110,6 +110,16 @@
   .hamburger.active span:nth-child(2) { opacity: 0; }
   .hamburger.active span:nth-child(3) { top: 9px; transform: rotate(-45deg); }
 
+
+  .hero-top {
+    position: relative; z-index: 2;
+    text-align: center;
+    padding-top: 140px;
+  }
+  .hero-bottom {
+    position: relative; z-index: 2;
+    text-align: center;
+  }
   /* ===== HERO ===== */
   .hero {
     padding: 140px 24px 80px;
@@ -683,20 +693,43 @@
   .nav-cta-mobile { display: inline-block; }
     .nav-links .nav-cta { display: none; }
     .nav-logo img { height: 40px; }
-    .hero { padding: 90px 16px 30px; min-height: 100svh; }
-
-
-    .hero-bg-img { object-fit: contain !important; object-position: top center !important; }
-    .hero { background: #1a1a1a !important; }
-
-
-
-    .hero h1 { font-size: clamp(22px, 6vw, 32px) !important; }
-    .hero .hero-sub { font-size: 14px !important; }
-    .hero-stats { gap: 16px !important; }
-    .hero-stat .val { font-size: 18px !important; }
-    .hero-stat .label { font-size: 11px !important; }
-    .hero-cta { padding: 14px 28px !important; font-size: 15px !important; }
+    /* MOBILE HERO: image on top, content below */
+    .hero {
+      padding: 0 !important;
+      min-height: auto !important;
+      overflow: visible !important;
+      display: flex !important;
+      flex-direction: column !important;
+    }
+    .hero-bg-img {
+      position: relative !important;
+      width: 100% !important;
+      height: auto !important;
+      display: block !important;
+      object-fit: contain !important;
+    }
+    .hero-overlay { display: none !important; }
+    .hero-top {
+      position: absolute !important;
+      bottom: 0 !important; left: 0 !important; right: 0 !important;
+      padding: 40px 16px 16px !important;
+      z-index: 3 !important;
+      background: linear-gradient(transparent, rgba(0,0,0,0.75)) !important;
+      text-align: center !important;
+    }
+    .hero-top h1 { font-size: clamp(20px, 5.5vw, 28px) !important; margin-bottom: 0 !important; }
+    .hero-bottom {
+      position: relative !important;
+      background: var(--shiro) !important;
+      padding: 24px 16px 28px !important;
+      text-align: center !important;
+    }
+    .hero-bottom .hero-sub { color: var(--hai) !important; font-size: 15px !important; }
+    .hero-bottom .val { color: var(--sumi) !important; }
+    .hero-bottom .label { color: var(--hai) !important; }
+    .hero-bottom .hero-price { color: var(--sumi) !important; }
+    .hero-bottom .hero-price span { color: var(--sumi) !important; }
+    .hero-bottom .hero-lpg { color: #2ecc71 !important; }
 
     .hero-stats { gap: 24px; }
     .concept-box { padding: 28px 20px; }
