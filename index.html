@@ -1613,20 +1613,10 @@ function submitDateChange(e) {
 function scrollCarousel(btn, dir) {
   var wrap = btn.parentElement;
   var carousel = wrap.querySelector('.dest-carousel');
-  var cards = carousel.querySelectorAll('.dest-card');
-  if (!cards.length) return;
-  var cardW = cards[0].offsetWidth;
-  var gap = 20;
-  var scrollAmount = cardW + gap;
-  // Find current center card index
-  var centerX = carousel.scrollLeft + carousel.offsetWidth / 2;
-  var currentIdx = 0;
-  cards.forEach(function(c, i) {
-    if (c.offsetLeft + cardW / 2 <= centerX) currentIdx = i;
-  });
-  var targetIdx = Math.max(0, Math.min(cards.length - 1, currentIdx + dir));
-  var targetScroll = cards[targetIdx].offsetLeft - (carousel.offsetWidth - cardW) / 2;
-  carousel.scrollTo({ left: targetScroll, behavior: 'smooth' });
+  var card = carousel.querySelector('.dest-card');
+  if (!card) return;
+  var scrollAmount = card.offsetWidth + 20;
+  carousel.scrollBy({ left: dir * scrollAmount, behavior: 'smooth' });
 }
 function switchRouteTab(n) {
   var tabs = document.querySelectorAll(".route-tab");
