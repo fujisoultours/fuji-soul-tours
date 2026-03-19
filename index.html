@@ -1616,18 +1616,7 @@ function scrollCarousel(btn, dir) {
   var card = carousel.querySelector('.dest-card');
   if (!card) return;
   var amount = dir * (card.offsetWidth + 20);
-  var start = carousel.scrollLeft;
-  var target = start + amount;
-  var duration = 300;
-  var startTime = null;
-  function step(time) {
-    if (!startTime) startTime = time;
-    var progress = Math.min((time - startTime) / duration, 1);
-    var ease = progress < 0.5 ? 2 * progress * progress : -1 + (4 - 2 * progress) * progress;
-    carousel.scrollLeft = start + amount * ease;
-    if (progress < 1) requestAnimationFrame(step);
-  }
-  requestAnimationFrame(step);
+  carousel.scrollLeft += amount;
 }
 function switchRouteTab(n) {
   var tabs = document.querySelectorAll(".route-tab");
