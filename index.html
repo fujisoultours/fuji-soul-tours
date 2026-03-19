@@ -736,11 +736,72 @@
       text-align: center !important;
       background: linear-gradient(transparent, rgba(0,0,0,0.75)) !important;
     }
-    .hero-top .hero-badge { font-size: 14px !important; }
+    /* === MOBILE FONT SIZE OVERRIDE === */
+    body { font-size: 15px !important; }
+    .section-title { font-size: clamp(20px, 5vw, 28px) !important; }
+    .section-label { font-size: 11px !important; }
+    .section-desc { font-size: 15px !important; }
+    .hero-sub { font-size: 14px !important; }
+    .hero-stat .val { font-size: 16px !important; }
+    .hero-stat .label { font-size: 10px !important; }
+    .hero-cta { font-size: 15px !important; padding: 14px 28px !important; }
+    .hero-price, .hero-price span { font-size: 16px !important; }
+    .hero-lpg { font-size: 13px !important; }
+    .faq-q { font-size: 15px !important; }
+    .faq-a p { font-size: 14px !important; }
+    .review-text { font-size: 14px !important; }
+    .review-author { font-size: 13px !important; }
+    .review-date { font-size: 12px !important; }
+    .review-stars { font-size: 13px !important; }
+    .route-card h3 { font-size: 16px !important; }
+    .route-card ul li { font-size: 13px !important; }
+    .weather-card h3 { font-size: 16px !important; }
+    .weather-card ul li { font-size: 14px !important; }
+    .weather-note { font-size: 14px !important; }
+    .included-item .text h4 { font-size: 15px !important; }
+    .included-item .text p { font-size: 13px !important; }
+    .dest-card h4 { font-size: 15px !important; }
+    .dest-card p { font-size: 12px !important; }
+    .dest-time-row { font-size: 12px !important; }
+    .dest-booking { font-size: 12px !important; }
+    .concept-note { font-size: 14px !important; }
+    .concept-route { font-size: 14px !important; }
+    .host-text blockquote { font-size: 15px !important; }
+    .host-values li { font-size: 13px !important; }
+    .footer-brand { font-size: 16px !important; }
+    .footer-links a { font-size: 12px !important; }
+    .footer-copy { font-size: 11px !important; }
+    .pricing-box .book-btn { font-size: 15px !important; padding: 14px 32px !important; }
+    .pricing-features span { font-size: 12px !important; }
+    .currency-btn { font-size: 12px !important; padding: 6px 14px !important; }
+    .pricing-box .price-note { font-size: 12px !important; }
+    .manage-form label { font-size: 13px !important; }
+    .manage-form input, .manage-form textarea { font-size: 14px !important; }
+    .manage-submit { font-size: 14px !important; }
+    .cancellation-policy-box h3 { font-size: 15px !important; }
+    .policy-table td { font-size: 13px !important; }
+    .mt-name { font-size: 15px !important; }
+    .mt-desc { font-size: 13px !important; }
+    .mt-time { font-size: 13px !important; }
+    .mt-dur { font-size: 12px !important; }
+    .mt-drive td { font-size: 12px !important; }
+    .model-tab-btn { font-size: 14px !important; }
+    .route-tab { font-size: 13px !important; padding: 8px 14px !important; }
+    .route-table { font-size: 13px !important; }
+    .route-table th { font-size: 10px !important; }
+    .route-table td { font-size: 13px !important; padding: 8px 8px !important; }
+    .timetable td { font-size: 13px !important; }
+    .timetable th { font-size: 10px !important; }
+    .nav-cta-mobile { font-size: 12px !important; }
+    .info-banner h4 { font-size: 14px !important; }
+    .info-banner p { font-size: 13px !important; }
+
+    /* === MOBILE HERO === */
+    .hero-top .hero-badge { font-size: 11px !important; padding: 4px 12px !important; margin-bottom: 8px !important; }
     .hero-top h1 { font-size: clamp(18px, 5vw, 24px) !important; margin-bottom: 0 !important; line-height: 1.3 !important; }
     .hero-bottom {
       background: var(--shiro) !important;
-      padding: 20px 16px 24px !important;
+      padding: 16px 16px 20px !important;
       text-align: center !important;
     }
     .hero-bottom .hero-sub { color: var(--hai) !important; }
@@ -750,21 +811,28 @@
     .hero-bottom .hero-price span { color: var(--sumi) !important; }
     .hero-bottom .hero-lpg { color: #2ecc71 !important; }
 
-    .tour-extension-box { padding: 12px 16px !important; font-size: 14px !important; }
-    .tour-extension-box strong { font-size: 14px !important; }
-    .tour-extension-box span { font-size: 14px !important; }
+    .tour-extension-box { padding: 12px 16px !important; font-size: 13px !important; }
+    .tour-extension-box strong { font-size: 13px !important; }
+    .tour-extension-box span { font-size: 12px !important; }
 
-
-    .hero-stats { gap: 24px; }
-    .concept-box { padding: 28px 20px; }
+    /* === MOBILE LAYOUT === */
+    .hero-stats { gap: 16px !important; }
+    .hero-stats .hero-stat { min-width: 0; }
+    .concept-box { padding: 20px 16px; }
     .weather-grid { grid-template-columns: 1fr; }
-    .host-section { flex-direction: column; gap: 28px; }
-    .pricing-box { padding: 40px 24px; }
-    .pricing-box .price { font-size: 36px; }
-    .vis-bars { height: 140px; }
-    .info-banner { flex-direction: column; }
-    .section-gap { padding-top: 64px; }
-    :root { --section-gap: 64px; }
+    .host-section { flex-direction: column; gap: 20px; }
+    .pricing-box { padding: 32px 20px; }
+    .pricing-box .price { font-size: 28px !important; }
+    .vis-bars { height: 120px; }
+    .info-banner { flex-direction: column; padding: 20px 16px !important; }
+    .section-gap { padding-top: 48px; }
+    :root { --section-gap: 48px; }
+    section { padding: 0 16px !important; }
+    .container { padding: 0 !important; }
+    .review-card { padding: 20px !important; }
+    .included-item { padding: 14px !important; }
+    .route-card { padding: 20px 16px !important; }
+    .manage-card { padding: 20px !important; }
   }
 
   /* ===== ANIMATION ===== */
@@ -909,14 +977,14 @@
 </header>
 
 <!-- CONTACT US -->
-<section style="background:var(--kinari);padding:32px 24px;text-align:center;">
+<section class="contact-bar" style="background:var(--kinari);padding:20px 16px;text-align:center;">
   <div style="max-width:600px;margin:0 auto;">
-    <p style="font-size:18px;color:var(--sumi);margin-bottom:6px;font-weight:600;">Book first, then let's plan your perfect day</p>
-    <p style="font-size:14px;color:var(--hai);margin-bottom:14px;">After booking, share your train times and we'll tailor the itinerary to your schedule.</p>
-    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
-      <a href="mailto:fujisoultours@gmail.com" style="display:inline-flex;align-items:center;gap:6px;padding:8px 16px;background:#fff;border:1px solid var(--usu-hai);border-radius:6px;color:var(--sumi);text-decoration:none;font-size:14px;font-weight:500;">✉️ Email</a>
-      <a href="https://wa.me/819039554101?text=Hi%2C%20my%20name%20is%20____%2C%20I%20booked%20the%20Mt.%20Fuji%20tour%20on%20____%20(date).%20I%20need%20help%20planning%20my%20itinerary." target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;padding:8px 16px;background:#fff;border:1px solid var(--usu-hai);border-radius:6px;color:var(--sumi);text-decoration:none;font-size:14px;font-weight:500;">💬 WhatsApp</a>
-      <a href="https://www.instagram.com/fujisoultours" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;padding:8px 16px;background:#fff;border:1px solid var(--usu-hai);border-radius:6px;color:var(--sumi);text-decoration:none;font-size:14px;font-weight:500;">📷 Instagram</a>
+    <p class="contact-bar-title" style="font-size:15px;color:var(--sumi);margin-bottom:4px;font-weight:600;">Book first, then let's plan your perfect day</p>
+    <p class="contact-bar-sub" style="font-size:13px;color:var(--hai);margin-bottom:10px;">After booking, share your train times and we'll tailor the itinerary to your schedule.</p>
+    <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;">
+      <a href="mailto:fujisoultours@gmail.com" style="display:inline-flex;align-items:center;gap:5px;padding:6px 12px;background:#fff;border:1px solid var(--usu-hai);border-radius:6px;color:var(--sumi);text-decoration:none;font-size:13px;font-weight:500;">✉️ Email</a>
+      <a href="https://wa.me/819039554101?text=Hi%2C%20my%20name%20is%20____%2C%20I%20booked%20the%20Mt.%20Fuji%20tour%20on%20____%20(date).%20I%20need%20help%20planning%20my%20itinerary." target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:5px;padding:6px 12px;background:#fff;border:1px solid var(--usu-hai);border-radius:6px;color:var(--sumi);text-decoration:none;font-size:13px;font-weight:500;">💬 WhatsApp</a>
+      <a href="https://www.instagram.com/fujisoultours" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:5px;padding:6px 12px;background:#fff;border:1px solid var(--usu-hai);border-radius:6px;color:var(--sumi);text-decoration:none;font-size:13px;font-weight:500;">📷 Instagram</a>
     </div>
   </div>
 </section>
