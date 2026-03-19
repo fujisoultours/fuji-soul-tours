@@ -845,7 +845,6 @@
       <button class="route-tab active" onclick="switchRouteTab(0)">Tokyo → Kyoto/Osaka</button>
       <button class="route-tab" onclick="switchRouteTab(1)">Kyoto/Osaka → Tokyo</button>
       <button class="route-tab" onclick="switchRouteTab(2)">Tokyo → Tokyo</button>
-      <button class="route-tab" onclick="switchRouteTab(3)">Osaka → Tokyo</button>
     </div>
     <hr style="border:none;border-top:1px solid var(--usu-hai);margin-bottom:2rem;">
 
@@ -896,21 +895,10 @@
         <tr><td><strong>14:17 PM</strong></td><td>Arrive Tokyo ✓</td><td>Tokyo Station</td></tr>
       </tbody></table>
     </div>
+    <p style="text-align:center;font-size:13px;color:var(--hai);margin-top:16px;">Start and end times are flexible — these are examples only. <a href="#faq" style="color:var(--shu);text-decoration:underline;" onclick="event.preventDefault();document.querySelector('#faq .faq-item:nth-child(8) .faq-q').click();document.getElementById('faq').scrollIntoView({behavior:'smooth'});">See FAQ →</a></p>
   </div>
 </section>
 
-
-    <div class="route-panel" id="route-3" style="display:none;">
-      <p style="font-size:13px;color:var(--hai);margin-bottom:12px;">Shin-Osaka Station → Shin-Fuji → Tokyo Station</p>
-      <table class="route-table"><thead><tr><th>TIME</th><th>ACTIVITY</th><th>LOCATION</th></tr></thead><tbody>
-        <tr><td><strong>6:00 AM</strong></td><td>Depart Shin-Osaka</td><td>Shin-Osaka Station (Kodama)</td></tr>
-        <tr><td><strong>9:09 AM</strong></td><td>Arrive at Shin-Fuji</td><td>Shin-Fuji Station</td></tr>
-        <tr><td colspan="3" style="background:var(--kinari);text-align:center;font-weight:600;color:var(--shu);">🗻 4-Hour Cultural Tour</td></tr>
-        <tr><td><strong>1:30 PM</strong></td><td>Depart for Tokyo</td><td>Shin-Fuji Station (Kodama)</td></tr>
-        <tr><td><strong>2:36 PM</strong></td><td>Arrive in Tokyo</td><td>Tokyo Station</td></tr>
-      </tbody></table>
-      <p style="font-size:0.8rem;color:var(--hai);margin-top:8px;">⚠️ Kodama only — Nozomi/Hikari do not stop at Shin-Fuji. Travel time from Shin-Osaka: ~3 hours.</p>
-    </div>
 
 <section class="section-gap" id="destinations"><div class="container fade-in">
 <p class="section-label">Destinations</p>
@@ -1095,7 +1083,6 @@
     </div>
   </div>
 </section>
-
 
 <!-- VISIBILITY -->
 
