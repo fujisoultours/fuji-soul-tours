@@ -827,7 +827,7 @@
       <p style="font-size:13px;color:rgba(255,255,255,0.7);margin-bottom:14px;">After booking, share your train times and we'll tailor the itinerary to your schedule.</p>
       <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
         <a href="mailto:fujisoultours@gmail.com" style="display:inline-flex;align-items:center;gap:6px;padding:8px 18px;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);border-radius:6px;color:#fff;text-decoration:none;font-size:13px;font-weight:500;">✉️ Email</a>
-        <a href="https://wa.me/819039554101?text=Hi!%20I%20just%20booked%20the%20Mt.%20Fuji%20tour.%20Here%20are%20my%20train%20details:" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;padding:8px 18px;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);border-radius:6px;color:#fff;text-decoration:none;font-size:13px;font-weight:500;">💬 WhatsApp</a>
+        <a href="https://wa.me/819039554101?text=Hi%2C%20my%20name%20is%20____%2C%20I%20booked%20the%20Mt.%20Fuji%20tour%20on%20____%20(date).%20I%20need%20help%20planning%20my%20itinerary." target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;padding:8px 18px;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);border-radius:6px;color:#fff;text-decoration:none;font-size:13px;font-weight:500;">💬 WhatsApp</a>
         <a href="https://www.instagram.com/fujisoultours" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;padding:8px 18px;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);border-radius:6px;color:#fff;text-decoration:none;font-size:13px;font-weight:500;">📷 Instagram</a>
       </div>
     </div>
@@ -842,9 +842,11 @@
     <p class="section-desc">Shin-Fuji Station is a quick Kodama stop between Tokyo and Kyoto. Turn your travel day into a Mt. Fuji cultural experience — and still arrive with plenty of time to explore.</p>
 
     <div class="route-tabs" style="display:flex;gap:8px;justify-content:center;margin:2rem 0 1.5rem;flex-wrap:wrap;">
-      <button class="route-tab active" onclick="switchRouteTab(0)">Tokyo → Kyoto/Osaka</button>
-      <button class="route-tab" onclick="switchRouteTab(1)">Kyoto/Osaka → Tokyo</button>
-      <button class="route-tab" onclick="switchRouteTab(2)">Tokyo → Tokyo</button>
+      <button class="route-tab active" onclick="switchRouteTab(0)">Tokyo → Kyoto</button>
+      <button class="route-tab" onclick="switchRouteTab(1)">Tokyo → Osaka</button>
+      <button class="route-tab" onclick="switchRouteTab(2)">Kyoto → Tokyo</button>
+      <button class="route-tab" onclick="switchRouteTab(3)">Osaka → Tokyo</button>
+      <button class="route-tab" onclick="switchRouteTab(4)">Tokyo → Tokyo</button>
     </div>
     <hr style="border:none;border-top:1px solid var(--usu-hai);margin-bottom:2rem;">
 
@@ -866,6 +868,21 @@
 
     <div class="route-panel" id="route-1" style="display:none;">
       <div style="display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:1.5rem;font-size:0.95rem;">
+        <span>Tokyo</span><span style="color:var(--hai);">→</span><span style="color:var(--hai);">1h</span><span style="color:var(--hai);">→</span>
+        <span style="background:var(--shu);color:white;padding:6px 16px;border-radius:20px;font-weight:600;">Shin-Fuji (4h Tour)</span>
+        <span style="color:var(--hai);">→</span><span style="color:var(--hai);">~1h buffer</span><span style="color:var(--hai);">→</span><span style="color:var(--hai);">3h</span><span style="color:var(--hai);">→</span><span>Shin-Osaka</span>
+      </div>
+      <table class="route-table"><thead><tr><th>TIME</th><th>ACTIVITY</th><th>LOCATION</th></tr></thead><tbody>
+        <tr><td><strong>7:03 AM</strong></td><td>Depart Tokyo</td><td>Tokyo Station (Kodama)</td></tr>
+        <tr><td><strong>8:10 AM</strong></td><td>Arrive & Meet Guide</td><td>Shin-Fuji Station</td></tr>
+        <tr><td><strong>8:15 – 12:15</strong></td><td>🗻 Mt. Fuji Tour</td><td>Hidden spots & cultural dives</td></tr>
+        <tr class="buffer-row"><td>12:15 – 13:08</td><td>☕ Free time (buffer)</td><td>Station area — lunch, souvenirs</td></tr>
+        <tr><td><strong>13:08 PM</strong></td><td>Depart for Shin-Osaka</td><td>Shin-Fuji Station (Kodama)</td></tr>
+        <tr><td><strong>16:11 PM</strong></td><td>Arrive Shin-Osaka ✓</td><td>Shin-Osaka Station</td></tr>
+      </tbody></table>
+    </div>
+    <div class="route-panel" id="route-2" style="display:none;">
+      <div style="display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:1.5rem;font-size:0.95rem;">
         <span>Kyoto</span><span style="color:var(--hai);">→</span><span style="color:var(--hai);">2.5h</span><span style="color:var(--hai);">→</span>
         <span style="background:var(--shu);color:white;padding:6px 16px;border-radius:20px;font-weight:600;">Shin-Fuji (4h Tour)</span>
         <span style="color:var(--hai);">→</span><span style="color:var(--hai);">~1h buffer</span><span style="color:var(--hai);">→</span><span style="color:var(--hai);">1h</span><span style="color:var(--hai);">→</span><span>Tokyo</span>
@@ -880,7 +897,22 @@
       </tbody></table>
     </div>
 
-    <div class="route-panel" id="route-2" style="display:none;">
+    <div class="route-panel" id="route-3" style="display:none;">
+      <div style="display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:1.5rem;font-size:0.95rem;">
+        <span>Shin-Osaka</span><span style="color:var(--hai);">→</span><span style="color:var(--hai);">3h</span><span style="color:var(--hai);">→</span>
+        <span style="background:var(--shu);color:white;padding:6px 16px;border-radius:20px;font-weight:600;">Shin-Fuji (4h Tour)</span>
+        <span style="color:var(--hai);">→</span><span style="color:var(--hai);">~1h buffer</span><span style="color:var(--hai);">→</span><span style="color:var(--hai);">1h</span><span style="color:var(--hai);">→</span><span>Tokyo</span>
+      </div>
+      <table class="route-table"><thead><tr><th>TIME</th><th>ACTIVITY</th><th>LOCATION</th></tr></thead><tbody>
+        <tr><td><strong>6:00 AM</strong></td><td>Depart Shin-Osaka</td><td>Shin-Osaka Station (Kodama)</td></tr>
+        <tr><td><strong>9:09 AM</strong></td><td>Arrive & Meet Guide</td><td>Shin-Fuji Station</td></tr>
+        <tr><td><strong>9:15 – 13:15</strong></td><td>🗻 Mt. Fuji Tour</td><td>Hidden spots & cultural dives</td></tr>
+        <tr class="buffer-row"><td>13:15 – 13:39</td><td>☕ Free time (buffer)</td><td>Station area — lunch, souvenirs</td></tr>
+        <tr><td><strong>13:39 PM</strong></td><td>Depart for Tokyo</td><td>Shin-Fuji Station (Kodama)</td></tr>
+        <tr><td><strong>14:47 PM</strong></td><td>Arrive Tokyo ✓</td><td>Tokyo Station</td></tr>
+      </tbody></table>
+    </div>
+    <div class="route-panel" id="route-4" style="display:none;">
       <div style="display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:1.5rem;font-size:0.95rem;">
         <span>Tokyo</span><span style="color:var(--hai);">→</span><span style="color:var(--hai);">1h</span><span style="color:var(--hai);">→</span>
         <span style="background:var(--shu);color:white;padding:6px 16px;border-radius:20px;font-weight:600;">Shin-Fuji (4h Tour)</span>
@@ -1511,7 +1543,7 @@ function switchRouteTab(n) {
   var tabs = document.querySelectorAll(".route-tab");
   tabs.forEach(function(t){ t.classList.remove("active"); });
   tabs[n].classList.add("active");
-  for (var i = 0; i < 3; i++) {
+  for (var i = 0; i < 5; i++) {
     var panel = document.getElementById("route-" + i);
     if (panel) panel.style.display = (i === n) ? "block" : "none";
   }
