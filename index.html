@@ -34,7 +34,7 @@
     --usu-hai: #DEE8EE;
     --gold: #B8860B;
     --green: #2D5A27;
-    --section-gap: 100px;
+    --section-gap: 80px;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -247,7 +247,7 @@
     font-family: 'Noto Serif JP', serif;
     font-size: clamp(28px, 4vw, 36px);
     font-weight: 700; line-height: 1.3;
-    margin-bottom: 20px;
+    margin-bottom: 12px;
   }
   .section-desc {
     font-size: 18px; color: var(--hai); line-height: 1.8;
@@ -259,7 +259,7 @@
     background: var(--kinari);
     border-radius: 16px;
     padding: 48px;
-    margin-top: 36px;
+    margin-top: 20px;
     position: relative;
     overflow: hidden;
   }
@@ -302,7 +302,7 @@
   .routes-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 20px; margin-top: 36px;
+    gap: 20px; margin-top: 20px;
   }
   .route-card {
     background: #fff;
@@ -338,7 +338,7 @@
   .weather-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 20px; margin-top: 36px;
+    gap: 20px; margin-top: 20px;
   }
   .weather-card {
     background: #fff;
@@ -371,7 +371,7 @@
   .included-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 16px; margin-top: 36px;
+    gap: 16px; margin-top: 20px;
   }
   .included-item {
     display: flex; align-items: flex-start; gap: 14px;
@@ -439,7 +439,7 @@
   /* ===== HOST ===== */
   .host-section {
     display: flex; gap: 48px; align-items: flex-start;
-    margin-top: 36px;
+    margin-top: 20px;
   }
   .host-text { flex: 1; }
   .host-text blockquote {
@@ -462,7 +462,7 @@
   .reviews-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px; margin-top: 36px;
+    gap: 20px; margin-top: 20px;
   }
   .review-card {
     background: #fff;
@@ -481,7 +481,7 @@
   .review-date { font-size: 14px; color: var(--hai); }
 
   /* ===== FAQ ===== */
-  .faq-list { margin-top: 36px; }
+  .faq-list { margin-top: 20px; }
   .faq-item {
     border-bottom: 1px solid var(--usu-hai);
   }
@@ -514,7 +514,7 @@
     border-radius: 16px;
     padding: 56px 48px;
     text-align: center;
-    margin-top: 36px;
+    margin-top: 20px;
   }
   .pricing-box .section-label { color: rgba(255,255,255,0.5); }
   .pricing-box .price {
@@ -825,8 +825,8 @@
     .pricing-box .price { font-size: 28px !important; }
     .vis-bars { height: 120px; }
     .info-banner { flex-direction: column; padding: 20px 16px !important; }
-    .section-gap { padding-top: 48px; }
-    :root { --section-gap: 48px; }
+    .section-gap { padding-top: 56px; }
+    :root { --section-gap: 56px; }
     section { padding: 0 16px !important; }
     .container { padding: 0 !important; }
     .review-card { padding: 20px !important; }
@@ -905,7 +905,7 @@
   .fade-in.visible {
     opacity: 1; transform: translateY(0);
   }
-.dest-carousel-wrap{position:relative;overflow:hidden;margin-top:32px}.dest-carousel{display:flex;gap:20px;overflow-x:auto;padding:8px 0 16px;scrollbar-width:none}.dest-carousel::-webkit-scrollbar{display:none}.dest-card{min-width:260px;max-width:260px;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.07);flex-shrink:0;transition:transform .2s;position:relative}.dest-card:hover{transform:translateY(-4px)}.dest-img{height:180px;background:var(--usu-hai);position:relative;display:flex;align-items:center;justify-content:center;}.dest-img-placeholder{font-size:14px;color:#aaa;pointer-events:none;}.dest-num-badge{position:absolute;top:10px;left:10px;font-size:18px;font-weight:900;color:#fff;background:var(--shu);min-width:38px;height:38px;border-radius:7px;display:flex;align-items:center;justify-content:center;z-index:2;padding:0 8px;box-shadow:0 2px 6px rgba(0,0,0,.3)}.dest-body{padding:12px 14px 14px}.dest-card h4{font-size:18px;font-weight:700;margin:0 0 6px;color:var(--sumi)}.dest-meta{display:flex;flex-direction:column;gap:3px;margin-bottom:7px}.dest-time-row{font-size:14px;color:var(--hai)}.dest-booking{font-size:14px;font-weight:600}.dest-booking.ok{color:#2e7d32}.dest-booking.req{color:#c62828}.dest-booking.rec{color:#e65100}.dest-card p{font-size:14px;color:#666;margin:0;line-height:1.5}.dest-arrow{position:absolute;top:180px;transform:translateY(-50%);z-index:2;background:rgba(255,255,255,.9);border:1px solid var(--usu-hai);border-radius:50%;width:40px;height:40px;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center}.dest-prev{left:4px}.dest-next{right:4px}.route-tabs{display:flex;gap:8px;margin-top:32px;flex-wrap:wrap;justify-content:center}.route-tab{padding:10px 22px;border:1.5px solid var(--usu-hai);border-radius:100px;background:none;cursor:pointer;font-size:14px;font-weight:500;color:var(--sumi);font-family:inherit;transition:all .2s}.route-tab:hover{border-color:var(--shu);color:var(--shu)}.route-tab.active{background:var(--shu);color:#fff;border-color:var(--shu)}.faq-a-chart{max-height:0}.faq-item.open .faq-a-chart{max-height:600px}
+.dest-carousel-wrap{position:relative;overflow:hidden;margin-top:16px}.dest-carousel{display:flex;gap:20px;overflow-x:auto;padding:8px 0 16px;scrollbar-width:none}.dest-carousel::-webkit-scrollbar{display:none}.dest-card{min-width:260px;max-width:260px;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.07);flex-shrink:0;transition:transform .2s;position:relative}.dest-card:hover{transform:translateY(-4px)}.dest-img{height:180px;background:var(--usu-hai);position:relative;display:flex;align-items:center;justify-content:center;}.dest-img-placeholder{font-size:14px;color:#aaa;pointer-events:none;}.dest-num-badge{position:absolute;top:10px;left:10px;font-size:18px;font-weight:900;color:#fff;background:var(--shu);min-width:38px;height:38px;border-radius:7px;display:flex;align-items:center;justify-content:center;z-index:2;padding:0 8px;box-shadow:0 2px 6px rgba(0,0,0,.3)}.dest-body{padding:12px 14px 14px}.dest-card h4{font-size:18px;font-weight:700;margin:0 0 6px;color:var(--sumi)}.dest-meta{display:flex;flex-direction:column;gap:3px;margin-bottom:7px}.dest-time-row{font-size:14px;color:var(--hai)}.dest-booking{font-size:14px;font-weight:600}.dest-booking.ok{color:#2e7d32}.dest-booking.req{color:#c62828}.dest-booking.rec{color:#e65100}.dest-card p{font-size:14px;color:#666;margin:0;line-height:1.5}.dest-arrow{position:absolute;top:180px;transform:translateY(-50%);z-index:2;background:rgba(255,255,255,.9);border:1px solid var(--usu-hai);border-radius:50%;width:40px;height:40px;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center}.dest-prev{left:4px}.dest-next{right:4px}.route-tabs{display:flex;gap:8px;margin-top:32px;flex-wrap:wrap;justify-content:center}.route-tab{padding:10px 22px;border:1.5px solid var(--usu-hai);border-radius:100px;background:none;cursor:pointer;font-size:14px;font-weight:500;color:var(--sumi);font-family:inherit;transition:all .2s}.route-tab:hover{border-color:var(--shu);color:var(--shu)}.route-tab.active{background:var(--shu);color:#fff;border-color:var(--shu)}.faq-a-chart{max-height:0}.faq-item.open .faq-a-chart{max-height:600px}
   
     /* Model Course Timeline */
     .model-tab-btn { padding: 8px 20px; border: 2px solid var(--shu); border-radius: 25px; background: white; color: var(--shu); font-weight: 600; cursor: pointer; font-size: 18px; transition: all 0.2s; }
@@ -1039,7 +1039,7 @@
 </header>
 
 <!-- CONTACT US -->
-<section class="contact-bar" style="background:var(--kinari);padding:20px 16px;text-align:center;">
+<section class="contact-bar" style="background:var(--kinari);padding:20px 16px;margin-bottom:24px;text-align:center;">
   <div style="max-width:600px;margin:0 auto;">
     <p class="contact-bar-title" style="font-size:15px;color:var(--sumi);margin-bottom:4px;font-weight:600;">Book first, then let's plan your perfect day</p>
     <p class="contact-bar-sub" style="font-size:13px;color:var(--hai);margin-bottom:10px;">After booking, share your train times and we'll tailor the itinerary to your schedule.</p>
@@ -1074,12 +1074,12 @@
         <span style="color:var(--hai);">→</span><span style="color:var(--hai);">~1h buffer</span><span style="color:var(--hai);">→</span><span style="color:var(--hai);">2.5h</span><span style="color:var(--hai);">→</span><span>Kyoto</span>
       </div>
       <table class="route-table"><thead><tr><th>TIME</th><th>ACTIVITY</th><th>LOCATION</th></tr></thead><tbody>
-        <tr><td><strong>7:03 AM</strong></td><td>Depart Tokyo</td><td>Tokyo Station (Kodama)</td></tr>
-        <tr><td><strong>8:10 AM</strong></td><td>Arrive & Meet Guide</td><td>Shin-Fuji Station</td></tr>
+        <tr><td><strong>7:03</strong></td><td>Depart Tokyo</td><td>Tokyo Station (Kodama)</td></tr>
+        <tr><td><strong>8:10</strong></td><td>Arrive & Meet Guide</td><td>Shin-Fuji Station</td></tr>
         <tr><td><strong>8:15 – 12:15</strong></td><td>🗻 Mt. Fuji Tour</td><td>Hidden spots & cultural dives</td></tr>
         <tr class="buffer-row"><td>12:15 – 13:08</td><td>☕ Free time (buffer)</td><td>Station area — lunch, souvenirs</td></tr>
-        <tr><td><strong>13:08 PM</strong></td><td>Depart for Kyoto</td><td>Shin-Fuji Station (Kodama)</td></tr>
-        <tr><td><strong>15:34 PM</strong></td><td>Arrive Kyoto ✓</td><td>Kyoto Station</td></tr>
+        <tr><td><strong>13:08</strong></td><td>Depart for Kyoto</td><td>Shin-Fuji Station (Kodama)</td></tr>
+        <tr><td><strong>15:34</strong></td><td>Arrive Kyoto ✓</td><td>Kyoto Station</td></tr>
       </tbody></table>
     </div>
 
@@ -1090,12 +1090,12 @@
         <span style="color:var(--hai);">→</span><span style="color:var(--hai);">~1h buffer</span><span style="color:var(--hai);">→</span><span style="color:var(--hai);">3h</span><span style="color:var(--hai);">→</span><span>Shin-Osaka</span>
       </div>
       <table class="route-table"><thead><tr><th>TIME</th><th>ACTIVITY</th><th>LOCATION</th></tr></thead><tbody>
-        <tr><td><strong>7:03 AM</strong></td><td>Depart Tokyo</td><td>Tokyo Station (Kodama)</td></tr>
-        <tr><td><strong>8:10 AM</strong></td><td>Arrive & Meet Guide</td><td>Shin-Fuji Station</td></tr>
+        <tr><td><strong>7:03</strong></td><td>Depart Tokyo</td><td>Tokyo Station (Kodama)</td></tr>
+        <tr><td><strong>8:10</strong></td><td>Arrive & Meet Guide</td><td>Shin-Fuji Station</td></tr>
         <tr><td><strong>8:15 – 12:15</strong></td><td>🗻 Mt. Fuji Tour</td><td>Hidden spots & cultural dives</td></tr>
         <tr class="buffer-row"><td>12:15 – 13:08</td><td>☕ Free time (buffer)</td><td>Station area — lunch, souvenirs</td></tr>
-        <tr><td><strong>13:08 PM</strong></td><td>Depart for Shin-Osaka</td><td>Shin-Fuji Station (Kodama)</td></tr>
-        <tr><td><strong>16:11 PM</strong></td><td>Arrive Shin-Osaka ✓</td><td>Shin-Osaka Station</td></tr>
+        <tr><td><strong>13:08</strong></td><td>Depart for Shin-Osaka</td><td>Shin-Fuji Station (Kodama)</td></tr>
+        <tr><td><strong>16:11</strong></td><td>Arrive Shin-Osaka ✓</td><td>Shin-Osaka Station</td></tr>
       </tbody></table>
     </div>
     <div class="route-panel" id="route-2" style="display:none;">
@@ -1105,12 +1105,12 @@
         <span style="color:var(--hai);">→</span><span style="color:var(--hai);">~1h buffer</span><span style="color:var(--hai);">→</span><span style="color:var(--hai);">1h</span><span style="color:var(--hai);">→</span><span>Tokyo</span>
       </div>
       <table class="route-table"><thead><tr><th>TIME</th><th>ACTIVITY</th><th>LOCATION</th></tr></thead><tbody>
-        <tr><td><strong>6:01 AM</strong></td><td>Depart Kyoto</td><td>Kyoto Station (Kodama)</td></tr>
-        <tr><td><strong>8:27 AM</strong></td><td>Arrive & Meet Guide</td><td>Shin-Fuji Station</td></tr>
+        <tr><td><strong>6:01</strong></td><td>Depart Kyoto</td><td>Kyoto Station (Kodama)</td></tr>
+        <tr><td><strong>8:27</strong></td><td>Arrive & Meet Guide</td><td>Shin-Fuji Station</td></tr>
         <tr><td><strong>8:30 – 12:30</strong></td><td>🗻 Mt. Fuji Tour</td><td>Hidden spots & cultural dives</td></tr>
         <tr class="buffer-row"><td>12:30 – 13:39</td><td>☕ Free time (buffer)</td><td>Station area — lunch, souvenirs</td></tr>
-        <tr><td><strong>13:39 PM</strong></td><td>Depart for Tokyo</td><td>Shin-Fuji Station (Kodama)</td></tr>
-        <tr><td><strong>14:47 PM</strong></td><td>Arrive Tokyo ✓</td><td>Tokyo Station</td></tr>
+        <tr><td><strong>13:39</strong></td><td>Depart for Tokyo</td><td>Shin-Fuji Station (Kodama)</td></tr>
+        <tr><td><strong>14:47</strong></td><td>Arrive Tokyo ✓</td><td>Tokyo Station</td></tr>
       </tbody></table>
     </div>
 
@@ -1121,12 +1121,12 @@
         <span style="color:var(--hai);">→</span><span style="color:var(--hai);">~1h buffer</span><span style="color:var(--hai);">→</span><span style="color:var(--hai);">1h</span><span style="color:var(--hai);">→</span><span>Tokyo</span>
       </div>
       <table class="route-table"><thead><tr><th>TIME</th><th>ACTIVITY</th><th>LOCATION</th></tr></thead><tbody>
-        <tr><td><strong>6:00 AM</strong></td><td>Depart Shin-Osaka</td><td>Shin-Osaka Station (Kodama)</td></tr>
-        <tr><td><strong>9:09 AM</strong></td><td>Arrive & Meet Guide</td><td>Shin-Fuji Station</td></tr>
+        <tr><td><strong>6:00</strong></td><td>Depart Shin-Osaka</td><td>Shin-Osaka Station (Kodama)</td></tr>
+        <tr><td><strong>9:09</strong></td><td>Arrive & Meet Guide</td><td>Shin-Fuji Station</td></tr>
         <tr><td><strong>9:15 – 13:15</strong></td><td>🗻 Mt. Fuji Tour</td><td>Hidden spots & cultural dives</td></tr>
         <tr class="buffer-row"><td>13:15 – 13:39</td><td>☕ Free time (buffer)</td><td>Station area — lunch, souvenirs</td></tr>
-        <tr><td><strong>13:39 PM</strong></td><td>Depart for Tokyo</td><td>Shin-Fuji Station (Kodama)</td></tr>
-        <tr><td><strong>14:47 PM</strong></td><td>Arrive Tokyo ✓</td><td>Tokyo Station</td></tr>
+        <tr><td><strong>13:39</strong></td><td>Depart for Tokyo</td><td>Shin-Fuji Station (Kodama)</td></tr>
+        <tr><td><strong>14:47</strong></td><td>Arrive Tokyo ✓</td><td>Tokyo Station</td></tr>
       </tbody></table>
     </div>
     <div class="route-panel" id="route-4" style="display:none;">
@@ -1136,12 +1136,12 @@
         <span style="color:var(--hai);">→</span><span style="color:var(--hai);">~1h buffer</span><span style="color:var(--hai);">→</span><span style="color:var(--hai);">1h</span><span style="color:var(--hai);">→</span><span>Tokyo</span>
       </div>
       <table class="route-table"><thead><tr><th>TIME</th><th>ACTIVITY</th><th>LOCATION</th></tr></thead><tbody>
-        <tr><td><strong>7:03 AM</strong></td><td>Depart Tokyo</td><td>Tokyo Station (Kodama)</td></tr>
-        <tr><td><strong>8:10 AM</strong></td><td>Arrive & Meet Guide</td><td>Shin-Fuji Station</td></tr>
+        <tr><td><strong>7:03</strong></td><td>Depart Tokyo</td><td>Tokyo Station (Kodama)</td></tr>
+        <tr><td><strong>8:10</strong></td><td>Arrive & Meet Guide</td><td>Shin-Fuji Station</td></tr>
         <tr><td><strong>8:15 – 12:15</strong></td><td>🗻 Mt. Fuji Tour</td><td>Hidden spots & cultural dives</td></tr>
         <tr class="buffer-row"><td>12:15 – 13:09</td><td>☕ Free time (buffer)</td><td>Station area — lunch, souvenirs</td></tr>
-        <tr><td><strong>13:09 PM</strong></td><td>Depart for Tokyo</td><td>Shin-Fuji Station (Kodama)</td></tr>
-        <tr><td><strong>14:17 PM</strong></td><td>Arrive Tokyo ✓</td><td>Tokyo Station</td></tr>
+        <tr><td><strong>13:09</strong></td><td>Depart for Tokyo</td><td>Shin-Fuji Station (Kodama)</td></tr>
+        <tr><td><strong>14:17</strong></td><td>Arrive Tokyo ✓</td><td>Tokyo Station</td></tr>
       </tbody></table>
     </div>
     <p style="text-align:center;font-size:14px;color:var(--hai);margin-top:16px;">Start and end times are flexible — these are examples only. <a href="#faq" style="color:var(--shu);text-decoration:underline;" onclick="event.preventDefault();document.querySelector('#faq .faq-item:nth-child(8) .faq-q').click();document.getElementById('faq').scrollIntoView({behavior:'smooth'});">See FAQ →</a></p>
@@ -1153,7 +1153,7 @@
 <p class="section-label">Destinations</p>
 <h2 class="section-title">Tour Destinations</h2>
 
-<h3 style="font-size:18px;color:var(--shu);margin:2.5rem 0 1rem;font-weight:600;">Hidden Viewpoints &amp; Lakeside</h3>
+<h3 style="font-size:18px;color:var(--shu);margin:1.2rem 0 1rem;font-weight:600;">Hidden Viewpoints &amp; Lakeside</h3>
 <p class="section-desc" style="margin-bottom:1.2rem;">We select the best viewpoints based on weather, season, and timing.</p>
 <div class="dest-carousel-wrap">
 <button class="dest-arrow dest-prev" onclick="scrollCarousel(this,-1)">&lsaquo;</button>
@@ -1169,7 +1169,7 @@
 <button class="dest-arrow dest-next" onclick="scrollCarousel(this,1)">&rsaquo;</button>
 </div>
 
-<h3 style="font-size:18px;color:var(--shu);margin:2.5rem 0 1rem;font-weight:600;">Local & Cultural Experiences</h3>
+<h3 style="font-size:18px;color:var(--shu);margin:1.2rem 0 1rem;font-weight:600;">Local & Cultural Experiences</h3>
 <p class="section-desc" style="margin-bottom:1.2rem;">Immerse yourself in authentic Fuji-area culture, food, and traditions.</p>
 <div class="dest-carousel-wrap">
 <button class="dest-arrow dest-prev" onclick="scrollCarousel(this,-1)">&lsaquo;</button>
@@ -1428,7 +1428,7 @@
       </div>
       <div class="faq-item">
         <button class="faq-q">What time does the tour start?</button>
-        <div class="faq-a"><p>Flexible — we adjust the start time based on your train schedule. Available 8:00 AM – 5:00 PM. Just let us know your preferred arrival time. In general, the earlier the better — morning hours tend to offer clearer views of Mt. Fuji.</p></div>
+        <div class="faq-a"><p>Flexible — we adjust the start time based on your train schedule. Available 8:00 – 17:00. Just let us know your preferred arrival time. In general, the earlier the better — morning hours tend to offer clearer views of Mt. Fuji.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q">Can children under 6 join the tour?</button>
