@@ -664,8 +664,10 @@
       gap: 16px;
     }
     .hamburger { display: block; }
-  
-
+    .nav-cta-mobile { display: inline-block; }
+    .nav-links .nav-cta { display: none; }
+    .nav-logo img { height: 40px; }
+  }
 
   .back-to-top {
     position: fixed; bottom: 24px; right: 24px; z-index: 99;
@@ -694,9 +696,7 @@
   @keyframes spin { to { transform: rotate(360deg); } }
 
 
-  .nav-cta-mobile { display: inline-block; }
-    .nav-links .nav-cta { display: none; }
-    .nav-logo img { height: 40px; }
+@media (max-width: 768px) {
     /* MOBILE HERO: image with title overlay, content below */
     .hero {
       padding: 0 !important;
