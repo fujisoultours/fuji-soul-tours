@@ -781,14 +781,16 @@
     .model-tab-btn { padding: 8px 20px; border: 2px solid var(--shu); border-radius: 25px; background: white; color: var(--shu); font-weight: 600; cursor: pointer; font-size: 18px; transition: all 0.2s; }
     .model-tab-btn.active { background: var(--shu); color: white; }
     .model-tab-btn:hover { background: var(--shu); color: white; }
-    .model-timeline { position: relative; padding-left: 40px; }
-    .model-stop { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 0.5rem; }
-    .model-time { min-width: 70px; text-align: right; font-size: 18px; color: var(--hai); }
-    .model-dur { display: block; font-size: 14px; color: var(--shu); font-weight: 600; }
-    .model-dot { width: 14px; height: 14px; border-radius: 50%; background: var(--hai); margin-top: 4px; flex-shrink: 0; }
-    .model-detail h4 { margin: 0 0 2px; font-size: 18px; }
-    .model-detail p { margin: 0; font-size: 14px; color: var(--hai); }
-    .model-travel { padding-left: 86px; margin: 0.3rem 0; font-size: 14px; color: var(--hai); border-left: 2px dashed var(--usu-hai); margin-left: 77px; padding: 4px 0 4px 20px; }
+    .model-table { width: 100%; border-collapse: collapse; }
+    .model-table td { padding: 10px 12px; vertical-align: top; font-size: 14px; }
+    .model-table .mt-time { width: 60px; font-weight: 700; color: var(--sumi); white-space: nowrap; }
+    .model-table .mt-dur { font-size: 14px; color: var(--shu); font-weight: 600; }
+    .model-table .mt-dot { width: 24px; text-align: center; }
+    .model-table .mt-dot span { display: inline-block; width: 12px; height: 12px; border-radius: 50%; }
+    .model-table .mt-name { font-weight: 700; color: var(--sumi); font-size: 18px; }
+    .model-table .mt-desc { font-size: 14px; color: var(--hai); margin-top: 2px; }
+    .model-table .mt-drive { color: var(--hai); font-size: 14px; }
+    .model-table .mt-drive td { padding: 4px 12px; }
     /* Route Table */
     .route-table { width: 100%; border-collapse: collapse; font-size: 18px; }
     .route-table th { text-align: left; padding: 8px 12px; font-size: 14px; color: var(--hai); letter-spacing: 0.05em; border-bottom: 1px solid var(--usu-hai); }
@@ -1071,37 +1073,37 @@
 
     <div class="model-tab-panel" id="model-panel-0">
       <p style="color:var(--hai);font-size:18px;margin-bottom:1.5rem;text-align:center;">For someone who wants to see as much as possible in 4 hours.</p>
-      <div class="model-timeline">
-        <div class="model-stop"><div class="model-time"><strong>0:00</strong></div><div class="model-dot"></div><div class="model-detail"><h4>Meet Your Guide</h4><p>In front of the station gate</p></div></div>
-        <div class="model-travel"><span>🚗 15 min drive</span></div>
-        <div class="model-stop"><div class="model-time"><strong>0:15</strong><span class="model-dur">15 min</span></div><div class="model-dot" style="background:var(--shu);"></div><div class="model-detail"><h4>Mt. Fuji Viewspot</h4><p>Up-close dramatic Fuji panorama • Free</p></div></div>
-        <div class="model-travel"><span>🚗 35 min drive</span></div>
-        <div class="model-stop"><div class="model-time"><strong>1:05</strong><span class="model-dur">20 min</span></div><div class="model-dot" style="background:#c0392b;"></div><div class="model-detail"><h4>Sacred Shrine Visit</h4><p>Principal shrine for Mt. Fuji worship • Free</p></div></div>
-        <div class="model-travel"><span>🚗 5 min drive</span></div>
-        <div class="model-stop"><div class="model-time"><strong>1:30</strong><span class="model-dur">20 min</span></div><div class="model-dot" style="background:#e67e22;"></div><div class="model-detail"><h4>Award-Winning Local Lunch</h4><p>Famous regional soul food noodles • ¥900/person</p></div></div>
-        <div class="model-travel"><span>🚗 5 min drive</span></div>
-        <div class="model-stop"><div class="model-time"><strong>1:55</strong><span class="model-dur">15 min</span></div><div class="model-dot" style="background:var(--shu);"></div><div class="model-detail"><h4>UNESCO Heritage Center</h4><p>Reflection pond + red torii gate, exhibits • ¥300/person</p></div></div>
-        <div class="model-travel"><span>🚗 20 min drive</span></div>
-        <div class="model-stop"><div class="model-time"><strong>2:30</strong><span class="model-dur">25 min</span></div><div class="model-dot" style="background:#27ae60;"></div><div class="model-detail"><h4>Traditional Matcha Experience</h4><p>Authentic matcha + traditional sweets • ¥900/person</p></div></div>
-        <div class="model-travel"><span>🚗 20 min drive</span></div>
-        <div class="model-stop"><div class="model-time"><strong>3:15</strong></div><div class="model-dot"></div><div class="model-detail"><h4>Return to Station</h4><p>Arrive back with time to spare for your next train</p></div></div>
-      </div>
+      <table class="model-table">
+        <tr><td class="mt-time">0:00</td><td class="mt-dot"><span style="background:var(--hai);"></span></td><td><div class="mt-name">Meet Your Guide</div><div class="mt-desc">In front of the station gate</div></td></tr>
+        <tr class="mt-drive"><td></td><td></td><td>🚗 15 min drive</td></tr>
+        <tr><td class="mt-time">0:15<br><span class="mt-dur">15 min</span></td><td class="mt-dot"><span style="background:var(--shu);"></span></td><td><div class="mt-name">Mt. Fuji Viewspot</div><div class="mt-desc">Up-close dramatic Fuji panorama • Free</div></td></tr>
+        <tr class="mt-drive"><td></td><td></td><td>🚗 35 min drive</td></tr>
+        <tr><td class="mt-time">1:05<br><span class="mt-dur">20 min</span></td><td class="mt-dot"><span style="background:#c0392b;"></span></td><td><div class="mt-name">Sacred Shrine Visit</div><div class="mt-desc">Principal shrine for Mt. Fuji worship • Free</div></td></tr>
+        <tr class="mt-drive"><td></td><td></td><td>🚗 5 min drive</td></tr>
+        <tr><td class="mt-time">1:30<br><span class="mt-dur">20 min</span></td><td class="mt-dot"><span style="background:#e67e22;"></span></td><td><div class="mt-name">Award-Winning Local Lunch</div><div class="mt-desc">Famous regional soul food noodles • ¥900/person</div></td></tr>
+        <tr class="mt-drive"><td></td><td></td><td>🚗 5 min drive</td></tr>
+        <tr><td class="mt-time">1:55<br><span class="mt-dur">15 min</span></td><td class="mt-dot"><span style="background:var(--shu);"></span></td><td><div class="mt-name">UNESCO Heritage Center</div><div class="mt-desc">Reflection pond + red torii gate, exhibits • ¥300/person</div></td></tr>
+        <tr class="mt-drive"><td></td><td></td><td>🚗 20 min drive</td></tr>
+        <tr><td class="mt-time">2:30<br><span class="mt-dur">25 min</span></td><td class="mt-dot"><span style="background:#27ae60;"></span></td><td><div class="mt-name">Traditional Matcha Experience</div><div class="mt-desc">Authentic matcha + traditional sweets • ¥900/person</div></td></tr>
+        <tr class="mt-drive"><td></td><td></td><td>🚗 20 min drive</td></tr>
+        <tr><td class="mt-time">3:15</td><td class="mt-dot"><span style="background:var(--hai);"></span></td><td><div class="mt-name">Return to Station</div><div class="mt-desc">Arrive back with time to spare for your next train</div></td></tr>
+      </table>
       <p style="background:var(--kinari);padding:1rem;border-radius:8px;font-size:14px;color:var(--hai);margin-top:1.5rem;"><strong>Guest note:</strong> This is for someone who wants to do as much as possible in a 4-hour tour. All listed costs are paid separately on-site (not included in tour price).</p>
     </div>
 
     <div class="model-tab-panel" id="model-panel-1" style="display:none;">
       <p style="color:var(--hai);font-size:18px;margin-bottom:1.5rem;text-align:center;">For someone who wants to take time at each stop.</p>
-      <div class="model-timeline">
-        <div class="model-stop"><div class="model-time"><strong>0:00</strong></div><div class="model-dot"></div><div class="model-detail"><h4>Meet Your Guide</h4><p>In front of the station gate</p></div></div>
-        <div class="model-travel"><span>🚗 50 min drive</span></div>
-        <div class="model-stop"><div class="model-time"><strong>0:50</strong><span class="model-dur">45 min</span></div><div class="model-dot" style="background:var(--shu);"></div><div class="model-detail"><h4>Lakeside Mt. Fuji Viewspot</h4><p>Fuji reflection on lake surface (clear days) • Free</p></div></div>
-        <div class="model-travel"><span>🚗 35 min drive</span></div>
-        <div class="model-stop"><div class="model-time"><strong>2:10</strong><span class="model-dur">25 min</span></div><div class="model-dot" style="background:#c0392b;"></div><div class="model-detail"><h4>Sacred Shrine Visit</h4><p>Principal shrine for Mt. Fuji worship • Free</p></div></div>
-        <div class="model-travel"><span>🚗 25 min drive</span></div>
-        <div class="model-stop"><div class="model-time"><strong>3:00</strong><span class="model-dur">40 min</span></div><div class="model-dot" style="background:#27ae60;"></div><div class="model-detail"><h4>Traditional Matcha Experience</h4><p>Authentic matcha + traditional sweets • ¥900/person</p></div></div>
-        <div class="model-travel"><span>🚗 20 min drive</span></div>
-        <div class="model-stop"><div class="model-time"><strong>4:00</strong></div><div class="model-dot"></div><div class="model-detail"><h4>Return to Station</h4><p>Arrive back with time to spare for your next train</p></div></div>
-      </div>
+      <table class="model-table">
+        <tr><td class="mt-time">0:00</td><td class="mt-dot"><span style="background:var(--hai);"></span></td><td><div class="mt-name">Meet Your Guide</div><div class="mt-desc">In front of the station gate</div></td></tr>
+        <tr class="mt-drive"><td></td><td></td><td>🚗 50 min drive</td></tr>
+        <tr><td class="mt-time">0:50<br><span class="mt-dur">45 min</span></td><td class="mt-dot"><span style="background:var(--shu);"></span></td><td><div class="mt-name">Lakeside Mt. Fuji Viewspot</div><div class="mt-desc">Fuji reflection on lake surface (clear days) • Free</div></td></tr>
+        <tr class="mt-drive"><td></td><td></td><td>🚗 35 min drive</td></tr>
+        <tr><td class="mt-time">2:10<br><span class="mt-dur">25 min</span></td><td class="mt-dot"><span style="background:#c0392b;"></span></td><td><div class="mt-name">Sacred Shrine Visit</div><div class="mt-desc">Principal shrine for Mt. Fuji worship • Free</div></td></tr>
+        <tr class="mt-drive"><td></td><td></td><td>🚗 25 min drive</td></tr>
+        <tr><td class="mt-time">3:00<br><span class="mt-dur">40 min</span></td><td class="mt-dot"><span style="background:#27ae60;"></span></td><td><div class="mt-name">Traditional Matcha Experience</div><div class="mt-desc">Authentic matcha + traditional sweets • ¥900/person</div></td></tr>
+        <tr class="mt-drive"><td></td><td></td><td>🚗 20 min drive</td></tr>
+        <tr><td class="mt-time">4:00</td><td class="mt-dot"><span style="background:var(--hai);"></span></td><td><div class="mt-name">Return to Station</div><div class="mt-desc">Arrive back with time to spare for your next train</div></td></tr>
+      </table>
       <p style="background:var(--kinari);padding:1rem;border-radius:8px;font-size:14px;color:var(--hai);margin-top:1.5rem;"><strong>Guest note:</strong> This is for someone who wants to take time in each stop. All listed costs are paid separately on-site (not included in tour price).</p>
     </div>
 
@@ -1228,16 +1230,6 @@
     </div>
   </div>
 </section>
-
-<!-- REVIEWS -->
-<section class="section-gap" id="reviews">
-  <div class="container fade-in">
-    <div class="section-label">Reviews</div>
-    <h2 class="section-title">What Travelers Say</h2>
-    <div class="reviews-grid" id="reviewsGrid"></div>
-  </div>
-</section>
-
 
 <!-- IMPORTANT NOTES -->
 <section class="section-gap" id="important-notes">
@@ -1447,6 +1439,15 @@
   </div>
 </section>
 
+<!-- REVIEWS -->
+<section class="section-gap" id="reviews">
+  <div class="container fade-in">
+    <div class="section-label">Reviews</div>
+    <h2 class="section-title">What Travelers Say</h2>
+    <div class="reviews-grid" id="reviewsGrid"></div>
+  </div>
+</section>
+
 <!-- MANAGE BOOKING -->
 <section class="section-gap" id="manage">
   <div class="container fade-in">
@@ -1468,27 +1469,29 @@
         <p style="font-size:14px;color:var(--hai);margin:0;">Can't find the email? <a href="mailto:fujisoultours@gmail.com" style="color:var(--shu);">Contact us</a>.</p>
       </div>
 
-      <div>
-        <h3 style="font-size:18px;font-weight:700;margin-bottom:10px;color:var(--sumi);">Change Tour Date</h3>
-        <p style="font-size:14px;color:var(--hai);line-height:1.7;margin:0 0 14px;">Free with 24+ hours notice, subject to availability. Please <a href="#book" style="color:var(--shu);">check availability</a> first before submitting.</p>
-        <form class="manage-form" id="changeForm" onsubmit="submitDateChange(event)">
-          <label for="change-ref">Booking Reference *</label>
-          <input type="text" id="change-ref" placeholder="e.g. FUJ-12345678" required>
-          <label for="change-name">Your Name *</label>
-          <input type="text" id="change-name" placeholder="Full name as on booking" required>
-          <label for="change-email">Email Address *</label>
-          <input type="email" id="change-email" placeholder="your@email.com" required>
-          <label for="change-current-date">Current Tour Date *</label>
-          <input type="text" id="change-current-date" placeholder="YYYY-MM-DD" required>
-          <label for="change-new-date">Preferred New Date *</label>
-          <input type="text" id="change-new-date" placeholder="YYYY-MM-DD" required>
-          <label for="change-alt-date">Alternative Date (optional)</label>
-          <input type="text" id="change-alt-date" placeholder="YYYY-MM-DD">
-          <label for="change-message">Message</label>
-          <textarea id="change-message" placeholder="Any additional details or preferences"></textarea>
-          <button type="submit" class="manage-submit">Submit Date Change Request →</button>
-          <div class="form-success" id="change-success">✓ Your date change request has been sent! We'll confirm availability and respond by email shortly.</div>
-        </form>
+      <div id="change-date-section">
+        <h3 style="font-size:18px;font-weight:700;margin-bottom:0;color:var(--sumi);cursor:pointer;display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--usu-hai);" onclick="var c=document.getElementById('change-date-content');var icon=this.querySelector('.toggle-icon');if(c.style.maxHeight==='0px'||!c.style.maxHeight){c.style.maxHeight=c.scrollHeight+'px';c.style.paddingTop='14px';icon.textContent='−';}else{c.style.maxHeight='0px';c.style.paddingTop='0';icon.textContent='+';}">Change Tour Date <span class="toggle-icon" style="font-size:18px;font-weight:300;color:var(--shu);">+</span></h3>
+        <div id="change-date-content" style="max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding-top 0.3s;">
+          <p style="font-size:14px;color:var(--hai);line-height:1.7;margin:0 0 14px;">Free with 24+ hours notice, subject to availability. Please <a href="#book" style="color:var(--shu);">check availability</a> first before submitting.</p>
+          <form class="manage-form" id="changeForm" onsubmit="submitDateChange(event)">
+            <label for="change-ref">Booking Reference *</label>
+            <input type="text" id="change-ref" placeholder="e.g. FUJ-12345678" required>
+            <label for="change-name">Your Name *</label>
+            <input type="text" id="change-name" placeholder="Full name as on booking" required>
+            <label for="change-email">Email Address *</label>
+            <input type="email" id="change-email" placeholder="your@email.com" required>
+            <label for="change-current-date">Current Tour Date *</label>
+            <input type="text" id="change-current-date" placeholder="YYYY-MM-DD" required>
+            <label for="change-new-date">Preferred New Date *</label>
+            <input type="text" id="change-new-date" placeholder="YYYY-MM-DD" required>
+            <label for="change-alt-date">Alternative Date (optional)</label>
+            <input type="text" id="change-alt-date" placeholder="YYYY-MM-DD">
+            <label for="change-message">Message</label>
+            <textarea id="change-message" placeholder="Any additional details or preferences"></textarea>
+            <button type="submit" class="manage-submit">Submit Date Change Request →</button>
+            <div class="form-success" id="change-success">✓ Your date change request has been sent! We'll confirm availability and respond by email shortly.</div>
+          </form>
+        </div>
       </div>
     </div>
   </div>
