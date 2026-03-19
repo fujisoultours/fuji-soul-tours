@@ -652,6 +652,20 @@
     .hamburger { display: block; }
   
 
+
+  .back-to-top {
+    position: fixed; bottom: 24px; right: 24px; z-index: 99;
+    width: 48px; height: 48px; border-radius: 50%;
+    background: var(--sumi); color: #fff;
+    display: none; align-items: center; justify-content: center;
+    font-size: 20px; text-decoration: none; border: none; cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    transition: opacity 0.3s, transform 0.2s;
+    opacity: 0;
+  }
+  .back-to-top.visible { display: flex; opacity: 0.8; }
+  .back-to-top:hover { opacity: 1; transform: translateY(-2px); }
+
   .bokun-loading {
     display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
     background: rgba(0,0,0,0.5); z-index: 9999;
@@ -665,21 +679,19 @@
   }
   @keyframes spin { to { transform: rotate(360deg); } }
 
-  .whatsapp-float {
-    position: fixed; bottom: 24px; right: 24px; z-index: 99;
-    width: 56px; height: 56px; border-radius: 50%;
-    background: #25D366; color: #fff;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 28px; text-decoration: none;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 6px 20px rgba(0,0,0,0.3); }
 
   .nav-cta-mobile { display: inline-block; }
     .nav-links .nav-cta { display: none; }
     .nav-logo img { height: 40px; }
-    .hero { padding: 120px 20px 60px; }
+    .hero { padding: 100px 16px 40px; min-height: auto; }
+
+    .hero h1 { font-size: clamp(22px, 6vw, 32px) !important; }
+    .hero .hero-sub { font-size: 14px !important; }
+    .hero-stats { gap: 16px !important; }
+    .hero-stat .val { font-size: 18px !important; }
+    .hero-stat .label { font-size: 11px !important; }
+    .hero-cta { padding: 14px 28px !important; font-size: 15px !important; }
+
     .hero-stats { gap: 24px; }
     .concept-box { padding: 28px 20px; }
     .weather-grid { grid-template-columns: 1fr; }
@@ -1582,7 +1594,7 @@ function switchModelTab(n) {
   flatpickr("#change-new-date", fpOpts);
   flatpickr("#change-alt-date", fpOpts);
 </script>
+<button class="back-to-top" id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 <div class="bokun-loading" id="bokunLoading"><div class="bokun-spinner"></div></div>
-<a href="https://wa.me/819039554101" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">💬</a>
 </body>
 </html>
