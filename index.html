@@ -655,16 +655,16 @@
 
   /* ===== MOBILE ===== */
   @media (max-width: 768px) {
-    .nav-links { display: none; }
+    .nav-links { display: none !important; }
     .nav-links.open {
-      display: flex; flex-direction: column;
+      display: flex !important; flex-direction: column;
       position: absolute; top: 100%; left: 0; right: 0;
       background: var(--shiro); padding: 16px 24px;
       border-bottom: 1px solid var(--usu-hai);
       gap: 16px;
     }
-    .hamburger { display: block; }
-    .nav-cta-mobile { display: inline-block; }
+    .hamburger { display: block !important; }
+    .nav-cta-mobile { display: inline-block !important; }
     .nav-links .nav-cta { display: none; }
     .nav-logo img { height: 40px; }
   }
