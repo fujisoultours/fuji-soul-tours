@@ -27,6 +27,9 @@
   :root {
     --shu: #0077B6;
     --shu-dark: #005A8C;
+    --cta: #C0392B;
+    --cta-dark: #A93226;
+    --cta-shadow: rgba(192,57,43,0.3);
     --sumi: #1a1a1a;
     --shiro: #FAFAF8;
     --kinari: #EEF4F8;
@@ -34,7 +37,7 @@
     --usu-hai: #DEE8EE;
     --gold: #B8860B;
     --green: #2D5A27;
-    --section-gap: 80px;
+    --section-gap: 28px;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -78,24 +81,24 @@
   }
   .nav-links a:hover { color: var(--sumi); }
   .nav-cta {
-    background: var(--shu) !important; color: #fff !important;
+    background: var(--cta) !important; color: #fff !important;
     padding: 8px 20px; border-radius: 6px;
     font-weight: 600 !important; font-size: 14px !important;
     transition: background 0.2s;
   }
-  .nav-cta:hover { background: #a83038 !important; }
+  .nav-cta:hover { background: var(--cta-dark) !important; }
 
 
 
   .nav-cta-mobile {
     display: none;
-    background: var(--shu); color: #fff;
+    background: var(--cta); color: #fff;
     padding: 7px 16px; border-radius: 6px;
     font-weight: 600; font-size: 14px;
     text-decoration: none; white-space: nowrap;
     transition: background 0.2s;
   }
-  .nav-cta-mobile:hover { background: #a83038; }
+  .nav-cta-mobile:hover { background: var(--cta-dark); }
 
   .hamburger {
     display: none; background: none; border: none; cursor: pointer;
@@ -196,7 +199,7 @@
   }
   .hero h1 em {
     font-style: normal;
-    color: var(--shu);
+    color: #1B2A4A;
   }
   .hero-sub {
     font-size: 15px; color: var(--hai);
@@ -219,17 +222,17 @@
   }
   .hero-cta {
     display: inline-flex; align-items: center; gap: 8px;
-    background: var(--shu); color: #fff;
+    background: var(--cta); color: #fff;
     padding: 16px 36px; border-radius: 8px;
     font-size: 15px; font-weight: 600;
     text-decoration: none;
     transition: all 0.2s;
-    box-shadow: 0 4px 16px rgba(0,119,182,0.3);
+    box-shadow: 0 4px 16px var(--cta-shadow);
   }
   .hero-cta:hover {
-    background: #a83038;
+    background: var(--cta-dark);
     transform: translateY(-1px);
-    box-shadow: 0 6px 24px rgba(0,119,182,0.35);
+    box-shadow: 0 6px 24px var(--cta-shadow);
   }
 
   /* ===== SECTIONS ===== */
@@ -527,15 +530,15 @@
   }
   .pricing-box .book-btn {
     display: inline-flex; align-items: center; gap: 8px;
-    background: var(--shu); color: #fff;
+    background: var(--cta); color: #fff;
     padding: 18px 48px; border-radius: 8px;
     font-size: 15px; font-weight: 600;
     text-decoration: none; border: none; cursor: pointer;
     transition: all 0.2s;
-    box-shadow: 0 4px 20px rgba(0,119,182,0.4);
+    box-shadow: 0 4px 20px var(--cta-shadow);
   }
   .pricing-box .book-btn:hover {
-    background: #a83038;
+    background: var(--cta-dark);
     transform: translateY(-1px);
   }
   .pricing-features {
@@ -824,8 +827,8 @@
     .pricing-box .price { font-size: 28px !important; }
     .vis-bars { height: 120px; }
     .info-banner { flex-direction: column; padding: 20px 16px !important; }
-    .section-gap { padding-top: 56px; }
-    :root { --section-gap: 56px; }
+    .section-gap { padding-top: 36px; }
+    :root { --section-gap: 36px; }
     section { padding: 0 16px !important; }
     .container { padding: 0 !important; }
     .review-card { padding: 20px !important; }
@@ -1038,8 +1041,8 @@
   #bokun_418f34f4_28e2_4185_85e4_7aa761106072 {
     display: block !important; width: 100% !important; max-width: 480px !important;
     margin: 0 auto !important; padding: 18px 32px !important;
-    background: var(--shu) !important; border-radius: 12px !important;
-    box-shadow: 0 4px 15px rgba(0,119,182,0.3) !important;
+    background: var(--cta) !important; border-radius: 12px !important;
+    box-shadow: 0 4px 15px var(--cta-shadow) !important;
     font-weight: 700 !important; font-size: 18px !important;
     text-decoration: none !important; text-align: center !important;
     color: #fff !important; border: none !important; cursor: pointer !important;
@@ -1047,10 +1050,10 @@
     font-family: 'Inter', sans-serif !important; letter-spacing: 0.5px !important;
   }
   #bokun_418f34f4_28e2_4185_85e4_7aa761106072:hover {
-    background: var(--shu-dark) !important;
-    box-shadow: 0 6px 20px rgba(0,119,182,0.4) !important;
+    background: var(--cta-dark) !important;
+    box-shadow: 0 6px 20px var(--cta-shadow) !important;
   }
-  #bokun_418f34f4_28e2_4185_85e4_7aa761106072:active { background: #004A75 !important; }
+  #bokun_418f34f4_28e2_4185_85e4_7aa761106072:active { background: #8E2B20 !important; }
   #bokun_418f34f4_28e2_4185_85e4_7aa761106072:disabled { opacity: 0.7; cursor: wait !important; }
 </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.css">
@@ -1710,7 +1713,7 @@
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-brand">Fuji <span>Soul</span> Tours</div>
+  <div class="footer-brand"><img src="images/logo.png" alt="Fuji Soul Tours" style="height:48px;width:auto;"></div>
   <div class="footer-links">
     <a href="mailto:fujisoultours@gmail.com">Email</a>
     <a href="https://www.instagram.com/fujisoultours" target="_blank" rel="noopener">Instagram</a>
