@@ -46,18 +46,15 @@ const REVIEWS = [
     countEl.textContent = '★ ' + avg + ' Rated · Private Tour';
   }
 
-  REVIEWS.forEach(r => {
+  const maxLen = 280;
+  grid.innerHTML = REVIEWS.map(r => {
     const stars = '★'.repeat(r.stars) + '☆'.repeat(5 - r.stars);
-    // Truncate long reviews
-    const maxLen = 280;
     const truncated = r.text.length > maxLen ? r.text.slice(0, maxLen) + '…' : r.text;
-
-    grid.innerHTML += `
-      <div class="review-card">
+    return `<div class="review-card">
         <div class="review-stars">${stars}</div>
         <p class="review-text">${truncated}</p>
         <div class="review-author">${r.author}</div>
         <div class="review-date">${r.date} · ${r.source}</div>
       </div>`;
-  });
+  }).join('');
 })();

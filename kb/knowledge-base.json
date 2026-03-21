@@ -1,0 +1,241 @@
+{
+  "lastUpdated": "2026-03-21",
+  "sources": ["website", "instagram"],
+  "tourOverview": {
+    "name": "Fuji Soul Tours – Mt. Fuji Cultural Private Tour",
+    "tagline": "Turn your Shinkansen travel day into a Mt. Fuji cultural highlight.",
+    "description": "Stop at Shin-Fuji Station on your bullet train journey between Tokyo and Kyoto/Osaka, and explore Mt. Fuji with a local-born guide — away from the tourist hubs.",
+    "duration": "4 hours",
+    "maxGuests": 5,
+    "startLocation": "Shin-Fuji Station exit",
+    "meetingPoint": "Your guide (Takumu) will wait right at the gate exit with a sign 'Fuji Soul Tours'.",
+    "availableHours": "8:00 – 17:00 (flexible based on your train schedule)",
+    "recommendation": "The earlier the better — morning hours tend to offer clearer views of Mt. Fuji."
+  },
+  "guide": {
+    "name": "Takumu",
+    "background": "Born in the shadow of Mt. Fuji, Fuji-native, bilingual English speaker, 10+ years local expertise.",
+    "philosophy": "Show you the Mt. Fuji that locals know and love, not just what's in guidebooks and viral reels. No tourist traps, only places I'd take my own family."
+  },
+  "pricing": {
+    "perPerson": {
+      "1guest": "$416 USD",
+      "2guests": "$209 USD per person",
+      "3to5guests": "$152 USD per person (best rate)"
+    },
+    "currencies": {
+      "JPY": "¥22,724~",
+      "USD": "$152~",
+      "AUD": "A$235~",
+      "CAD": "C$207~"
+    },
+    "largeGroup": "For groups of 6–10, additional ¥100,000 (non-refundable, paid in advance) on top of the standard per-person rate for 5 guests.",
+    "extras": "Activities and food at stops are paid separately on-site (not included in tour price)."
+  },
+  "whatsIncluded": [
+    "Private tour for your group only (max 5 guests)",
+    "Premium air-conditioned van with luggage storage",
+    "Local-born English-speaking guide (Takumu)",
+    "Bottled water (one per person)",
+    "Hidden photo spots — curated viewpoints locals love",
+    "Luggage-friendly — large suitcases welcome"
+  ],
+  "cancellationPolicy": {
+    "24hPlus": "Full refund or free date change",
+    "under24h": "No refund",
+    "howToCancel": "Use the 'Manage my booking' button in your booking confirmation email.",
+    "dateChange": "Contact us or use the date change form on the website."
+  },
+  "scenicSpots": [
+    {
+      "name": "Campsite near Mt. Fuji (Fumotoppara)",
+      "duration": "30–60 min",
+      "cost": "¥1,500/group + ¥500/person",
+      "booking": "Required",
+      "description": "Stunning view of Mt. Fuji through big windows in a campsite cafe"
+    },
+    {
+      "name": "Panoramic Bridge View",
+      "duration": "15–30 min",
+      "cost": "Free",
+      "booking": "Not needed",
+      "description": "Elevated Mt. Fuji view near the station, perfect for arrival photos"
+    },
+    {
+      "name": "Plateau View with Cows",
+      "duration": "15–45 min",
+      "cost": "Free",
+      "booking": "Not needed",
+      "description": "Up-close dramatic Fuji panorama with cows"
+    },
+    {
+      "name": "Lakeside Viewing Spot",
+      "duration": "20–45 min",
+      "cost": "Free",
+      "booking": "Not needed",
+      "description": "Mt. Fuji reflected on still waters — the stunning 'Double Fuji' mirror image"
+    },
+    {
+      "name": "FamilyMart with Mt. Fuji",
+      "duration": "10–20 min",
+      "cost": "Free",
+      "booking": "Not needed",
+      "description": "The iconic convenience store with a perfect Mt. Fuji backdrop — a must-have photo spot"
+    },
+    {
+      "name": "7Eleven with Mt. Fuji",
+      "duration": "10–20 min",
+      "cost": "Free",
+      "booking": "Not needed",
+      "description": "Another beloved Fuji photo spot — Mt. Fuji perfectly framed behind the store"
+    },
+    {
+      "name": "Highland Park Viewpoint",
+      "duration": "15–30 min",
+      "cost": "Free",
+      "booking": "Not needed",
+      "description": "Peaceful local park with unobstructed Fuji views, away from tourist crowds"
+    }
+  ],
+  "culturalExperiences": [
+    {
+      "name": "Award-Winning Local Lunch (Yakisoba)",
+      "duration": "30–45 min",
+      "cost": "~¥700–900",
+      "booking": "Not needed",
+      "description": "Regional soul food — a beloved local specialty you can only find in this area"
+    },
+    {
+      "name": "UNESCO Heritage Center (Fujisan Hongu Sengen Shrine)",
+      "duration": "20–90 min",
+      "cost": "¥300",
+      "booking": "Not needed",
+      "description": "Interactive exhibits on Mt. Fuji's cultural and natural significance. Reflection pond + red torii gate"
+    },
+    {
+      "name": "Café Matcha / Green Tea",
+      "duration": "30 min",
+      "cost": "¥900/person",
+      "booking": "Not needed",
+      "description": "Authentic matcha or green tea + traditional sweets at a peaceful tea house café"
+    },
+    {
+      "name": "Hands-On Matcha Preparation",
+      "duration": "60 min",
+      "cost": "¥3,000/person",
+      "booking": "Required",
+      "description": "Whisk your own matcha under expert guidance. Choose tatami or table seating"
+    },
+    {
+      "name": "Sacred Shrine Visit (Fujisan Hongu Sengen Shrine)",
+      "duration": "20 min",
+      "cost": "Free",
+      "booking": "Not needed",
+      "description": "Principal shrine for Mt. Fuji worship with special prayers available"
+    },
+    {
+      "name": "Sacred Waterfall (Shiraito)",
+      "duration": "30–60 min",
+      "cost": "Free",
+      "booking": "Not needed",
+      "description": "Mt. Fuji's snowmelt cascading in delicate white threads — a UNESCO natural wonder"
+    },
+    {
+      "name": "Kimono Rental Experience",
+      "duration": "20–30 min",
+      "cost": "¥3,500/person (cash only)",
+      "booking": "Required",
+      "description": "Wear a traditional kimono and take photos with Mt. Fuji as your backdrop"
+    },
+    {
+      "name": "Local Craft Beer Taproom",
+      "duration": "20–60 min",
+      "cost": "~¥700+",
+      "booking": "Weekends only",
+      "description": "Small-batch craft beers brewed with Mt. Fuji spring water and organic local grains"
+    },
+    {
+      "name": "Local Sake Tasting",
+      "duration": "20 min",
+      "cost": "Free",
+      "booking": "Required",
+      "description": "Sample locally brewed sake made with pure Mt. Fuji spring water"
+    },
+    {
+      "name": "Mochi Gelato & Matcha/Green Tea Latte",
+      "duration": "15–30 min",
+      "cost": "~¥500–800",
+      "booking": "Not needed",
+      "description": "Sweet treats featuring local mochi and premium matcha or green tea"
+    }
+  ],
+  "faq": [
+    {
+      "q": "Will this disrupt my travel schedule?",
+      "a": "No. The 4-hour tour with flexible timing means you can still reach Tokyo, Kyoto, or Osaka the same day. We plan around your Shinkansen schedule."
+    },
+    {
+      "q": "Can I extend the tour duration?",
+      "a": "Yes! Contact us for extended tour pricing and conditions. We can customize the experience to fit your schedule."
+    },
+    {
+      "q": "What about my luggage?",
+      "a": "Large suitcases welcome! Secure storage in our van throughout the tour. For groups of 4–5 with large bags, we'll use station or tourist office lockers nearby (¥300–800 per piece, cash only)."
+    },
+    {
+      "q": "Where do we meet?",
+      "a": "Shin-Fuji Station exit. Your guide will wait right at the gate exit with a sign 'Fuji Soul Tours'."
+    },
+    {
+      "q": "What if the weather is bad or my train is delayed?",
+      "a": "We have backup plans with alternative cultural experiences and offer flexible rescheduling. Real-time communication via WhatsApp."
+    },
+    {
+      "q": "Can I join from Osaka/Kyoto direction?",
+      "a": "Yes. Shin-Fuji is perfectly located between Osaka/Kyoto and Tokyo, making it ideal for a stopover on your return journey too."
+    },
+    {
+      "q": "Can I do a Tokyo → Shin-Fuji → Tokyo round trip?",
+      "a": "Yes. Shin-Fuji is only 1 hour from Tokyo, so a round trip in one day is easy and comfortable."
+    },
+    {
+      "q": "What time does the tour start?",
+      "a": "Flexible — we adjust the start time based on your train schedule. Available 8:00–17:00. The earlier the better for clearer Mt. Fuji views."
+    },
+    {
+      "q": "Can children under 6 join the tour?",
+      "a": "Japanese law requires a child safety seat for children aged 5 and under. We do not normally carry child seats, so we are usually unable to accommodate young children. However, depending on the situation, it may be possible. Please contact us to discuss your needs."
+    },
+    {
+      "q": "Can I book for more than 5 guests?",
+      "a": "Our standard tour accommodates up to 5 guests. For groups of 6–10, we may be able to arrange a larger van — this requires an additional ¥100,000 (non-refundable, paid in advance) on top of the standard per-person rate for 5 guests. For groups larger than 10, we coordinate multiple vehicles. Please contact us for a custom quote."
+    },
+    {
+      "q": "What if someone in my group has mobility difficulties?",
+      "a": "We can adjust the destinations based on your mobility level — some stops require less walking than others. Your guide will tailor the route accordingly. If you use a walker, we can store it in the trunk, though the maximum group size is reduced to 3 guests. Unfortunately, we are unable to accommodate wheelchairs as our vehicle is not equipped for them. Please contact us in advance to plan the best itinerary."
+    },
+    {
+      "q": "When can you see Mt. Fuji?",
+      "a": "Mt. Fuji is visible approximately 40% of the year. Best months: Nov–Feb (60–73% visibility). Summer: 13–17% (rainy/humid). Even when Mt. Fuji hides in the clouds, cultural experiences make this tour rewarding. Your guide adjusts the route to maximize your experience regardless of visibility."
+    }
+  ],
+  "importantNotes": {
+    "cash": "Bring Japanese Yen cash. Some spots are cash-only — lockers, kimono rental, shrine offerings, certain cafés. Most restaurants and shops also accept cards.",
+    "train": "Take the Kodama (こだま) train. Only Kodama stops at Shin-Fuji Station — not Nozomi or Hikari. Covered by JR Pass and usually less crowded.",
+    "seats": "Best Shinkansen seats for Mt. Fuji views: From Tokyo → sit in seat E (right-side window). From Kyoto/Osaka → sit in seat A (left-side window)."
+  },
+  "shinkansenRoutes": [
+    "Tokyo → Shin-Fuji → Kyoto",
+    "Tokyo → Shin-Fuji → Osaka (Shin-Osaka)",
+    "Kyoto → Shin-Fuji → Tokyo",
+    "Osaka → Shin-Fuji → Tokyo",
+    "Tokyo → Shin-Fuji → Tokyo (Round Trip)"
+  ],
+  "contact": {
+    "email": "fujisoultours@gmail.com",
+    "instagram": "https://www.instagram.com/fujisoultours",
+    "whatsapp": "https://wa.me/819039554101",
+    "whatsappNumber": "+81-90-3955-4101"
+  },
+  "instagramFAQ": []
+}

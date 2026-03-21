@@ -21,8 +21,10 @@
 <link rel="icon" type="image/png" sizes="192x192" href="/fvicon192.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <meta name="description" content="Turn your Shinkansen travel day into a Mt. Fuji cultural highlight. 4-hour private tour from Shin-Fuji Station with a local-born guide.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap');
 
   :root {
     --shu: #0077B6;
@@ -119,6 +121,13 @@
   .hero-img-wrap {
     position: absolute; top: 0; left: 0; width: 100%; height: 100%;
   }
+  .hero-bg-img {
+    width: 100%; height: 100%; object-fit: cover; object-position: center;
+  }
+  .hero-overlay {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.45); z-index: 1;
+  }
   .hero-top {
     position: relative; z-index: 2;
     text-align: center;
@@ -136,52 +145,13 @@
     background: linear-gradient(180deg, var(--kinari) 0%, var(--shiro) 100%);
     position: relative;
     overflow: hidden;
-    background-size: cover;
-    background-position: center;
   }
-  .hero.has-bg {
-    background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.55)), var(--hero-bg) center/cover;
-  }
-  .hero.has-bg, .hero.has-bg .hero-sub { color: #fff; }
-  .hero.has-bg .hero-stat .val { color: #fff; }
-  .hero.has-bg .hero-stat .label { color: rgba(255,255,255,0.7); }
-  .hero.has-bg .hero-badge { background: rgba(255,255,255,0.15); color: #fff; }
   .hero::before {
     content: '🗻';
     position: absolute; top: 60px; left: 50%; transform: translateX(-50%);
     font-size: 180px; opacity: 0.04;
   }
-  .hero.has-bg::before { display: none; }
 
-  /* ===== GALLERY ===== */
-  .gallery-scroll {
-    display: flex; gap: 12px; overflow-x: auto;
-    padding: 20px 0; margin-top: 24px;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
-  .gallery-scroll::-webkit-scrollbar { display: none; }
-  .gallery-item {
-    flex: 0 0 320px; scroll-snap-align: start;
-    border-radius: 12px; overflow: hidden;
-    aspect-ratio: 16/10;
-    position: relative;
-  }
-  .gallery-item img {
-    width: 100%; height: 100%; object-fit: cover;
-    transition: transform 0.4s;
-  }
-  .gallery-item:hover img { transform: scale(1.03); }
-  .gallery-item .caption {
-    position: absolute; bottom: 0; left: 0; right: 0;
-    background: linear-gradient(transparent, rgba(0,0,0,0.6));
-    padding: 20px 16px 12px;
-    font-size: 14px; color: #fff; font-weight: 500;
-  }
-  @media(max-width:1024px) {
-    .gallery-item { flex: 0 0 280px; }
-  }
   .hero-badge {
     display: inline-flex; align-items: center; gap: 6px;
     background: rgba(0,119,182,0.08); color: var(--shu);
@@ -284,58 +254,6 @@
     text-align: center; font-size: 15px; color: var(--hai); line-height: 1.8;
   }
 
-  /* ===== TIMETABLE ===== */
-  .timetable {
-    width: 100%; border-collapse: collapse; margin-top: 24px;
-  }
-  .timetable th {
-    text-align: left; font-size: 14px; text-transform: uppercase;
-    letter-spacing: 1.5px; color: var(--hai); padding: 12px 16px;
-    border-bottom: 2px solid var(--usu-hai);
-  }
-  .timetable td {
-    padding: 14px 16px; font-size: 14px;
-    border-bottom: 1px solid var(--usu-hai);
-    vertical-align: top;
-  }
-  .timetable .time-col { font-weight: 600; white-space: nowrap; color: var(--shu); }
-  .timetable .highlight-row { background: rgba(0,119,182,0.04); }
-
-  /* ===== ROUTES / CARDS ===== */
-  .routes-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 20px; margin-top: 20px;
-  }
-  .route-card {
-    background: #fff;
-    border: 1px solid var(--usu-hai);
-    border-radius: 12px;
-    padding: 32px 28px;
-    transition: all 0.2s;
-  }
-  .route-card:hover {
-    border-color: var(--shu);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-  }
-  .route-card .icon { font-size: 15px; margin-bottom: 16px; }
-  .route-card h3 {
-    font-family: 'Noto Serif JP', serif;
-    font-size: 15px; margin-bottom: 12px;
-  }
-  .route-card ul {
-    list-style: none; padding: 0;
-  }
-  .route-card ul li {
-    font-size: 14px; color: var(--hai);
-    padding: 4px 0; padding-left: 18px;
-    position: relative;
-  }
-  .route-card ul li::before {
-    content: '·'; position: absolute; left: 0;
-    color: var(--shu); font-weight: 700; font-size: 15px;
-    line-height: 1;
-  }
 
   /* ===== WEATHER FLEX ===== */
   .weather-grid {
@@ -387,57 +305,7 @@
   .included-item .text h4 { font-size: 15px; font-weight: 600; margin-bottom: 2px; }
   .included-item .text p { font-size: 14px; color: var(--hai); }
 
-  .info-banner {
-    background: #FFF8E1;
-    border: 1px solid #F0E0A0;
-    border-radius: 12px;
-    padding: 28px 32px;
-    margin-top: 36px;
-    display: flex; align-items: flex-start; gap: 16px;
-  }
-  .info-banner .icon { font-size: 15px; flex-shrink: 0; }
-  .info-banner h4 { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
-  .info-banner p { font-size: 14px; color: var(--hai); line-height: 1.7; }
 
-  /* ===== VISIBILITY ===== */
-  .vis-chart {
-    margin-top: 36px;
-    background: #fff;
-    border: 1px solid var(--usu-hai);
-    border-radius: 12px;
-    padding: 32px;
-  }
-  .vis-bars { display: flex; align-items: flex-end; gap: 8px; height: 180px; margin-top: 20px; }
-  .vis-bar-wrap {
-    flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px;
-  }
-  .vis-bar {
-    width: 100%; border-radius: 6px 6px 0 0;
-    background: var(--usu-hai);
-    transition: background 0.3s;
-    position: relative;
-    min-height: 10px;
-  }
-  .vis-bar.peak { background: var(--shu); }
-  .vis-bar.good { background: #D4826A; }
-  .vis-bar.low { background: var(--usu-hai); }
-  .vis-bar-val {
-    font-size: 14px; font-weight: 600; color: var(--hai); text-align: center;
-  }
-  .vis-bar-month {
-    font-size: 14px; color: var(--hai); text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-  .vis-legend {
-    display: flex; gap: 24px; margin-top: 20px; justify-content: center;
-  }
-  .vis-legend span {
-    font-size: 14px; color: var(--hai);
-    display: flex; align-items: center; gap: 6px;
-  }
-  .vis-legend .dot {
-    width: 10px; height: 10px; border-radius: 3px;
-  }
 
   /* ===== HOST ===== */
   .host-section {
@@ -565,37 +433,6 @@
   .currency-btn.active { background: var(--shu); color: #fff; border-color: var(--shu); }
 
   /* ===== MANAGE BOOKING ===== */
-  .cancellation-policy-box {
-    background: var(--kinari); border: 1px solid var(--usu-hai); border-radius: 12px;
-    padding: 28px 32px; margin-bottom: 32px;
-  }
-  .cancellation-policy-box h3 {
-    font-size: 15px; font-weight: 700; margin-bottom: 14px; color: var(--sumi);
-    display: flex; align-items: center; gap: 8px;
-  }
-  .policy-table { width: 100%; border-collapse: collapse; }
-  .policy-table th {
-    text-align: left; font-size: 14px; text-transform: uppercase; letter-spacing: 1.5px;
-    color: var(--hai); padding: 8px 12px; border-bottom: 2px solid var(--usu-hai);
-  }
-  .policy-table td { padding: 10px 12px; font-size: 14px; border-bottom: 1px solid var(--usu-hai); }
-  .policy-table .refund-free { color: var(--green); font-weight: 600; }
-  .policy-table .refund-none { color: #c0392b; font-weight: 600; }
-  .policy-table .refund-change { color: var(--shu); font-weight: 600; }
-  .manage-grid {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
-  }
-  .manage-card {
-    background: #fff; border: 1px solid var(--usu-hai); border-radius: 12px; padding: 32px;
-  }
-  .manage-card h3 {
-    font-family: 'Noto Serif JP', serif; font-size: 15px; margin-bottom: 8px;
-    display: flex; align-items: center; gap: 10px;
-  }
-  .manage-card .policy-note {
-    font-size: 14px; color: var(--hai); background: var(--kinari); border-radius: 8px;
-    padding: 12px 16px; margin-bottom: 20px; line-height: 1.7;
-  }
   .manage-form label {
     display: block; font-size: 14px; font-weight: 600; color: var(--sumi);
     margin-bottom: 4px; margin-top: 14px;
@@ -622,10 +459,6 @@
     padding: 16px 20px; margin-top: 16px; font-size: 14px; color: #2e7d32;
     text-align: center; font-weight: 500;
   }
-  @media (max-width: 1024px) {
-    .manage-grid { grid-template-columns: 1fr; }
-    .cancellation-policy-box { padding: 20px; }
-  }
 
   /* ===== FOOTER ===== */
   footer {
@@ -651,12 +484,6 @@
   .footer-links a:hover { color: var(--sumi); }
   .footer-copy {
     font-size: 14px; color: var(--hai);
-  }
-
-  /* ===== DIVIDER ===== */
-  .divider {
-    width: 48px; height: 2px; background: var(--shu);
-    margin: 20px 0;
   }
 
   /* ===== MOBILE ===== */
@@ -756,8 +583,6 @@
     .review-author { font-size: 13px !important; }
     .review-date { font-size: 12px !important; }
     .review-stars { font-size: 13px !important; }
-    .route-card h3 { font-size: 16px !important; }
-    .route-card ul li { font-size: 13px !important; }
     .weather-card h3 { font-size: 16px !important; }
     .weather-card ul li { font-size: 14px !important; }
     .weather-note { font-size: 14px !important; }
@@ -781,8 +606,6 @@
     .manage-form label { font-size: 13px !important; }
     .manage-form input, .manage-form textarea { font-size: 14px !important; }
     .manage-submit { font-size: 14px !important; }
-    .cancellation-policy-box h3 { font-size: 15px !important; }
-    .policy-table td { font-size: 13px !important; }
     .model-table { font-size: 13px !important; }
     .model-table th { font-size: 10px !important; }
     .model-table td { font-size: 13px !important; }
@@ -792,11 +615,7 @@
     .route-table { font-size: 13px !important; }
     .route-table th { font-size: 10px !important; }
     .route-table td { font-size: 13px !important; padding: 8px 8px !important; }
-    .timetable td { font-size: 13px !important; }
-    .timetable th { font-size: 10px !important; }
     .nav-cta-mobile { font-size: 12px !important; }
-    .info-banner h4 { font-size: 14px !important; }
-    .info-banner p { font-size: 13px !important; }
 
     /* === MOBILE HERO === */
     .hero-top .hero-badge { font-size: 11px !important; padding: 4px 12px !important; margin-bottom: 8px !important; }
@@ -826,16 +645,11 @@
     .host-section { flex-direction: column; gap: 20px; }
     .pricing-box { padding: 32px 20px; }
     .pricing-box .price { font-size: 28px !important; }
-    .vis-bars { height: 120px; }
-    .info-banner { flex-direction: column; padding: 20px 16px !important; }
-    .section-gap { padding-top: 36px; }
     :root { --section-gap: 36px; }
     section { padding: 0 16px !important; }
     .container { padding: 0 !important; }
     .review-card { padding: 20px !important; }
     .included-item { padding: 14px !important; }
-    .route-card { padding: 20px 16px !important; }
-    .manage-card { padding: 20px !important; }
 
     /* === MOBILE: LINE HEIGHT === */
     body { line-height: 1.55 !important; }
@@ -899,7 +713,6 @@
     .model-tab-btn { padding: 6px 14px !important; font-size: 13px !important; }
 
     /* === MOBILE: IMPORTANT NOTES === */
-    .info-banner .icon { font-size: 18px !important; }
 
     /* === MOBILE: OVERRIDE ALL INLINE font-size:18px === */
     [style*="font-size:15px"] { font-size: 14px !important; }
@@ -948,7 +761,10 @@
     position: relative; display: flex;
     align-items: center; justify-content: center;
   }
-  .dest-img-placeholder { font-size: 14px; color: #aaa; pointer-events: none; }
+  .dest-img img {
+    width: 100%; height: 100%; object-fit: cover;
+    position: absolute; top: 0; left: 0;
+  }
   .dest-num-badge {
     position: absolute; top: 10px; left: 10px;
     font-size: 18px; font-weight: 900; color: #fff;
@@ -995,9 +811,6 @@
     color: white; font-weight: 600;
   }
 
-  /* ===== FAQ CHART ===== */
-  .faq-a-chart { max-height: 0; }
-  .faq-item.open .faq-a-chart { max-height: 600px; }
 
   /* ===== MODEL COURSE TIMELINE ===== */
   .model-tab-btn {
@@ -1056,6 +869,114 @@
   }
   #bokun_418f34f4_28e2_4185_85e4_7aa761106072:active { background: #8E2B20 !important; }
   #bokun_418f34f4_28e2_4185_85e4_7aa761106072:disabled { opacity: 0.7; cursor: wait !important; }
+
+  /* ── Chatbot ── */
+  .chatbot-toggle {
+    position: fixed; bottom: 24px; right: 24px; z-index: 9999;
+    width: 60px; height: 60px; border-radius: 50%;
+    background: var(--shu); color: #fff; border: none; cursor: pointer;
+    box-shadow: 0 4px 16px rgba(0,119,182,0.4);
+    display: flex; align-items: center; justify-content: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .chatbot-toggle:hover { transform: scale(1.08); box-shadow: 0 6px 24px rgba(0,119,182,0.5); }
+  .chatbot-toggle svg { width: 28px; height: 28px; }
+  .chatbot-toggle .chat-close { display: none; }
+  .chatbot-toggle.active .chat-open { display: none; }
+  .chatbot-toggle.active .chat-close { display: block; }
+
+  .chatbot-window {
+    position: fixed; bottom: 100px; right: 24px; z-index: 9998;
+    width: 380px; max-width: calc(100vw - 32px); height: 520px; max-height: calc(100vh - 140px);
+    background: #fff; border-radius: 16px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.15);
+    display: none; flex-direction: column; overflow: hidden;
+  }
+  .chatbot-window.open { display: flex; animation: chatSlideUp 0.3s ease; }
+  @keyframes chatSlideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+  .chatbot-header {
+    background: var(--shu); color: #fff; padding: 16px 20px;
+    display: flex; align-items: center; gap: 12px; flex-shrink: 0;
+  }
+  .chatbot-header-icon {
+    width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.2);
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .chatbot-header-icon svg { width: 20px; height: 20px; }
+  .chatbot-header-text h3 { font-size: 15px; font-weight: 600; margin: 0; }
+  .chatbot-header-text p { font-size: 12px; opacity: 0.85; margin: 2px 0 0; }
+
+  .chatbot-messages {
+    flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 12px;
+    scroll-behavior: smooth;
+  }
+  .chatbot-messages::-webkit-scrollbar { width: 4px; }
+  .chatbot-messages::-webkit-scrollbar-thumb { background: #ccc; border-radius: 4px; }
+
+  .chat-msg { max-width: 85%; padding: 10px 14px; border-radius: 14px; font-size: 14px; line-height: 1.5; word-break: break-word; }
+  .chat-msg.bot { background: var(--kinari); color: var(--sumi); align-self: flex-start; border-bottom-left-radius: 4px; }
+  .chat-msg.user { background: var(--shu); color: #fff; align-self: flex-end; border-bottom-right-radius: 4px; }
+  .chat-msg.bot ul, .chat-msg.bot ol { margin: 6px 0; padding-left: 18px; }
+  .chat-msg.bot li { margin: 3px 0; }
+  .chat-msg.bot strong { font-weight: 600; }
+
+  .chat-typing { align-self: flex-start; padding: 10px 18px; background: var(--kinari); border-radius: 14px; border-bottom-left-radius: 4px; display: flex; gap: 4px; }
+  .chat-typing span { width: 7px; height: 7px; background: #999; border-radius: 50%; animation: typeBounce 1.2s infinite; }
+  .chat-typing span:nth-child(2) { animation-delay: 0.15s; }
+  .chat-typing span:nth-child(3) { animation-delay: 0.3s; }
+  @keyframes typeBounce { 0%, 60%, 100% { transform: translateY(0); } 30% { transform: translateY(-6px); } }
+
+  .chat-contact-card {
+    background: #f8f9fa; border: 1px solid var(--usu-hai); border-radius: 12px; padding: 14px; margin-top: 4px;
+  }
+  .chat-contact-card p { font-size: 13px; color: var(--hai); margin: 0 0 10px; }
+  .chat-contact-btns { display: flex; flex-direction: column; gap: 8px; }
+  .chat-contact-btn {
+    display: flex; align-items: center; gap: 8px; padding: 10px 14px;
+    background: #fff; border: 1px solid var(--usu-hai); border-radius: 8px;
+    cursor: pointer; font-size: 13px; color: var(--sumi); transition: border-color 0.2s;
+    text-decoration: none;
+  }
+  .chat-contact-btn:hover { border-color: var(--shu); }
+  .chat-contact-btn svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+  .chat-copy-area {
+    margin-top: 10px; background: #fff; border: 1px solid var(--usu-hai); border-radius: 8px; padding: 10px 12px;
+    position: relative;
+  }
+  .chat-copy-area p { font-size: 12px; color: var(--hai); margin: 0 0 6px; font-weight: 500; }
+  .chat-copy-text { font-size: 13px; color: var(--sumi); line-height: 1.5; margin: 0; }
+  .chat-copy-btn {
+    display: inline-flex; align-items: center; gap: 4px; margin-top: 8px; padding: 5px 12px;
+    background: var(--shu); color: #fff; border: none; border-radius: 6px;
+    cursor: pointer; font-size: 12px; font-weight: 500; transition: background 0.2s;
+  }
+  .chat-copy-btn:hover { background: var(--shu-dark); }
+  .chat-copy-btn.copied { background: var(--green); }
+
+  .chatbot-input {
+    display: flex; padding: 12px 16px; border-top: 1px solid #eee; flex-shrink: 0; gap: 8px;
+    background: #fff;
+  }
+  .chatbot-input input {
+    flex: 1; border: 1px solid #ddd; border-radius: 24px; padding: 10px 16px;
+    font-size: 14px; outline: none; font-family: inherit; transition: border-color 0.2s;
+  }
+  .chatbot-input input:focus { border-color: var(--shu); }
+  .chatbot-input button {
+    width: 40px; height: 40px; border-radius: 50%; background: var(--shu); color: #fff;
+    border: none; cursor: pointer; display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s; flex-shrink: 0;
+  }
+  .chatbot-input button:hover { background: var(--shu-dark); }
+  .chatbot-input button:disabled { opacity: 0.5; cursor: not-allowed; }
+  .chatbot-input button svg { width: 18px; height: 18px; }
+
+  @media (max-width: 480px) {
+    .chatbot-window { bottom: 0; right: 0; width: 100vw; height: 100vh; max-height: 100vh; border-radius: 0; }
+    .chatbot-toggle { bottom: 16px; right: 16px; width: 54px; height: 54px; }
+  }
 </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.css">
 </head>
@@ -1065,7 +986,7 @@
 <nav id="nav">
   <div class="nav-inner">
     <a href="#" class="nav-logo"><img src="images/logo.png" alt="Fuji Soul Tours"></a>
-    <a href="#book" class="nav-cta-mobile" onclick="var b=document.getElementById('bokun_418f34f4_28e2_4185_85e4_7aa761106072');if(b){b.click();return false;}">Book Now</a>
+    <a href="#book" class="nav-cta-mobile" onclick="return !openBooking()">Book Now</a>
     <button class="hamburger" id="hamburger" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -1077,16 +998,16 @@
       <a href="#book">Pricing</a>
       <a href="#reviews">Reviews</a>
       <a href="#manage">Manage Booking</a>
-      <a href="#book" class="nav-cta" onclick="var b=document.getElementById('bokun_418f34f4_28e2_4185_85e4_7aa761106072');if(b){b.click();return false;}">Book Now</a>
+      <a href="#book" class="nav-cta" onclick="return !openBooking()">Book Now</a>
     </div>
   </div>
 </nav>
 
 <!-- HERO -->
-<header class="hero" style="position:relative;overflow:hidden;">
+<header class="hero">
   <div class="hero-img-wrap">
-    <img src="images/hero.jpg" alt="Mt. Fuji Cultural Tour" class="hero-bg-img" style="width:100%;height:100%;object-fit:cover;object-position:center;">
-    <div class="hero-overlay" style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.45);z-index:1;"></div>
+    <img src="images/hero.jpg" alt="Mt. Fuji Cultural Tour" class="hero-bg-img">
+    <div class="hero-overlay"></div>
   </div>
   <div class="hero-top">
     <div class="hero-badge" style="background:rgba(255,255,255,0.15);color:#fff;">★ 5.0 Rated · Private Tour</div>
@@ -1117,7 +1038,7 @@
       </div>
     </div>
     <p class="hero-price" style="margin-top:20px;margin-bottom:12px;font-size:15px;font-weight:700;color:#fff;letter-spacing:0.3px;">From <span style="font-family:'Noto Serif JP',serif;font-size:15px;">$152</span> / person</p>
-    <a href="#book" class="hero-cta" onclick="event.preventDefault();var btn=document.getElementById('bokun_418f34f4_28e2_4185_85e4_7aa761106072');if(btn&&!btn.disabled){btn.click();}else{document.getElementById('book').scrollIntoView({behavior:'smooth'});}">Check Availability →</a>
+    <a href="#book" class="hero-cta" onclick="event.preventDefault();openBooking();">Check Availability →</a>
     <p class="hero-lpg" style="margin-top:12px;font-size:13px;font-weight:600;color:#2ecc71;letter-spacing:0.3px;">🏷️ Lowest Price Guarantee</p>
     </div>
   </div>
@@ -1143,7 +1064,7 @@
     <h2 class="section-title">Stop at Mt. Fuji on Your Shinkansen Day</h2>
     <p class="section-desc">Shin-Fuji Station is a quick Kodama stop between Tokyo and Kyoto. Turn your travel day into a Mt. Fuji cultural experience — and still arrive with plenty of time to explore.</p>
 
-    <div class="route-tabs" style="display:flex;gap:8px;justify-content:center;margin:2rem 0 1.5rem;flex-wrap:wrap;">
+    <div class="route-tabs">
       <button class="route-tab active" onclick="switchRouteTab(0)">Tokyo → Kyoto</button>
       <button class="route-tab" onclick="switchRouteTab(1)">Tokyo → Osaka</button>
       <button class="route-tab" onclick="switchRouteTab(2)">Kyoto → Tokyo</button>
@@ -1243,13 +1164,13 @@
 <div class="dest-carousel-wrap">
 <button class="dest-arrow dest-prev" onclick="scrollCarousel(this,-1)">&lsaquo;</button>
 <div class="dest-carousel" id="carousel-views">
-<div class="dest-card"><div class="dest-img" style="background:#EEF4F8;height:180px;display:flex;align-items:center;justify-content:center;position:relative;"><span class="dest-num-badge">1</span><img src="images/views/00_fumotoppara.jpeg" style="width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;" loading="lazy" alt="Fumotoppara"></div><div class="dest-body"><h4>Campsite near Mt. Fuji</h4><div class="dest-meta"><span class="dest-time-row">⏱ 30–60 min</span><span class="dest-booking req">🔴 Reservation required · ¥1,500/group + ¥500/person</span></div><p>Stunning view of Mt. Fuji through big windows in a campsite cafe.</p></div></div>
-<div class="dest-card"><div class="dest-img" style="background:#EEF4F8;height:180px;display:flex;align-items:center;justify-content:center;position:relative;"><span class="dest-num-badge">2</span><img src="images/views/01_bridge.jpeg" style="width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;" loading="lazy" alt="Panoramic Bridge View"></div><div class="dest-body"><h4>Panoramic Bridge View</h4><div class="dest-meta"><span class="dest-time-row">⏱ 15–30 min</span><span class="dest-booking ok">✅ No booking needed · Free</span></div><p>Elevated Mt. Fuji view near the station, perfect for arrival photos</p></div></div>
-<div class="dest-card"><div class="dest-img" style="background:#EEF4F8;height:180px;display:flex;align-items:center;justify-content:center;position:relative;"><span class="dest-num-badge">3</span><img src="images/views/03_plateau.jpeg" style="width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;" loading="lazy" alt="Dramatic Plateau View"></div><div class="dest-body"><h4>Plateau View with Cows</h4><div class="dest-meta"><span class="dest-time-row">⏱ 15–45 min</span><span class="dest-booking ok">✅ No booking needed · Free</span></div><p>Up-close dramatic Fuji panorama with cows</p></div></div>
-<div class="dest-card"><div class="dest-img" style="background:#EEF4F8;height:180px;display:flex;align-items:center;justify-content:center;position:relative;"><span class="dest-num-badge">4</span><img src="images/views/04_lakeside.jpeg" style="width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;" loading="lazy" alt="Lakeside Viewing Spot"></div><div class="dest-body"><h4>Lakeside Viewing Spot</h4><div class="dest-meta"><span class="dest-time-row">⏱ 20–45 min</span><span class="dest-booking ok">✅ No booking needed · Free</span></div><p>Mt. Fuji reflected on still waters — the stunning "Double Fuji" mirror image</p></div></div>
-<div class="dest-card"><div class="dest-img" style="background:#EEF4F8;height:180px;display:flex;align-items:center;justify-content:center;position:relative;"><span class="dest-num-badge">5</span><img src="images/views/05_familymart.jpg" style="width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;" loading="lazy" alt="FamilyMart with Mt. Fuji"></div><div class="dest-body"><h4>FamilyMart with Mt. Fuji</h4><div class="dest-meta"><span class="dest-time-row">⏱ 10–20 min</span><span class="dest-booking ok">✅ No booking needed · Free</span></div><p>The iconic convenience store with a perfect Mt. Fuji backdrop — a must-have photo spot</p></div></div>
-<div class="dest-card"><div class="dest-img" style="background:#EEF4F8;height:180px;display:flex;align-items:center;justify-content:center;position:relative;"><span class="dest-num-badge">6</span><img src="images/views/06_7eleven.jpeg" style="width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;" loading="lazy" alt="7Eleven with Mt. Fuji"></div><div class="dest-body"><h4>7Eleven with Mt. Fuji</h4><div class="dest-meta"><span class="dest-time-row">⏱ 10–20 min</span><span class="dest-booking ok">✅ No booking needed · Free</span></div><p>Another beloved Fuji photo spot — catch Mt. Fuji perfectly framed behind the store</p></div></div>
-<div class="dest-card"><div class="dest-img" style="background:#EEF4F8;height:180px;display:flex;align-items:center;justify-content:center;position:relative;"><span class="dest-num-badge">7</span><img src="images/views/02_park.jpeg" style="width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;" loading="lazy" alt="Highland Park Viewpoint"></div><div class="dest-body"><h4>Highland Park Viewpoint</h4><div class="dest-meta"><span class="dest-time-row">⏱ 15–30 min</span><span class="dest-booking ok">✅ No booking needed · Free</span></div><p>Peaceful local park with unobstructed Fuji views, away from tourist crowds</p></div></div>
+<div class="dest-card"><div class="dest-img"><span class="dest-num-badge">1</span><img src="images/views/00_fumotoppara.jpeg" loading="lazy" alt="Fumotoppara"></div><div class="dest-body"><h4>Campsite near Mt. Fuji</h4><div class="dest-meta"><span class="dest-time-row">⏱ 30–60 min</span><span class="dest-booking req">🔴 Reservation required · ¥1,500/group + ¥500/person</span></div><p>Stunning view of Mt. Fuji through big windows in a campsite cafe.</p></div></div>
+<div class="dest-card"><div class="dest-img"><span class="dest-num-badge">2</span><img src="images/views/01_bridge.jpeg" loading="lazy" alt="Panoramic Bridge View"></div><div class="dest-body"><h4>Panoramic Bridge View</h4><div class="dest-meta"><span class="dest-time-row">⏱ 15–30 min</span><span class="dest-booking ok">✅ No booking needed · Free</span></div><p>Elevated Mt. Fuji view near the station, perfect for arrival photos</p></div></div>
+<div class="dest-card"><div class="dest-img"><span class="dest-num-badge">3</span><img src="images/views/03_plateau.jpeg" loading="lazy" alt="Dramatic Plateau View"></div><div class="dest-body"><h4>Plateau View with Cows</h4><div class="dest-meta"><span class="dest-time-row">⏱ 15–45 min</span><span class="dest-booking ok">✅ No booking needed · Free</span></div><p>Up-close dramatic Fuji panorama with cows</p></div></div>
+<div class="dest-card"><div class="dest-img"><span class="dest-num-badge">4</span><img src="images/views/04_lakeside.jpeg" loading="lazy" alt="Lakeside Viewing Spot"></div><div class="dest-body"><h4>Lakeside Viewing Spot</h4><div class="dest-meta"><span class="dest-time-row">⏱ 20–45 min</span><span class="dest-booking ok">✅ No booking needed · Free</span></div><p>Mt. Fuji reflected on still waters — the stunning "Double Fuji" mirror image</p></div></div>
+<div class="dest-card"><div class="dest-img"><span class="dest-num-badge">5</span><img src="images/views/05_familymart.jpg" loading="lazy" alt="FamilyMart with Mt. Fuji"></div><div class="dest-body"><h4>FamilyMart with Mt. Fuji</h4><div class="dest-meta"><span class="dest-time-row">⏱ 10–20 min</span><span class="dest-booking ok">✅ No booking needed · Free</span></div><p>The iconic convenience store with a perfect Mt. Fuji backdrop — a must-have photo spot</p></div></div>
+<div class="dest-card"><div class="dest-img"><span class="dest-num-badge">6</span><img src="images/views/06_7eleven.jpeg" loading="lazy" alt="7Eleven with Mt. Fuji"></div><div class="dest-body"><h4>7Eleven with Mt. Fuji</h4><div class="dest-meta"><span class="dest-time-row">⏱ 10–20 min</span><span class="dest-booking ok">✅ No booking needed · Free</span></div><p>Another beloved Fuji photo spot — catch Mt. Fuji perfectly framed behind the store</p></div></div>
+<div class="dest-card"><div class="dest-img"><span class="dest-num-badge">7</span><img src="images/views/02_park.jpeg" loading="lazy" alt="Highland Park Viewpoint"></div><div class="dest-body"><h4>Highland Park Viewpoint</h4><div class="dest-meta"><span class="dest-time-row">⏱ 15–30 min</span><span class="dest-booking ok">✅ No booking needed · Free</span></div><p>Peaceful local park with unobstructed Fuji views, away from tourist crowds</p></div></div>
 </div>
 <button class="dest-arrow dest-next" onclick="scrollCarousel(this,1)">&rsaquo;</button>
 </div>
@@ -1259,17 +1180,17 @@
 <div class="dest-carousel-wrap">
 <button class="dest-arrow dest-prev" onclick="scrollCarousel(this,-1)">&lsaquo;</button>
 <div class="dest-carousel" id="carousel-culture">
-<div class="dest-card"><div class="dest-img" style="background:#EEF4F8;height:180px;display:flex;align-items:center;justify-content:center;position:relative;"><span class="dest-num-badge">1</span><img src="images/culture/01_shrine.png" style="width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;" loading="lazy" alt="Sacred Shrine"></div><div class="dest-body"><h4>Sacred Shrine</h4><div class="dest-meta"><span class="dest-time-row">⏱ 30–60 min</span><span class="dest-booking ok">✅ No booking needed · Free</span></div><p>Principal shrine for Mt. Fuji worship with optional Shinto purification. Optional: Goshuin stamp ¥500, shrine offering ~¥100 (cash)</p></div></div>
-<div class="dest-card"><div class="dest-img" style="background:#EEF4F8;height:180px;display:flex;align-items:center;justify-content:center;position:relative;"><span class="dest-num-badge">2</span><img src="images/culture/02_yakisoba.png" style="width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;" loading="lazy" alt="Award-Winning Local Lunch"></div><div class="dest-body"><h4>Award-Winning Local Lunch</h4><div class="dest-meta"><span class="dest-time-row">⏱ 30–45 min</span><span class="dest-booking ok">✅ No booking needed · ~¥700–900</span></div><p>Regional soul food — a beloved local specialty you can only find in this area</p></div></div>
-<div class="dest-card"><div class="dest-img" style="background:#EEF4F8;height:180px;display:flex;align-items:center;justify-content:center;position:relative;"><span class="dest-num-badge">3</span><img src="images/culture/03_heritage.png" style="width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;" loading="lazy" alt="UNESCO Heritage Center"></div><div class="dest-body"><h4>UNESCO Heritage Center</h4><div class="dest-meta"><span class="dest-time-row">⏱ 20–90 min</span><span class="dest-booking ok">✅ No booking needed · ¥300</span></div><p>Interactive exhibits on Mt. Fuji’s cultural and natural significance. Reflection pond + red torii gate.</p></div></div>
-<div class="dest-card"><div class="dest-img" style="background:#EEF4F8;height:180px;display:flex;align-items:center;justify-content:center;position:relative;"><span class="dest-num-badge">4</span><img src="images/culture/04_matcha_cafe.png" style="width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;" loading="lazy" alt="Café Matcha / Green Tea"></div><div class="dest-body"><h4>Café Matcha / Green Tea</h4><div class="dest-meta"><span class="dest-time-row">⏱ 30 min</span><span class="dest-booking ok">✅ No booking needed · ¥900/person</span></div><p>Authentic matcha or green tea + traditional sweets at a peaceful tea house café</p></div></div>
-<div class="dest-card"><div class="dest-img" style="background:#EEF4F8;height:180px;display:flex;align-items:center;justify-content:center;position:relative;"><span class="dest-num-badge">5</span><img src="images/culture/05_matcha_handson.png" style="width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;" loading="lazy" alt="Hands-On Matcha Preparation"></div><div class="dest-body"><h4>Hands-On Matcha Preparation</h4><div class="dest-meta"><span class="dest-time-row">⏱ 60 min</span><span class="dest-booking req">🔴 Reservation required · ¥3,000/person</span></div><p>Whisk your own matcha under expert guidance. Choose tatami or table seating.</p></div></div>
-<div class="dest-card"><div class="dest-img" style="background:#EEF4F8;height:180px;display:flex;align-items:center;justify-content:center;position:relative;"><span class="dest-num-badge">6</span><img src="images/culture/06_tea_ceremony.jpg" style="width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;" loading="lazy" alt="Tea Ceremony with Master"></div><div class="dest-body"><h4>Tea Ceremony with Master</h4><div class="dest-meta"><span class="dest-time-row">⏱ 60 min</span><span class="dest-booking req">🔴 Reservation required · ¥20,000/group (up to 5)</span></div><p>Watch a tea master prepare matcha with full explanation. Authentic omotenashi hospitality in a traditional tea room.</p></div></div>
-<div class="dest-card"><div class="dest-img" style="background:#EEF4F8;height:180px;display:flex;align-items:center;justify-content:center;position:relative;"><span class="dest-num-badge">7</span><img src="images/culture/07_shiraito.jpeg" style="width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;" loading="lazy" alt="Sacred Waterfall"></div><div class="dest-body"><h4>Sacred Waterfall</h4><div class="dest-meta"><span class="dest-time-row">⏱ 30–60 min</span><span class="dest-booking ok">✅ No booking needed · Free</span></div><p>Mt. Fuji’s snowmelt cascading in delicate white threads — a UNESCO natural wonder</p></div></div>
-<div class="dest-card"><div class="dest-img" style="background:#EEF4F8;height:180px;display:flex;align-items:center;justify-content:center;position:relative;"><span class="dest-num-badge">8</span><img src="images/culture/08_kimono.jpeg" style="width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;" loading="lazy" alt="Kimono Rental Experience"></div><div class="dest-body"><h4>Kimono Rental Experience</h4><div class="dest-meta"><span class="dest-time-row">⏱ 20–30 min</span><span class="dest-booking req">🔴 Reservation required · ¥3,500/person · Cash only</span></div><p>Wear a traditional kimono and take photos with Mt. Fuji as your backdrop</p></div></div>
-<div class="dest-card"><div class="dest-img" style="background:#EEF4F8;height:180px;display:flex;align-items:center;justify-content:center;position:relative;"><span class="dest-num-badge">9</span><img src="images/culture/09_beer.png" style="width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;" loading="lazy" alt="Local Craft Beer Taproom"></div><div class="dest-body"><h4>Local Craft Beer Taproom</h4><div class="dest-meta"><span class="dest-time-row">⏱ 20–60 min</span><span class="dest-booking ok">✅ Weekends only · ~¥700+</span></div><p>Small-batch craft beers brewed with Mt. Fuji spring water and organic local grains</p></div></div>
-<div class="dest-card"><div class="dest-img" style="background:#EEF4F8;height:180px;display:flex;align-items:center;justify-content:center;position:relative;"><span class="dest-num-badge">10</span><img src="images/culture/10_sake.jpg" style="width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;" loading="lazy" alt="Local Sake Tasting"></div><div class="dest-body"><h4>Local Sake Tasting</h4><div class="dest-meta"><span class="dest-time-row">⏱ 20 min</span><span class="dest-booking req">🔴 Reservation required · Free</span></div><p>Sample locally brewed sake made with pure Mt. Fuji spring water</p></div></div>
-<div class="dest-card"><div class="dest-img" style="background:#EEF4F8;height:180px;display:flex;align-items:center;justify-content:center;position:relative;"><span class="dest-num-badge">11</span><img src="images/culture/11_gelato.png" style="width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;" loading="lazy" alt="Mochi Gelato & Matcha Latte"></div><div class="dest-body"><h4>Mochi Gelato & Matcha / Green Tea Latte</h4><div class="dest-meta"><span class="dest-time-row">⏱ 15–30 min</span><span class="dest-booking ok">✅ No booking needed · ~¥500–800</span></div><p>Sweet treats featuring local mochi and premium matcha or green tea</p></div></div>
+<div class="dest-card"><div class="dest-img"><span class="dest-num-badge">1</span><img src="images/culture/01_shrine.png" loading="lazy" alt="Sacred Shrine"></div><div class="dest-body"><h4>Sacred Shrine</h4><div class="dest-meta"><span class="dest-time-row">⏱ 30–60 min</span><span class="dest-booking ok">✅ No booking needed · Free</span></div><p>Principal shrine for Mt. Fuji worship with optional Shinto purification. Optional: Goshuin stamp ¥500, shrine offering ~¥100 (cash)</p></div></div>
+<div class="dest-card"><div class="dest-img"><span class="dest-num-badge">2</span><img src="images/culture/02_yakisoba.png" loading="lazy" alt="Award-Winning Local Lunch"></div><div class="dest-body"><h4>Award-Winning Local Lunch</h4><div class="dest-meta"><span class="dest-time-row">⏱ 30–45 min</span><span class="dest-booking ok">✅ No booking needed · ~¥700–900</span></div><p>Regional soul food — a beloved local specialty you can only find in this area</p></div></div>
+<div class="dest-card"><div class="dest-img"><span class="dest-num-badge">3</span><img src="images/culture/03_heritage.png" loading="lazy" alt="UNESCO Heritage Center"></div><div class="dest-body"><h4>UNESCO Heritage Center</h4><div class="dest-meta"><span class="dest-time-row">⏱ 20–90 min</span><span class="dest-booking ok">✅ No booking needed · ¥300</span></div><p>Interactive exhibits on Mt. Fuji’s cultural and natural significance. Reflection pond + red torii gate.</p></div></div>
+<div class="dest-card"><div class="dest-img"><span class="dest-num-badge">4</span><img src="images/culture/04_matcha_cafe.png" loading="lazy" alt="Café Matcha / Green Tea"></div><div class="dest-body"><h4>Café Matcha / Green Tea</h4><div class="dest-meta"><span class="dest-time-row">⏱ 30 min</span><span class="dest-booking ok">✅ No booking needed · ¥900/person</span></div><p>Authentic matcha or green tea + traditional sweets at a peaceful tea house café</p></div></div>
+<div class="dest-card"><div class="dest-img"><span class="dest-num-badge">5</span><img src="images/culture/05_matcha_handson.png" loading="lazy" alt="Hands-On Matcha Preparation"></div><div class="dest-body"><h4>Hands-On Matcha Preparation</h4><div class="dest-meta"><span class="dest-time-row">⏱ 60 min</span><span class="dest-booking req">🔴 Reservation required · ¥3,000/person</span></div><p>Whisk your own matcha under expert guidance. Choose tatami or table seating.</p></div></div>
+<div class="dest-card"><div class="dest-img"><span class="dest-num-badge">6</span><img src="images/culture/06_tea_ceremony.jpg" loading="lazy" alt="Tea Ceremony with Master"></div><div class="dest-body"><h4>Tea Ceremony with Master</h4><div class="dest-meta"><span class="dest-time-row">⏱ 60 min</span><span class="dest-booking req">🔴 Reservation required · ¥20,000/group (up to 5)</span></div><p>Watch a tea master prepare matcha with full explanation. Authentic omotenashi hospitality in a traditional tea room.</p></div></div>
+<div class="dest-card"><div class="dest-img"><span class="dest-num-badge">7</span><img src="images/culture/07_shiraito.jpeg" loading="lazy" alt="Sacred Waterfall"></div><div class="dest-body"><h4>Sacred Waterfall</h4><div class="dest-meta"><span class="dest-time-row">⏱ 30–60 min</span><span class="dest-booking ok">✅ No booking needed · Free</span></div><p>Mt. Fuji’s snowmelt cascading in delicate white threads — a UNESCO natural wonder</p></div></div>
+<div class="dest-card"><div class="dest-img"><span class="dest-num-badge">8</span><img src="images/culture/08_kimono.jpeg" loading="lazy" alt="Kimono Rental Experience"></div><div class="dest-body"><h4>Kimono Rental Experience</h4><div class="dest-meta"><span class="dest-time-row">⏱ 20–30 min</span><span class="dest-booking req">🔴 Reservation required · ¥3,500/person · Cash only</span></div><p>Wear a traditional kimono and take photos with Mt. Fuji as your backdrop</p></div></div>
+<div class="dest-card"><div class="dest-img"><span class="dest-num-badge">9</span><img src="images/culture/09_beer.png" loading="lazy" alt="Local Craft Beer Taproom"></div><div class="dest-body"><h4>Local Craft Beer Taproom</h4><div class="dest-meta"><span class="dest-time-row">⏱ 20–60 min</span><span class="dest-booking ok">✅ Weekends only · ~¥700+</span></div><p>Small-batch craft beers brewed with Mt. Fuji spring water and organic local grains</p></div></div>
+<div class="dest-card"><div class="dest-img"><span class="dest-num-badge">10</span><img src="images/culture/10_sake.jpg" loading="lazy" alt="Local Sake Tasting"></div><div class="dest-body"><h4>Local Sake Tasting</h4><div class="dest-meta"><span class="dest-time-row">⏱ 20 min</span><span class="dest-booking req">🔴 Reservation required · Free</span></div><p>Sample locally brewed sake made with pure Mt. Fuji spring water</p></div></div>
+<div class="dest-card"><div class="dest-img"><span class="dest-num-badge">11</span><img src="images/culture/11_gelato.png" loading="lazy" alt="Mochi Gelato & Matcha Latte"></div><div class="dest-body"><h4>Mochi Gelato & Matcha / Green Tea Latte</h4><div class="dest-meta"><span class="dest-time-row">⏱ 15–30 min</span><span class="dest-booking ok">✅ No booking needed · ~¥500–800</span></div><p>Sweet treats featuring local mochi and premium matcha or green tea</p></div></div>
 </div>
 <button class="dest-arrow dest-next" onclick="scrollCarousel(this,1)">&rsaquo;</button>
 </div>
@@ -1601,6 +1522,8 @@
     <p style="font-size:14px;color:var(--hai);margin-top:0.5rem;">Even when Mt. Fuji hides in the clouds, <a href="#carousel-culture" style="color:inherit;text-decoration:underline;text-underline-offset:2px;">cultural experiences</a> make this tour rewarding. Your guide adjusts the route to maximize your experience regardless of visibility.</p>
   </div>
 </div>
+    </div>
+  </div>
 </section>
 
 <!-- PRICING / BOOK -->
@@ -1724,6 +1647,8 @@
   <p class="footer-copy">© 2026 Fuji Soul Tours. All rights reserved.</p>
 </footer>
 
+<button class="back-to-top" id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
 <script>
 // Nav scroll + Back to top
 const nav = document.getElementById('nav');
@@ -1731,7 +1656,7 @@ const backToTop = document.getElementById('backToTop');
 window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 10);
   if (backToTop) backToTop.classList.toggle('visible', window.scrollY > 400);
-});
+}, { passive: true });
 
 // Hamburger
 const hamburger = document.getElementById('hamburger');
@@ -1769,17 +1694,16 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
 // ===== CURRENCY SELECTOR =====
 const PRICES = {
-  JPY: { display: '¥22,724 ~', code: '+81', phoneCC: 'JP' },
-  USD: { display: '$152 ~',    code: '+1',  phoneCC: 'US' },
-  AUD: { display: 'A$235 ~',  code: '+61', phoneCC: 'AU' },
-  CAD: { display: 'C$207 ~',  code: '+1',  phoneCC: 'CA' }
+  JPY: { display: '¥22,724 ~', phoneCC: 'JP' },
+  USD: { display: '$152 ~',    phoneCC: 'US' },
+  AUD: { display: 'A$235 ~',  phoneCC: 'AU' },
+  CAD: { display: 'C$207 ~',  phoneCC: 'CA' }
 };
 const BOKUN_BASE = 'https://widgets.bokun.io/online-sales/9c7daabb-e81c-4ae1-b504-5451a5ca69ff/experience/1171469?partialView=1';
 
 function setCurrency(currency) {
   const p = PRICES[currency];
   document.getElementById('priceDisplay').textContent = p.display;
-  var pc = document.getElementById('phoneCode'); if (pc) pc.textContent = p.code;
   document.querySelectorAll('.currency-btn').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.currency === currency);
   });
@@ -1806,6 +1730,14 @@ function submitDateChange(e) {
   const body = encodeURIComponent('DATE CHANGE REQUEST\n===================\nBooking Reference: ' + ref + '\nName: ' + name + '\nReply-to Email: ' + email + '\nCurrent Tour Date: ' + curDate + '\nPreferred New Date: ' + newDate + '\nAlternative Date: ' + (altDate || 'None') + '\nMessage: ' + (msg || 'None') + '\n\n---\nSent from fujisoultours.com');
   window.location.href = 'mailto:fujisoultours@gmail.com?subject=' + subject + '&body=' + body;
   document.getElementById('change-success').style.display = 'block';
+}
+
+// ===== BOKUN BOOKING =====
+function openBooking() {
+  var btn = document.getElementById('bokun_418f34f4_28e2_4185_85e4_7aa761106072');
+  if (btn && !btn.disabled) { btn.click(); return true; }
+  document.getElementById('book').scrollIntoView({behavior:'smooth'});
+  return false;
 }
 
 // ===== CAROUSEL & TAB SWITCHING =====
@@ -1849,7 +1781,196 @@ function switchModelTab(n) {
   flatpickr("#change-new-date", fpOpts);
   flatpickr("#change-alt-date", fpOpts);
 </script>
-<button class="back-to-top" id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-<div class="bokun-loading" id="bokunLoading"><div class="bokun-spinner"></div></div>
+
+<!-- Chatbot -->
+<button class="chatbot-toggle" id="chatToggle" aria-label="Open chat">
+  <svg class="chat-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+  <svg class="chat-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+</button>
+
+<div class="chatbot-window" id="chatWindow">
+  <div class="chatbot-header">
+    <div class="chatbot-header-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+    </div>
+    <div class="chatbot-header-text">
+      <h3>Fuji Assistant</h3>
+      <p>Ask anything about the tour</p>
+    </div>
+  </div>
+  <div class="chatbot-messages" id="chatMessages">
+    <div class="chat-msg bot">Hi! I'm Fuji Assistant. Ask me anything about our Mt. Fuji private tour — pricing, itinerary, what's included, or how to get here. How can I help?</div>
+  </div>
+  <div class="chatbot-input">
+    <input type="text" id="chatInput" placeholder="Type your question..." autocomplete="off" maxlength="500">
+    <button id="chatSend" aria-label="Send">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+    </button>
+  </div>
+</div>
+
+<script>
+(function() {
+  var toggle = document.getElementById("chatToggle");
+  var win = document.getElementById("chatWindow");
+  var msgs = document.getElementById("chatMessages");
+  var input = document.getElementById("chatInput");
+  var sendBtn = document.getElementById("chatSend");
+  var history = [];
+  var sending = false;
+
+  toggle.addEventListener("click", function() {
+    toggle.classList.toggle("active");
+    win.classList.toggle("open");
+    if (win.classList.contains("open")) input.focus();
+  });
+
+  function addMsg(text, role) {
+    var div = document.createElement("div");
+    div.className = "chat-msg " + role;
+    if (role === "bot") {
+      div.innerHTML = formatMarkdown(text);
+    } else {
+      div.textContent = text;
+    }
+    msgs.appendChild(div);
+    msgs.scrollTop = msgs.scrollHeight;
+    return div;
+  }
+
+  function formatMarkdown(text) {
+    return text
+      .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+      .replace(/\n- /g, "\n<li>")
+      .replace(/^- /g, "<li>")
+      .replace(/(<li>.*(?:\n|$))+/g, function(m) { return "<ul>" + m + "</ul>"; })
+      .replace(/\n/g, "<br>");
+  }
+
+  function showTyping() {
+    var div = document.createElement("div");
+    div.className = "chat-typing";
+    div.id = "chatTyping";
+    div.innerHTML = "<span></span><span></span><span></span>";
+    msgs.appendChild(div);
+    msgs.scrollTop = msgs.scrollHeight;
+  }
+
+  function hideTyping() {
+    var el = document.getElementById("chatTyping");
+    if (el) el.remove();
+  }
+
+  function showContactFallback(data) {
+    var container = document.createElement("div");
+    container.className = "chat-msg bot";
+
+    var card = document.createElement("div");
+    card.className = "chat-contact-card";
+
+    var p = document.createElement("p");
+    p.textContent = "I don't have enough information to answer that. Please reach out to us directly:";
+    card.appendChild(p);
+
+    var btns = document.createElement("div");
+    btns.className = "chat-contact-btns";
+
+    var channels = [
+      { name: "Instagram", url: data.contacts.instagram, icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>' },
+      { name: "WhatsApp", url: data.contacts.whatsapp, icon: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a8 8 0 01-4.29-1.244l-.306-.182-2.87.852.852-2.87-.182-.306A8 8 0 1112 20z"/></svg>' },
+      { name: "Email", url: "mailto:" + data.contacts.email, icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4l-10 8L2 4"/></svg>' }
+    ];
+
+    channels.forEach(function(ch) {
+      var a = document.createElement("a");
+      a.className = "chat-contact-btn";
+      a.href = ch.url;
+      a.target = "_blank";
+      a.rel = "noopener";
+      a.innerHTML = ch.icon + "<span>" + ch.name + "</span>";
+      btns.appendChild(a);
+    });
+    card.appendChild(btns);
+
+    if (data.suggestedMessage) {
+      var copyArea = document.createElement("div");
+      copyArea.className = "chat-copy-area";
+      copyArea.innerHTML = '<p>Copy this message:</p><p class="chat-copy-text">' + escapeHtml(data.suggestedMessage) + '</p><button class="chat-copy-btn" onclick="copyChatMsg(this)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copy</button>';
+      card.appendChild(copyArea);
+    }
+
+    container.appendChild(card);
+    msgs.appendChild(container);
+    msgs.scrollTop = msgs.scrollHeight;
+  }
+
+  function escapeHtml(str) {
+    var div = document.createElement("div");
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+  window.copyChatMsg = function(btn) {
+    var text = btn.parentElement.querySelector(".chat-copy-text").textContent;
+    navigator.clipboard.writeText(text).then(function() {
+      btn.classList.add("copied");
+      btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Copied!';
+      setTimeout(function() {
+        btn.classList.remove("copied");
+        btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copy';
+      }, 2000);
+    });
+  };
+
+  async function sendMessage() {
+    var text = input.value.trim();
+    if (!text || sending) return;
+
+    sending = true;
+    sendBtn.disabled = true;
+    input.value = "";
+    addMsg(text, "user");
+    history.push({ role: "user", content: text });
+    showTyping();
+
+    try {
+      var res = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: text, history: history.slice(-10) })
+      });
+      hideTyping();
+
+      if (!res.ok) throw new Error("Request failed");
+
+      var data = await res.json();
+
+      if (data.cannotAnswer && data.contactData) {
+        addMsg("I'm not sure about that. Let me connect you with our team:", "bot");
+        showContactFallback(data.contactData);
+        history.push({ role: "assistant", content: "I don't have enough information about that topic. Please contact us directly." });
+      } else if (data.reply) {
+        addMsg(data.reply, "bot");
+        history.push({ role: "assistant", content: data.reply });
+      } else {
+        addMsg("Sorry, I couldn't process that. Please try again.", "bot");
+      }
+    } catch (e) {
+      hideTyping();
+      addMsg("Sorry, something went wrong. Please try again or contact us directly.", "bot");
+    }
+
+    sending = false;
+    sendBtn.disabled = false;
+    input.focus();
+  }
+
+  sendBtn.addEventListener("click", sendMessage);
+  input.addEventListener("keydown", function(e) {
+    if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); sendMessage(); }
+  });
+})();
+</script>
+
 </body>
 </html>
