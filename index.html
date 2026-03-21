@@ -781,13 +781,12 @@
     .manage-submit { font-size: 14px !important; }
     .cancellation-policy-box h3 { font-size: 15px !important; }
     .policy-table td { font-size: 13px !important; }
-    .mt-name { font-size: 15px !important; }
-    .mt-desc { font-size: 13px !important; }
-    .mt-time { font-size: 13px !important; }
-    .mt-dur { font-size: 12px !important; }
+    .model-table { font-size: 13px !important; }
+    .model-table th { font-size: 10px !important; }
+    .model-table td { font-size: 13px !important; }
     .mt-drive td { font-size: 12px !important; }
     .model-tab-btn { font-size: 14px !important; }
-    .route-tab { font-size: 13px !important; padding: 8px 14px !important; }
+    .route-tab { font-size: 12px !important; padding: 8px 14px !important; }
     .route-table { font-size: 13px !important; }
     .route-table th { font-size: 10px !important; }
     .route-table td { font-size: 13px !important; padding: 8px 8px !important; }
@@ -841,7 +840,7 @@
 
     /* === MOBILE: ROUTE TABS (compact 2-3 per row) === */
     .route-tabs { gap: 6px !important; margin: 1rem 0 1rem !important; }
-    .route-tab { padding: 6px 12px !important; font-size: 12px !important; border-width: 1px !important; }
+    .route-tab { padding: 6px 12px !important; font-size: 11px !important; border-width: 1px !important; }
 
     /* === MOBILE: ROUTE FLOW DIAGRAM === */
     .route-panel > div:first-child { font-size: 13px !important; gap: 4px !important; margin-bottom: 1rem !important; }
@@ -891,7 +890,9 @@
     .footer-links a { font-size: 12px !important; }
 
     /* === MOBILE: MODEL TABLE === */
-    .model-table td { padding: 8px 6px !important; }
+    .model-table { font-size: 12px !important; }
+    .model-table th { font-size: 9px !important; padding: 6px !important; }
+    .model-table td { padding: 6px 6px !important; font-size: 12px !important; }
     .model-tab-btn { padding: 6px 14px !important; font-size: 13px !important; }
 
     /* === MOBILE: IMPORTANT NOTES === */
@@ -932,23 +933,21 @@
     .model-tab-btn { padding: 8px 20px; border: 2px solid var(--shu); border-radius: 25px; background: white; color: var(--shu); font-weight: 600; cursor: pointer; font-size: 18px; transition: all 0.2s; }
     .model-tab-btn.active { background: var(--shu); color: white; }
     .model-tab-btn:hover { background: var(--shu); color: white; }
-    .model-table { width: 100%; border-collapse: collapse; }
-    .model-table td { padding: 10px 12px; vertical-align: top; font-size: 14px; }
-    .model-table .mt-time { width: 60px; font-weight: 700; color: var(--sumi); white-space: nowrap; }
-    .model-table .mt-dur { font-size: 14px; color: var(--shu); font-weight: 600; }
-    .model-table .mt-dot { width: 24px; text-align: center; }
-    .model-table .mt-dot span { display: inline-block; width: 12px; height: 12px; border-radius: 50%; }
-    .model-table .mt-name { font-weight: 700; color: var(--sumi); font-size: 18px; }
-    .model-table .mt-desc { font-size: 14px; color: var(--hai); margin-top: 2px; }
+    .model-table { width: 100%; border-collapse: collapse; font-size: 18px; }
+    .model-table th { text-align: left; padding: 8px 12px; font-size: 14px; color: var(--hai); letter-spacing: 0.05em; border-bottom: 1px solid var(--usu-hai); }
+    .model-table td { padding: 10px 12px; vertical-align: top; border-bottom: 1px solid var(--kinari); }
+    .model-table tr:last-child td { border-bottom: none; }
+    .model-table .mt-time { white-space: nowrap; }
+    .model-table .mt-time strong { font-weight: 700; }
     .model-table .mt-drive { color: var(--hai); font-size: 14px; }
-    .model-table .mt-drive td { padding: 4px 12px; }
+    .model-table .mt-drive td { padding: 4px 12px; border-bottom: none; }
     /* Route Table */
     .route-table { width: 100%; border-collapse: collapse; font-size: 18px; }
     .route-table th { text-align: left; padding: 8px 12px; font-size: 14px; color: var(--hai); letter-spacing: 0.05em; border-bottom: 1px solid var(--usu-hai); }
     .route-table td { padding: 10px 12px; border-bottom: 1px solid var(--kinari); }
     .route-table tr:last-child td { border-bottom: none; }
     .buffer-row td { background: var(--kinari); color: var(--hai); font-size: 18px; font-style: italic; }
-    .route-tab { padding: 8px 18px; border: 2px solid var(--usu-hai); border-radius: 25px; background: white; color: var(--hai); cursor: pointer; font-size: 18px; transition: all 0.2s; }
+    .route-tab { padding: 8px 18px; border: 2px solid var(--usu-hai); border-radius: 25px; background: white; color: var(--hai); cursor: pointer; font-size: 16px; transition: all 0.2s; }
     .route-tab.active { border-color: var(--shu); background: var(--shu); color: white; font-weight: 600; }
     .route-tab:hover { border-color: var(--shu); }
     .dest-arrow { cursor: pointer; z-index: 2; }
@@ -1224,37 +1223,37 @@
 
     <div class="model-tab-panel" id="model-panel-0">
       <p style="color:var(--hai);font-size:15px;margin-bottom:1rem;text-align:center;">For someone who wants to see as much as possible in 4 hours.</p>
-      <table class="model-table">
-        <tr><td class="mt-time">0:00</td><td class="mt-dot"><span style="background:var(--hai);"></span></td><td><div class="mt-name">Meet Your Guide</div><div class="mt-desc">In front of the station gate</div></td></tr>
-        <tr class="mt-drive"><td></td><td></td><td>🚗 15 min drive</td></tr>
-        <tr><td class="mt-time">0:15<br><span class="mt-dur">15 min</span></td><td class="mt-dot"><span style="background:var(--shu);"></span></td><td><div class="mt-name">Mt. Fuji Viewspot</div><div class="mt-desc">Up-close dramatic Fuji panorama • Free</div></td></tr>
-        <tr class="mt-drive"><td></td><td></td><td>🚗 35 min drive</td></tr>
-        <tr><td class="mt-time">1:05<br><span class="mt-dur">20 min</span></td><td class="mt-dot"><span style="background:#c0392b;"></span></td><td><div class="mt-name">Sacred Shrine Visit</div><div class="mt-desc">Principal shrine for Mt. Fuji worship • Free</div></td></tr>
-        <tr class="mt-drive"><td></td><td></td><td>🚗 5 min drive</td></tr>
-        <tr><td class="mt-time">1:30<br><span class="mt-dur">20 min</span></td><td class="mt-dot"><span style="background:#e67e22;"></span></td><td><div class="mt-name">Award-Winning Local Lunch</div><div class="mt-desc">Famous regional soul food noodles • ¥900/person</div></td></tr>
-        <tr class="mt-drive"><td></td><td></td><td>🚗 5 min drive</td></tr>
-        <tr><td class="mt-time">1:55<br><span class="mt-dur">15 min</span></td><td class="mt-dot"><span style="background:var(--shu);"></span></td><td><div class="mt-name">UNESCO Heritage Center</div><div class="mt-desc">Reflection pond + red torii gate, exhibits • ¥300/person</div></td></tr>
-        <tr class="mt-drive"><td></td><td></td><td>🚗 20 min drive</td></tr>
-        <tr><td class="mt-time">2:30<br><span class="mt-dur">25 min</span></td><td class="mt-dot"><span style="background:#27ae60;"></span></td><td><div class="mt-name">Traditional Matcha Experience</div><div class="mt-desc">Authentic matcha + traditional sweets • ¥900/person</div></td></tr>
-        <tr class="mt-drive"><td></td><td></td><td>🚗 20 min drive</td></tr>
-        <tr><td class="mt-time">3:15</td><td class="mt-dot"><span style="background:var(--hai);"></span></td><td><div class="mt-name">Return to Station</div><div class="mt-desc">Arrive back with time to spare for your next train</div></td></tr>
-      </table>
+      <table class="model-table"><thead><tr><th>TIME</th><th>STOP</th><th>DETAILS</th></tr></thead><tbody>
+        <tr><td class="mt-time"><strong>0:00</strong></td><td>Meet Your Guide</td><td style="color:var(--hai);">In front of the station gate</td></tr>
+        <tr class="mt-drive"><td></td><td colspan="2">🚗 15 min drive</td></tr>
+        <tr><td class="mt-time"><strong>0:15</strong><br><span style="color:var(--shu);font-size:14px;">15 min</span></td><td>Mt. Fuji Viewspot</td><td style="color:var(--hai);">Up-close dramatic Fuji panorama • Free</td></tr>
+        <tr class="mt-drive"><td></td><td colspan="2">🚗 35 min drive</td></tr>
+        <tr><td class="mt-time"><strong>1:05</strong><br><span style="color:var(--shu);font-size:14px;">20 min</span></td><td>Sacred Shrine Visit</td><td style="color:var(--hai);">Principal shrine for Mt. Fuji worship • Free</td></tr>
+        <tr class="mt-drive"><td></td><td colspan="2">🚗 5 min drive</td></tr>
+        <tr><td class="mt-time"><strong>1:30</strong><br><span style="color:var(--shu);font-size:14px;">20 min</span></td><td>Award-Winning Local Lunch</td><td style="color:var(--hai);">Famous regional soul food noodles • ¥900/person</td></tr>
+        <tr class="mt-drive"><td></td><td colspan="2">🚗 5 min drive</td></tr>
+        <tr><td class="mt-time"><strong>1:55</strong><br><span style="color:var(--shu);font-size:14px;">15 min</span></td><td>UNESCO Heritage Center</td><td style="color:var(--hai);">Reflection pond + red torii gate, exhibits • ¥300/person</td></tr>
+        <tr class="mt-drive"><td></td><td colspan="2">🚗 20 min drive</td></tr>
+        <tr><td class="mt-time"><strong>2:30</strong><br><span style="color:var(--shu);font-size:14px;">25 min</span></td><td>Traditional Matcha Experience</td><td style="color:var(--hai);">Authentic matcha + traditional sweets • ¥900/person</td></tr>
+        <tr class="mt-drive"><td></td><td colspan="2">🚗 20 min drive</td></tr>
+        <tr><td class="mt-time"><strong>3:15</strong></td><td>Return to Station</td><td style="color:var(--hai);">Arrive back with time to spare for your next train</td></tr>
+      </tbody></table>
       <p style="background:var(--kinari);padding:1rem;border-radius:8px;font-size:14px;color:var(--hai);margin-top:1.5rem;"><strong>Guest note:</strong> This is for someone who wants to do as much as possible in a 4-hour tour. All listed costs are paid separately on-site (not included in tour price).</p>
     </div>
 
     <div class="model-tab-panel" id="model-panel-1" style="display:none;">
       <p style="color:var(--hai);font-size:15px;margin-bottom:1rem;text-align:center;">For someone who wants to take time at each stop.</p>
-      <table class="model-table">
-        <tr><td class="mt-time">0:00</td><td class="mt-dot"><span style="background:var(--hai);"></span></td><td><div class="mt-name">Meet Your Guide</div><div class="mt-desc">In front of the station gate</div></td></tr>
-        <tr class="mt-drive"><td></td><td></td><td>🚗 50 min drive</td></tr>
-        <tr><td class="mt-time">0:50<br><span class="mt-dur">45 min</span></td><td class="mt-dot"><span style="background:var(--shu);"></span></td><td><div class="mt-name">Lakeside Mt. Fuji Viewspot</div><div class="mt-desc">Fuji reflection on lake surface (clear days) • Free</div></td></tr>
-        <tr class="mt-drive"><td></td><td></td><td>🚗 35 min drive</td></tr>
-        <tr><td class="mt-time">2:10<br><span class="mt-dur">25 min</span></td><td class="mt-dot"><span style="background:#c0392b;"></span></td><td><div class="mt-name">Sacred Shrine Visit</div><div class="mt-desc">Principal shrine for Mt. Fuji worship • Free</div></td></tr>
-        <tr class="mt-drive"><td></td><td></td><td>🚗 25 min drive</td></tr>
-        <tr><td class="mt-time">3:00<br><span class="mt-dur">40 min</span></td><td class="mt-dot"><span style="background:#27ae60;"></span></td><td><div class="mt-name">Traditional Matcha Experience</div><div class="mt-desc">Authentic matcha + traditional sweets • ¥900/person</div></td></tr>
-        <tr class="mt-drive"><td></td><td></td><td>🚗 20 min drive</td></tr>
-        <tr><td class="mt-time">4:00</td><td class="mt-dot"><span style="background:var(--hai);"></span></td><td><div class="mt-name">Return to Station</div><div class="mt-desc">Arrive back with time to spare for your next train</div></td></tr>
-      </table>
+      <table class="model-table"><thead><tr><th>TIME</th><th>STOP</th><th>DETAILS</th></tr></thead><tbody>
+        <tr><td class="mt-time"><strong>0:00</strong></td><td>Meet Your Guide</td><td style="color:var(--hai);">In front of the station gate</td></tr>
+        <tr class="mt-drive"><td></td><td colspan="2">🚗 50 min drive</td></tr>
+        <tr><td class="mt-time"><strong>0:50</strong><br><span style="color:var(--shu);font-size:14px;">45 min</span></td><td>Lakeside Mt. Fuji Viewspot</td><td style="color:var(--hai);">Fuji reflection on lake surface (clear days) • Free</td></tr>
+        <tr class="mt-drive"><td></td><td colspan="2">🚗 35 min drive</td></tr>
+        <tr><td class="mt-time"><strong>2:10</strong><br><span style="color:var(--shu);font-size:14px;">25 min</span></td><td>Sacred Shrine Visit</td><td style="color:var(--hai);">Principal shrine for Mt. Fuji worship • Free</td></tr>
+        <tr class="mt-drive"><td></td><td colspan="2">🚗 25 min drive</td></tr>
+        <tr><td class="mt-time"><strong>3:00</strong><br><span style="color:var(--shu);font-size:14px;">40 min</span></td><td>Traditional Matcha Experience</td><td style="color:var(--hai);">Authentic matcha + traditional sweets • ¥900/person</td></tr>
+        <tr class="mt-drive"><td></td><td colspan="2">🚗 20 min drive</td></tr>
+        <tr><td class="mt-time"><strong>4:00</strong></td><td>Return to Station</td><td style="color:var(--hai);">Arrive back with time to spare for your next train</td></tr>
+      </tbody></table>
       <p style="background:var(--kinari);padding:1rem;border-radius:8px;font-size:14px;color:var(--hai);margin-top:1.5rem;"><strong>Guest note:</strong> This is for someone who wants to take time in each stop. All listed costs are paid separately on-site (not included in tour price).</p>
     </div>
 
