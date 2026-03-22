@@ -897,8 +897,15 @@
 
   .chatbot-header {
     background: var(--shu); color: #fff; padding: 16px 20px;
-    display: flex; align-items: center; gap: 12px; flex-shrink: 0;
+    display: flex; align-items: center; gap: 12px; flex-shrink: 0; position: relative;
   }
+  .chatbot-header-close {
+    position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
+    background: none; border: none; color: #fff; cursor: pointer; padding: 6px;
+    opacity: 0.8; transition: opacity 0.2s; display: none;
+  }
+  .chatbot-header-close:hover { opacity: 1; }
+  .chatbot-header-close svg { width: 20px; height: 20px; }
   .chatbot-header-icon {
     width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.2);
     display: flex; align-items: center; justify-content: center; flex-shrink: 0;
@@ -974,8 +981,13 @@
   .chatbot-input button svg { width: 18px; height: 18px; }
 
   @media (max-width: 480px) {
-    .chatbot-window { bottom: 0; right: 0; width: 100vw; height: 100vh; max-height: 100vh; border-radius: 0; }
+    .chatbot-window {
+      bottom: 0; right: 0; width: 100vw; height: 100dvh; max-height: 100dvh;
+      border-radius: 0; position: fixed; top: 0; left: 0;
+    }
     .chatbot-toggle { bottom: 16px; right: 16px; width: 54px; height: 54px; }
+    .chatbot-toggle.active { display: none; }
+    .chatbot-header-close { display: block; }
   }
 </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.css">
@@ -1825,6 +1837,9 @@ function switchModelTab(n) {
       <h3>Fuji Assistant</h3>
       <p>Ask anything about the tour</p>
     </div>
+    <button class="chatbot-header-close" id="chatHeaderClose" aria-label="Close chat">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
   </div>
   <div class="chatbot-messages" id="chatMessages">
     <div class="chat-msg bot">Hi! I'm Fuji Assistant. Ask me anything about our Mt. Fuji private tour — pricing, itinerary, what's included, or how to get here. How can I help?</div>
@@ -1847,11 +1862,18 @@ function switchModelTab(n) {
   var history = [];
   var sending = false;
 
+  function closeChat() {
+    toggle.classList.remove("active");
+    win.classList.remove("open");
+  }
+
   toggle.addEventListener("click", function() {
     toggle.classList.toggle("active");
     win.classList.toggle("open");
     if (win.classList.contains("open")) input.focus();
   });
+
+  document.getElementById("chatHeaderClose").addEventListener("click", closeChat);
 
   function addMsg(text, role) {
     var div = document.createElement("div");
