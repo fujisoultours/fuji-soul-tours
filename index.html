@@ -982,12 +982,23 @@
 
   @media (max-width: 480px) {
     .chatbot-window {
-      bottom: 0; right: 0; width: 100vw; height: 100dvh; max-height: 100dvh;
-      border-radius: 0; position: fixed; top: 0; left: 0;
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      width: 100%; height: 100%;
+      max-width: 100vw; max-height: none;
+      border-radius: 0; z-index: 10000;
     }
+    .chatbot-messages { padding: 12px; gap: 10px; }
+    .chatbot-input {
+      padding: 10px 12px; padding-bottom: max(10px, env(safe-area-inset-bottom));
+    }
+    .chatbot-input input { padding: 10px 14px; font-size: 16px; }
     .chatbot-toggle { bottom: 16px; right: 16px; width: 54px; height: 54px; }
     .chatbot-toggle.active { display: none; }
     .chatbot-header-close { display: block; }
+    .chat-msg { max-width: 90%; font-size: 14px; }
+    .chat-contact-btns { flex-direction: row; flex-wrap: wrap; }
+    .chat-contact-btn { flex: 1; min-width: 0; justify-content: center; padding: 10px 8px; font-size: 12px; }
+    .chat-contact-btn svg { width: 16px; height: 16px; }
   }
 </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.css">
@@ -1834,15 +1845,15 @@ function switchModelTab(n) {
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
     </div>
     <div class="chatbot-header-text">
-      <h3>Fuji Assistant</h3>
-      <p>Ask anything about the tour</p>
+      <h3>Fuji Soul Tours</h3>
+      <p>Got questions? Ask our AI chatbot</p>
     </div>
     <button class="chatbot-header-close" id="chatHeaderClose" aria-label="Close chat">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
     </button>
   </div>
   <div class="chatbot-messages" id="chatMessages">
-    <div class="chat-msg bot">Hi! I'm Fuji Assistant. Ask me anything about our Mt. Fuji private tour — pricing, itinerary, what's included, or how to get here. How can I help?</div>
+    <div class="chat-msg bot">Hi! I'm your guide for Fuji Soul Tours. Ask me anything about our Mt. Fuji private tour — pricing, itinerary, what's included, or how to get here!</div>
   </div>
   <div class="chatbot-input">
     <input type="text" id="chatInput" placeholder="Type your question..." autocomplete="off" maxlength="500">
@@ -1865,13 +1876,33 @@ function switchModelTab(n) {
   function closeChat() {
     toggle.classList.remove("active");
     win.classList.remove("open");
+    document.body.style.overflow = "";
   }
 
   toggle.addEventListener("click", function() {
     toggle.classList.toggle("active");
     win.classList.toggle("open");
-    if (win.classList.contains("open")) input.focus();
+    if (win.classList.contains("open")) {
+      if (window.innerWidth <= 480) document.body.style.overflow = "hidden";
+      input.focus();
+    } else {
+      document.body.style.overflow = "";
+    }
   });
+
+  // Fix mobile keyboard pushing input out of view
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener("resize", function() {
+      if (!win.classList.contains("open") || window.innerWidth > 480) return;
+      var vvh = window.visualViewport.height;
+      win.style.height = vvh + "px";
+      msgs.scrollTop = msgs.scrollHeight;
+    });
+    window.visualViewport.addEventListener("scroll", function() {
+      if (!win.classList.contains("open") || window.innerWidth > 480) return;
+      win.style.top = window.visualViewport.offsetTop + "px";
+    });
+  }
 
   document.getElementById("chatHeaderClose").addEventListener("click", closeChat);
 
@@ -1890,6 +1921,7 @@ function switchModelTab(n) {
 
   function formatMarkdown(text) {
     return text
+      .replace(/\[([^\]]+)\]\((https?:\/\/[^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener" style="color:var(--shu);text-decoration:underline;">$1</a>')
       .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
       .replace(/\n- /g, "\n<li>")
       .replace(/^- /g, "<li>")
@@ -1919,7 +1951,7 @@ function switchModelTab(n) {
     card.className = "chat-contact-card";
 
     var p = document.createElement("p");
-    p.textContent = "I don't have enough information to answer that. Please reach out to us directly:";
+    p.textContent = "I don't have enough info on that yet. Feel free to reach out and we'll get back to you quickly:";
     card.appendChild(p);
 
     var btns = document.createElement("div");
@@ -1996,7 +2028,7 @@ function switchModelTab(n) {
       var data = await res.json();
 
       if (data.cannotAnswer && data.contactData) {
-        addMsg("I'm not sure about that. Let me connect you with our team:", "bot");
+        addMsg("That's a great question! I don't have the details on that, but our team can help:", "bot");
         showContactFallback(data.contactData);
         history.push({ role: "assistant", content: "I don't have enough information about that topic. Please contact us directly." });
       } else if (data.reply) {
