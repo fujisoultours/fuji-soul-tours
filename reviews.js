@@ -107,9 +107,19 @@ const REVIEWS = [
     if (e.target.dataset.i !== undefined) scrollTo(+e.target.dataset.i);
   });
 
-  // Auto-rotate every 5s
-  let autoplay = setInterval(() => scrollTo((current + 1) % total), 5000);
-  grid.addEventListener('pointerdown', () => clearInterval(autoplay));
+  // Auto-rotate every 5s — only when section is visible on screen
+  let autoplay = null;
+  var reviewSection = document.getElementById('reviews');
+  var sectionVisible = false;
+  if (reviewSection && window.IntersectionObserver) {
+    new IntersectionObserver(function(entries) {
+      sectionVisible = entries[0].isIntersecting;
+      if (sectionVisible && !autoplay) {
+        autoplay = setInterval(function() { if (sectionVisible) scrollTo((current + 1) % total); }, 5000);
+      }
+    }, { threshold: 0.1 }).observe(reviewSection);
+  }
+  grid.addEventListener('pointerdown', function() { clearInterval(autoplay); autoplay = null; });
   grid.addEventListener('scroll', () => {
     clearInterval(autoplay);
     // Update dots on manual scroll
