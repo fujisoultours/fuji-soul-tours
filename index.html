@@ -350,7 +350,7 @@
   .reviews-nav button {
     width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--usu-hai);
     background: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center;
-    transition: all 0.2s; color: var(--sumi);
+    transition: all 0.2s; color: var(--sumi); font-size: 18px;
   }
   .reviews-nav button:hover { background: var(--shu); color: #fff; border-color: var(--shu); }
   .reviews-dots { display: flex; gap: 6px; }
@@ -856,16 +856,15 @@
   .dest-booking.req { color: #c62828; }
   .dest-booking.rec { color: #e65100; }
   .dest-card p { font-size: 14px; color: #666; margin: 0; line-height: 1.55; }
-  .dest-arrow {
-    position: absolute; top: 180px; transform: translateY(-50%);
-    z-index: 2; background: rgba(255,255,255,.9);
-    border: 1px solid var(--usu-hai); border-radius: 50%;
-    width: 40px; height: 40px; font-size: 15px;
-    cursor: pointer; display: flex;
-    align-items: center; justify-content: center;
+  .dest-nav {
+    display: flex; justify-content: center; align-items: center; gap: 12px; margin-top: 16px;
   }
-  .dest-prev { left: 4px; }
-  .dest-next { right: 4px; }
+  .dest-nav button {
+    width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--usu-hai);
+    background: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s; color: var(--sumi); font-size: 18px;
+  }
+  .dest-nav button:hover { background: var(--shu); color: #fff; border-color: var(--shu); }
 
   /* ===== ROUTE TABS ===== */
   .route-tabs {
@@ -1135,7 +1134,7 @@
 </header>
 
 <!-- CONTACT US -->
-<section class="contact-bar" style="background:#fff;padding:20px 16px;margin-bottom:24px;text-align:center;">
+<section class="contact-bar" style="background:var(--shiro);padding:20px 16px;margin-bottom:0;text-align:center;">
   <div style="max-width:600px;margin:0 auto;">
     <p class="contact-bar-title" style="font-size:15px;color:var(--sumi);margin-bottom:4px;font-weight:600;">Book first, then let's plan your perfect day</p>
     <p class="contact-bar-sub" style="font-size:13px;color:var(--hai);margin-bottom:10px;">After booking, share your train times and we'll tailor the itinerary to your schedule.</p>
@@ -1252,7 +1251,6 @@
 <h3 style="font-size:15px;color:var(--shu);margin:1.2rem 0 1rem;font-weight:600;">Hidden Viewpoints &amp; Lakeside</h3>
 <p class="section-desc" style="margin-bottom:1.2rem;">We select the best viewpoints based on weather, season, and timing.</p>
 <div class="dest-carousel-wrap">
-<button class="dest-arrow dest-prev" onclick="scrollCarousel(this,-1)">&lsaquo;</button>
 <div class="dest-carousel" id="carousel-views">
 <div class="dest-card"><div class="dest-img"><span class="dest-num-badge">1</span><img src="images/views/00_fumotoppara.jpeg" loading="lazy" alt="Fumotoppara"></div><div class="dest-body"><h4>Campsite near Mt. Fuji</h4><div class="dest-meta"><span class="dest-time-row">⏱ 30–60 min</span><span class="dest-booking req">🔴 Reservation required · ¥1,500/group + ¥500/person</span></div><p>Stunning view of Mt. Fuji through big windows in a campsite cafe.</p></div></div>
 <div class="dest-card"><div class="dest-img"><span class="dest-num-badge">2</span><img src="images/views/01_bridge.jpeg" loading="lazy" alt="Panoramic Bridge View"></div><div class="dest-body"><h4>Panoramic Bridge View</h4><div class="dest-meta"><span class="dest-time-row">⏱ 15–30 min</span><span class="dest-booking ok">✅ No booking needed · Free</span></div><p>Elevated Mt. Fuji view near the station, perfect for arrival photos</p></div></div>
@@ -1262,13 +1260,16 @@
 <div class="dest-card"><div class="dest-img"><span class="dest-num-badge">6</span><img src="images/views/06_7eleven.jpeg" loading="lazy" alt="7Eleven with Mt. Fuji"></div><div class="dest-body"><h4>7Eleven with Mt. Fuji</h4><div class="dest-meta"><span class="dest-time-row">⏱ 10–20 min</span><span class="dest-booking ok">✅ No booking needed · Free</span></div><p>Another beloved Fuji photo spot — catch Mt. Fuji perfectly framed behind the store</p></div></div>
 <div class="dest-card"><div class="dest-img"><span class="dest-num-badge">7</span><img src="images/views/02_park.jpeg" loading="lazy" alt="Highland Park Viewpoint"></div><div class="dest-body"><h4>Highland Park Viewpoint</h4><div class="dest-meta"><span class="dest-time-row">⏱ 15–30 min</span><span class="dest-booking ok">✅ No booking needed · Free</span></div><p>Peaceful local park with unobstructed Fuji views, away from tourist crowds</p></div></div>
 </div>
-<button class="dest-arrow dest-next" onclick="scrollCarousel(this,1)">&rsaquo;</button>
+</div>
+<div class="dest-nav">
+<button onclick="scrollCarousel(this,-1)" aria-label="Previous">&#8249;</button>
+<button onclick="scrollCarousel(this,1)" aria-label="Next">&#8250;</button>
+</div>
 </div>
 
 <h3 style="font-size:15px;color:var(--shu);margin:1.2rem 0 1rem;font-weight:600;">Local & Cultural Experiences</h3>
 <p class="section-desc" style="margin-bottom:1.2rem;">Immerse yourself in authentic Fuji-area culture, food, and traditions.</p>
 <div class="dest-carousel-wrap">
-<button class="dest-arrow dest-prev" onclick="scrollCarousel(this,-1)">&lsaquo;</button>
 <div class="dest-carousel" id="carousel-culture">
 <div class="dest-card"><div class="dest-img"><span class="dest-num-badge">1</span><img src="images/culture/01_shrine.png" loading="lazy" alt="Sacred Shrine"></div><div class="dest-body"><h4>Sacred Shrine</h4><div class="dest-meta"><span class="dest-time-row">⏱ 30–60 min</span><span class="dest-booking ok">✅ No booking needed · Free</span></div><p>Principal shrine for Mt. Fuji worship with optional Shinto purification. Optional: Goshuin stamp ¥500, shrine offering ~¥100 (cash)</p></div></div>
 <div class="dest-card"><div class="dest-img"><span class="dest-num-badge">2</span><img src="images/culture/02_yakisoba.png" loading="lazy" alt="Award-Winning Local Lunch"></div><div class="dest-body"><h4>Award-Winning Local Lunch</h4><div class="dest-meta"><span class="dest-time-row">⏱ 30–45 min</span><span class="dest-booking ok">✅ No booking needed · ~¥700–900</span></div><p>Regional soul food — a beloved local specialty you can only find in this area</p></div></div>
@@ -1282,7 +1283,10 @@
 <div class="dest-card"><div class="dest-img"><span class="dest-num-badge">10</span><img src="images/culture/10_sake.jpg" loading="lazy" alt="Local Sake Tasting"></div><div class="dest-body"><h4>Local Sake Tasting</h4><div class="dest-meta"><span class="dest-time-row">⏱ 20 min</span><span class="dest-booking req">🔴 Reservation required · Free</span></div><p>Sample locally brewed sake made with pure Mt. Fuji spring water</p></div></div>
 <div class="dest-card"><div class="dest-img"><span class="dest-num-badge">11</span><img src="images/culture/11_gelato.png" loading="lazy" alt="Mochi Gelato & Matcha Latte"></div><div class="dest-body"><h4>Mochi Gelato & Matcha / Green Tea Latte</h4><div class="dest-meta"><span class="dest-time-row">⏱ 15–30 min</span><span class="dest-booking ok">✅ No booking needed · ~¥500–800</span></div><p>Sweet treats featuring local mochi and premium matcha or green tea</p></div></div>
 </div>
-<button class="dest-arrow dest-next" onclick="scrollCarousel(this,1)">&rsaquo;</button>
+<div class="dest-nav">
+<button onclick="scrollCarousel(this,-1)" aria-label="Previous">&#8249;</button>
+<button onclick="scrollCarousel(this,1)" aria-label="Next">&#8250;</button>
+</div>
 </div>
 </div></section>
 
@@ -1802,7 +1806,7 @@ function openBooking() {
 
 // ===== CAROUSEL & TAB SWITCHING =====
 function scrollCarousel(btn, dir) {
-  var wrap = btn.parentElement;
+  var wrap = btn.closest('.dest-carousel-wrap');
   var carousel = wrap.querySelector('.dest-carousel');
   var card = carousel.querySelector('.dest-card');
   if (!card) return;
