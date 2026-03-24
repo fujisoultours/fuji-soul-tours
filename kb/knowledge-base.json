@@ -30,6 +30,7 @@
       "CAD": "C$207~"
     },
     "largeGroup": "For groups of 6–10, additional ¥100,000 (non-refundable, paid in advance) on top of the standard per-person rate for 5 guests.",
+    "extensionRate": "$100 USD (¥16,500 JPY) per additional hour beyond the standard 4 hours.",
     "extras": "Activities and food at stops are paid separately on-site (not included in tour price)."
   },
   "whatsIncluded": [
@@ -176,7 +177,7 @@
     },
     {
       "q": "Can I extend the tour duration?",
-      "a": "Yes! Contact us for extended tour pricing and conditions. We can customize the experience to fit your schedule."
+      "a": "Yes! Extended tour time is available at $100 USD (¥16,500 JPY) per additional hour. If you have many activities on your wish list that won't fit in 4 hours, your guide will create an itinerary showing the extra time needed, and you can decide to either trim activities or pay for the extension."
     },
     {
       "q": "What about my luggage?",
@@ -241,6 +242,18 @@
     {
       "q": "Can I customize the tour stops?",
       "a": "Yes! You can add or swap destinations and experiences based on your interests and timing. After booking, share your preferences and we'll tailor the itinerary for you."
+    },
+    {
+      "q": "Can you pick us up from our hotel in Tokyo?",
+      "a": "Unfortunately no. The tour starts and ends at Shin-Fuji Station only. It's much faster to take the bullet train (about 1 hour from Tokyo) than to drive (2.5+ hours by car). We recommend taking the Kodama Shinkansen from Tokyo or Shinagawa Station."
+    },
+    {
+      "q": "What happens after I book?",
+      "a": "After booking, your guide will reach out via WhatsApp or email to: 1) Confirm your train schedule, 2) Ask about your activity preferences, 3) Create a personalized itinerary based on your interests and timing. The itinerary can be revised until tour day."
+    },
+    {
+      "q": "Where can I read reviews?",
+      "a": "You can find reviews on TripAdvisor and Viator. We're rated 5.0 stars. Search for 'Fuji Soul Tours' on either platform."
     }
   ],
   "importantNotes": {
@@ -299,6 +312,28 @@
       "q": "How do I get from Tokyo to Shin-Fuji?",
       "a": "Take a taxi to Shinagawa Station (~13 min from central Tokyo), then ride the Kodama Shinkansen for about 1 hour to Shin-Fuji.",
       "source": "DM - Swapna Desani"
+    }
+  ],
+  "whatsappFAQ": [
+    {
+      "q": "Can you pick us up from Tokyo?",
+      "a": "No, the tour starts and ends at Shin-Fuji Station only. Bullet train takes 1 hour vs 2.5+ hours by car from Tokyo.",
+      "source": "WhatsApp - Jamie Bartels-Giddings"
+    },
+    {
+      "q": "How much to extend the tour?",
+      "a": "$100 USD (¥16,500 JPY) per additional hour beyond the standard 4 hours.",
+      "source": "WhatsApp - Jake Swallow"
+    },
+    {
+      "q": "What happens after booking?",
+      "a": "Guide reaches out via WhatsApp/email to confirm train schedule, ask about preferences, and create a personalized itinerary. The itinerary can be revised until tour day.",
+      "source": "WhatsApp - Annette Robles, Alyssa"
+    },
+    {
+      "q": "Can I plan Tokyo to Kyoto via Mt. Fuji as one trip?",
+      "a": "Yes, that's exactly what the tour is designed for. Stop at Shin-Fuji on your Shinkansen journey, do the 4h tour, then continue to your next destination.",
+      "source": "WhatsApp - CustomerA"
     }
   ]
 }
