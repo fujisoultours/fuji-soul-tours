@@ -96,7 +96,8 @@ const REVIEWS = [
 
   function scrollTo(idx) {
     current = Math.max(0, Math.min(idx, total - 1));
-    cards[current].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+    var cardWidth = cards[0].offsetWidth + 20;
+    grid.scrollTo({ left: current * cardWidth, behavior: 'smooth' });
     dots.querySelectorAll('span').forEach((d, i) => d.classList.toggle('active', i === current));
   }
 
