@@ -333,14 +333,11 @@
   .reviews-carousel-wrap { position: relative; margin-top: 20px; overflow: hidden; }
   .reviews-grid {
     display: flex; gap: 20px; transition: transform 0.4s ease;
-    scroll-snap-type: x mandatory; overflow-x: auto; scroll-behavior: smooth;
-    -ms-overflow-style: none; scrollbar-width: none; padding: 4px 0;
+    padding: 4px 0;
   }
-  .reviews-grid::-webkit-scrollbar { display: none; }
   .review-card {
     background: #fff; border: 1px solid var(--usu-hai); border-radius: 12px;
     padding: 28px; min-width: 320px; max-width: 380px; flex-shrink: 0;
-    scroll-snap-align: start;
   }
   .review-stars { color: var(--gold); font-size: 14px; margin-bottom: 12px; letter-spacing: 2px; }
   .review-text {

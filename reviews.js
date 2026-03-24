@@ -79,7 +79,7 @@ const REVIEWS = [
       </div>`;
   }).join('');
 
-  // Carousel logic
+  // Carousel logic — uses CSS transform (no scrollIntoView / scrollTo)
   const dots = document.getElementById('revDots');
   const prevBtn = document.getElementById('revPrev');
   const nextBtn = document.getElementById('revNext');
@@ -94,41 +94,41 @@ const REVIEWS = [
     `<span data-i="${i}" class="${i === 0 ? 'active' : ''}"></span>`
   ).join('');
 
-  function scrollTo(idx) {
+  function goTo(idx) {
     current = Math.max(0, Math.min(idx, total - 1));
     var cardWidth = cards[0].offsetWidth + 20;
-    grid.scrollTo({ left: current * cardWidth, behavior: 'smooth' });
+    grid.style.transform = 'translateX(-' + (current * cardWidth) + 'px)';
     dots.querySelectorAll('span').forEach((d, i) => d.classList.toggle('active', i === current));
   }
 
-  prevBtn.addEventListener('click', () => scrollTo(current - 1));
-  nextBtn.addEventListener('click', () => scrollTo(current + 1));
-  dots.addEventListener('click', e => {
-    if (e.target.dataset.i !== undefined) scrollTo(+e.target.dataset.i);
+  prevBtn.addEventListener('click', function() { goTo(current - 1); });
+  nextBtn.addEventListener('click', function() { goTo(current + 1); });
+  dots.addEventListener('click', function(e) {
+    if (e.target.dataset.i !== undefined) goTo(+e.target.dataset.i);
   });
 
   // Auto-rotate every 5s — only when section is visible on screen
-  let autoplay = null;
+  var autoplay = null;
   var reviewSection = document.getElementById('reviews');
   var sectionVisible = false;
   if (reviewSection && window.IntersectionObserver) {
     new IntersectionObserver(function(entries) {
       sectionVisible = entries[0].isIntersecting;
       if (sectionVisible && !autoplay) {
-        autoplay = setInterval(function() { if (sectionVisible) scrollTo((current + 1) % total); }, 5000);
+        autoplay = setInterval(function() { if (sectionVisible) goTo((current + 1) % total); }, 5000);
+      }
+      if (!sectionVisible && autoplay) {
+        clearInterval(autoplay); autoplay = null;
       }
     }, { threshold: 0.1 }).observe(reviewSection);
   }
   grid.addEventListener('pointerdown', function() { clearInterval(autoplay); autoplay = null; });
-  grid.addEventListener('scroll', () => {
-    clearInterval(autoplay);
-    // Update dots on manual scroll
-    const scrollLeft = grid.scrollLeft;
-    const cardWidth = cards[0].offsetWidth + 20;
-    const newIdx = Math.round(scrollLeft / cardWidth);
-    if (newIdx !== current && newIdx >= 0 && newIdx < total) {
-      current = newIdx;
-      dots.querySelectorAll('span').forEach((d, i) => d.classList.toggle('active', i === current));
-    }
-  });
+
+  // Touch swipe support
+  var touchStartX = 0;
+  grid.addEventListener('touchstart', function(e) { touchStartX = e.touches[0].clientX; }, { passive: true });
+  grid.addEventListener('touchend', function(e) {
+    var diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) { diff > 0 ? goTo(current + 1) : goTo(current - 1); }
+  }, { passive: true });
 })();
