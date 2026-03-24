@@ -692,6 +692,41 @@
     .section-label { margin-bottom: 6px !important; }
     p { margin-bottom: 8px; }
     .hide-mobile { display: none !important; }
+    .hide-desktop { }
+
+    /* === MOBILE: SIMPLIFIED CONTENT === */
+    .contact-bar { display: none !important; }
+    .dest-meta { display: none !important; }
+    .dest-card p { display: none !important; }
+    .dest-card h4 { font-size: 13px !important; margin: 0 !important; }
+    .dest-body { padding: 8px 10px 10px !important; }
+    .dest-img { height: 120px !important; }
+    .dest-card { min-width: 180px !important; max-width: 180px !important; }
+    .weather-grid { display: none !important; }
+    .weather-note { display: none !important; }
+    .weather-note-mobile { display: block !important; }
+    .not-included-section { display: none !important; }
+    .pricing-breakdown { display: none !important; }
+    .pricing-review-quote { display: none !important; }
+    .host-values { display: none !important; }
+    .host-text > p { display: none !important; }
+    .tour-extension-box { display: none !important; }
+    .model-guest-note { display: none !important; }
+    .route-table th:nth-child(3),
+    .route-table td:nth-child(3) { display: none !important; }
+    .model-table th:nth-child(3),
+    .model-table td:nth-child(3) { display: none !important; }
+    .important-note-extra { display: none !important; }
+    #change-date-section { display: none !important; }
+
+    /* === MOBILE: CLEANER SPACING === */
+    .pricing-box { padding: 24px 16px !important; }
+    .pricing-box h2 { font-size: 14px !important; }
+    .pricing-box .price { margin: 8px 0 4px !important; }
+    .pricing-box .price-note { margin-bottom: 16px !important; }
+    .pricing-features { margin-top: 16px !important; }
+    .concept-box { margin-top: 12px !important; }
+    .section-gap { padding-top: 40px !important; padding-bottom: 40px !important; }
 
     /* === MOBILE: ROUTE TABS (compact 2-3 per row) === */
     .route-tabs { gap: 6px !important; margin: 1rem 0 1rem !important; }
@@ -754,7 +789,7 @@
 
     /* === MOBILE: OVERRIDE ALL INLINE font-size:18px === */
     [style*="font-size:15px"] { font-size: 14px !important; }
-    [style*="font-size: 18px"] { font-size: 14px !important; }
+    [style*="font-size:18px"] { font-size: 14px !important; }
     h1[style*="font-size"] { font-size: clamp(18px, 5vw, 24px) !important; }
     h2[style*="font-size"] { font-size: 16px !important; }
     h3[style*="font-size"] { font-size: 14px !important; }
@@ -769,6 +804,8 @@
     .hero-stat .val { font-size: 15px !important; }
     .hero-stat .label { font-size: 10px !important; letter-spacing: 0.5px !important; }
   }
+
+  .weather-note-mobile { display: none; }
 
   /* ===== ANIMATION ===== */
   .fade-in {
@@ -859,31 +896,21 @@
   }
   .model-tab-btn.active { background: var(--shu); color: white; }
   .model-tab-btn:hover { background: var(--shu); color: white; }
-  .model-table { width: 100%; border-collapse: collapse; font-size: 18px; }
-  .model-table th {
+  .model-table, .route-table { width: 100%; border-collapse: collapse; font-size: 18px; }
+  .model-table th, .route-table th {
     text-align: left; padding: 8px 12px; font-size: 14px;
     color: var(--hai); letter-spacing: 0.05em;
     border-bottom: 1px solid var(--usu-hai);
   }
-  .model-table td {
+  .model-table td, .route-table td {
     padding: 10px 12px; vertical-align: top;
     border-bottom: 1px solid var(--kinari);
   }
-  .model-table tr:last-child td { border-bottom: none; }
+  .model-table tr:last-child td, .route-table tr:last-child td { border-bottom: none; }
   .model-table .mt-time { white-space: nowrap; }
   .model-table .mt-time strong { font-weight: 700; }
   .model-table .mt-drive { color: var(--hai); font-size: 14px; }
   .model-table .mt-drive td { padding: 4px 12px; border-bottom: none; }
-
-  /* ===== ROUTE TABLE ===== */
-  .route-table { width: 100%; border-collapse: collapse; font-size: 18px; }
-  .route-table th {
-    text-align: left; padding: 8px 12px; font-size: 14px;
-    color: var(--hai); letter-spacing: 0.05em;
-    border-bottom: 1px solid var(--usu-hai);
-  }
-  .route-table td { padding: 10px 12px; border-bottom: 1px solid var(--kinari); }
-  .route-table tr:last-child td { border-bottom: none; }
   .buffer-row td {
     background: var(--kinari); color: var(--hai);
     font-size: 18px; font-style: italic;
@@ -1289,7 +1316,7 @@
         <tr class="mt-drive"><td></td><td colspan="2">🚗 20 min drive</td></tr>
         <tr><td class="mt-time"><strong>3:15</strong></td><td>Return to Station</td><td style="color:var(--hai);">Arrive back with time to spare for your next train</td></tr>
       </tbody></table>
-      <p style="background:var(--kinari);padding:1rem;border-radius:8px;font-size:14px;color:var(--hai);margin-top:1.5rem;"><strong>Guest note:</strong> This is for someone who wants to do as much as possible in a 4-hour tour. All listed costs are paid separately on-site (not included in tour price).</p>
+      <p class="model-guest-note" style="background:var(--kinari);padding:1rem;border-radius:8px;font-size:14px;color:var(--hai);margin-top:1.5rem;"><strong>Guest note:</strong> This is for someone who wants to do as much as possible in a 4-hour tour. All listed costs are paid separately on-site (not included in tour price).</p>
     </div>
 
     <div class="model-tab-panel" id="model-panel-1" style="display:none;">
@@ -1305,7 +1332,7 @@
         <tr class="mt-drive"><td></td><td colspan="2">🚗 20 min drive</td></tr>
         <tr><td class="mt-time"><strong>4:00</strong></td><td>Return to Station</td><td style="color:var(--hai);">Arrive back with time to spare for your next train</td></tr>
       </tbody></table>
-      <p style="background:var(--kinari);padding:1rem;border-radius:8px;font-size:14px;color:var(--hai);margin-top:1.5rem;"><strong>Guest note:</strong> This is for someone who wants to take time in each stop. All listed costs are paid separately on-site (not included in tour price).</p>
+      <p class="model-guest-note" style="background:var(--kinari);padding:1rem;border-radius:8px;font-size:14px;color:var(--hai);margin-top:1.5rem;"><strong>Guest note:</strong> This is for someone who wants to take time in each stop. All listed costs are paid separately on-site (not included in tour price).</p>
     </div>
 
     <div class="tour-extension-box" style="background:var(--kinari);border:1px solid var(--usu-hai);color:var(--sumi);padding:16px 20px;border-radius:12px;margin-top:24px;text-align:center;">
@@ -1349,6 +1376,11 @@
     </div>
     <div class="weather-note">
       💡 Your guide checks weather in real-time and chooses the best route for that day. Even when Mt. Fuji hides in the clouds, <a href="#carousel-culture" style="color:inherit;text-decoration:underline;text-underline-offset:2px;">cultural experiences</a> make this tour rewarding.
+    </div>
+    <div class="weather-note-mobile" style="margin-top:20px;padding:16px 20px;background:rgba(0,119,182,0.04);border-left:3px solid var(--shu);border-radius:0 8px 8px 0;font-size:14px;color:var(--hai);">
+      ☀️ Clear days: viewpoints + cultural stops<br>
+      ☁️ Cloudy days: shrines, tea ceremony, local food<br>
+      💡 Your guide adapts the route in real-time.
     </div>
   </div>
 </section>
@@ -1403,7 +1435,7 @@
       </div>
     </div>
 
-    <div style="margin-top:36px;">
+    <div style="margin-top:36px;" class="not-included-section">
       <h3 style="font-size:15px;color:var(--sumi);margin-bottom:16px;text-align:center;">Not Included <span style="font-weight:400;color:var(--hai);">(paid on-site)</span></h3>
       <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;">
         <span style="font-size:14px;color:var(--hai);background:#fff;border:1px solid var(--usu-hai);border-radius:10px;padding:10px 16px;">🍜 Meals <span style="font-size:13px;">(~¥700–900)</span></span>
@@ -1466,7 +1498,7 @@
           <p style="margin:4px 0 0;font-size:14px;color:var(--hai);line-height:1.6;">Only Kodama trains stop at Shin-Fuji Station — not Nozomi or Hikari. Covered by JR Pass and usually less crowded.</p>
         </div>
       </div>
-      <div style="display:flex;gap:14px;align-items:flex-start;background:#fff;border:1px solid var(--usu-hai);border-radius:12px;padding:18px 20px;">
+      <div class="important-note-extra" style="display:flex;gap:14px;align-items:flex-start;background:#fff;border:1px solid var(--usu-hai);border-radius:12px;padding:18px 20px;">
         <span style="font-size:18px;">🗻</span>
         <div>
           <strong style="font-size:14px;color:var(--sumi);">Best seat for Mt. Fuji views on the Shinkansen</strong>
@@ -1514,7 +1546,7 @@
       </div>
       <div class="price" id="priceDisplay">¥22,724 ~</div>
       <p class="price-note">per person · Price varies by group size</p>
-      <div style="margin:20px auto 24px;max-width:360px;text-align:left;">
+      <div class="pricing-breakdown" style="margin:20px auto 24px;max-width:360px;text-align:left;">
         <table style="width:100%;border-collapse:collapse;font-size:14px;color:rgba(255,255,255,0.8);">
           <tr style="border-bottom:1px solid rgba(255,255,255,0.15);">
             <td style="padding:8px 0;">1 guest</td><td style="text-align:right;padding:8px 0;font-weight:600;color:#fff;">$416 /person</td>
@@ -1528,7 +1560,7 @@
         </table>
       </div>
       <p style="margin-top:10px;font-size:13px;font-weight:700;color:#2ecc71;letter-spacing:0.3px;">🏷️ Lowest Price Guarantee</p>
-      <div style="margin:28px auto 20px;max-width:480px;text-align:center;">
+      <div class="pricing-review-quote" style="margin:28px auto 20px;max-width:480px;text-align:center;">
         <p style="font-size:14px;color:rgba(255,255,255,0.7);line-height:1.7;font-style:italic;margin-bottom:12px;">"The best private tour we've ever done. Takumu's English is outstanding. The stops he chose were spot on."</p>
         <p style="font-size:14px;color:rgba(255,255,255,0.5);margin-bottom:4px;">— Viator Verified Review · 5.0 ★</p>
         <p style="font-size:14px;color:rgba(255,255,255,0.5);">Your guide: Fuji-native, bilingual, 10+ years local expertise</p>
@@ -1634,23 +1666,25 @@
 const nav = document.getElementById('nav');
 const backToTop = document.getElementById('backToTop');
 window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 10);
+  if (nav) nav.classList.toggle('scrolled', window.scrollY > 10);
   if (backToTop) backToTop.classList.toggle('visible', window.scrollY > 400);
 }, { passive: true });
 
 // Hamburger
 const hamburger = document.getElementById('hamburger');
 const navLinks = document.getElementById('navLinks');
-hamburger.addEventListener('click', () => {
-  hamburger.classList.toggle('active');
-  navLinks.classList.toggle('open');
-});
-navLinks.querySelectorAll('a').forEach(a => {
-  a.addEventListener('click', () => {
-    hamburger.classList.remove('active');
-    navLinks.classList.remove('open');
+if (hamburger && navLinks) {
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navLinks.classList.toggle('open');
   });
-});
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      hamburger.classList.remove('active');
+      navLinks.classList.remove('open');
+    });
+  });
+}
 
 // FAQ
 // FAQ categorized system
@@ -1660,7 +1694,7 @@ navLinks.querySelectorAll('a').forEach(a => {
     { cat: "tour", q: "What time does the tour start?", a: "Flexible — 8:00 to 17:00. We adjust based on your train schedule. Earlier is better for clearer Mt. Fuji views." },
     { cat: "tour", q: "Can I extend the tour?", a: "Yes! $100 USD (¥16,500) per additional hour. Your guide will create an itinerary showing the time needed." },
     { cat: "tour", q: "Is this a hiking or climbing tour?", a: "No — it's a cultural sightseeing tour by private van. No hiking or climbing. We operate year-round." },
-    { cat: "tour", q: "What about my luggage?", a: "Large suitcases welcome! Secure storage in our van. For groups of 4–5 with large bags, station lockers are available (¥300–800, cash only)." },
+    { cat: "tour", q: "What about my luggage?", a: "Large suitcases welcome! Secure storage in our van. For groups of 4–5 with large bags, station lockers are available (¥300–800, cash only).", id: "faq-luggage" },
     { cat: "tour", q: "Can I customize the stops?", a: "Yes! After booking, share your preferences and we'll create a personalized itinerary." },
     { cat: "travel", q: "Where do we meet?", a: "Shin-Fuji Station exit. Your guide will be holding a 'Fuji Soul Tours' sign." },
     { cat: "travel", q: "How do I get here from Tokyo?", a: "Take the Kodama Shinkansen from Tokyo/Shinagawa Station — about 1 hour. Book tickets via the SmartEX app." },
@@ -1685,7 +1719,7 @@ navLinks.querySelectorAll('a').forEach(a => {
     const items = FAQ_DATA.filter(f => f.cat === cat);
     const mid = Math.ceil(items.length / 2);
     const makeHTML = list => list.map(f =>
-      `<div class="faq-item"><button class="faq-q">${f.q}</button><div class="faq-a"><p>${f.a}</p></div></div>`
+      `<div class="faq-item"${f.id ? ` id="${f.id}"` : ''}><button class="faq-q">${f.q}</button><div class="faq-a"><p>${f.a}</p></div></div>`
     ).join('');
     left.innerHTML = makeHTML(items.slice(0, mid));
     right.innerHTML = makeHTML(items.slice(mid));
