@@ -13,21 +13,42 @@
 const REVIEWS = [
   {
     stars: 5,
-    text: "Takumu was a brilliant guide from the start! Easy to communicate with when booking & gave a variety of options for the day. Takumu is local to the area so he took us to his favourite spots to enjoy the mountain views. We went to the Mt.Fuji heritage centre, Fugisanhongu sengentaisha which offered amazing views of Mt.Fuji. We then had Takumu's favourite Yakisoba for lunch which was delicious and then finished our afternoon with a traditional tea experience. We got lucky with clear views of Mt.Fuji all day. We had so much fun and highly recommend Mt.Fuji soul tours!",
+    text: "I couldn't recommend Taku more as a tour guide! He took me and my boyfriend on such a lovely tour around Fuji and the town. He gave us options on what we wanted to pick from and he even added more. Not only was he so delightful and fun to talk to, he also made us feel so welcome to his town. If you want an amazing experience full of great food, detailed history, and a genuine fun time. Book with Taku!",
+    author: "Shannon_F",
+    date: "March 2026",
+    source: "Viator"
+  },
+  {
+    stars: 5,
+    text: "It was such a unique experience! The driver was really nice and knowledgeable. He really taught us about the culture in Japan. I will take this over shopping in Tokyo any day!",
+    author: "Angelo_C",
+    date: "March 2026",
+    source: "Viator"
+  },
+  {
+    stars: 5,
+    text: "Taku is an amazing guide! He took us to all the local spots, picture view points, and made this experience one we will never forget. We are so happy to have found this tour with Taku!",
+    author: "Madison_G",
+    date: "March 2026",
+    source: "Viator"
+  },
+  {
+    stars: 5,
+    text: "Takumu was a brilliant guide from the start! Easy to communicate with when booking & gave a variety of options for the day. He is local to the area so he took us to his favourite spots to enjoy the mountain views. We had his favourite Yakisoba for lunch which was delicious and then finished our afternoon with a traditional tea experience. Clear views of Mt.Fuji all day!",
     author: "Ruby_S",
     date: "February 2026",
     source: "Viator"
   },
   {
     stars: 5,
-    text: "We had an amazing experience with Tamuku! Unfortunately, the day we were at Mount Fuji it was raining. Tamuku immediately found an alternative activity which we thoroughly enjoyed – a private tea ceremony. Tamuku took us to a local bakery, to eat yakisoba and pork buns. The food was amazing!",
+    text: "We had an amazing experience! Unfortunately, the day we were at Mount Fuji it was raining. Our guide immediately found an alternative activity which we thoroughly enjoyed — a private tea ceremony. He took us to a local bakery, to eat yakisoba and pork buns. The food was amazing!",
     author: "Annette_M",
     date: "February 2026",
     source: "Viator"
   },
   {
     stars: 5,
-    text: "We do many private tours and this was the best. Takumu's English is outstanding. The stops he chose were spot on. He was a wonderful ambassador for Japan. You would be lucky to share a day with him.",
+    text: "We do many private tours and this was the best. The English is outstanding. The stops chosen were spot on. A wonderful ambassador for Japan. You would be lucky to share a day with him.",
     author: "Dan_J",
     date: "October 2025",
     source: "Tripadvisor"
