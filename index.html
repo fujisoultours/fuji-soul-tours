@@ -39,7 +39,7 @@
     --usu-hai: #DEE8EE;
     --gold: #B8860B;
     --green: #2D5A27;
-    --section-gap: 28px;
+    --section-gap: 40px;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -679,15 +679,18 @@
     .host-section { flex-direction: column; gap: 20px; }
     .pricing-box { padding: 32px 20px; }
     .pricing-box .price { font-size: 28px !important; }
-    :root { --section-gap: 36px; }
+    :root { --section-gap: 48px; }
     section { padding: 0 16px !important; }
     .container { padding: 0 !important; }
     .review-card { padding: 20px !important; }
     .included-item { padding: 14px !important; }
 
-    /* === MOBILE: LINE HEIGHT === */
-    body { line-height: 1.55 !important; }
-    .section-desc { line-height: 1.6 !important; }
+    /* === MOBILE: SPACING & READABILITY === */
+    body { line-height: 1.7 !important; }
+    .section-desc { line-height: 1.7 !important; font-size: 14px !important; }
+    .section-title { margin-bottom: 12px !important; }
+    .section-label { margin-bottom: 6px !important; }
+    p { margin-bottom: 8px; }
 
     /* === MOBILE: ROUTE TABS (compact 2-3 per row) === */
     .route-tabs { gap: 6px !important; margin: 1rem 0 1rem !important; }
@@ -907,17 +910,21 @@
   /* ── Chatbot ── */
   .chatbot-toggle {
     position: fixed; bottom: 24px; right: 24px; z-index: 9999;
-    width: 60px; height: 60px; border-radius: 50%;
+    height: 48px; border-radius: 24px; padding: 0 20px 0 16px;
     background: var(--shu); color: #fff; border: none; cursor: pointer;
     box-shadow: 0 4px 16px rgba(0,119,182,0.4);
-    display: flex; align-items: center; justify-content: center;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
     transition: transform 0.2s, box-shadow 0.2s;
+    font-family: inherit; font-size: 14px; font-weight: 600;
   }
-  .chatbot-toggle:hover { transform: scale(1.08); box-shadow: 0 6px 24px rgba(0,119,182,0.5); }
-  .chatbot-toggle svg { width: 28px; height: 28px; }
+  .chatbot-toggle:hover { transform: scale(1.05); box-shadow: 0 6px 24px rgba(0,119,182,0.5); }
+  .chatbot-toggle svg { width: 22px; height: 22px; flex-shrink: 0; }
+  .chatbot-toggle .chat-label { white-space: nowrap; }
   .chatbot-toggle .chat-close { display: none; }
   .chatbot-toggle.active .chat-open { display: none; }
+  .chatbot-toggle.active .chat-label { display: none; }
   .chatbot-toggle.active .chat-close { display: block; }
+  .chatbot-toggle.active { width: 48px; height: 48px; padding: 0; border-radius: 50%; }
 
   .chatbot-window {
     position: fixed; bottom: 100px; right: 24px; z-index: 9998;
@@ -1026,8 +1033,8 @@
       padding: 10px 12px; padding-bottom: max(10px, env(safe-area-inset-bottom));
     }
     .chatbot-input input { padding: 10px 14px; font-size: 16px; }
-    .chatbot-toggle { bottom: 16px; right: 16px; width: 54px; height: 54px; }
-    .chatbot-toggle.active { display: none; }
+    .chatbot-toggle { bottom: 16px; right: 16px; height: 44px; padding: 0 16px 0 12px; font-size: 13px; }
+    .chatbot-toggle.active { display: none; width: 44px; height: 44px; padding: 0; }
     .chatbot-header-close { display: block; }
     .chat-msg { max-width: 90%; font-size: 14px; }
     .chat-contact-btns { flex-direction: row; flex-wrap: wrap; }
@@ -1806,6 +1813,7 @@ function switchModelTab(n) {
 <!-- Chatbot -->
 <button class="chatbot-toggle" id="chatToggle" aria-label="Open chat">
   <svg class="chat-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+  <span class="chat-label">Ask AI</span>
   <svg class="chat-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
 </button>
 
