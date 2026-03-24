@@ -50,7 +50,7 @@
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 16px;
     color: var(--sumi);
-    background: var(--shiro);
+    background: #fff;
     line-height: 1.7;
     -webkit-font-smoothing: antialiased;
   }
@@ -812,6 +812,7 @@
   .fade-in {
     opacity: 0; transform: translateY(20px);
     transition: opacity 0.6s ease, transform 0.6s ease;
+    will-change: opacity, transform; contain: layout style;
   }
   .fade-in.visible {
     opacity: 1; transform: translateY(0);
@@ -823,6 +824,7 @@
   .dest-carousel {
     display: flex; gap: 20px; overflow-x: auto;
     padding: 8px 0 16px; scrollbar-width: none;
+    -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain;
   }
   .dest-carousel::-webkit-scrollbar { display: none; }
   .dest-card {
@@ -988,7 +990,6 @@
 
   .chatbot-messages {
     flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 12px;
-    scroll-behavior: smooth;
   }
   .chatbot-messages::-webkit-scrollbar { width: 4px; }
   .chatbot-messages::-webkit-scrollbar-thumb { background: #ccc; border-radius: 4px; }
@@ -1670,6 +1671,11 @@
 <button class="back-to-top" id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})" style="line-height:1;">&#x25B4;</button>
 
 <script>
+// Prevent iOS scroll restoration fighting with async widget loads
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+// Force scroll to top on fresh page load (not hash nav)
+window.scrollTo(0, 0);
+
 // Nav scroll + Back to top
 const nav = document.getElementById('nav');
 const backToTop = document.getElementById('backToTop');
@@ -1845,8 +1851,39 @@ function switchModelTab(n) {
 
 <script src="reviews.js"></script>
 
-<!-- Bokun Widget Loader -->
-<script type="text/javascript" src="https://widgets.bokun.io/assets/javascripts/apps/build/BokunWidgetsLoader.js?bookingChannelUUID=9c7daabb-e81c-4ae1-b504-5451a5ca69ff" async></script>
+<!-- Bokun Widget Loader — lazy-loaded to prevent iOS scroll hijack -->
+<script>
+(function(){
+  var loaded = false;
+  function loadBokun() {
+    if (loaded) return;
+    loaded = true;
+    var s = document.createElement('script');
+    s.src = 'https://widgets.bokun.io/assets/javascripts/apps/build/BokunWidgetsLoader.js?bookingChannelUUID=9c7daabb-e81c-4ae1-b504-5451a5ca69ff';
+    s.async = true;
+    // Prevent Bokun from scrolling page when it initializes
+    var savedY = window.scrollY;
+    s.onload = function() {
+      setTimeout(function(){ window.scrollTo(0, savedY); }, 100);
+      setTimeout(function(){ window.scrollTo(0, savedY); }, 300);
+      setTimeout(function(){ window.scrollTo(0, savedY); }, 600);
+    };
+    document.body.appendChild(s);
+  }
+  // Load after 3 seconds or when user scrolls past hero (whichever first)
+  var timer = setTimeout(loadBokun, 3000);
+  var bookSection = document.getElementById('book');
+  if (bookSection && window.IntersectionObserver) {
+    new IntersectionObserver(function(entries, obs) {
+      if (entries[0].isIntersecting) { clearTimeout(timer); loadBokun(); obs.disconnect(); }
+    }, {rootMargin: '200px'}).observe(bookSection);
+  }
+  // Also load on any "Book Now" / "Check Availability" click
+  document.addEventListener('click', function(e) {
+    if (e.target.closest('.bokunButton, [onclick*="openBooking"]')) loadBokun();
+  }, {once: true});
+})();
+</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.js"></script>
 <script>
   var fpOpts = { dateFormat: "Y-m-d", minDate: "today", disableMobile: false };
