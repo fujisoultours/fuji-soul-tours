@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-21",
+  "lastUpdated": "2026-03-24",
   "sources": ["website", "instagram"],
   "tourOverview": {
     "name": "Fuji Soul Tours – Mt. Fuji Cultural Private Tour",
@@ -8,14 +8,14 @@
     "duration": "4 hours",
     "maxGuests": 5,
     "startLocation": "Shin-Fuji Station exit",
-    "meetingPoint": "Your guide (Takumu) will wait right at the gate exit with a sign 'Fuji Soul Tours'.",
+    "meetingPoint": "Your guide will wait right at the gate exit with a 'Fuji Soul Tours' sign.",
     "availableHours": "8:00 – 17:00 (flexible based on your train schedule)",
     "recommendation": "The earlier the better — morning hours tend to offer clearer views of Mt. Fuji."
   },
   "guide": {
-    "name": "Takumu",
-    "background": "Born in the shadow of Mt. Fuji, Fuji-native, bilingual English speaker, 10+ years local expertise.",
-    "philosophy": "Show you the Mt. Fuji that locals know and love, not just what's in guidebooks and viral reels. No tourist traps, only places I'd take my own family."
+    "name": "Your guide",
+    "background": "Local-born, Fuji-native, bilingual English speaker, 10+ years local expertise.",
+    "philosophy": "Show you the Mt. Fuji that locals know and love, not just what's in guidebooks and viral reels. No tourist traps, only places we'd take our own family."
   },
   "pricing": {
     "perPerson": {
@@ -35,7 +35,7 @@
   "whatsIncluded": [
     "Private tour for your group only (max 5 guests)",
     "Premium air-conditioned van with luggage storage",
-    "Local-born English-speaking guide (Takumu)",
+    "Local-born English-speaking guide",
     "Bottled water (one per person)",
     "Hidden photo spots — curated viewpoints locals love",
     "Luggage-friendly — large suitcases welcome"
@@ -184,7 +184,7 @@
     },
     {
       "q": "Where do we meet?",
-      "a": "Shin-Fuji Station exit. Your guide will wait right at the gate exit with a sign 'Fuji Soul Tours'."
+      "a": "Shin-Fuji Station exit. Your guide will wait right at the gate exit with a 'Fuji Soul Tours' sign."
     },
     {
       "q": "What if the weather is bad or my train is delayed?",
@@ -203,8 +203,8 @@
       "a": "Flexible — we adjust the start time based on your train schedule. Available 8:00–17:00. The earlier the better for clearer Mt. Fuji views."
     },
     {
-      "q": "Can children under 6 join the tour?",
-      "a": "Japanese law requires a child safety seat for children aged 5 and under. We do not normally carry child seats, so we are usually unable to accommodate young children. However, depending on the situation, it may be possible. Please contact us to discuss your needs."
+      "q": "Can children under 6 or infants join the tour?",
+      "a": "Japanese law requires a child safety seat for children aged 5 and under. We do not normally carry child seats, so we are usually unable to accommodate young children. However, depending on the date and number of guests, we may be able to rent a child seat for $50 USD. Infants count as a passenger but do not need a separate booking — book for the number of adults only. Please contact us with your date, group size, and child's age so we can check availability."
     },
     {
       "q": "Can I book for more than 5 guests?",
@@ -217,12 +217,39 @@
     {
       "q": "When can you see Mt. Fuji?",
       "a": "Mt. Fuji is visible approximately 40% of the year. Best months: Nov–Feb (60–73% visibility). Summer: 13–17% (rainy/humid). Even when Mt. Fuji hides in the clouds, cultural experiences make this tour rewarding. Your guide adjusts the route to maximize your experience regardless of visibility."
+    },
+    {
+      "q": "What happens on a clear day vs a cloudy day?",
+      "a": "On clear days with Mt. Fuji visible, we prioritize scenic viewpoints — lakeside spots, highland views, and getting close to the mountain. On cloudy days when Fuji is hidden, we focus more on cultural experiences — Shiraito Falls (UNESCO), the principal shrine, local yakisoba lunch, and a traditional tea house for green tea with Japanese sweets. Either way, your guide tailors the route to give you the best experience."
+    },
+    {
+      "q": "Are entry fees and food included in the tour price?",
+      "a": "No. The tour price covers private transportation, your guide, and bottled water. All entry fees, food, drinks, and activity costs at each stop are paid separately on-site. Each destination card on our website shows the estimated cost so you can plan ahead."
+    },
+    {
+      "q": "How do I buy Shinkansen tickets to Shin-Fuji?",
+      "a": "We recommend booking online in advance using the SmartEX app. You can also buy tickets at the station, but booking ahead guarantees your seat. Remember: only the Kodama train stops at Shin-Fuji — not Nozomi or Hikari."
+    },
+    {
+      "q": "How do I get to Shin-Fuji from central Tokyo?",
+      "a": "From central Tokyo (e.g., Shinagawa Station), take the Kodama Shinkansen. It's about 1 hour. From most Tokyo hotels, take a taxi or train to Tokyo Station or Shinagawa Station, then hop on the Kodama bullet train."
+    },
+    {
+      "q": "Can you share exact locations of the photo spots?",
+      "a": "We keep our curated spots private — it's the core value of our 'crowd-free' experience. Exact locations are shared only with booked guests so these hidden gems stay uncrowded. We can share general descriptions of what you'll see, but not specific addresses or map pins."
+    },
+    {
+      "q": "Can I customize the tour stops?",
+      "a": "Yes! You can add or swap destinations and experiences based on your interests and timing. After booking, share your preferences and we'll tailor the itinerary for you."
     }
   ],
   "importantNotes": {
     "cash": "Bring Japanese Yen cash. Some spots are cash-only — lockers, kimono rental, shrine offerings, certain cafés. Most restaurants and shops also accept cards.",
     "train": "Take the Kodama (こだま) train. Only Kodama stops at Shin-Fuji Station — not Nozomi or Hikari. Covered by JR Pass and usually less crowded.",
-    "seats": "Best Shinkansen seats for Mt. Fuji views: From Tokyo → sit in seat E (right-side window). From Kyoto/Osaka → sit in seat A (left-side window)."
+    "ticketBooking": "Book Shinkansen tickets online in advance using the SmartEX app for convenience. You can also buy at the station, but advance booking guarantees your seat.",
+    "seats": "Best Shinkansen seats for Mt. Fuji views: From Tokyo → sit in seat E (right-side window). From Kyoto/Osaka → sit in seat A (left-side window).",
+    "travelTimes": "Shin-Fuji Station is about 1 hour from Tokyo/Shinagawa, about 2 hours from Kyoto, and about 2.5 hours from Osaka.",
+    "locationPrivacy": "Exact photo spot locations are kept private and shared only with booked guests to preserve the crowd-free experience."
   },
   "shinkansenRoutes": [
     "Tokyo → Shin-Fuji → Kyoto",
@@ -237,5 +264,41 @@
     "whatsapp": "https://wa.me/819039554101",
     "whatsappNumber": "+81-90-3955-4101"
   },
-  "instagramFAQ": []
+  "instagramFAQ": [
+    {
+      "q": "Can I bring an infant on the tour?",
+      "a": "Depending on date and group size, yes. Child seat rental is $50 USD. Infants don't need a separate booking — book for adults only. Contact us with details.",
+      "source": "DM - Melanie Ann"
+    },
+    {
+      "q": "Where do I leave my luggage if moving to the next city after the tour?",
+      "a": "Large suitcases are stored securely in our van during the tour. For groups of 4-5 with large bags, we use station or tourist office lockers nearby (¥300-800 per piece, cash only).",
+      "source": "DM - Leticia D. Leal"
+    },
+    {
+      "q": "Are entry fees and food included?",
+      "a": "No, any fees incurred onsite are not included in the tour price. Each destination card on the website describes the expected costs.",
+      "source": "DM - Kishnoor Bhasin"
+    },
+    {
+      "q": "What's different on clear vs cloudy days?",
+      "a": "Clear days: scenic viewpoints, lake, farm, mountain views. Cloudy days: Shiraito Falls, principal shrine, yakisoba lunch, tea house for green tea with Japanese sweets.",
+      "source": "DM - Kishnoor Bhasin"
+    },
+    {
+      "q": "How do I buy bullet train tickets?",
+      "a": "Book online in advance using the SmartEX app. You can also buy at the station.",
+      "source": "DM - Swapna Desani"
+    },
+    {
+      "q": "Can you share exact photo spot locations?",
+      "a": "No, exact locations are kept private for booked guests only to preserve the crowd-free experience.",
+      "source": "DM - Alisa Pinnell"
+    },
+    {
+      "q": "How do I get from Tokyo to Shin-Fuji?",
+      "a": "Take a taxi to Shinagawa Station (~13 min from central Tokyo), then ride the Kodama Shinkansen for about 1 hour to Shin-Fuji.",
+      "source": "DM - Swapna Desani"
+    }
+  ]
 }
