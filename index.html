@@ -44,7 +44,7 @@
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
-  html { scroll-behavior: smooth; }
+  /* scroll-behavior removed from html to prevent iOS auto-scroll bugs */
 
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -348,11 +348,14 @@
   .review-date { font-size: 14px; color: var(--hai); }
   .reviews-nav { display: flex; justify-content: center; align-items: center; gap: 16px; margin-top: 16px; }
   .reviews-nav button {
-    width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--usu-hai);
-    background: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center;
-    transition: all 0.2s; color: var(--sumi); font-size: 18px;
+    width: 36px !important; height: 36px !important; border-radius: 50% !important;
+    border: 1px solid var(--usu-hai) !important;
+    background: #fff !important; cursor: pointer; display: flex !important;
+    align-items: center; justify-content: center;
+    transition: all 0.2s; color: var(--sumi) !important; font-size: 18px !important;
+    padding: 0 !important; min-width: unset !important;
   }
-  .reviews-nav button:hover { background: var(--shu); color: #fff; border-color: var(--shu); }
+  .reviews-nav button:hover { background: var(--shu) !important; color: #fff !important; border-color: var(--shu) !important; }
   .reviews-dots { display: flex; gap: 6px; }
   .reviews-dots span {
     width: 8px; height: 8px; border-radius: 50%; background: var(--usu-hai);
@@ -860,11 +863,14 @@
     display: flex; justify-content: center; align-items: center; gap: 12px; margin-top: 16px;
   }
   .dest-nav button {
-    width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--usu-hai);
-    background: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center;
-    transition: all 0.2s; color: var(--sumi); font-size: 18px;
+    width: 36px !important; height: 36px !important; border-radius: 50% !important;
+    border: 1px solid var(--usu-hai) !important;
+    background: #fff !important; cursor: pointer; display: flex !important;
+    align-items: center; justify-content: center;
+    transition: all 0.2s; color: var(--sumi) !important; font-size: 18px !important;
+    padding: 0 !important; min-width: unset !important;
   }
-  .dest-nav button:hover { background: var(--shu); color: #fff; border-color: var(--shu); }
+  .dest-nav button:hover { background: var(--shu) !important; color: #fff !important; border-color: var(--shu) !important; }
 
   /* ===== ROUTE TABS ===== */
   .route-tabs {
@@ -1134,7 +1140,7 @@
 </header>
 
 <!-- CONTACT US -->
-<section class="contact-bar" style="background:var(--shiro);padding:20px 16px;margin-bottom:0;text-align:center;">
+<section class="contact-bar" style="background:transparent;padding:20px 16px;margin-bottom:0;text-align:center;">
   <div style="max-width:600px;margin:0 auto;">
     <p class="contact-bar-title" style="font-size:15px;color:var(--sumi);margin-bottom:4px;font-weight:600;">Book first, then let's plan your perfect day</p>
     <p class="contact-bar-sub" style="font-size:13px;color:var(--hai);margin-bottom:10px;">After booking, share your train times and we'll tailor the itinerary to your schedule.</p>
@@ -1680,10 +1686,13 @@ if (hamburger && navLinks) {
     hamburger.classList.toggle('active');
     navLinks.classList.toggle('open');
   });
-  navLinks.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => {
+  navLinks.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', (e) => {
+      e.preventDefault();
       hamburger.classList.remove('active');
       navLinks.classList.remove('open');
+      var target = document.getElementById(a.getAttribute('href').slice(1));
+      if (target) target.scrollIntoView({behavior:'smooth'});
     });
   });
 }
