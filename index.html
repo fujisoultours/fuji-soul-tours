@@ -330,42 +330,65 @@
   .host-values li strong { color: var(--sumi); }
 
   /* ===== REVIEWS ===== */
+  .reviews-carousel-wrap { position: relative; margin-top: 20px; overflow: hidden; }
   .reviews-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px; margin-top: 20px;
+    display: flex; gap: 20px; transition: transform 0.4s ease;
+    scroll-snap-type: x mandatory; overflow-x: auto; scroll-behavior: smooth;
+    -ms-overflow-style: none; scrollbar-width: none; padding: 4px 0;
   }
+  .reviews-grid::-webkit-scrollbar { display: none; }
   .review-card {
-    background: #fff;
-    border: 1px solid var(--usu-hai);
-    border-radius: 12px;
-    padding: 28px;
+    background: #fff; border: 1px solid var(--usu-hai); border-radius: 12px;
+    padding: 28px; min-width: 320px; max-width: 380px; flex-shrink: 0;
+    scroll-snap-align: start;
   }
   .review-stars { color: var(--gold); font-size: 14px; margin-bottom: 12px; letter-spacing: 2px; }
   .review-text {
     font-size: 14px; color: var(--hai); line-height: 1.8;
     margin-bottom: 16px;
   }
-  .review-author {
-    font-size: 14px; font-weight: 600; color: var(--sumi);
-  }
+  .review-author { font-size: 14px; font-weight: 600; color: var(--sumi); }
   .review-date { font-size: 14px; color: var(--hai); }
+  .reviews-nav { display: flex; justify-content: center; align-items: center; gap: 16px; margin-top: 16px; }
+  .reviews-nav button {
+    width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--usu-hai);
+    background: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s; color: var(--sumi);
+  }
+  .reviews-nav button:hover { background: var(--shu); color: #fff; border-color: var(--shu); }
+  .reviews-dots { display: flex; gap: 6px; }
+  .reviews-dots span {
+    width: 8px; height: 8px; border-radius: 50%; background: var(--usu-hai);
+    transition: all 0.3s; cursor: pointer;
+  }
+  .reviews-dots span.active { background: var(--shu); width: 20px; border-radius: 4px; }
+  @media (max-width: 600px) {
+    .review-card { min-width: 280px; max-width: 300px; padding: 20px; }
+  }
 
   /* ===== FAQ ===== */
-  .faq-list { margin-top: 20px; }
-  .faq-item {
-    border-bottom: 1px solid var(--usu-hai);
+  .faq-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin: 20px 0 16px; }
+  .faq-tab {
+    padding: 8px 16px; border-radius: 20px; border: 1px solid var(--usu-hai);
+    background: #fff; cursor: pointer; font-size: 13px; font-weight: 600;
+    color: var(--hai); transition: all 0.2s; font-family: inherit;
   }
+  .faq-tab.active { background: var(--shu); color: #fff; border-color: var(--shu); }
+  .faq-tab:hover:not(.active) { border-color: var(--shu); color: var(--shu); }
+  .faq-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 0 32px; }
+  @media (max-width: 768px) { .faq-columns { grid-template-columns: 1fr; } }
+  .faq-list { margin-top: 0; }
+  .faq-item { border-bottom: 1px solid var(--usu-hai); }
   .faq-q {
     width: 100%; background: none; border: none; cursor: pointer;
-    padding: 20px 0; text-align: left;
-    font-size: 15px; font-weight: 600; color: var(--sumi);
+    padding: 14px 0; text-align: left;
+    font-size: 14px; font-weight: 600; color: var(--sumi);
     display: flex; justify-content: space-between; align-items: center;
-    font-family: inherit;
+    font-family: inherit; gap: 12px;
   }
   .faq-q::after {
-    content: '+'; font-size: 15px; font-weight: 300; color: var(--shu);
-    transition: transform 0.3s;
+    content: '+'; font-size: 14px; font-weight: 300; color: var(--shu);
+    transition: transform 0.3s; flex-shrink: 0;
   }
   .faq-item.open .faq-q::after { content: '−'; }
   .faq-a {
@@ -374,9 +397,20 @@
   }
   .faq-item.open .faq-a { max-height: 700px; }
   .faq-a p {
-    padding-bottom: 20px;
-    font-size: 15px; color: var(--hai); line-height: 1.8;
+    padding-bottom: 14px;
+    font-size: 14px; color: var(--hai); line-height: 1.7;
   }
+  .faq-chatbot-cta {
+    margin-top: 24px; text-align: center; padding: 20px;
+    background: linear-gradient(135deg, #f8f9fa, #e8f4f8); border-radius: 12px;
+  }
+  .faq-chatbot-cta p { font-size: 14px; color: var(--hai); margin: 0 0 8px; }
+  .faq-chatbot-cta button {
+    background: var(--shu); color: #fff; border: none; padding: 10px 24px;
+    border-radius: 20px; font-size: 14px; font-weight: 600; cursor: pointer;
+    font-family: inherit; transition: opacity 0.2s;
+  }
+  .faq-chatbot-cta button:hover { opacity: 0.9; }
 
   /* ===== PRICING ===== */
   .pricing-box {
@@ -1173,7 +1207,7 @@
         <tr><td><strong>14:18</strong></td><td>Arrive Tokyo ✓</td><td>Tokyo Station</td></tr>
       </tbody></table>
     </div>
-    <p style="text-align:center;font-size:14px;color:var(--hai);margin-top:16px;">Start and end times are flexible — these are examples only. <a href="#faq" style="color:var(--shu);text-decoration:underline;" onclick="event.preventDefault();document.querySelector('#faq .faq-item:nth-child(8) .faq-q').click();document.getElementById('faq').scrollIntoView({behavior:'smooth'});">See FAQ →</a></p>
+    <p style="text-align:center;font-size:14px;color:var(--hai);margin-top:16px;">Start and end times are flexible — these are examples only. <a href="#faq" style="color:var(--shu);text-decoration:underline;" onclick="event.preventDefault();document.getElementById('faq').scrollIntoView({behavior:'smooth'});">See FAQ →</a></p>
   </div>
 </section>
 
@@ -1440,139 +1474,20 @@
   <div class="container fade-in">
     <div class="section-label">FAQ</div>
     <h2 class="section-title">Frequently Asked Questions</h2>
-    <div class="faq-list">
-      <div class="faq-item">
-        <button class="faq-q">Will this disrupt my travel schedule?</button>
-        <div class="faq-a"><p>No. The 4-hour tour with flexible timing means you can still reach Tokyo, Kyoto, or Osaka the same day. We plan around your Shinkansen schedule.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">Can I extend the tour duration?</button>
-        <div class="faq-a"><p>Yes! Contact us for extended tour pricing and conditions. We can customize the experience to fit your schedule.</p></div>
-      </div>
-      <div class="faq-item" id="faq-luggage">
-        <button class="faq-q">What about my luggage?</button>
-        <div class="faq-a"><p>Large suitcases welcome! Secure storage in our van throughout the tour. For groups of 4–5 with large bags, we'll use station or tourist office lockers nearby (¥300–800 per piece, cash only).</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">Where do we meet?</button>
-        <div class="faq-a"><p>Shin-Fuji Station exit. Your guide will wait right at the gate exit with a sign "Fuji Soul Tours".</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">What if the weather is bad or my train is delayed?</button>
-        <div class="faq-a"><p>We have backup plans with alternative cultural experiences and offer flexible rescheduling. Real-time communication via WhatsApp.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">Can I join from Osaka/Kyoto direction?</button>
-        <div class="faq-a"><p>Yes. Shin-Fuji is perfectly located between Osaka/Kyoto and Tokyo, making it ideal for a stopover on your return journey too.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">Can I do a Tokyo → Shin-Fuji → Tokyo round trip?</button>
-        <div class="faq-a"><p>Yes. Shin-Fuji is only 1 hour from Tokyo, so a round trip in one day is easy and comfortable.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">What time does the tour start?</button>
-        <div class="faq-a"><p>Flexible — we adjust the start time based on your train schedule. Available 8:00 – 17:00. Just let us know your preferred arrival time. In general, the earlier the better — morning hours tend to offer clearer views of Mt. Fuji.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">Can children under 6 join the tour?</button>
-        <div class="faq-a"><p>Japanese law requires a child safety seat for children aged 5 and under. We do not normally carry child seats, so we are usually unable to accommodate young children. However, depending on the situation, it may be possible. Please <a href="mailto:fujisoultours@gmail.com" style="color:var(--shu);text-decoration:underline;">contact us</a> to discuss your needs.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">Can I book for more than 5 guests?</button>
-        <div class="faq-a"><p>Our standard tour accommodates up to 5 guests. For groups of 6–10, we may be able to arrange a larger van — this requires an additional ¥100,000 (non-refundable, paid in advance) on top of the standard per-person rate for 5 guests. For groups larger than 10, we coordinate multiple vehicles. Please <a href="mailto:fujisoultours@gmail.com" style="color:var(--shu);text-decoration:underline;">contact us</a> for a custom quote.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">Do I need separate Shinkansen tickets?</button>
-        <div class="faq-a"><p>Yes. You'll need two separate tickets — one from your departure city to Shin-Fuji, and another from Shin-Fuji to your destination. Both legs are fully covered by the <strong>JR Pass</strong>. Without a JR Pass, tickets can be purchased at the station on the day of travel or in advance via the JR app.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">Is this a Mt. Fuji climbing or hiking tour?</button>
-        <div class="faq-a"><p>No. This is a <strong>cultural sightseeing tour</strong> around the base of Mt. Fuji by private van — no hiking or climbing involved. Mt. Fuji's climbing season (July–September) does not affect our tour. We operate <strong>year-round</strong>, and the experience focuses on local culture, scenic viewpoints, shrines, and regional cuisine.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">Can I join the tour by rental car instead of Shinkansen?</button>
-        <div class="faq-a"><p>Yes! We can arrange a meeting point near Shin-Fuji Station with parking available. The price remains the same. Just let us know after booking and we'll send you the details.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">What if someone in my group has mobility difficulties?</button>
-        <div class="faq-a"><p>We can adjust the destinations based on your mobility level — some stops require less walking than others, and your guide will tailor the route accordingly. If you use a walker, we can store it in the trunk, though the maximum group size is reduced to 3 guests. Unfortunately, we are unable to accommodate wheelchairs as our vehicle is not equipped for them. Please <a href="mailto:fujisoultours@gmail.com" style="color:var(--shu);text-decoration:underline;">contact us</a> in advance so we can plan the best itinerary for your group.</p></div>
-      </div>
-      <div class="faq-item">
-  <button class="faq-q">When Can You See Mt. Fuji?</button>
-  <div class="faq-a">
-    <p>Mt. Fuji is visible approximately 40% of the year. Visibility varies by season:</p>
-    <div style="max-width:500px;margin:1rem auto;">
-      <div style="display:flex;align-items:end;gap:6px;height:160px;margin-bottom:0.5rem;">
-        <div style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;gap:4px;">
-          <span style="font-size:14px;font-weight:600;color:var(--sumi);">73%</span>
-          <div style="width:100%;background:var(--shu);border-radius:4px 4px 0 0;height:73%;"></div>
-        </div>
-        <div style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;gap:4px;">
-          <span style="font-size:14px;font-weight:600;color:var(--sumi);">63%</span>
-          <div style="width:100%;background:var(--shu);border-radius:4px 4px 0 0;height:63%;opacity:0.85;"></div>
-        </div>
-        <div style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;gap:4px;">
-          <span style="font-size:14px;font-weight:600;color:var(--sumi);">43%</span>
-          <div style="width:100%;background:var(--shu);border-radius:4px 4px 0 0;height:43%;opacity:0.7;"></div>
-        </div>
-        <div style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;gap:4px;">
-          <span style="font-size:14px;font-weight:600;color:var(--sumi);">33%</span>
-          <div style="width:100%;background:var(--shu);border-radius:4px 4px 0 0;height:33%;opacity:0.55;"></div>
-        </div>
-        <div style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;gap:4px;">
-          <span style="font-size:14px;font-weight:600;color:var(--sumi);">23%</span>
-          <div style="width:100%;background:var(--shu);border-radius:4px 4px 0 0;height:23%;opacity:0.4;"></div>
-        </div>
-        <div style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;gap:4px;">
-          <span style="font-size:14px;font-weight:600;color:var(--sumi);">17%</span>
-          <div style="width:100%;background:var(--shu);border-radius:4px 4px 0 0;height:17%;opacity:0.35;"></div>
-        </div>
-        <div style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;gap:4px;">
-          <span style="font-size:14px;font-weight:600;color:var(--sumi);">13%</span>
-          <div style="width:100%;background:var(--shu);border-radius:4px 4px 0 0;height:13%;opacity:0.3;"></div>
-        </div>
-        <div style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;gap:4px;">
-          <span style="font-size:14px;font-weight:600;color:var(--sumi);">17%</span>
-          <div style="width:100%;background:var(--shu);border-radius:4px 4px 0 0;height:17%;opacity:0.35;"></div>
-        </div>
-        <div style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;gap:4px;">
-          <span style="font-size:14px;font-weight:600;color:var(--sumi);">27%</span>
-          <div style="width:100%;background:var(--shu);border-radius:4px 4px 0 0;height:27%;opacity:0.5;"></div>
-        </div>
-        <div style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;gap:4px;">
-          <span style="font-size:14px;font-weight:600;color:var(--sumi);">47%</span>
-          <div style="width:100%;background:var(--shu);border-radius:4px 4px 0 0;height:47%;opacity:0.7;"></div>
-        </div>
-        <div style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;gap:4px;">
-          <span style="font-size:14px;font-weight:600;color:var(--sumi);">60%</span>
-          <div style="width:100%;background:var(--shu);border-radius:4px 4px 0 0;height:60%;opacity:0.8;"></div>
-        </div>
-        <div style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;gap:4px;">
-          <span style="font-size:14px;font-weight:600;color:var(--sumi);">70%</span>
-          <div style="width:100%;background:var(--shu);border-radius:4px 4px 0 0;height:70%;opacity:0.9;"></div>
-        </div>
-      </div>
-      <div style="display:flex;gap:6px;">
-        <div style="flex:1;text-align:center;font-size:14px;color:var(--hai);">Jan</div>
-        <div style="flex:1;text-align:center;font-size:14px;color:var(--hai);">Feb</div>
-        <div style="flex:1;text-align:center;font-size:14px;color:var(--hai);">Mar</div>
-        <div style="flex:1;text-align:center;font-size:14px;color:var(--hai);">Apr</div>
-        <div style="flex:1;text-align:center;font-size:14px;color:var(--hai);">May</div>
-        <div style="flex:1;text-align:center;font-size:14px;color:var(--hai);">Jun</div>
-        <div style="flex:1;text-align:center;font-size:14px;color:var(--hai);">Jul</div>
-        <div style="flex:1;text-align:center;font-size:14px;color:var(--hai);">Aug</div>
-        <div style="flex:1;text-align:center;font-size:14px;color:var(--hai);">Sep</div>
-        <div style="flex:1;text-align:center;font-size:14px;color:var(--hai);">Oct</div>
-        <div style="flex:1;text-align:center;font-size:14px;color:var(--hai);">Nov</div>
-        <div style="flex:1;text-align:center;font-size:14px;color:var(--hai);">Dec</div>
-      </div>
+    <div class="faq-tabs" id="faqTabs">
+      <button class="faq-tab active" data-cat="all">All</button>
+      <button class="faq-tab" data-cat="tour">The Tour</button>
+      <button class="faq-tab" data-cat="travel">Getting Here</button>
+      <button class="faq-tab" data-cat="booking">Booking & Groups</button>
+      <button class="faq-tab" data-cat="weather">Weather & Visibility</button>
     </div>
-    <p style="font-size:14px;color:var(--hai);text-align:center;"><strong>Best months:</strong> Nov–Feb (60–73%) &nbsp;•&nbsp; <strong>Summer:</strong> 13–17% (rainy/humid)</p>
-    <div style="margin-top:1rem;background:#fdf8f5;border:1px solid #e8d6cc;border-radius:10px;padding:16px 18px;">
-      <p style="font-size:14px;color:var(--sumi);margin:0;line-height:1.7;"><strong>☀️ Our promise:</strong> Whether Mt. Fuji is visible or hidden in the clouds, your guide adapts the route in real-time to deliver a memorable experience. Our guests consistently rate cultural stops — shrines, local cuisine, matcha workshops — as the highlight, rain or shine. <a href="#carousel-culture" style="color:var(--shu);text-decoration:underline;text-underline-offset:2px;">See what's included →</a></p>
+    <div class="faq-columns" id="faqColumns">
+      <div class="faq-list" id="faqLeft"></div>
+      <div class="faq-list" id="faqRight"></div>
     </div>
-  </div>
-</div>
+    <div class="faq-chatbot-cta">
+      <p>Can't find your answer? Our AI assistant knows everything about the tour.</p>
+      <button onclick="document.getElementById('chatToggle').click()">💬 Ask Me Anything</button>
     </div>
   </div>
 </section>
@@ -1633,7 +1548,14 @@
   <div class="container fade-in">
     <div class="section-label">Reviews</div>
     <h2 class="section-title">What Travelers Say</h2>
-    <div class="reviews-grid" id="reviewsGrid"></div>
+    <div class="reviews-carousel-wrap">
+      <div class="reviews-grid" id="reviewsGrid"></div>
+    </div>
+    <div class="reviews-nav">
+      <button id="revPrev" aria-label="Previous review">&#8249;</button>
+      <div class="reviews-dots" id="revDots"></div>
+      <button id="revNext" aria-label="Next review">&#8250;</button>
+    </div>
   </div>
 </section>
 
@@ -1724,14 +1646,62 @@ navLinks.querySelectorAll('a').forEach(a => {
 });
 
 // FAQ
-document.querySelectorAll('.faq-q').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const item = btn.parentElement;
-    const wasOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-    if (!wasOpen) item.classList.add('open');
+// FAQ categorized system
+(function() {
+  const FAQ_DATA = [
+    { cat: "tour", q: "Will this disrupt my travel schedule?", a: "No. The 4-hour tour fits between Shinkansen connections. You'll still reach Tokyo, Kyoto, or Osaka the same day." },
+    { cat: "tour", q: "What time does the tour start?", a: "Flexible — 8:00 to 17:00. We adjust based on your train schedule. Earlier is better for clearer Mt. Fuji views." },
+    { cat: "tour", q: "Can I extend the tour?", a: "Yes! $100 USD (¥16,500) per additional hour. Your guide will create an itinerary showing the time needed." },
+    { cat: "tour", q: "Is this a hiking or climbing tour?", a: "No — it's a cultural sightseeing tour by private van. No hiking or climbing. We operate year-round." },
+    { cat: "tour", q: "What about my luggage?", a: "Large suitcases welcome! Secure storage in our van. For groups of 4–5 with large bags, station lockers are available (¥300–800, cash only)." },
+    { cat: "tour", q: "Can I customize the stops?", a: "Yes! After booking, share your preferences and we'll create a personalized itinerary." },
+    { cat: "travel", q: "Where do we meet?", a: "Shin-Fuji Station exit. Your guide will be holding a 'Fuji Soul Tours' sign." },
+    { cat: "travel", q: "How do I get here from Tokyo?", a: "Take the Kodama Shinkansen from Tokyo/Shinagawa Station — about 1 hour. Book tickets via the SmartEX app." },
+    { cat: "travel", q: "Can I join from Osaka/Kyoto?", a: "Yes! Shin-Fuji is about 2–2.5 hours from Kyoto/Osaka by Kodama. Perfect for a stopover in either direction." },
+    { cat: "travel", q: "Do I need separate Shinkansen tickets?", a: "Yes — one to Shin-Fuji, one onward. Both covered by JR Pass, or buy via SmartEX app." },
+    { cat: "travel", q: "Can I come by rental car?", a: "Yes! Parking is available near Shin-Fuji Station. Same price. Let us know after booking." },
+    { cat: "travel", q: "Can you pick us up from our hotel in Tokyo?", a: "No — the tour starts and ends at Shin-Fuji Station. The bullet train (1 hour) is much faster than driving (2.5+ hours)." },
+    { cat: "booking", q: "Can children or infants join?", a: "Children 6+ are welcome. For under 6, a child seat rental ($50 USD) may be available depending on date/group size. Contact us with details." },
+    { cat: "booking", q: "Can I book for more than 5 guests?", a: "Groups of 6–10: additional ¥100,000 for a larger van. 10+: we coordinate multiple vehicles. Contact us for a quote." },
+    { cat: "booking", q: "What about mobility difficulties?", a: "We tailor the route for less walking. Walkers can be stored (max 3 guests). Wheelchairs cannot be accommodated. Contact us to plan." },
+    { cat: "booking", q: "What happens after I book?", a: "Your guide contacts you via WhatsApp/email to confirm your train schedule, ask about preferences, and create a personalized itinerary." },
+    { cat: "weather", q: "When can you see Mt. Fuji?", a: "Best: Nov–Feb (60–73% visibility). Spring/Fall: 27–47%. Summer: 13–17%. Even on cloudy days, cultural experiences make the tour rewarding." },
+    { cat: "weather", q: "What if the weather is bad?", a: "Your guide adapts in real-time — rainy days focus on Shiraito Falls, shrines, yakisoba lunch, and tea ceremonies. Guests consistently rate these as highlights." },
+  ];
+
+  const left = document.getElementById('faqLeft');
+  const right = document.getElementById('faqRight');
+  const tabs = document.getElementById('faqTabs');
+  if (!left || !right || !tabs) return;
+
+  function render(cat) {
+    const items = cat === 'all' ? FAQ_DATA : FAQ_DATA.filter(f => f.cat === cat);
+    const mid = Math.ceil(items.length / 2);
+    const makeHTML = list => list.map(f =>
+      `<div class="faq-item"><button class="faq-q">${f.q}</button><div class="faq-a"><p>${f.a}</p></div></div>`
+    ).join('');
+    left.innerHTML = makeHTML(items.slice(0, mid));
+    right.innerHTML = makeHTML(items.slice(mid));
+    // Re-bind click handlers
+    document.querySelectorAll('.faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        const wasOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!wasOpen) item.classList.add('open');
+      });
+    });
+  }
+
+  render('all');
+
+  tabs.addEventListener('click', e => {
+    if (!e.target.classList.contains('faq-tab')) return;
+    tabs.querySelectorAll('.faq-tab').forEach(t => t.classList.remove('active'));
+    e.target.classList.add('active');
+    render(e.target.dataset.cat);
   });
-});
+})();
 
 // Fade in on scroll
 const observer = new IntersectionObserver((entries) => {
@@ -1845,15 +1815,15 @@ function switchModelTab(n) {
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
     </div>
     <div class="chatbot-header-text">
-      <h3>Fuji Soul Tours</h3>
-      <p>Got questions? Ask our AI chatbot</p>
+      <h3>Ask Me Anything!</h3>
+      <p>Your fastest way to get answers</p>
     </div>
     <button class="chatbot-header-close" id="chatHeaderClose" aria-label="Close chat">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
     </button>
   </div>
   <div class="chatbot-messages" id="chatMessages">
-    <div class="chat-msg bot">Hi! I'm your guide for Fuji Soul Tours. Ask me anything about our Mt. Fuji private tour — pricing, itinerary, what's included, or how to get here!</div>
+    <div class="chat-msg bot">Hey! 👋 Got questions about the tour? Ask me anything — pricing, how to get here, what's included, or the best time to visit. I'm here to help!</div>
   </div>
   <div class="chatbot-input">
     <input type="text" id="chatInput" placeholder="Type your question..." autocomplete="off" maxlength="500">

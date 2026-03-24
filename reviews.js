@@ -55,7 +55,7 @@ const REVIEWS = [
   }
 ];
 
-// Render reviews
+// Render reviews carousel
 (function() {
   const grid = document.getElementById('reviewsGrid');
   if (!grid || !REVIEWS.length) return;
@@ -67,15 +67,57 @@ const REVIEWS = [
     countEl.textContent = '★ ' + avg + ' Rated · Private Tour';
   }
 
-  const maxLen = 280;
+  const maxLen = 300;
   grid.innerHTML = REVIEWS.map(r => {
     const stars = '★'.repeat(r.stars) + '☆'.repeat(5 - r.stars);
     const truncated = r.text.length > maxLen ? r.text.slice(0, maxLen) + '…' : r.text;
     return `<div class="review-card">
         <div class="review-stars">${stars}</div>
-        <p class="review-text">${truncated}</p>
+        <p class="review-text">"${truncated}"</p>
         <div class="review-author">${r.author}</div>
         <div class="review-date">${r.date} · ${r.source}</div>
       </div>`;
   }).join('');
+
+  // Carousel logic
+  const dots = document.getElementById('revDots');
+  const prevBtn = document.getElementById('revPrev');
+  const nextBtn = document.getElementById('revNext');
+  if (!dots || !prevBtn || !nextBtn) return;
+
+  const cards = grid.querySelectorAll('.review-card');
+  const total = cards.length;
+  let current = 0;
+
+  // Create dots
+  dots.innerHTML = Array.from({length: total}, (_, i) =>
+    `<span data-i="${i}" class="${i === 0 ? 'active' : ''}"></span>`
+  ).join('');
+
+  function scrollTo(idx) {
+    current = Math.max(0, Math.min(idx, total - 1));
+    cards[current].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+    dots.querySelectorAll('span').forEach((d, i) => d.classList.toggle('active', i === current));
+  }
+
+  prevBtn.addEventListener('click', () => scrollTo(current - 1));
+  nextBtn.addEventListener('click', () => scrollTo(current + 1));
+  dots.addEventListener('click', e => {
+    if (e.target.dataset.i !== undefined) scrollTo(+e.target.dataset.i);
+  });
+
+  // Auto-rotate every 5s
+  let autoplay = setInterval(() => scrollTo((current + 1) % total), 5000);
+  grid.addEventListener('pointerdown', () => clearInterval(autoplay));
+  grid.addEventListener('scroll', () => {
+    clearInterval(autoplay);
+    // Update dots on manual scroll
+    const scrollLeft = grid.scrollLeft;
+    const cardWidth = cards[0].offsetWidth + 20;
+    const newIdx = Math.round(scrollLeft / cardWidth);
+    if (newIdx !== current && newIdx >= 0 && newIdx < total) {
+      current = newIdx;
+      dots.querySelectorAll('span').forEach((d, i) => d.classList.toggle('active', i === current));
+    }
+  });
 })();
