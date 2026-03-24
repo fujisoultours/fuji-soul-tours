@@ -13,7 +13,7 @@
 const REVIEWS = [
   {
     stars: 5,
-    text: "I couldn't recommend Taku more as a tour guide! He took me and my boyfriend on such a lovely tour around Fuji and the town. He gave us options on what we wanted to pick from and he even added more. Not only was he so delightful and fun to talk to, he also made us feel so welcome to his town. If you want an amazing experience full of great food, detailed history, and a genuine fun time. Book with Taku!",
+    text: "I couldn't recommend Taku more as a tour guide! He took me and my boyfriend on such a lovely tour around Fuji. He gave us options on what we wanted to pick from and even added more. So delightful, fun, and made us feel so welcome. Great food, detailed history, and a genuine fun time!",
     author: "Shannon_F",
     date: "March 2026",
     source: "Viator"
@@ -34,7 +34,7 @@ const REVIEWS = [
   },
   {
     stars: 5,
-    text: "Takumu was a brilliant guide from the start! Easy to communicate with when booking & gave a variety of options for the day. He is local to the area so he took us to his favourite spots to enjoy the mountain views. We had his favourite Yakisoba for lunch which was delicious and then finished our afternoon with a traditional tea experience. Clear views of Mt.Fuji all day!",
+    text: "A brilliant guide from the start! Easy to communicate with when booking & gave a variety of options. He took us to his favourite local spots for mountain views, delicious Yakisoba for lunch, and a traditional tea experience. Clear views of Mt. Fuji all day!",
     author: "Ruby_S",
     date: "February 2026",
     source: "Viator"

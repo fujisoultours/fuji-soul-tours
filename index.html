@@ -679,7 +679,7 @@
     .host-section { flex-direction: column; gap: 20px; }
     .pricing-box { padding: 32px 20px; }
     .pricing-box .price { font-size: 28px !important; }
-    :root { --section-gap: 48px; }
+    :root { --section-gap: 64px; }
     section { padding: 0 16px !important; }
     .container { padding: 0 !important; }
     .review-card { padding: 20px !important; }
@@ -691,6 +691,7 @@
     .section-title { margin-bottom: 12px !important; }
     .section-label { margin-bottom: 6px !important; }
     p { margin-bottom: 8px; }
+    .hide-mobile { display: none !important; }
 
     /* === MOBILE: ROUTE TABS (compact 2-3 per row) === */
     .route-tabs { gap: 6px !important; margin: 1rem 0 1rem !important; }
@@ -1079,11 +1080,11 @@
   </div>
   <div class="hero-bottom">
     <div class="container" style="position:relative;z-index:2;">
-    <p class="hero-sub" style="color:rgba(255,255,255,0.85);">
+    <p class="hero-sub hide-mobile" style="color:rgba(255,255,255,0.85);">
       Traveling between Tokyo & Kyoto/Osaka on bullet train / Shinkansen?<br>
       Stop at Shin-Fuji Station and explore Mt. Fuji with a local-born guide — away from the tourist hubs.
     </p>
-    <div class="hero-stats">
+    <div class="hero-stats hide-mobile">
       <div class="hero-stat">
         <div class="val" style="color:#fff;">4h</div>
         <div class="label" style="color:rgba(255,255,255,0.7);">Duration</div>
@@ -1405,11 +1406,11 @@
     <div style="margin-top:36px;">
       <h3 style="font-size:15px;color:var(--sumi);margin-bottom:16px;text-align:center;">Not Included <span style="font-weight:400;color:var(--hai);">(paid on-site)</span></h3>
       <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;">
-        <span style="font-size:14px;color:var(--hai);background:#fff;border:1px solid var(--usu-hai);border-radius:8px;padding:8px 14px;">🍜 Meals <span style="font-size:13px;">(~¥700–900)</span></span>
-        <span style="font-size:14px;color:var(--hai);background:#fff;border:1px solid var(--usu-hai);border-radius:8px;padding:8px 14px;">🎫 Admission fees <span style="font-size:13px;">(¥300–500)</span></span>
-        <span style="font-size:14px;color:var(--hai);background:#fff;border:1px solid var(--usu-hai);border-radius:8px;padding:8px 14px;">🔒 Lockers <span style="font-size:13px;">(¥300–800, cash)</span></span>
-        <span style="font-size:14px;color:var(--hai);background:#fff;border:1px solid var(--usu-hai);border-radius:8px;padding:8px 14px;">🚅 Shinkansen tickets</span>
-        <span style="font-size:14px;color:var(--hai);background:#fff;border:1px solid var(--usu-hai);border-radius:8px;padding:8px 14px;">🍵 Optional experiences <span style="font-size:13px;">(matcha, kimono, etc.)</span></span>
+        <span style="font-size:14px;color:var(--hai);background:#fff;border:1px solid var(--usu-hai);border-radius:10px;padding:10px 16px;">🍜 Meals <span style="font-size:13px;">(~¥700–900)</span></span>
+        <span style="font-size:14px;color:var(--hai);background:#fff;border:1px solid var(--usu-hai);border-radius:10px;padding:10px 16px;">🎫 Admission fees <span style="font-size:13px;">(¥300–500)</span></span>
+        <span style="font-size:14px;color:var(--hai);background:#fff;border:1px solid var(--usu-hai);border-radius:10px;padding:10px 16px;">🔒 Lockers <span style="font-size:13px;">(¥300–800, cash)</span></span>
+        <span style="font-size:14px;color:var(--hai);background:#fff;border:1px solid var(--usu-hai);border-radius:10px;padding:10px 16px;">🚅 Shinkansen tickets</span>
+        <span style="font-size:14px;color:var(--hai);background:#fff;border:1px solid var(--usu-hai);border-radius:10px;padding:10px 16px;">🍵 Optional experiences <span style="font-size:13px;">(matcha, kimono, etc.)</span></span>
       </div>
     </div>
   </div>
@@ -1482,11 +1483,10 @@
     <div class="section-label">FAQ</div>
     <h2 class="section-title">Frequently Asked Questions</h2>
     <div class="faq-tabs" id="faqTabs">
-      <button class="faq-tab active" data-cat="all">All</button>
-      <button class="faq-tab" data-cat="tour">The Tour</button>
+      <button class="faq-tab active" data-cat="tour">The Tour</button>
       <button class="faq-tab" data-cat="travel">Getting Here</button>
       <button class="faq-tab" data-cat="booking">Booking & Groups</button>
-      <button class="faq-tab" data-cat="weather">Weather & Visibility</button>
+      <button class="faq-tab" data-cat="weather">Weather</button>
     </div>
     <div class="faq-columns" id="faqColumns">
       <div class="faq-list" id="faqLeft"></div>
@@ -1682,7 +1682,7 @@ navLinks.querySelectorAll('a').forEach(a => {
   if (!left || !right || !tabs) return;
 
   function render(cat) {
-    const items = cat === 'all' ? FAQ_DATA : FAQ_DATA.filter(f => f.cat === cat);
+    const items = FAQ_DATA.filter(f => f.cat === cat);
     const mid = Math.ceil(items.length / 2);
     const makeHTML = list => list.map(f =>
       `<div class="faq-item"><button class="faq-q">${f.q}</button><div class="faq-a"><p>${f.a}</p></div></div>`
@@ -1700,7 +1700,7 @@ navLinks.querySelectorAll('a').forEach(a => {
     });
   }
 
-  render('all');
+  render('tour');
 
   tabs.addEventListener('click', e => {
     if (!e.target.classList.contains('faq-tab')) return;
