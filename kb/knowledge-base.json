@@ -9,7 +9,7 @@
     "maxGuests": 5,
     "startLocation": "Shin-Fuji Station exit",
     "meetingPoint": "Your guide will wait right at the gate exit with a 'Fuji Soul Tours' sign.",
-    "availableHours": "8:00 – 17:00 (flexible based on your train schedule)",
+    "availableHours": "7:00 AM – 2:00 PM (flexible based on your train schedule)",
     "recommendation": "The earlier the better — morning hours tend to offer clearer views of Mt. Fuji."
   },
   "guide": {
@@ -229,7 +229,7 @@
     },
     {
       "q": "How do I buy Shinkansen tickets to Shin-Fuji?",
-      "a": "We recommend booking online in advance using the SmartEX app. You can also buy tickets at the station, but booking ahead guarantees your seat. Remember: only the Kodama train stops at Shin-Fuji — not Nozomi or Hikari."
+      "a": "Use SmartEX (https://smart-ex.jp/en/index.php) — the only official booking site for Shinkansen, with the best change and cancellation terms. All other booking sites are third-party. If the SmartEX mobile app cannot be downloaded on your device, you can book through the web browser instead. You can also buy tickets at the station, but booking ahead guarantees your seat. Remember: only the Kodama train stops at Shin-Fuji — not Nozomi or Hikari."
     },
     {
       "q": "How do I get to Shin-Fuji from central Tokyo?",
@@ -259,7 +259,7 @@
   "importantNotes": {
     "cash": "Bring Japanese Yen cash. Some spots are cash-only — lockers, kimono rental, shrine offerings, certain cafés. Most restaurants and shops also accept cards.",
     "train": "Take the Kodama (こだま) train. Only Kodama stops at Shin-Fuji Station — not Nozomi or Hikari. Covered by JR Pass and usually less crowded.",
-    "ticketBooking": "Book Shinkansen tickets online in advance using the SmartEX app for convenience. You can also buy at the station, but advance booking guarantees your seat.",
+    "ticketBooking": "Book Shinkansen tickets via SmartEX (https://smart-ex.jp/en/index.php) — the only official Shinkansen booking site with the best change/cancellation terms. All other sites are third-party. If the SmartEX mobile app cannot be downloaded on your device, use the web browser instead. You can also buy at the station, but advance booking guarantees your seat.",
     "seats": "Best Shinkansen seats for Mt. Fuji views: From Tokyo → sit in seat E (right-side window). From Kyoto/Osaka → sit in seat A (left-side window).",
     "travelTimes": "Shin-Fuji Station is about 1 hour from Tokyo/Shinagawa, about 2 hours from Kyoto, and about 2.5 hours from Osaka.",
     "locationPrivacy": "Exact photo spot locations are kept private and shared only with booked guests to preserve the crowd-free experience."
@@ -300,7 +300,7 @@
     },
     {
       "q": "How do I buy bullet train tickets?",
-      "a": "Book online in advance using the SmartEX app. You can also buy at the station.",
+      "a": "Use SmartEX (https://smart-ex.jp/en/index.php) — the only official Shinkansen booking site with the best change/cancellation terms. All other sites are third-party. If the mobile app cannot be downloaded, use the web browser instead. You can also buy at the station.",
       "source": "DM - Swapna Desani"
     },
     {
