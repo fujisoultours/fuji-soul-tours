@@ -55,12 +55,13 @@ const REVIEWS = [
   }
 ];
 
-// Render reviews carousel
+// Render reviews into the grid — scrolling is handled by CSS overflow-x: auto
+// and the shared scrollCarousel() function (same as dest carousel)
 (function() {
   const grid = document.getElementById('reviewsGrid');
   if (!grid || !REVIEWS.length) return;
 
-  // Calculate average
+  // Calculate average rating for hero badge
   const avg = (REVIEWS.reduce((s, r) => s + r.stars, 0) / REVIEWS.length).toFixed(1);
   const countEl = document.querySelector('.hero-badge');
   if (countEl) {
@@ -78,57 +79,4 @@ const REVIEWS = [
         <div class="review-date">${r.date} · ${r.source}</div>
       </div>`;
   }).join('');
-
-  // Carousel logic — uses CSS transform (no scrollIntoView / scrollTo)
-  const dots = document.getElementById('revDots');
-  const prevBtn = document.getElementById('revPrev');
-  const nextBtn = document.getElementById('revNext');
-  if (!dots || !prevBtn || !nextBtn) return;
-
-  const cards = grid.querySelectorAll('.review-card');
-  const total = cards.length;
-  let current = 0;
-
-  // Create dots
-  dots.innerHTML = Array.from({length: total}, (_, i) =>
-    `<span data-i="${i}" class="${i === 0 ? 'active' : ''}"></span>`
-  ).join('');
-
-  function goTo(idx) {
-    current = Math.max(0, Math.min(idx, total - 1));
-    var cardWidth = cards[0].offsetWidth + 20;
-    grid.style.transform = 'translateX(-' + (current * cardWidth) + 'px)';
-    dots.querySelectorAll('span').forEach((d, i) => d.classList.toggle('active', i === current));
-  }
-
-  prevBtn.addEventListener('click', function() { goTo(current - 1); });
-  nextBtn.addEventListener('click', function() { goTo(current + 1); });
-  dots.addEventListener('click', function(e) {
-    if (e.target.dataset.i !== undefined) goTo(+e.target.dataset.i);
-  });
-
-  // Auto-rotate every 5s — only when section is visible on screen
-  var autoplay = null;
-  var reviewSection = document.getElementById('reviews');
-  var sectionVisible = false;
-  if (reviewSection && window.IntersectionObserver) {
-    new IntersectionObserver(function(entries) {
-      sectionVisible = entries[0].isIntersecting;
-      if (sectionVisible && !autoplay) {
-        autoplay = setInterval(function() { if (sectionVisible) goTo((current + 1) % total); }, 5000);
-      }
-      if (!sectionVisible && autoplay) {
-        clearInterval(autoplay); autoplay = null;
-      }
-    }, { threshold: 0.1 }).observe(reviewSection);
-  }
-  grid.addEventListener('pointerdown', function() { clearInterval(autoplay); autoplay = null; });
-
-  // Touch swipe support
-  var touchStartX = 0;
-  grid.addEventListener('touchstart', function(e) { touchStartX = e.touches[0].clientX; }, { passive: true });
-  grid.addEventListener('touchend', function(e) {
-    var diff = touchStartX - e.changedTouches[0].clientX;
-    if (Math.abs(diff) > 40) { diff > 0 ? goTo(current + 1) : goTo(current - 1); }
-  }, { passive: true });
 })();

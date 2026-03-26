@@ -330,11 +330,13 @@
   .host-values li strong { color: var(--sumi); }
 
   /* ===== REVIEWS ===== */
-  .reviews-carousel-wrap { position: relative; margin-top: 20px; overflow: hidden; }
+  .reviews-carousel-wrap { position: relative; margin-top: 16px; overflow: hidden; }
   .reviews-grid {
-    display: flex; gap: 20px; transition: transform 0.4s ease;
-    padding: 4px 0;
+    display: flex; gap: 20px; overflow-x: auto;
+    padding: 8px 0 16px; scrollbar-width: none;
+    -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain;
   }
+  .reviews-grid::-webkit-scrollbar { display: none; }
   .review-card {
     background: #fff; border: 1px solid var(--usu-hai); border-radius: 12px;
     padding: 28px; min-width: 320px; max-width: 380px; flex-shrink: 0;
@@ -346,22 +348,6 @@
   }
   .review-author { font-size: 14px; font-weight: 600; color: var(--sumi); }
   .review-date { font-size: 14px; color: var(--hai); }
-  .reviews-nav { display: flex; justify-content: center; align-items: center; gap: 16px; margin-top: 16px; }
-  .reviews-nav button {
-    width: 36px !important; height: 36px !important; border-radius: 50% !important;
-    border: 1px solid var(--usu-hai) !important;
-    background: #fff !important; cursor: pointer; display: flex !important;
-    align-items: center; justify-content: center; flex-shrink: 0;
-    transition: all 0.2s; color: var(--sumi) !important; font-size: 18px !important;
-    padding: 0 !important; min-width: unset !important;
-  }
-  .reviews-nav button:hover { background: var(--shu) !important; color: #fff !important; border-color: var(--shu) !important; }
-  .reviews-dots { display: flex; gap: 6px; }
-  .reviews-dots span {
-    width: 8px; height: 8px; border-radius: 50%; background: var(--usu-hai);
-    transition: all 0.3s; cursor: pointer;
-  }
-  .reviews-dots span.active { background: var(--shu); width: 20px; border-radius: 4px; }
   @media (max-width: 600px) {
     .review-card { min-width: 280px; max-width: 300px; padding: 20px; }
   }
@@ -1173,7 +1159,7 @@
       <div style="display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:1rem;font-size:15px;">
         <span>Tokyo</span><span style="color:var(--hai);">→</span><span style="color:var(--hai);">1h</span><span style="color:var(--hai);">→</span>
         <span style="background:var(--shu);color:white;padding:6px 16px;border-radius:20px;font-weight:600;">Shin-Fuji (4h Tour)</span>
-        <span style="color:var(--hai);">→</span><span style="color:var(--hai);">~1h buffer</span><span style="color:var(--hai);">→</span><span style="color:var(--hai);">2.5h</span><span style="color:var(--hai);">→</span><span>Kyoto</span>
+        <span style="color:var(--hai);">→</span><span style="color:var(--hai);">~1h buffer</span><span style="color:var(--hai);">→</span><span style="color:var(--hai);">2h</span><span style="color:var(--hai);">→</span><span>Kyoto</span>
       </div>
       <table class="route-table"><thead><tr><th>TIME</th><th>ACTIVITY</th><th>LOCATION</th></tr></thead><tbody>
         <tr><td><strong>6:57</strong></td><td>Depart Tokyo</td><td>Tokyo Station (Kodama)</td></tr>
@@ -1181,7 +1167,7 @@
         <tr><td><strong>8:10 – 12:10</strong></td><td>🗻 Mt. Fuji Tour</td><td>Hidden spots & cultural dives</td></tr>
         <tr class="buffer-row"><td>12:10 – 13:08</td><td>☕ Free time (buffer)</td><td>Station area — lunch, souvenirs</td></tr>
         <tr><td><strong>13:08</strong></td><td>Depart for Kyoto</td><td>Shin-Fuji Station (Kodama)</td></tr>
-        <tr><td><strong>15:34</strong></td><td>Arrive Kyoto ✓</td><td>Kyoto Station</td></tr>
+        <tr><td><strong>15:15</strong></td><td>Arrive Kyoto ✓</td><td>Kyoto Station</td></tr>
       </tbody></table>
     </div>
 
@@ -1189,7 +1175,7 @@
       <div style="display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:1rem;font-size:15px;">
         <span>Tokyo</span><span style="color:var(--hai);">→</span><span style="color:var(--hai);">1h</span><span style="color:var(--hai);">→</span>
         <span style="background:var(--shu);color:white;padding:6px 16px;border-radius:20px;font-weight:600;">Shin-Fuji (4h Tour)</span>
-        <span style="color:var(--hai);">→</span><span style="color:var(--hai);">~1h buffer</span><span style="color:var(--hai);">→</span><span style="color:var(--hai);">2.75h</span><span style="color:var(--hai);">→</span><span>Shin-Osaka</span>
+        <span style="color:var(--hai);">→</span><span style="color:var(--hai);">~1h buffer</span><span style="color:var(--hai);">→</span><span style="color:var(--hai);">2.5h</span><span style="color:var(--hai);">→</span><span>Shin-Osaka</span>
       </div>
       <table class="route-table"><thead><tr><th>TIME</th><th>ACTIVITY</th><th>LOCATION</th></tr></thead><tbody>
         <tr><td><strong>6:57</strong></td><td>Depart Tokyo</td><td>Tokyo Station (Kodama)</td></tr>
@@ -1197,17 +1183,17 @@
         <tr><td><strong>8:10 – 12:10</strong></td><td>🗻 Mt. Fuji Tour</td><td>Hidden spots & cultural dives</td></tr>
         <tr class="buffer-row"><td>12:10 – 13:08</td><td>☕ Free time (buffer)</td><td>Station area — lunch, souvenirs</td></tr>
         <tr><td><strong>13:08</strong></td><td>Depart for Shin-Osaka</td><td>Shin-Fuji Station (Kodama)</td></tr>
-        <tr><td><strong>15:51</strong></td><td>Arrive Shin-Osaka ✓</td><td>Shin-Osaka Station</td></tr>
+        <tr><td><strong>15:30</strong></td><td>Arrive Shin-Osaka ✓</td><td>Shin-Osaka Station</td></tr>
       </tbody></table>
     </div>
     <div class="route-panel" id="route-2" style="display:none;">
       <div style="display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:1rem;font-size:15px;">
-        <span>Kyoto</span><span style="color:var(--hai);">→</span><span style="color:var(--hai);">2.5h</span><span style="color:var(--hai);">→</span>
+        <span>Kyoto</span><span style="color:var(--hai);">→</span><span style="color:var(--hai);">2h</span><span style="color:var(--hai);">→</span>
         <span style="background:var(--shu);color:white;padding:6px 16px;border-radius:20px;font-weight:600;">Shin-Fuji (4h Tour)</span>
         <span style="color:var(--hai);">→</span><span style="color:var(--hai);">~25min buffer</span><span style="color:var(--hai);">→</span><span style="color:var(--hai);">1h</span><span style="color:var(--hai);">→</span><span>Tokyo</span>
       </div>
       <table class="route-table"><thead><tr><th>TIME</th><th>ACTIVITY</th><th>LOCATION</th></tr></thead><tbody>
-        <tr><td><strong>8:10</strong></td><td>Depart Kyoto</td><td>Kyoto Station (Kodama)</td></tr>
+        <tr><td><strong>8:30</strong></td><td>Depart Kyoto</td><td>Kyoto Station (Nozomi)</td></tr>
         <tr><td><strong>10:36</strong></td><td>Arrive & Meet Guide</td><td>Shin-Fuji Station</td></tr>
         <tr><td><strong>10:45 – 14:45</strong></td><td>🗻 Mt. Fuji Tour</td><td>Hidden spots & cultural dives</td></tr>
         <tr class="buffer-row"><td>14:45 – 15:10</td><td>☕ Free time (buffer)</td><td>Station area — lunch, souvenirs</td></tr>
@@ -1218,12 +1204,12 @@
 
     <div class="route-panel" id="route-3" style="display:none;">
       <div style="display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:1rem;font-size:15px;">
-        <span>Shin-Osaka</span><span style="color:var(--hai);">→</span><span style="color:var(--hai);">2.75h</span><span style="color:var(--hai);">→</span>
+        <span>Shin-Osaka</span><span style="color:var(--hai);">→</span><span style="color:var(--hai);">2.5h</span><span style="color:var(--hai);">→</span>
         <span style="background:var(--shu);color:white;padding:6px 16px;border-radius:20px;font-weight:600;">Shin-Fuji (4h Tour)</span>
         <span style="color:var(--hai);">→</span><span style="color:var(--hai);">~25min buffer</span><span style="color:var(--hai);">→</span><span style="color:var(--hai);">1h</span><span style="color:var(--hai);">→</span><span>Tokyo</span>
       </div>
       <table class="route-table"><thead><tr><th>TIME</th><th>ACTIVITY</th><th>LOCATION</th></tr></thead><tbody>
-        <tr><td><strong>7:54</strong></td><td>Depart Shin-Osaka</td><td>Shin-Osaka Station (Kodama)</td></tr>
+        <tr><td><strong>8:15</strong></td><td>Depart Shin-Osaka</td><td>Shin-Osaka Station (Nozomi)</td></tr>
         <tr><td><strong>10:36</strong></td><td>Arrive & Meet Guide</td><td>Shin-Fuji Station</td></tr>
         <tr><td><strong>10:45 – 14:45</strong></td><td>🗻 Mt. Fuji Tour</td><td>Hidden spots & cultural dives</td></tr>
         <tr class="buffer-row"><td>14:45 – 15:10</td><td>☕ Free time (buffer)</td><td>Station area — lunch, souvenirs</td></tr>
@@ -1597,11 +1583,10 @@
     <h2 class="section-title">What Travelers Say</h2>
     <div class="reviews-carousel-wrap">
       <div class="reviews-grid" id="reviewsGrid"></div>
-    </div>
-    <div class="reviews-nav">
-      <button id="revPrev" aria-label="Previous review">&#8249;</button>
-      <div class="reviews-dots" id="revDots"></div>
-      <button id="revNext" aria-label="Next review">&#8250;</button>
+      <div class="dest-nav">
+        <button onclick="scrollCarousel(this,-1)" aria-label="Previous review">&#8249;</button>
+        <button onclick="scrollCarousel(this,1)" aria-label="Next review">&#8250;</button>
+      </div>
     </div>
   </div>
 </section>
@@ -1821,9 +1806,11 @@ function openBooking() {
 
 // ===== CAROUSEL & TAB SWITCHING =====
 function scrollCarousel(btn, dir) {
-  var wrap = btn.closest('.dest-carousel-wrap');
-  var carousel = wrap.querySelector('.dest-carousel');
-  var card = carousel.querySelector('.dest-card');
+  var wrap = btn.closest('.dest-carousel-wrap') || btn.closest('.reviews-carousel-wrap');
+  if (!wrap) return;
+  var carousel = wrap.querySelector('.dest-carousel') || wrap.querySelector('.reviews-grid');
+  if (!carousel) return;
+  var card = carousel.querySelector('.dest-card') || carousel.querySelector('.review-card');
   if (!card) return;
   var amount = dir * (card.offsetWidth + 20);
   carousel.scrollLeft += amount;
