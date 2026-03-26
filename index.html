@@ -548,21 +548,7 @@
     font-size: 14px; color: var(--hai);
   }
 
-  /* ===== MOBILE ===== */
-  @media (max-width: 1024px) {
-    .nav-links { display: none !important; }
-    .nav-links.open {
-      display: flex !important; flex-direction: column;
-      position: absolute; top: 100%; left: 0; right: 0;
-      background: var(--shiro); padding: 16px 24px;
-      border-bottom: 1px solid var(--usu-hai);
-      gap: 16px;
-    }
-    .hamburger { display: block !important; }
-    .nav-cta-mobile { display: inline-block !important; }
-    .nav-links .nav-cta { display: none; }
-    .nav-logo img { height: 40px; }
-  }
+  /* ===== MOBILE (nav rules moved to main mobile block below) ===== */
 
   .back-to-top {
     position: fixed; bottom: 80px; right: 30px; z-index: 9998;
@@ -592,6 +578,20 @@
 
 
 @media (max-width: 1024px) {
+    /* === MOBILE: NAV === */
+    .nav-links { display: none !important; }
+    .nav-links.open {
+      display: flex !important; flex-direction: column;
+      position: absolute; top: 100%; left: 0; right: 0;
+      background: var(--shiro); padding: 16px 24px;
+      border-bottom: 1px solid var(--usu-hai);
+      gap: 16px;
+    }
+    .hamburger { display: block !important; }
+    .nav-cta-mobile { display: inline-block !important; }
+    .nav-links .nav-cta { display: none; }
+    .nav-logo img { height: 40px; }
+
     /* MOBILE HERO: image with title overlay, content below */
     .hero {
       padding: 0 !important;
@@ -661,10 +661,7 @@
     .footer-brand { font-size: 16px !important; }
     .footer-links a { font-size: 12px !important; }
     .footer-copy { font-size: 11px !important; }
-    .pricing-box .book-btn { font-size: 15px !important; padding: 14px 32px !important; }
-    .pricing-features span { font-size: 12px !important; }
     .currency-btn { font-size: 12px !important; padding: 6px 14px !important; }
-    .pricing-box .price-note { font-size: 12px !important; }
     .manage-form label { font-size: 13px !important; }
     .manage-form input, .manage-form textarea { font-size: 14px !important; }
     .manage-submit { font-size: 14px !important; }
@@ -705,8 +702,6 @@
     .concept-box { padding: 20px 16px; }
     .weather-grid { grid-template-columns: 1fr; }
     .host-section { flex-direction: column; gap: 20px; }
-    .pricing-box { padding: 32px 20px; }
-    .pricing-box .price { font-size: 28px !important; }
     :root { --section-gap: 64px; }
     section { padding: 0 16px !important; }
     .container { padding: 0 !important; }
@@ -720,7 +715,6 @@
     .section-label { margin-bottom: 6px !important; }
     p { margin-bottom: 8px; }
     .hide-mobile { display: none !important; }
-    .hide-desktop { }
 
     /* === MOBILE: SIMPLIFIED CONTENT === */
     .contact-bar { display: none !important; }
@@ -748,10 +742,6 @@
     #change-date-section { display: none !important; }
 
     /* === MOBILE: CLEANER SPACING === */
-    .pricing-box { padding: 24px 16px !important; }
-    .pricing-box h2 { font-size: 14px !important; }
-    .pricing-box .price { margin: 8px 0 4px !important; }
-    .pricing-box .price-note { margin-bottom: 16px !important; }
     .pricing-features { margin-top: 16px !important; }
     .concept-box { margin-top: 12px !important; }
     .section-gap { padding-top: 40px !important; padding-bottom: 40px !important; }
@@ -778,10 +768,11 @@
     .weather-note { font-size: 13px !important; padding: 12px 14px !important; }
 
     /* === MOBILE: PRICING BOX === */
-    .pricing-box .book-btn { font-size: 16px !important; padding: 16px 40px !important; }
+    .pricing-box { padding: 24px 16px !important; }
     .pricing-box h2 { font-size: 16px !important; }
-    .pricing-box .price { font-size: 32px !important; }
-    .pricing-box .price-note { font-size: 13px !important; }
+    .pricing-box .price { font-size: 32px !important; margin: 8px 0 4px !important; }
+    .pricing-box .price-note { font-size: 13px !important; margin-bottom: 16px !important; }
+    .pricing-box .book-btn { font-size: 16px !important; padding: 16px 40px !important; }
     .pricing-features { gap: 16px !important; }
     .pricing-features span { font-size: 13px !important; }
 
@@ -1009,7 +1000,7 @@
   .chatbot-header-close svg { width: 20px; height: 20px; }
   .chatbot-header-icon {
     width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.2);
-    display: flex; align-items: center; justify-content: center; flex-shrink: 0; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
   }
   .chatbot-header-icon svg { width: 20px; height: 20px; }
   .chatbot-header-text h3 { font-size: 15px; font-weight: 600; margin: 0; }
@@ -1796,16 +1787,20 @@ if (hamburger && navLinks) {
     ).join('');
     left.innerHTML = makeHTML(items.slice(0, mid));
     right.innerHTML = makeHTML(items.slice(mid));
-    // Re-bind click handlers
-    document.querySelectorAll('.faq-q').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const item = btn.parentElement;
-        const wasOpen = item.classList.contains('open');
-        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-        if (!wasOpen) item.classList.add('open');
-      });
-    });
   }
+
+  // Event delegation — no re-binding needed on render
+  [left, right].forEach(col => {
+    col.addEventListener('click', e => {
+      const btn = e.target.closest('.faq-q');
+      if (!btn) return;
+      const item = btn.parentElement;
+      const wasOpen = item.classList.contains('open');
+      left.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      right.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!wasOpen) item.classList.add('open');
+    });
+  });
 
   render('tour');
 
@@ -1924,24 +1919,17 @@ function scrollCarousel(btn, dir) {
   var amount = dir * (card.offsetWidth + 20);
   carousel.scrollLeft += amount;
 }
-function switchRouteTab(n) {
-  var tabs = document.querySelectorAll(".route-tab");
+function switchTab(tabSelector, panelPrefix, count, n) {
+  var tabs = document.querySelectorAll(tabSelector);
   tabs.forEach(function(t){ t.classList.remove("active"); });
   tabs[n].classList.add("active");
-  for (var i = 0; i < 5; i++) {
-    var panel = document.getElementById("route-" + i);
+  for (var i = 0; i < count; i++) {
+    var panel = document.getElementById(panelPrefix + i);
     if (panel) panel.style.display = (i === n) ? "block" : "none";
   }
 }
-function switchModelTab(n) {
-  var tabs = document.querySelectorAll(".model-tab-btn");
-  tabs.forEach(function(t){ t.classList.remove("active"); });
-  tabs[n].classList.add("active");
-  for (var i = 0; i < 2; i++) {
-    var panel = document.getElementById("model-panel-" + i);
-    if (panel) panel.style.display = (i === n) ? "block" : "none";
-  }
-}
+function switchRouteTab(n) { switchTab(".route-tab", "route-", 5, n); }
+function switchModelTab(n) { switchTab(".model-tab-btn", "model-panel-", 2, n); }
 
 </script>
 
@@ -1960,24 +1948,21 @@ function switchModelTab(n) {
     // Prevent Bokun from scrolling page when it initializes
     var savedY = window.scrollY;
     s.onload = function() {
-      setTimeout(function(){ window.scrollTo(0, savedY); }, 100);
-      setTimeout(function(){ window.scrollTo(0, savedY); }, 300);
       setTimeout(function(){ window.scrollTo(0, savedY); }, 600);
     };
     document.body.appendChild(s);
   };
-  var loadBokun = window._loadBokun;
   // Load after 3 seconds or when user scrolls past hero (whichever first)
-  var timer = setTimeout(loadBokun, 3000);
+  var timer = setTimeout(window._loadBokun, 3000);
   var bookSection = document.getElementById('book');
   if (bookSection && window.IntersectionObserver) {
     new IntersectionObserver(function(entries, obs) {
-      if (entries[0].isIntersecting) { clearTimeout(timer); loadBokun(); obs.disconnect(); }
+      if (entries[0].isIntersecting) { clearTimeout(timer); window._loadBokun(); obs.disconnect(); }
     }, {rootMargin: '200px'}).observe(bookSection);
   }
   // Also load on any "Book Now" / "Check Availability" click
   document.addEventListener('click', function(e) {
-    if (e.target.closest('.bokunButton, [onclick*="openBooking"]')) loadBokun();
+    if (e.target.closest('.bokunButton, [onclick*="openBooking"]')) window._loadBokun();
   }, {once: true});
 })();
 </script>
