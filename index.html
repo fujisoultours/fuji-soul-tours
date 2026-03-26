@@ -456,14 +456,7 @@
   .waitlist-box {
     margin: 24px auto 0; max-width: 480px; background: rgba(255,255,255,0.07);
     border: 1px solid rgba(255,255,255,0.15); border-radius: 12px; padding: 24px;
-    text-align: left; display: none;
-  }
-  .waitlist-box.show {
-    display: block; animation: waitlistFadeIn 0.4s ease;
-  }
-  @keyframes waitlistFadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    text-align: left;
   }
   .waitlist-box h3 {
     font-size: 16px; font-weight: 700; color: #fff; margin: 0 0 4px; text-align: center;
@@ -1615,11 +1608,6 @@
               </button>
             </div>
 
-      <!-- ========== WAITLIST TRIGGER ========== -->
-      <p id="waitlist-trigger" style="margin-top:14px;text-align:center;font-size:13px;color:rgba(255,255,255,0.5);">
-        Date fully booked? <a href="#" onclick="event.preventDefault();showWaitlist();" style="color:rgba(255,255,255,0.8);text-decoration:underline;">Join the waitlist</a>
-      </p>
-
       <!-- ========== WAITLIST FORM ========== -->
       <div class="waitlist-box" id="waitlist-box">
         <h3>📋 Join the Waitlist</h3>
@@ -1877,43 +1865,6 @@ function submitDateChange(e) {
 }
 
 // ===== WAITLIST FORM =====
-function showWaitlist() {
-  var box = document.getElementById('waitlist-box');
-  box.classList.add('show');
-  box.scrollIntoView({behavior:'smooth', block:'center'});
-}
-
-// Auto-show waitlist when Bokun displays "not available"
-(function() {
-  var detected = false;
-  var mo = new MutationObserver(function() {
-    if (detected) return;
-    var iframes = document.querySelectorAll('iframe[src*="bokun"]');
-    // Also check text inside the bokun-widget container for "not available"
-    var container = document.getElementById('bokun-widget');
-    if (container) {
-      var text = container.textContent || '';
-      if (text.toLowerCase().indexOf('not available') !== -1) {
-        detected = true;
-        showWaitlist();
-      }
-    }
-  });
-  mo.observe(document.body, {childList: true, subtree: true, characterData: true});
-  // Also poll periodically for iframe content changes
-  setInterval(function() {
-    if (detected) return;
-    var container = document.getElementById('bokun-widget');
-    if (container) {
-      var text = container.textContent || '';
-      if (text.toLowerCase().indexOf('not available') !== -1) {
-        detected = true;
-        showWaitlist();
-      }
-    }
-  }, 2000);
-})();
-
 function submitWaitlist(e) {
   e.preventDefault();
   var name   = document.getElementById('wl-name').value.trim();
