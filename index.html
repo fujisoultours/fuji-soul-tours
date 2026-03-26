@@ -1068,7 +1068,7 @@
 <nav id="nav">
   <div class="nav-inner">
     <a href="#" class="nav-logo"><img src="images/logo.png" alt="Fuji Soul Tours"></a>
-    <a href="#book" class="nav-cta-mobile" onclick="return !openBooking()">Book Now</a>
+    <a href="#book" class="nav-cta-mobile" onclick="event.preventDefault();openBooking();">Book Now</a>
     <button class="hamburger" id="hamburger" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -1080,7 +1080,7 @@
       <a href="#book">Pricing</a>
       <a href="#reviews">Reviews</a>
       <a href="#manage">Manage Booking</a>
-      <a href="#book" class="nav-cta" onclick="return !openBooking()">Book Now</a>
+      <a href="#book" class="nav-cta" onclick="event.preventDefault();openBooking();">Book Now</a>
     </div>
   </div>
 </nav>
@@ -1800,14 +1800,12 @@ function submitDateChange(e) {
 function openBooking() {
   var btn = document.getElementById('bokun_418f34f4_28e2_4185_85e4_7aa761106072');
   if (btn && !btn.disabled) { btn.click(); return true; }
-  document.getElementById('book').scrollIntoView({behavior:'smooth'});
   // If button is disabled (Bokun not yet loaded), trigger load and poll until ready
   if (btn && btn.disabled) {
     if (window._loadBokun) window._loadBokun();
     var poll = setInterval(function() {
       if (!btn.disabled) { clearInterval(poll); btn.click(); }
     }, 200);
-    // Stop polling after 10s to avoid infinite loop
     setTimeout(function() { clearInterval(poll); }, 10000);
   }
   return false;
