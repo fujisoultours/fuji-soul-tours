@@ -452,6 +452,54 @@
   .currency-btn:hover { background: rgba(255,255,255,0.2); color: #fff; }
   .currency-btn.active { background: var(--shu); color: #fff; border-color: var(--shu); }
 
+  /* ===== WAITLIST FORM ===== */
+  .waitlist-box {
+    margin: 24px auto 0; max-width: 480px; background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.15); border-radius: 12px; padding: 24px;
+    text-align: left; display: none;
+  }
+  .waitlist-box.show {
+    display: block; animation: waitlistFadeIn 0.4s ease;
+  }
+  @keyframes waitlistFadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .waitlist-box h3 {
+    font-size: 16px; font-weight: 700; color: #fff; margin: 0 0 4px; text-align: center;
+  }
+  .waitlist-box p {
+    font-size: 13px; color: rgba(255,255,255,0.6); margin: 0 0 16px; text-align: center; line-height: 1.5;
+  }
+  .waitlist-box label {
+    display: block; font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.8);
+    margin-bottom: 4px; margin-top: 12px;
+  }
+  .waitlist-box label:first-of-type { margin-top: 0; }
+  .waitlist-box input, .waitlist-box select {
+    width: 100%; padding: 10px 14px; border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 8px; font-size: 14px; font-family: inherit; color: #fff;
+    background: rgba(255,255,255,0.08); transition: border-color 0.2s;
+  }
+  .waitlist-box input::placeholder { color: rgba(255,255,255,0.35); }
+  .waitlist-box input:focus, .waitlist-box select:focus {
+    outline: none; border-color: var(--shu);
+  }
+  .waitlist-box select { appearance: auto; }
+  .waitlist-box select option { color: #333; background: #fff; }
+  .waitlist-submit {
+    margin-top: 18px; width: 100%; background: var(--shu); color: #fff;
+    border: none; padding: 12px 24px; border-radius: 8px;
+    font-size: 15px; font-weight: 600; cursor: pointer; font-family: inherit;
+    transition: background 0.2s;
+  }
+  .waitlist-submit:hover { background: var(--cta-dark); }
+  .waitlist-success {
+    display: none; margin-top: 12px; padding: 12px; border-radius: 8px;
+    background: rgba(46,204,113,0.15); color: #2ecc71; font-size: 14px;
+    text-align: center; font-weight: 600;
+  }
+
   /* ===== MANAGE BOOKING ===== */
   .manage-form label {
     display: block; font-size: 14px; font-weight: 600; color: var(--sumi);
@@ -1567,6 +1615,38 @@
               </button>
             </div>
 
+      <!-- ========== WAITLIST TRIGGER ========== -->
+      <p id="waitlist-trigger" style="margin-top:14px;text-align:center;font-size:13px;color:rgba(255,255,255,0.5);">
+        Date fully booked? <a href="#" onclick="event.preventDefault();showWaitlist();" style="color:rgba(255,255,255,0.8);text-decoration:underline;">Join the waitlist</a>
+      </p>
+
+      <!-- ========== WAITLIST FORM ========== -->
+      <div class="waitlist-box" id="waitlist-box">
+        <h3>📋 Join the Waitlist</h3>
+        <p>Preferred date fully booked? Sign up and we'll notify you if a spot opens up.</p>
+        <form id="waitlistForm" onsubmit="submitWaitlist(event)">
+          <label for="wl-name">Name *</label>
+          <input type="text" id="wl-name" placeholder="Your name" required>
+          <label for="wl-email">Email *</label>
+          <input type="email" id="wl-email" placeholder="your@email.com" required>
+          <label for="wl-guests">Number of Guests *</label>
+          <select id="wl-guests" required>
+            <option value="">Select</option>
+            <option value="1">1 guest</option>
+            <option value="2">2 guests</option>
+            <option value="3">3 guests</option>
+            <option value="4">4 guests</option>
+            <option value="5">5 guests</option>
+          </select>
+          <label for="wl-date">Preferred Date *</label>
+          <input type="text" id="wl-date" placeholder="Select date" required>
+          <label for="wl-date-alt">Alternative Date (optional)</label>
+          <input type="text" id="wl-date-alt" placeholder="Select date">
+          <button type="submit" class="waitlist-submit">Join Waitlist</button>
+        </form>
+        <div class="waitlist-success" id="waitlist-success">✓ You've been added to the waitlist! We'll email you if a spot opens.</div>
+      </div>
+
       <div class="pricing-features">
         <span><span class="check">✓</span> Free cancellation (24h+ notice)</span>
         <span><span class="check">✓</span> Instant confirmation</span>
@@ -1796,6 +1876,66 @@ function submitDateChange(e) {
   document.getElementById('change-success').style.display = 'block';
 }
 
+// ===== WAITLIST FORM =====
+function showWaitlist() {
+  var box = document.getElementById('waitlist-box');
+  box.classList.add('show');
+  box.scrollIntoView({behavior:'smooth', block:'center'});
+}
+
+// Auto-show waitlist when Bokun displays "not available"
+(function() {
+  var detected = false;
+  var mo = new MutationObserver(function() {
+    if (detected) return;
+    var iframes = document.querySelectorAll('iframe[src*="bokun"]');
+    // Also check text inside the bokun-widget container for "not available"
+    var container = document.getElementById('bokun-widget');
+    if (container) {
+      var text = container.textContent || '';
+      if (text.toLowerCase().indexOf('not available') !== -1) {
+        detected = true;
+        showWaitlist();
+      }
+    }
+  });
+  mo.observe(document.body, {childList: true, subtree: true, characterData: true});
+  // Also poll periodically for iframe content changes
+  setInterval(function() {
+    if (detected) return;
+    var container = document.getElementById('bokun-widget');
+    if (container) {
+      var text = container.textContent || '';
+      if (text.toLowerCase().indexOf('not available') !== -1) {
+        detected = true;
+        showWaitlist();
+      }
+    }
+  }, 2000);
+})();
+
+function submitWaitlist(e) {
+  e.preventDefault();
+  var name   = document.getElementById('wl-name').value.trim();
+  var email  = document.getElementById('wl-email').value.trim();
+  var guests = document.getElementById('wl-guests').value;
+  var date   = document.getElementById('wl-date').value;
+  var altDate = document.getElementById('wl-date-alt').value;
+  var subject = encodeURIComponent('Waitlist Request – ' + date + ' – ' + name);
+  var body = encodeURIComponent(
+    'WAITLIST REQUEST\n===================\n' +
+    'Name: ' + name + '\n' +
+    'Email: ' + email + '\n' +
+    'Number of Guests: ' + guests + '\n' +
+    'Preferred Date: ' + date + '\n' +
+    'Alternative Date: ' + (altDate || 'None') + '\n' +
+    '\n---\nSent from fujisoultours.com'
+  );
+  window.location.href = 'mailto:fujisoultours@gmail.com?subject=' + subject + '&body=' + body;
+  document.getElementById('waitlistForm').style.display = 'none';
+  document.getElementById('waitlist-success').style.display = 'block';
+}
+
 // ===== BOKUN BOOKING =====
 function openBooking() {
   var btn = document.getElementById('bokun_418f34f4_28e2_4185_85e4_7aa761106072');
@@ -1885,6 +2025,8 @@ function switchModelTab(n) {
   flatpickr("#change-current-date", Object.assign({}, fpOpts, { minDate: null }));
   flatpickr("#change-new-date", fpOpts);
   flatpickr("#change-alt-date", fpOpts);
+  flatpickr("#wl-date", fpOpts);
+  flatpickr("#wl-date-alt", fpOpts);
 </script>
 
 <!-- Chatbot -->
