@@ -1801,6 +1801,15 @@ function openBooking() {
   var btn = document.getElementById('bokun_418f34f4_28e2_4185_85e4_7aa761106072');
   if (btn && !btn.disabled) { btn.click(); return true; }
   document.getElementById('book').scrollIntoView({behavior:'smooth'});
+  // If button is disabled (Bokun not yet loaded), trigger load and poll until ready
+  if (btn && btn.disabled) {
+    if (window._loadBokun) window._loadBokun();
+    var poll = setInterval(function() {
+      if (!btn.disabled) { clearInterval(poll); btn.click(); }
+    }, 200);
+    // Stop polling after 10s to avoid infinite loop
+    setTimeout(function() { clearInterval(poll); }, 10000);
+  }
   return false;
 }
 
@@ -1842,7 +1851,7 @@ function switchModelTab(n) {
 <script>
 (function(){
   var loaded = false;
-  function loadBokun() {
+  window._loadBokun = function() {
     if (loaded) return;
     loaded = true;
     var s = document.createElement('script');
@@ -1856,7 +1865,8 @@ function switchModelTab(n) {
       setTimeout(function(){ window.scrollTo(0, savedY); }, 600);
     };
     document.body.appendChild(s);
-  }
+  };
+  var loadBokun = window._loadBokun;
   // Load after 3 seconds or when user scrolls past hero (whichever first)
   var timer = setTimeout(loadBokun, 3000);
   var bookSection = document.getElementById('book');
