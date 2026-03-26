@@ -1162,7 +1162,7 @@
     </div>
     <p class="hero-price" style="margin-top:20px;margin-bottom:12px;font-size:15px;font-weight:700;color:#fff;letter-spacing:0.3px;">From <span style="font-family:'Noto Serif JP',serif;font-size:15px;">$152</span> / person</p>
     <a href="#book" class="hero-cta" onclick="event.preventDefault();openBooking();">Check Availability →</a>
-    <p class="hero-lpg" style="margin-top:12px;font-size:13px;font-weight:600;color:#2ecc71;letter-spacing:0.3px;">🏷️ Lowest Price Guarantee</p>
+    <a href="#waitlist-box" style="display:inline-block;margin-top:12px;font-size:13px;font-weight:600;color:rgba(255,255,255,0.7);letter-spacing:0.3px;text-decoration:none;border:1px solid rgba(255,255,255,0.3);padding:6px 16px;border-radius:20px;transition:all 0.2s;" onmouseover="this.style.color='#fff';this.style.borderColor='rgba(255,255,255,0.6)'" onmouseout="this.style.color='rgba(255,255,255,0.7)';this.style.borderColor='rgba(255,255,255,0.3)'">📋 Join the Waitlist</a>
     </div>
   </div>
 </header>
@@ -1594,7 +1594,7 @@
           </tr>
         </table>
       </div>
-      <p style="margin-top:10px;font-size:13px;font-weight:700;color:#2ecc71;letter-spacing:0.3px;">🏷️ Lowest Price Guarantee</p>
+      <a href="#waitlist-box" style="display:inline-block;margin-top:10px;font-size:13px;font-weight:600;color:rgba(255,255,255,0.6);letter-spacing:0.3px;text-decoration:none;border:1px solid rgba(255,255,255,0.2);padding:6px 16px;border-radius:20px;transition:all 0.2s;" onmouseover="this.style.color='#fff';this.style.borderColor='rgba(255,255,255,0.5)'" onmouseout="this.style.color='rgba(255,255,255,0.6)';this.style.borderColor='rgba(255,255,255,0.2)'">📋 Join the Waitlist</a>
       <div class="pricing-review-quote" style="margin:28px auto 20px;max-width:480px;text-align:center;">
         <p style="font-size:14px;color:rgba(255,255,255,0.7);line-height:1.7;font-style:italic;margin-bottom:12px;">"The best private tour we've ever done. Takumu's English is outstanding. The stops he chose were spot on."</p>
         <p style="font-size:14px;color:rgba(255,255,255,0.5);margin-bottom:4px;">— Viator Verified Review · 5.0 ★</p>
@@ -1630,6 +1630,8 @@
           <input type="text" id="wl-date" placeholder="Select date" required>
           <label for="wl-date-alt">Alternative Date (optional)</label>
           <input type="text" id="wl-date-alt" placeholder="Select date">
+          <label for="wl-note">Note (optional)</label>
+          <textarea id="wl-note" placeholder="Any details or requests..." style="width:100%;padding:10px 14px;border:1px solid rgba(255,255,255,0.2);border-radius:8px;font-size:14px;font-family:inherit;color:#fff;background:rgba(255,255,255,0.08);resize:vertical;min-height:60px;"></textarea>
           <button type="submit" class="waitlist-submit">Join Waitlist</button>
         </form>
         <div class="waitlist-success" id="waitlist-success">✓ You've been added to the waitlist! We'll email you if a spot opens.</div>
@@ -1872,20 +1874,21 @@ function submitWaitlist(e) {
   var guests = document.getElementById('wl-guests').value;
   var date   = document.getElementById('wl-date').value;
   var altDate = document.getElementById('wl-date-alt').value;
+  var note = document.getElementById('wl-note').value.trim();
   var btn = document.querySelector('.waitlist-submit');
   btn.disabled = true; btn.textContent = 'Submitting...';
   fetch('https://script.google.com/macros/s/AKfycbxO40C1rlUg3j7XrHhIq7mUJbRnnXHaYbQjO6O4NXyiXGxtnMsVTMMeqdq529acCoKu/exec', {
     method: 'POST',
     mode: 'no-cors',
     headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({name: name, email: email, guests: guests, date: date, altDate: altDate})
+    body: JSON.stringify({name: name, email: email, guests: guests, date: date, altDate: altDate, note: note})
   }).then(function() {
     document.getElementById('waitlistForm').style.display = 'none';
     document.getElementById('waitlist-success').style.display = 'block';
   }).catch(function() {
     // Fallback to mailto if fetch fails
     var subject = encodeURIComponent('Waitlist Request - ' + date + ' - ' + name);
-    var body = encodeURIComponent('WAITLIST REQUEST\n===================\nName: ' + name + '\nEmail: ' + email + '\nNumber of Guests: ' + guests + '\nPreferred Date: ' + date + '\nAlternative Date: ' + (altDate || 'None') + '\n\n---\nSent from fujisoultours.com');
+    var body = encodeURIComponent('WAITLIST REQUEST\n===================\nName: ' + name + '\nEmail: ' + email + '\nNumber of Guests: ' + guests + '\nPreferred Date: ' + date + '\nAlternative Date: ' + (altDate || 'None') + '\nNote: ' + (note || 'None') + '\n\n---\nSent from fujisoultours.com');
     window.location.href = 'mailto:fujisoultours@gmail.com?subject=' + subject + '&body=' + body;
     document.getElementById('waitlistForm').style.display = 'none';
     document.getElementById('waitlist-success').style.display = 'block';
