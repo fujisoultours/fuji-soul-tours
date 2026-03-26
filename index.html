@@ -1921,19 +1921,26 @@ function submitWaitlist(e) {
   var guests = document.getElementById('wl-guests').value;
   var date   = document.getElementById('wl-date').value;
   var altDate = document.getElementById('wl-date-alt').value;
-  var subject = encodeURIComponent('Waitlist Request – ' + date + ' – ' + name);
-  var body = encodeURIComponent(
-    'WAITLIST REQUEST\n===================\n' +
-    'Name: ' + name + '\n' +
-    'Email: ' + email + '\n' +
-    'Number of Guests: ' + guests + '\n' +
-    'Preferred Date: ' + date + '\n' +
-    'Alternative Date: ' + (altDate || 'None') + '\n' +
-    '\n---\nSent from fujisoultours.com'
-  );
-  window.location.href = 'mailto:fujisoultours@gmail.com?subject=' + subject + '&body=' + body;
-  document.getElementById('waitlistForm').style.display = 'none';
-  document.getElementById('waitlist-success').style.display = 'block';
+  var btn = document.querySelector('.waitlist-submit');
+  btn.disabled = true; btn.textContent = 'Submitting...';
+  fetch('https://script.google.com/macros/s/AKfycbxO40C1rlUg3j7XrHhIq7mUJbRnnXHaYbQjO6O4NXyiXGxtnMsVTMMeqdq529acCoKu/exec', {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({name: name, email: email, guests: guests, date: date, altDate: altDate})
+  }).then(function() {
+    document.getElementById('waitlistForm').style.display = 'none';
+    document.getElementById('waitlist-success').style.display = 'block';
+  }).catch(function() {
+    // Fallback to mailto if fetch fails
+    var subject = encodeURIComponent('Waitlist Request - ' + date + ' - ' + name);
+    var body = encodeURIComponent('WAITLIST REQUEST\n===================\nName: ' + name + '\nEmail: ' + email + '\nNumber of Guests: ' + guests + '\nPreferred Date: ' + date + '\nAlternative Date: ' + (altDate || 'None') + '\n\n---\nSent from fujisoultours.com');
+    window.location.href = 'mailto:fujisoultours@gmail.com?subject=' + subject + '&body=' + body;
+    document.getElementById('waitlistForm').style.display = 'none';
+    document.getElementById('waitlist-success').style.display = 'block';
+  }).finally(function() {
+    btn.disabled = false; btn.textContent = 'Join Waitlist';
+  });
 }
 
 // ===== BOKUN BOOKING =====
