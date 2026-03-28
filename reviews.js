@@ -1,13 +1,11 @@
 // =============================================
 // Fuji Soul Tours — Reviews Data
 // =============================================
-// このファイルは手動で編集するか、
-// fetch-reviews.js を使ってViatorから自動取得できます。
+// このファイルは scripts/fetch-reviews.mjs により自動生成されます。
+// 手動編集は次回同期時に上書きされます。
 //
-// 更新手順:
-// 1. Node.js をインストール (https://nodejs.org)
-// 2. ターミナルで: node fetch-reviews.js
-// 3. 出力された reviews.js をGitHubにアップロード
+// 最終更新: 2026-03-28T13:41:30.828Z
+// ソース: Viator + TripAdvisor
 // =============================================
 
 const REVIEWS = [
@@ -34,6 +32,13 @@ const REVIEWS = [
   },
   {
     stars: 5,
+    text: "Takumu was an exceptional guide from start to finish! From the initial communications helping us craft a custom itinerary, to meeting us at the station, to offering thoughtful recommendations for our next stop — he was knowledgeable, engaged, and genuinely invested in making our experience special.",
+    author: "Jennifer_B",
+    date: "February 2026",
+    source: "Viator"
+  },
+  {
+    stars: 5,
     text: "A brilliant guide from the start! Easy to communicate with when booking & gave a variety of options. He took us to his favourite local spots for mountain views, delicious Yakisoba for lunch, and a traditional tea experience. Clear views of Mt. Fuji all day!",
     author: "Ruby_S",
     date: "February 2026",
@@ -54,6 +59,7 @@ const REVIEWS = [
     source: "Tripadvisor"
   }
 ];
+
 
 // Render reviews into the grid — scrolling is handled by CSS overflow-x: auto
 // and the shared scrollCarousel() function (same as dest carousel)
