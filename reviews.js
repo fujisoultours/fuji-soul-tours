@@ -4,11 +4,18 @@
 // このファイルは scripts/fetch-reviews.mjs により自動生成されます。
 // 手動編集は次回同期時に上書きされます。
 //
-// 最終更新: 2026-03-28T13:41:30.828Z
+// 最終更新: 2026-03-28T13:48:56.333Z
 // ソース: Viator + TripAdvisor
 // =============================================
 
 const REVIEWS = [
+  {
+    stars: 5,
+    text: "Our day with Takumu was a very enjoyable and memorable one. He customized our tour to our interests and made it a delightful experience. His warm hospitality, friendliness and personality left us with a wonderful impression of him and we would highly recommend Takumu to anyone.",
+    author: "Lena_M",
+    date: "March 2026",
+    source: "Viator"
+  },
   {
     stars: 5,
     text: "I couldn't recommend Taku more as a tour guide! He took me and my boyfriend on such a lovely tour around Fuji. He gave us options on what we wanted to pick from and even added more. So delightful, fun, and made us feel so welcome. Great food, detailed history, and a genuine fun time!",
