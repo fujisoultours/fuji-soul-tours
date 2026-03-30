@@ -143,6 +143,7 @@ function sendConfirmationEmail(data) {
   GmailApp.sendEmail(data.email, subject, '', {
     htmlBody: htmlBody,
     from: FROM_EMAIL,
-    name: 'Fuji Soul Tours'
+    name: 'Fuji Soul Tours',
+    bcc: FROM_EMAIL
   });
 }
