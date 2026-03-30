@@ -112,7 +112,7 @@ function sendConfirmationEmail(data) {
         <div style="background: #EEF4F8; border-radius: 12px; padding: 20px; margin: 24px 0;">
           <h2 style="font-size: 15px; margin: 0 0 12px; color: #0077B6;">What happens next?</h2>
           <ul style="font-size: 14px; line-height: 1.8; padding-left: 20px; margin: 0;">
-            <li>Once <strong>15 travelers</strong> sign up for your preferred week, the tour is confirmed.</li>
+            <li>Once <strong>10 travelers</strong> sign up for your preferred week, the tour is confirmed.</li>
             <li>We will set a <strong>fixed date, fixed time, and fixed itinerary</strong> within that week.</li>
             <li>You'll receive an email with all the details as soon as it's confirmed.</li>
             <li>You only pay once the tour is confirmed — no risk to you.</li>
