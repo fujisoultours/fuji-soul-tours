@@ -75,10 +75,10 @@
     height: 60px; width: auto;
   }
   .nav-logo span { color: var(--shu); }
-  .nav-links { display: flex; gap: 28px; align-items: center; }
+  .nav-links { display: flex; gap: 22px; align-items: center; }
   .nav-links a {
-    font-size: 14px; font-weight: 500; color: var(--hai);
-    text-decoration: none; letter-spacing: 0.3px;
+    font-size: 13px; font-weight: 500; color: var(--hai);
+    text-decoration: none; letter-spacing: 0.3px; white-space: nowrap;
     transition: color 0.2s;
   }
   .nav-links a:hover { color: var(--sumi); }
@@ -577,6 +577,48 @@
   @keyframes spin { to { transform: rotate(360deg); } }
 
 
+  /* Hero group tour text link */
+  .hero-group-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    color: rgba(255,255,255,0.85);
+    font-size: 14px; font-weight: 500;
+    margin-top: 10px; text-decoration: none;
+    transition: color 0.2s;
+  }
+  .hero-group-link:hover { color: #fff; text-decoration: underline; }
+  .hero-group-link .new-pill {
+    background: var(--shu); color: #fff;
+    font-size: 10px; font-weight: 800;
+    padding: 2px 7px; border-radius: 4px;
+    letter-spacing: 0.5px;
+  }
+
+  /* Nav NEW badge */
+  .nav-new-badge {
+    font-size: 9px; font-weight: 800;
+    background: var(--shu); color: #fff;
+    padding: 2px 5px; border-radius: 3px;
+    margin-left: 4px; vertical-align: super;
+    letter-spacing: 0.5px;
+  }
+
+  /* Pricing group link */
+  .pricing-group-link {
+    text-align: center; margin-top: 20px;
+    font-size: 14px;
+  }
+  .pricing-group-link a {
+    color: rgba(255,255,255,0.7); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .pricing-group-link a:hover { color: #fff; }
+
+  /* Private tour scarcity */
+  .pricing-scarcity {
+    text-align: center; margin-top: 12px;
+    font-size: 13px; color: #e67e22; font-weight: 600;
+  }
+
 @media (max-width: 1024px) {
     /* === MOBILE: NAV === */
     .nav-links { display: none !important; }
@@ -740,6 +782,9 @@
     .model-table td:nth-child(3) { display: none !important; }
     .important-note-extra { display: none !important; }
     #change-date-section { display: none !important; }
+
+    /* === MOBILE: GROUP TOUR LINK === */
+    .hero-group-link { font-size: 12px !important; flex-wrap: wrap; justify-content: center; text-align: center; color: var(--shu) !important; }
 
     /* === MOBILE: CLEANER SPACING === */
     .pricing-features { margin-top: 16px !important; }
@@ -1110,6 +1155,7 @@
       <a href="#included">Included</a>
       <a href="#faq">FAQ</a>
       <a href="#book">Pricing</a>
+      <a href="/group-tour">Group Tour<span class="nav-new-badge">NEW</span></a>
       <a href="#reviews">Reviews</a>
       <a href="#manage">Manage Booking</a>
       <a href="#book" class="nav-cta" onclick="event.preventDefault();openBooking();">Book Now</a>
@@ -1151,10 +1197,14 @@
         <div class="label" style="color:rgba(255,255,255,0.7);">Reviews</div>
       </div>
     </div>
-    <p class="hero-price" style="margin-top:20px;margin-bottom:12px;font-size:15px;font-weight:700;color:#fff;letter-spacing:0.3px;">From <span style="font-family:'Noto Serif JP',serif;font-size:15px;">152</span> / person</p>
+    <p class="hero-price" style="margin-top:20px;margin-bottom:12px;font-size:15px;font-weight:700;color:#fff;letter-spacing:0.3px;">From USD <span style="font-family:'Noto Serif JP',serif;font-size:15px;">152</span> / person</p>
     <a href="#book" class="hero-cta" onclick="event.preventDefault();openBooking();">Check Availability →</a>
     <br>
-    <a href="#waitlist-box" style="display:inline-block;margin-top:12px;font-size:13px;font-weight:600;color:#fff;letter-spacing:0.3px;text-decoration:none;background:rgba(0,0,0,0.45);border:1px solid rgba(255,255,255,0.3);padding:6px 16px;border-radius:20px;transition:all 0.2s;backdrop-filter:blur(4px);">📋 Join the Waitlist</a>
+    <a href="#waitlist-box" style="display:inline-block;margin-top:12px;font-size:13px;font-weight:600;color:#fff;letter-spacing:0.3px;text-decoration:none;background:rgba(0,0,0,0.45);border:1px solid rgba(255,255,255,0.3);padding:6px 16px;border-radius:20px;transition:all 0.2s;backdrop-filter:blur(4px);">Private tour sold out? Notify me →</a>
+    <br>
+    <a href="/group-tour" class="hero-group-link">
+      <span class="new-pill">NEW</span> Group tours starting Aug 2026 — Join waitlist →
+    </a>
     </div>
   </div>
 </header>
@@ -1630,10 +1680,14 @@
         <div class="waitlist-success" id="waitlist-success">✓ You've been added to the waitlist! We'll email you if a spot opens.</div>
       </div>
 
+      <div class="pricing-scarcity">⚡ Limited availability in August — book early</div>
       <div class="pricing-features">
         <span><span class="check">✓</span> Free cancellation (24h+ notice)</span>
         <span><span class="check">✓</span> Instant confirmation</span>
         <span><span class="check">✓</span> Free date change (24h+ notice)</span>
+      </div>
+      <div class="pricing-group-link">
+        <a href="/group-tour">Looking for a shared experience? → Small Group Tour</a>
       </div>
     </div>
   </div>
@@ -1771,6 +1825,8 @@ if (hamburger && navLinks) {
     { cat: "booking", q: "Can I book for more than 5 guests?", a: "Groups of 6–10: additional ¥100,000 for a larger van. 10+: we coordinate multiple vehicles. Contact us for a quote." },
     { cat: "booking", q: "What about mobility difficulties?", a: "We tailor the route for less walking. Walkers can be stored (max 3 guests). Wheelchairs cannot be accommodated. Contact us to plan." },
     { cat: "booking", q: "What happens after I book?", a: "Your guide contacts you via WhatsApp/email to confirm your train schedule, ask about preferences, and create a personalized itinerary." },
+    { cat: "booking", q: "What is the Small Group Tour?", a: "A shared 6-hour Mt. Fuji experience for up to 20 guests, led by the same guide. Tours launch once 15 travelers sign up. Joining the waitlist is free — you only pay when the tour is confirmed. <a href='/group-tour'>Learn more & join the waitlist →</a>" },
+    { cat: "booking", q: "How is the group tour different from private?", a: "Private tours (max 5 guests, 4 hours) are fully customizable. Group tours (up to 20 guests, 6 hours) follow a set itinerary at a more affordable per-person price. Same guide, same hidden spots, different vibe." },
     { cat: "weather", q: "When can you see Mt. Fuji?", a: "Best: Nov–Feb (60–73% visibility). Spring/Fall: 27–47%. Summer: 13–17%. Even on cloudy days, cultural experiences make the tour rewarding." },
     { cat: "weather", q: "What if the weather is bad?", a: "Your guide adapts in real-time — rainy days focus on Shiraito Falls, shrines, yakisoba lunch, and tea ceremonies. Guests consistently rate these as highlights." },
   ];

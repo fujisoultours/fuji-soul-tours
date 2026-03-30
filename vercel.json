@@ -1,4 +1,7 @@
 {
+  "rewrites": [
+    { "source": "/group-tour", "destination": "/group-tour.html" }
+  ],
   "functions": {
     "api/*.js": {
       "maxDuration": 30
