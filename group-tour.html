@@ -581,30 +581,14 @@ function submitGroupWaitlist(e) {
   btn.disabled = true; btn.textContent = 'Submitting...';
 
   fetch(GROUP_WAITLIST_ENDPOINT, {
-    method: 'POST', mode: 'no-cors',
-    headers: {'Content-Type': 'application/json'},
+    method: 'POST',
+    headers: {'Content-Type': 'text/plain'},
     body: JSON.stringify({ name: name, email: email, guests: guests, week: week, type: 'group-tour-waitlist' })
-  }).then(function() {
+  }).then(function(r) { return r.json(); }).then(function(data) {
     document.getElementById('gtForm').style.display = 'none';
     document.getElementById('gt-success').style.display = 'block';
-    // Optimistic counter update
-    var rows = document.querySelectorAll('.week-row');
-    rows.forEach(function(row) {
-      if (row.querySelector('.week-label').textContent === week) {
-        var numEl = row.querySelector('.num');
-        var current = parseInt(numEl.textContent) || 0;
-        var guestNum = parseInt(guests) || 1;
-        var newCount = current + guestNum;
-        numEl.textContent = newCount;
-        var pct = Math.min(100, Math.round((newCount / MAX_CAPACITY) * 100));
-        var bar = row.querySelector('.week-bar');
-        bar.style.width = pct + '%';
-        if (newCount >= MIN_GROUP) {
-          bar.className = 'week-bar ready';
-          numEl.className = 'num ready';
-        }
-      }
-    });
+    // Update counters with live data from server
+    if (data && data.counts) renderWeekCounts(data.counts);
   }).catch(function() {
     var subject = encodeURIComponent('Group Tour Waitlist - ' + name);
     var body = encodeURIComponent('GROUP TOUR WAITLIST\n===================\nName: ' + name + '\nEmail: ' + email + '\nGuests: ' + guests + '\nWeek: ' + week + '\n\n---\nSent from fujisoultours.com/group-tour');
