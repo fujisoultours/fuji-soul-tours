@@ -25,7 +25,7 @@
  * 5. Admin sets Status column to "approved" to display on site
  */
 
-const SPREADSHEET_ID = '1XmWjkPKY4Oj2ybZrhWzSFeyPeR-Hb6-tryOEUS66koY';
+const SPREADSHEET_ID = '1lCqixGmh8cffx0_8JDb4fIqLhMrLAyM0Okllkb7t7Q0';
 const SHEET_NAME = 'Reviews';
 const FROM_EMAIL = 'fujisoultours@gmail.com';
 const PHOTOS_FOLDER_ID = '1FTCjzzWkZoBTho7HXpMx7TLHdnLhWB6z'; // Google Drive folder for photos
@@ -195,6 +195,9 @@ function onOpen() {
     .addItem('Send Review Request (selected row)', 'sendReviewRequest')
     .addItem('Send All Pending Requests', 'sendBulkReviewRequests')
     .addSeparator()
+    .addItem('Process Bokun Emails Now', 'processBokunEmails')
+    .addItem('Setup Auto-Import Trigger (15min)', 'setupBokunTrigger')
+    .addSeparator()
     .addItem('Refresh Status Formatting', 'applyStatusFormatting')
     .addToUi();
 }
@@ -334,6 +337,150 @@ function sendAdminNotification(customerName, stars, text) {
   });
 }
 
+// ===== BOKUN EMAIL AUTOMATION =====
+
+/**
+ * Process Bokun booking notification emails from Gmail.
+ * Extracts customer name, email, tour date and adds to Reviews sheet.
+ * Skips already-processed emails (labeled "ReviewProcessed") and duplicate bookings.
+ * Run via time-based trigger (e.g. every 15 minutes).
+ */
+function processBokunEmails() {
+  var label = getOrCreateLabel('ReviewProcessed');
+  var threads = GmailApp.search('from:no-reply@bokun.io subject:"新規予約のお知らせ" -label:ReviewProcessed', 0, 50);
+
+  if (threads.length === 0) return;
+
+  var sheet = getOrCreateSheet();
+  var data = sheet.getDataRange().getValues();
+
+  // Build set of existing booking refs to avoid duplicates
+  var existingRefs = {};
+  for (var i = 1; i < data.length; i++) {
+    var notes = (data[i][11] || '').toString(); // BookingRef column (L)
+    if (notes) existingRefs[notes] = true;
+  }
+
+  var added = 0;
+
+  for (var t = 0; t < threads.length; t++) {
+    var messages = threads[t].getMessages();
+    for (var m = 0; m < messages.length; m++) {
+      var body = messages[m].getPlainBody();
+      var parsed = parseBokunEmail(body);
+
+      if (!parsed || !parsed.email) continue;
+      if (existingRefs[parsed.bookingRef]) continue;
+
+      // Add row to sheet
+      sheet.appendRow([
+        new Date(),           // Timestamp
+        parsed.name,          // CustomerName
+        parsed.email,         // Email
+        parsed.tourDate,      // TourDate (as Date object)
+        '',                   // Token (generated when sending review request)
+        false,                // EmailSent
+        false,                // ReviewSubmitted
+        '',                   // Stars
+        '',                   // ReviewText
+        '',                   // PhotoURLs
+        '',                   // Status
+        parsed.bookingRef     // BookingRef (for dedup)
+      ]);
+
+      existingRefs[parsed.bookingRef] = true;
+      added++;
+    }
+    // Label thread as processed
+    threads[t].addLabel(label);
+  }
+
+  if (added > 0) {
+    Logger.log('processBokunEmails: added ' + added + ' new booking(s)');
+  }
+}
+
+/**
+ * Parse a Bokun notification email body and extract booking details.
+ */
+function parseBokunEmail(body) {
+  try {
+    // Strip markdown bold markers (*) from Bokun email body
+    body = body.replace(/\*/g, '');
+
+    // Booking reference: 予約参照番号 FUJ-XXXXXXXX
+    var refMatch = body.match(/予約参照番号\s+(FUJ-\d+)/);
+    var bookingRef = refMatch ? refMatch[1] : '';
+
+    // Customer name: お客様 LastName, FirstName
+    var nameMatch = body.match(/お客様\s+([^\n]+)/);
+    var name = '';
+    if (nameMatch) {
+      var raw = nameMatch[1].trim();
+      // Convert "LastName, FirstName" → "FirstName LastName"
+      var parts = raw.split(',');
+      if (parts.length >= 2) {
+        name = parts[1].trim() + ' ' + parts[0].trim();
+      } else {
+        name = raw;
+      }
+    }
+
+    // Email: お客様のメールアドレス xxx@xxx.xxx
+    var emailMatch = body.match(/お客様のメールアドレス\s+([^\s\n]+)/);
+    var email = emailMatch ? emailMatch[1].trim() : '';
+
+    // Tour date: 日付 曜日 D.M月 'YY  (e.g. "水 3.6月 '26")
+    var dateMatch = body.match(/日付\s+\S+\s+(\d{1,2})\.(\d{1,2})月\s+'(\d{2})/);
+    var tourDate = null;
+    if (dateMatch) {
+      var day = parseInt(dateMatch[1]);
+      var month = parseInt(dateMatch[2]) - 1; // 0-based
+      var year = 2000 + parseInt(dateMatch[3]);
+      tourDate = new Date(year, month, day);
+    }
+
+    return {
+      bookingRef: bookingRef,
+      name: name,
+      email: email,
+      tourDate: tourDate
+    };
+  } catch (e) {
+    Logger.log('parseBokunEmail error: ' + e.message);
+    return null;
+  }
+}
+
+function getOrCreateLabel(labelName) {
+  var label = GmailApp.getUserLabelByName(labelName);
+  if (!label) {
+    label = GmailApp.createLabel(labelName);
+  }
+  return label;
+}
+
+/**
+ * Set up a time-based trigger to run processBokunEmails every 15 minutes.
+ * Run this once manually from the script editor.
+ */
+function setupBokunTrigger() {
+  // Remove existing triggers for this function
+  var triggers = ScriptApp.getProjectTriggers();
+  for (var i = 0; i < triggers.length; i++) {
+    if (triggers[i].getHandlerFunction() === 'processBokunEmails') {
+      ScriptApp.deleteTrigger(triggers[i]);
+    }
+  }
+
+  ScriptApp.newTrigger('processBokunEmails')
+    .timeBased()
+    .everyMinutes(15)
+    .create();
+
+  Logger.log('Trigger set: processBokunEmails runs every 15 minutes');
+}
+
 // ===== HELPERS =====
 
 function getOrCreateSheet() {
@@ -343,7 +490,7 @@ function getOrCreateSheet() {
     sheet = ss.insertSheet(SHEET_NAME);
     sheet.appendRow([
       'Timestamp', 'CustomerName', 'Email', 'TourDate', 'Token',
-      'EmailSent', 'ReviewSubmitted', 'Stars', 'ReviewText', 'PhotoURLs', 'Status'
+      'EmailSent', 'ReviewSubmitted', 'Stars', 'ReviewText', 'PhotoURLs', 'Status', 'BookingRef'
     ]);
     sheet.getRange('1:1').setFontWeight('bold');
     sheet.setColumnWidth(5, 300); // Token column wider
