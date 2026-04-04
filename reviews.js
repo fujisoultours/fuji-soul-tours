@@ -69,7 +69,7 @@ const REVIEWS = [
 
 
 // GAS endpoint for fetching approved direct reviews (set after deploying GAS)
-var REVIEW_GAS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyBorEyGJtSh0x36uvX3Eiu98inPEPoVsnHvj4Lyu0GyKJjfcy5PeXmG7fSWnRU3ReYVg/exec';
+var REVIEW_GAS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwgsSC9-DXthLH5_3RrbzvFXyxznjJ4phw_icYCq7DUNFIfa3sNt0l7Xr_JuYHP8j-EtQ/exec';
 
 function escapeReviewHtml(str) {
   var div = document.createElement('div');
@@ -145,7 +145,7 @@ function lightboxNav(dir) {
         var setIdx = reviewPhotoSets.length;
         reviewPhotoSets.push(resolvedUrls);
         photosHtml = '<div class="review-photos">' + resolvedUrls.map(function(imgUrl, idx) {
-          return '<img src="' + escapeReviewHtml(imgUrl) + '" alt="Tour photo" class="review-photo" loading="lazy" onclick="openPhotoLightbox(this.src,reviewPhotoSets[' + setIdx + '],' + idx + ')" onerror="this.style.display=\'none\'">';
+          return '<img src="' + escapeReviewHtml(imgUrl) + '" alt="Tour photo" class="review-photo" loading="lazy" data-set="' + setIdx + '" data-idx="' + idx + '" onerror="this.style.display=\'none\'">';
         }).join('') + '</div>';
       }
       return '<div class="review-card">'
@@ -158,6 +158,17 @@ function lightboxNav(dir) {
     }).join('');
   }
 
+  // Delegated click handler for review photos (avoids stale global index references)
+  grid.addEventListener('click', function(e) {
+    var img = e.target.closest('.review-photo');
+    if (!img) return;
+    var setIdx = parseInt(img.getAttribute('data-set'));
+    var idx = parseInt(img.getAttribute('data-idx'));
+    if (!isNaN(setIdx) && reviewPhotoSets[setIdx]) {
+      openPhotoLightbox(img.src, reviewPhotoSets[setIdx], idx);
+    }
+  });
+
   // 1. Render static reviews immediately
   if (REVIEWS.length) renderReviews(REVIEWS);
 
@@ -166,10 +177,10 @@ function lightboxNav(dir) {
     var overlay = document.createElement('div');
     overlay.id = 'photoLightbox';
     overlay.className = 'photo-lightbox';
-    overlay.innerHTML = '<span class="lb-close" onclick="document.getElementById(\'photoLightbox\').classList.remove(\'active\')">&times;</span>'
-      + '<span class="lb-nav lb-prev" onclick="event.stopPropagation();lightboxNav(-1)">&#8249;</span>'
+    overlay.innerHTML = '<button type="button" class="lb-close" aria-label="Close" onclick="document.getElementById(\'photoLightbox\').classList.remove(\'active\')">&times;</button>'
+      + '<button type="button" class="lb-nav lb-prev" aria-label="Previous photo" onclick="event.stopPropagation();lightboxNav(-1)">&#8249;</button>'
       + '<img class="lb-img" src="" alt="Tour photo">'
-      + '<span class="lb-nav lb-next" onclick="event.stopPropagation();lightboxNav(1)">&#8250;</span>'
+      + '<button type="button" class="lb-nav lb-next" aria-label="Next photo" onclick="event.stopPropagation();lightboxNav(1)">&#8250;</button>'
       + '<span class="lb-counter"></span>';
     overlay.addEventListener('click', function(e) {
       if (e.target === overlay) overlay.classList.remove('active');
@@ -183,9 +194,15 @@ function lightboxNav(dir) {
     document.body.appendChild(overlay);
   }
 
-  // 2. Fetch approved direct reviews and merge
+  // 2. Fetch approved direct reviews and merge (with timeout)
   if (REVIEW_GAS_ENDPOINT && REVIEW_GAS_ENDPOINT !== 'YOUR_GAS_ENDPOINT_HERE') {
-    fetch(REVIEW_GAS_ENDPOINT + '?action=approved')
+    var fetchOpts = {};
+    if (typeof AbortController !== 'undefined') {
+      var ac = new AbortController();
+      setTimeout(function() { ac.abort(); }, 10000); // 10s timeout
+      fetchOpts.signal = ac.signal;
+    }
+    fetch(REVIEW_GAS_ENDPOINT + '?action=approved', fetchOpts)
       .then(function(r) { return r.json(); })
       .then(function(data) {
         if (data.success && data.reviews && data.reviews.length > 0) {

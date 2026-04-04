@@ -55,6 +55,22 @@ function doPost(e) {
   try {
     const data = JSON.parse(e.postData.contents);
 
+    // CSRF protection: require valid origin
+    var origin = (e.parameter && e.parameter.origin) || '';
+    var referer = '';
+    try { referer = e.headers ? (e.headers['Referer'] || e.headers['referer'] || '') : ''; } catch(ignored) {}
+    var allowedOrigins = ['https://www.fujisoultours.com', 'https://fujisoultours.com'];
+    var originOk = !origin || allowedOrigins.some(function(o) { return origin.indexOf(o) === 0; });
+    var refererOk = !referer || allowedOrigins.some(function(o) { return referer.indexOf(o) === 0; });
+    if (!originOk || !refererOk) {
+      return jsonResponse({ success: false, error: 'Forbidden' });
+    }
+
+    // Also require a valid token in every POST (prevents blind submissions)
+    if (!data.token) {
+      return jsonResponse({ success: false, error: 'No token' });
+    }
+
     if (data.action === 'submit-review') {
       return handleSubmitReview(data);
     }
@@ -437,14 +453,27 @@ function parseBokunEmail(body) {
     var emailMatch = body.match(/お客様のメールアドレス\s+([^\s\n]+)/);
     var email = emailMatch ? emailMatch[1].trim() : '';
 
-    // Tour date: 日付 曜日 D.M月 'YY  (e.g. "水 3.6月 '26")
+    // Tour date: 日付 曜日 D.M月 'YY  (e.g. "水 3.6月 '26" = June 3rd 2026)
+    // Format: {day}.{month}月 — 月 follows the month number
     var dateMatch = body.match(/日付\s+\S+\s+(\d{1,2})\.(\d{1,2})月\s+'(\d{2})/);
     var tourDate = null;
     if (dateMatch) {
       var day = parseInt(dateMatch[1]);
-      var month = parseInt(dateMatch[2]) - 1; // 0-based
-      var year = 2000 + parseInt(dateMatch[3]);
-      tourDate = new Date(year, month, day);
+      var month = parseInt(dateMatch[2]); // month number (1-12)
+
+      // Validate: if month > 12, values are likely swapped
+      if (month > 12 && day <= 12) {
+        var tmp = day;
+        day = month;
+        month = tmp;
+      }
+
+      // Bounds check
+      if (month >= 1 && month <= 12 && day >= 1 && day <= 31) {
+        tourDate = new Date(2000 + parseInt(dateMatch[3]), month - 1, day);
+      } else {
+        Logger.log('parseBokunEmail: invalid date values day=' + day + ' month=' + month);
+      }
     }
 
     return {
