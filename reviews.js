@@ -108,7 +108,15 @@ function openPhotoLightbox(src) {
       var photosHtml = '';
       if (r.photos && r.photos.length > 0) {
         photosHtml = '<div class="review-photos">' + r.photos.map(function(url) {
-          return '<img src="' + escapeReviewHtml(url) + '" alt="Tour photo" class="review-photo" loading="lazy" onclick="openPhotoLightbox(this.src)">';
+          // Convert Google Drive page URLs to direct image URLs
+          var imgUrl = url;
+          var driveMatch = url.match(/drive\.google\.com\/file\/d\/([^\/]+)/);
+          if (driveMatch) {
+            imgUrl = 'https://lh3.googleusercontent.com/d/' + driveMatch[1];
+          } else if (url.match(/drive\.google\.com\/open\?id=([^&]+)/)) {
+            imgUrl = 'https://lh3.googleusercontent.com/d/' + url.match(/drive\.google\.com\/open\?id=([^&]+)/)[1];
+          }
+          return '<img src="' + escapeReviewHtml(imgUrl) + '" alt="Tour photo" class="review-photo" loading="lazy" onclick="openPhotoLightbox(this.src)" onerror="this.style.display=\'none\'">';
         }).join('') + '</div>';
       }
       return '<div class="review-card">'

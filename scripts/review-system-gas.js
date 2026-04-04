@@ -123,7 +123,14 @@ function handleGetApproved() {
         author: author,
         date: dateStr,
         source: 'Direct',
-        photos: photoUrls ? photoUrls.split(',').map(function(u) { return u.trim(); }) : []
+        photos: photoUrls ? photoUrls.split(',').map(function(u) {
+          var url = u.trim();
+          var match = url.match(/drive\.google\.com\/file\/d\/([^\/]+)/);
+          if (match) return 'https://lh3.googleusercontent.com/d/' + match[1];
+          match = url.match(/drive\.google\.com\/open\?id=([^&]+)/);
+          if (match) return 'https://lh3.googleusercontent.com/d/' + match[1];
+          return url;
+        }) : []
       });
     }
   }
@@ -166,7 +173,7 @@ function handleSubmitReview(data) {
         var blob = Utilities.newBlob(Utilities.base64Decode(base64), mimeType, 'review_' + data.token.substring(0, 8) + '_' + p + '.jpg');
         var file = folder.createFile(blob);
         file.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
-        urls.push(file.getUrl());
+        urls.push('https://lh3.googleusercontent.com/d/' + file.getId());
       }
       photoUrls = urls.join(', ');
     } catch (e) {
