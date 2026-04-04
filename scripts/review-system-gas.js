@@ -165,7 +165,7 @@ function handleSubmitReview(data) {
     try {
       var folder = DriveApp.getFolderById(PHOTOS_FOLDER_ID);
       var urls = [];
-      for (var p = 0; p < data.photos.length && p < 3; p++) {
+      for (var p = 0; p < data.photos.length && p < 5; p++) {
         var photoData = data.photos[p];
         var mimeMatch = photoData.match(/^data:(image\/\w+);base64,/);
         var mimeType = mimeMatch ? mimeMatch[1] : 'image/jpeg';

@@ -77,12 +77,39 @@ function escapeReviewHtml(str) {
   return div.innerHTML;
 }
 
-function openPhotoLightbox(src) {
+var lightboxPhotos = [];
+var lightboxIndex = 0;
+var reviewPhotoSets = [];
+
+function openPhotoLightbox(src, photos, idx) {
+  lightboxPhotos = photos || [src];
+  lightboxIndex = idx || 0;
+  updateLightbox();
+  document.getElementById('photoLightbox').classList.add('active');
+}
+
+function updateLightbox() {
   var lb = document.getElementById('photoLightbox');
-  if (lb) {
-    lb.querySelector('img').src = src;
-    lb.classList.add('active');
+  if (!lb) return;
+  lb.querySelector('.lb-img').src = lightboxPhotos[lightboxIndex];
+  var prev = lb.querySelector('.lb-prev');
+  var next = lb.querySelector('.lb-next');
+  var counter = lb.querySelector('.lb-counter');
+  if (lightboxPhotos.length <= 1) {
+    prev.style.display = 'none';
+    next.style.display = 'none';
+    counter.style.display = 'none';
+  } else {
+    prev.style.display = '';
+    next.style.display = '';
+    counter.style.display = '';
+    counter.textContent = (lightboxIndex + 1) + ' / ' + lightboxPhotos.length;
   }
+}
+
+function lightboxNav(dir) {
+  lightboxIndex = (lightboxIndex + dir + lightboxPhotos.length) % lightboxPhotos.length;
+  updateLightbox();
 }
 
 // Render reviews into the grid — scrolling is handled by CSS overflow-x: auto
@@ -93,6 +120,7 @@ function openPhotoLightbox(src) {
 
   function renderReviews(reviews) {
     if (!reviews.length) return;
+    reviewPhotoSets = [];
 
     // Calculate average rating for hero badge
     var avg = (reviews.reduce(function(s, r) { return s + r.stars; }, 0) / reviews.length).toFixed(1);
@@ -107,16 +135,17 @@ function openPhotoLightbox(src) {
       var truncated = r.text.length > maxLen ? r.text.slice(0, maxLen) + '…' : r.text;
       var photosHtml = '';
       if (r.photos && r.photos.length > 0) {
-        photosHtml = '<div class="review-photos">' + r.photos.map(function(url) {
-          // Convert Google Drive page URLs to direct image URLs
-          var imgUrl = url;
+        var resolvedUrls = r.photos.map(function(url) {
           var driveMatch = url.match(/drive\.google\.com\/file\/d\/([^\/]+)/);
-          if (driveMatch) {
-            imgUrl = 'https://lh3.googleusercontent.com/d/' + driveMatch[1];
-          } else if (url.match(/drive\.google\.com\/open\?id=([^&]+)/)) {
-            imgUrl = 'https://lh3.googleusercontent.com/d/' + url.match(/drive\.google\.com\/open\?id=([^&]+)/)[1];
-          }
-          return '<img src="' + escapeReviewHtml(imgUrl) + '" alt="Tour photo" class="review-photo" loading="lazy" onclick="openPhotoLightbox(this.src)" onerror="this.style.display=\'none\'">';
+          if (driveMatch) return 'https://lh3.googleusercontent.com/d/' + driveMatch[1];
+          var openMatch = url.match(/drive\.google\.com\/open\?id=([^&]+)/);
+          if (openMatch) return 'https://lh3.googleusercontent.com/d/' + openMatch[1];
+          return url;
+        });
+        var setIdx = reviewPhotoSets.length;
+        reviewPhotoSets.push(resolvedUrls);
+        photosHtml = '<div class="review-photos">' + resolvedUrls.map(function(imgUrl, idx) {
+          return '<img src="' + escapeReviewHtml(imgUrl) + '" alt="Tour photo" class="review-photo" loading="lazy" onclick="openPhotoLightbox(this.src,reviewPhotoSets[' + setIdx + '],' + idx + ')" onerror="this.style.display=\'none\'">';
         }).join('') + '</div>';
       }
       return '<div class="review-card">'
@@ -137,8 +166,20 @@ function openPhotoLightbox(src) {
     var overlay = document.createElement('div');
     overlay.id = 'photoLightbox';
     overlay.className = 'photo-lightbox';
-    overlay.innerHTML = '<img src="" alt="Tour photo">';
-    overlay.addEventListener('click', function() { overlay.classList.remove('active'); });
+    overlay.innerHTML = '<span class="lb-close" onclick="document.getElementById(\'photoLightbox\').classList.remove(\'active\')">&times;</span>'
+      + '<span class="lb-nav lb-prev" onclick="event.stopPropagation();lightboxNav(-1)">&#8249;</span>'
+      + '<img class="lb-img" src="" alt="Tour photo">'
+      + '<span class="lb-nav lb-next" onclick="event.stopPropagation();lightboxNav(1)">&#8250;</span>'
+      + '<span class="lb-counter"></span>';
+    overlay.addEventListener('click', function(e) {
+      if (e.target === overlay) overlay.classList.remove('active');
+    });
+    document.addEventListener('keydown', function(e) {
+      if (!overlay.classList.contains('active')) return;
+      if (e.key === 'Escape') overlay.classList.remove('active');
+      if (e.key === 'ArrowLeft') lightboxNav(-1);
+      if (e.key === 'ArrowRight') lightboxNav(1);
+    });
     document.body.appendChild(overlay);
   }
 

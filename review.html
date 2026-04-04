@@ -483,7 +483,7 @@
       <!-- Photo Upload -->
       <div class="photo-upload-group">
         <label class="photo-upload-label">Add photos (optional)</label>
-        <p class="photo-upload-hint">Up to 3 photos, max 5MB each</p>
+        <p class="photo-upload-hint">Up to 5 photos, max 20MB each</p>
         <div class="photo-upload-area" onclick="document.getElementById('photoInput').click()">
           <input type="file" id="photoInput" accept="image/*" multiple onchange="handlePhotos(this.files)">
           <div class="photo-upload-icon">📷</div>
@@ -607,13 +607,13 @@ function updateCharCount() {
 // ===== PHOTO HANDLING =====
 
 function handlePhotos(files) {
-  var maxPhotos = 3;
-  var maxSize = 5 * 1024 * 1024; // 5MB
+  var maxPhotos = 5;
+  var maxSize = 20 * 1024 * 1024; // 20MB
 
   for (var i = 0; i < files.length && selectedPhotos.length < maxPhotos; i++) {
     var file = files[i];
     if (file.size > maxSize) {
-      alert('Photo "' + file.name + '" is too large (max 5MB). Please choose a smaller file.');
+      alert('Photo "' + file.name + '" is too large (max 20MB). Please choose a smaller file.');
       continue;
     }
     if (!file.type.startsWith('image/')) continue;
@@ -655,7 +655,7 @@ function renderPhotoPreviews() {
 
   // Hide upload area if max reached
   var area = document.querySelector('.photo-upload-area');
-  if (selectedPhotos.length >= 3) {
+  if (selectedPhotos.length >= 5) {
     area.style.display = 'none';
   } else {
     area.style.display = '';
