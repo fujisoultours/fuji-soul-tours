@@ -25,10 +25,10 @@
  * 5. Admin sets Status column to "approved" to display on site
  */
 
-const SPREADSHEET_ID = 'YOUR_SPREADSHEET_ID_HERE';
+const SPREADSHEET_ID = '1XmWjkPKY4Oj2ybZrhWzSFeyPeR-Hb6-tryOEUS66koY';
 const SHEET_NAME = 'Reviews';
 const FROM_EMAIL = 'fujisoultours@gmail.com';
-const PHOTOS_FOLDER_ID = 'YOUR_FOLDER_ID_HERE'; // Google Drive folder for photos
+const PHOTOS_FOLDER_ID = '1FTCjzzWkZoBTho7HXpMx7TLHdnLhWB6z'; // Google Drive folder for photos
 const REVIEW_PAGE_URL = 'https://www.fujisoultours.com/review';
 
 // ===== WEB APP HANDLERS =====
