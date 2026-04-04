@@ -69,7 +69,7 @@ const REVIEWS = [
 
 
 // GAS endpoint for fetching approved direct reviews (set after deploying GAS)
-var REVIEW_GAS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwgsSC9-DXthLH5_3RrbzvFXyxznjJ4phw_icYCq7DUNFIfa3sNt0l7Xr_JuYHP8j-EtQ/exec';
+var REVIEW_GAS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbzvnmgqy_mVBy3XwHb2KoG2ncf7TmsJ4u0rLNUAAYnXm8XjgT67PDfdftfEd9lDkHfmyQ/exec';
 
 function escapeReviewHtml(str) {
   var div = document.createElement('div');
