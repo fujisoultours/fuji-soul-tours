@@ -302,6 +302,13 @@
     cursor: not-allowed;
   }
 
+  .submit-hint {
+    text-align: center;
+    font-size: 0.8rem;
+    color: #999;
+    margin-top: 8px;
+  }
+
   /* ===== STATES ===== */
   .state-loading,
   .state-error,
@@ -483,7 +490,7 @@
       <!-- Photo Upload -->
       <div class="photo-upload-group">
         <label class="photo-upload-label">Add photos (optional)</label>
-        <p class="photo-upload-hint">Up to 5 photos, max 20MB each</p>
+        <p class="photo-upload-hint">Up to 10 photos, max 20MB each</p>
         <div class="photo-upload-area" onclick="document.getElementById('photoInput').click()">
           <input type="file" id="photoInput" accept="image/*" multiple onchange="handlePhotos(this.files)">
           <div class="photo-upload-icon">📷</div>
@@ -494,6 +501,7 @@
 
       <!-- Submit -->
       <button type="submit" class="review-submit" id="submitBtn">Submit Review</button>
+      <p class="submit-hint">Submitting may take a moment — please hang tight.</p>
     </form>
   </div>
 
@@ -607,7 +615,7 @@ function updateCharCount() {
 // ===== PHOTO HANDLING =====
 
 function handlePhotos(files) {
-  var maxPhotos = 5;
+  var maxPhotos = 10;
   var maxSize = 20 * 1024 * 1024; // 20MB
 
   for (var i = 0; i < files.length && selectedPhotos.length < maxPhotos; i++) {
@@ -655,7 +663,7 @@ function renderPhotoPreviews() {
 
   // Hide upload area if max reached
   var area = document.querySelector('.photo-upload-area');
-  if (selectedPhotos.length >= 5) {
+  if (selectedPhotos.length >= 10) {
     area.style.display = 'none';
   } else {
     area.style.display = '';

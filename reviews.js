@@ -215,7 +215,7 @@ function lightboxNav(dir) {
           });
 
           if (newReviews.length > 0) {
-            var merged = REVIEWS.concat(newReviews);
+            var merged = newReviews.concat(REVIEWS);
             renderReviews(merged);
           }
         }
