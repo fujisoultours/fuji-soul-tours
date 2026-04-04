@@ -68,28 +68,69 @@ const REVIEWS = [
 ];
 
 
+// GAS endpoint for fetching approved direct reviews (set after deploying GAS)
+var REVIEW_GAS_ENDPOINT = 'YOUR_GAS_ENDPOINT_HERE';
+
+function escapeReviewHtml(str) {
+  var div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+
 // Render reviews into the grid — scrolling is handled by CSS overflow-x: auto
 // and the shared scrollCarousel() function (same as dest carousel)
 (function() {
-  const grid = document.getElementById('reviewsGrid');
-  if (!grid || !REVIEWS.length) return;
+  var grid = document.getElementById('reviewsGrid');
+  if (!grid) return;
 
-  // Calculate average rating for hero badge
-  const avg = (REVIEWS.reduce((s, r) => s + r.stars, 0) / REVIEWS.length).toFixed(1);
-  const countEl = document.querySelector('.hero-badge');
-  if (countEl) {
-    countEl.textContent = '★ ' + avg + ' Rated · Private Tour';
+  function renderReviews(reviews) {
+    if (!reviews.length) return;
+
+    // Calculate average rating for hero badge
+    var avg = (reviews.reduce(function(s, r) { return s + r.stars; }, 0) / reviews.length).toFixed(1);
+    var countEl = document.querySelector('.hero-badge');
+    if (countEl) {
+      countEl.textContent = '★ ' + avg + ' Rated · Private Tour';
+    }
+
+    var maxLen = 300;
+    grid.innerHTML = reviews.map(function(r) {
+      var stars = '★'.repeat(r.stars) + '☆'.repeat(5 - r.stars);
+      var truncated = r.text.length > maxLen ? r.text.slice(0, maxLen) + '…' : r.text;
+      return '<div class="review-card">'
+        + '<div class="review-stars">' + stars + '</div>'
+        + '<p class="review-text">"' + escapeReviewHtml(truncated) + '"</p>'
+        + '<div class="review-author">' + escapeReviewHtml(r.author) + '</div>'
+        + '<div class="review-date">' + escapeReviewHtml(r.date) + ' · ' + escapeReviewHtml(r.source) + '</div>'
+        + '</div>';
+    }).join('');
   }
 
-  const maxLen = 300;
-  grid.innerHTML = REVIEWS.map(r => {
-    const stars = '★'.repeat(r.stars) + '☆'.repeat(5 - r.stars);
-    const truncated = r.text.length > maxLen ? r.text.slice(0, maxLen) + '…' : r.text;
-    return `<div class="review-card">
-        <div class="review-stars">${stars}</div>
-        <p class="review-text">"${truncated}"</p>
-        <div class="review-author">${r.author}</div>
-        <div class="review-date">${r.date} · ${r.source}</div>
-      </div>`;
-  }).join('');
+  // 1. Render static reviews immediately
+  if (REVIEWS.length) renderReviews(REVIEWS);
+
+  // 2. Fetch approved direct reviews and merge
+  if (REVIEW_GAS_ENDPOINT && REVIEW_GAS_ENDPOINT !== 'YOUR_GAS_ENDPOINT_HERE') {
+    fetch(REVIEW_GAS_ENDPOINT + '?action=approved')
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        if (data.success && data.reviews && data.reviews.length > 0) {
+          // Deduplicate by text (first 100 chars)
+          var existingTexts = {};
+          REVIEWS.forEach(function(r) { existingTexts[r.text.substring(0, 100)] = true; });
+
+          var newReviews = data.reviews.filter(function(r) {
+            return !existingTexts[r.text.substring(0, 100)];
+          });
+
+          if (newReviews.length > 0) {
+            var merged = REVIEWS.concat(newReviews);
+            renderReviews(merged);
+          }
+        }
+      })
+      .catch(function() {
+        // Silently fail — static reviews remain displayed
+      });
+  }
 })();

@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3Y392T424H"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date())
+  gtag('config', 'G-3Y392T424H');
+</script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Write a Review — Fuji Soul Tours</title>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/fvicon192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<meta name="description" content="Share your Fuji Soul Tours experience. Write a review and help future travelers.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap">
+<style>
+
+  :root {
+    --shu: #0077B6;
+    --shu-dark: #005A8C;
+    --cta: #C0392B;
+    --cta-dark: #A93226;
+    --sumi: #1a1a1a;
+    --shiro: #FAFAF8;
+    --kinari: #EEF4F8;
+    --hai: #6B6B6B;
+    --usu-hai: #DEE8EE;
+    --gold: #B8860B;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 16px;
+    color: var(--sumi);
+    background: var(--shiro);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ===== HEADER ===== */
+  .review-header {
+    text-align: center;
+    padding: 20px 24px;
+    border-bottom: 2px solid var(--shu);
+    background: #fff;
+  }
+  .review-header a {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+  }
+  .review-header img {
+    height: 48px;
+    width: auto;
+  }
+
+  /* ===== MAIN ===== */
+  .review-main {
+    flex: 1;
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 40px 24px 60px;
+    width: 100%;
+  }
+
+  .review-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 8px;
+  }
+
+  .review-subtitle {
+    font-size: 14px;
+    color: var(--hai);
+    text-align: center;
+    margin-bottom: 36px;
+    line-height: 1.6;
+  }
+
+  .review-greeting {
+    font-size: 15px;
+    margin-bottom: 24px;
+    line-height: 1.7;
+  }
+
+  .review-greeting strong {
+    color: var(--shu);
+  }
+
+  /* ===== STAR RATING ===== */
+  .star-rating-group {
+    margin-bottom: 28px;
+  }
+
+  .star-rating-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--sumi);
+    margin-bottom: 10px;
+  }
+
+  .star-rating {
+    display: flex;
+    gap: 8px;
+  }
+
+  .star-btn {
+    background: none;
+    border: none;
+    font-size: 36px;
+    color: var(--usu-hai);
+    cursor: pointer;
+    transition: color 0.15s, transform 0.15s;
+    padding: 0;
+    line-height: 1;
+  }
+
+  .star-btn:hover {
+    transform: scale(1.15);
+  }
+
+  .star-btn.active {
+    color: var(--gold);
+  }
+
+  .star-rating-text {
+    font-size: 13px;
+    color: var(--hai);
+    margin-top: 8px;
+    min-height: 20px;
+  }
+
+  /* ===== FORM FIELDS ===== */
+  .form-group {
+    margin-bottom: 22px;
+  }
+
+  .form-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--sumi);
+    margin-bottom: 6px;
+  }
+
+  .form-group textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid var(--usu-hai);
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--sumi);
+    background: #fff;
+    resize: vertical;
+    min-height: 120px;
+    transition: border-color 0.2s;
+    line-height: 1.7;
+  }
+
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--shu);
+    box-shadow: 0 0 0 3px rgba(0,119,182,0.1);
+  }
+
+  .form-group textarea::placeholder {
+    color: #b0b0b0;
+  }
+
+  .char-count {
+    font-size: 12px;
+    color: var(--hai);
+    text-align: right;
+    margin-top: 4px;
+  }
+
+  /* ===== PHOTO UPLOAD ===== */
+  .photo-upload-group {
+    margin-bottom: 28px;
+  }
+
+  .photo-upload-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--sumi);
+    margin-bottom: 6px;
+  }
+
+  .photo-upload-hint {
+    font-size: 13px;
+    color: var(--hai);
+    margin-bottom: 10px;
+  }
+
+  .photo-upload-area {
+    border: 2px dashed var(--usu-hai);
+    border-radius: 12px;
+    padding: 24px;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .photo-upload-area:hover {
+    border-color: var(--shu);
+    background: rgba(0,119,182,0.03);
+  }
+
+  .photo-upload-area input[type="file"] {
+    display: none;
+  }
+
+  .photo-upload-icon {
+    font-size: 28px;
+    color: var(--hai);
+    margin-bottom: 6px;
+  }
+
+  .photo-upload-text {
+    font-size: 14px;
+    color: var(--hai);
+  }
+
+  .photo-previews {
+    display: flex;
+    gap: 10px;
+    margin-top: 12px;
+    flex-wrap: wrap;
+  }
+
+  .photo-preview {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .photo-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .photo-preview .remove-photo {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+  }
+
+  /* ===== SUBMIT ===== */
+  .review-submit {
+    width: 100%;
+    margin-top: 8px;
+    padding: 14px 24px;
+    background: var(--shu);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .review-submit:hover {
+    background: var(--shu-dark);
+  }
+
+  .review-submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  /* ===== STATES ===== */
+  .state-loading,
+  .state-error,
+  .state-success {
+    text-align: center;
+    padding: 60px 24px;
+  }
+
+  .state-loading {
+    color: var(--hai);
+    font-size: 15px;
+  }
+
+  .loading-spinner {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    border: 3px solid var(--usu-hai);
+    border-top-color: var(--shu);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin-bottom: 16px;
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
+  .state-error {
+    color: var(--sumi);
+  }
+
+  .error-icon {
+    font-size: 48px;
+    margin-bottom: 16px;
+  }
+
+  .error-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .error-message {
+    font-size: 14px;
+    color: var(--hai);
+    line-height: 1.7;
+  }
+
+  .state-success {
+    color: var(--sumi);
+  }
+
+  .success-icon {
+    font-size: 48px;
+    margin-bottom: 16px;
+  }
+
+  .success-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--shu);
+  }
+
+  .success-message {
+    font-size: 15px;
+    color: var(--hai);
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+
+  .success-home-link {
+    display: inline-block;
+    color: var(--shu);
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .success-home-link:hover {
+    text-decoration: underline;
+  }
+
+  /* ===== FOOTER ===== */
+  .review-footer {
+    border-top: 1px solid var(--usu-hai);
+    padding: 20px 24px;
+    text-align: center;
+    background: #fff;
+  }
+
+  .review-footer p {
+    font-size: 12px;
+    color: var(--hai);
+  }
+
+  .review-footer a {
+    color: var(--hai);
+    text-decoration: none;
+  }
+
+  .review-footer a:hover {
+    color: var(--shu);
+  }
+
+  /* ===== HIDDEN ===== */
+  .hidden { display: none !important; }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 600px) {
+    .review-main {
+      padding: 28px 18px 48px;
+    }
+    .review-title {
+      font-size: 20px;
+    }
+    .star-btn {
+      font-size: 32px;
+    }
+  }
+
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="review-header">
+  <a href="/">
+    <img src="/images/logo.png" alt="Fuji Soul Tours">
+  </a>
+</div>
+
+<!-- MAIN -->
+<div class="review-main">
+
+  <!-- Loading State -->
+  <div id="stateLoading" class="state-loading">
+    <div class="loading-spinner"></div>
+    <p>Loading your review form...</p>
+  </div>
+
+  <!-- Error State -->
+  <div id="stateError" class="state-error hidden">
+    <div class="error-icon">⚠</div>
+    <div class="error-title" id="errorTitle">Invalid Link</div>
+    <div class="error-message" id="errorMessage">This review link is not valid or has expired. If you believe this is an error, please contact us at <a href="mailto:fujisoultours@gmail.com" style="color:var(--shu);">fujisoultours@gmail.com</a>.</div>
+  </div>
+
+  <!-- Review Form -->
+  <div id="stateForm" class="hidden">
+    <h1 class="review-title">Share Your Experience</h1>
+    <p class="review-subtitle">Your feedback helps future travelers and means a lot to us.</p>
+
+    <p class="review-greeting" id="reviewGreeting"></p>
+
+    <form id="reviewForm" onsubmit="submitReview(event)">
+
+      <!-- Star Rating -->
+      <div class="star-rating-group">
+        <label class="star-rating-label">How was your tour? *</label>
+        <div class="star-rating" id="starRating">
+          <button type="button" class="star-btn" data-value="1" onclick="setRating(1)" aria-label="1 star — Poor">★</button>
+          <button type="button" class="star-btn" data-value="2" onclick="setRating(2)" aria-label="2 stars — Fair">★</button>
+          <button type="button" class="star-btn" data-value="3" onclick="setRating(3)" aria-label="3 stars — Good">★</button>
+          <button type="button" class="star-btn" data-value="4" onclick="setRating(4)" aria-label="4 stars — Very Good">★</button>
+          <button type="button" class="star-btn" data-value="5" onclick="setRating(5)" aria-label="5 stars — Excellent">★</button>
+        </div>
+        <div class="star-rating-text" id="starText"></div>
+      </div>
+
+      <!-- Review Text -->
+      <div class="form-group">
+        <label for="reviewText">Tell us about your experience *</label>
+        <textarea id="reviewText" placeholder="What did you enjoy most? Any highlights or moments that stood out?" required maxlength="2000" oninput="updateCharCount()"></textarea>
+        <div class="char-count"><span id="charCount">0</span> / 2,000</div>
+      </div>
+
+      <!-- Photo Upload -->
+      <div class="photo-upload-group">
+        <label class="photo-upload-label">Add photos (optional)</label>
+        <p class="photo-upload-hint">Up to 3 photos, max 5MB each</p>
+        <div class="photo-upload-area" onclick="document.getElementById('photoInput').click()">
+          <input type="file" id="photoInput" accept="image/*" multiple onchange="handlePhotos(this.files)">
+          <div class="photo-upload-icon">📷</div>
+          <div class="photo-upload-text">Tap to add photos</div>
+        </div>
+        <div class="photo-previews" id="photoPreviews"></div>
+      </div>
+
+      <!-- Submit -->
+      <button type="submit" class="review-submit" id="submitBtn">Submit Review</button>
+    </form>
+  </div>
+
+  <!-- Success State -->
+  <div id="stateSuccess" class="state-success hidden">
+    <div class="success-icon">🎉</div>
+    <div class="success-title">Thank You!</div>
+    <p class="success-message">Your review has been submitted successfully. We truly appreciate you taking the time to share your experience!</p>
+    <a href="/" class="success-home-link">← Back to Fuji Soul Tours</a>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="review-footer">
+  <p>
+    Fuji Soul Tours ·
+    <a href="mailto:fujisoultours@gmail.com">fujisoultours@gmail.com</a> ·
+    <a href="https://www.instagram.com/fujisoultours" target="_blank" rel="noopener">Instagram</a>
+  </p>
+  <p style="margin-top:4px;">© 2026 Fuji Soul Tours. All rights reserved.</p>
+</div>
+
+<script>
+// ===== CONFIGURATION =====
+var REVIEW_GAS_ENDPOINT = 'YOUR_GAS_ENDPOINT_HERE'; // Replace after deploying GAS
+
+// ===== STATE =====
+var currentRating = 0;
+var currentToken = '';
+var selectedPhotos = []; // { file, dataUrl, base64 }
+
+// ===== INIT =====
+(function() {
+  var params = new URLSearchParams(window.location.search);
+  var token = params.get('token');
+
+  if (!token) {
+    showError('No Review Link', 'It looks like you accessed this page without a review link. Please use the link from your email invitation.');
+    return;
+  }
+
+  currentToken = token;
+  validateToken(token);
+})();
+
+function validateToken(token) {
+  fetch(REVIEW_GAS_ENDPOINT + '?action=validate&token=' + encodeURIComponent(token))
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      if (data.valid) {
+        showForm(data.customerName, data.tourDate);
+      } else if (data.error === 'already_submitted') {
+        showError('Already Submitted', 'You have already submitted a review. Thank you for your feedback! If you need to make changes, please contact us at <a href="mailto:fujisoultours@gmail.com" style="color:var(--shu);">fujisoultours@gmail.com</a>.');
+      } else {
+        showError('Invalid Link', 'This review link is not valid or has expired. If you believe this is an error, please contact us at <a href="mailto:fujisoultours@gmail.com" style="color:var(--shu);">fujisoultours@gmail.com</a>.');
+      }
+    })
+    .catch(function() {
+      showError('Connection Error', 'We couldn\'t verify your review link. Please check your internet connection and try again, or contact us at <a href="mailto:fujisoultours@gmail.com" style="color:var(--shu);">fujisoultours@gmail.com</a>.');
+    });
+}
+
+// ===== STATE MANAGEMENT =====
+
+function showForm(name, tourDate) {
+  document.getElementById('stateLoading').classList.add('hidden');
+  document.getElementById('stateForm').classList.remove('hidden');
+
+  var greeting = 'Hi' + (name ? ' <strong>' + escapeHtml(name) + '</strong>' : '') + '! ';
+  if (tourDate) {
+    greeting += 'Thank you for joining our Mt. Fuji tour on <strong>' + escapeHtml(tourDate) + '</strong>. ';
+  }
+  greeting += 'We\'d love to hear how it went.';
+  document.getElementById('reviewGreeting').innerHTML = greeting;
+}
+
+function showError(title, message) {
+  document.getElementById('stateLoading').classList.add('hidden');
+  document.getElementById('stateError').classList.remove('hidden');
+  document.getElementById('errorTitle').textContent = title;
+  document.getElementById('errorMessage').innerHTML = message;
+}
+
+function showSuccess() {
+  document.getElementById('stateForm').classList.add('hidden');
+  document.getElementById('stateSuccess').classList.remove('hidden');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ===== STAR RATING =====
+
+var starLabels = ['', 'Poor', 'Fair', 'Good', 'Very Good', 'Excellent'];
+
+function setRating(value) {
+  currentRating = value;
+  var btns = document.querySelectorAll('.star-btn');
+  for (var i = 0; i < btns.length; i++) {
+    btns[i].classList.toggle('active', i < value);
+  }
+  document.getElementById('starText').textContent = starLabels[value] || '';
+}
+
+// ===== CHARACTER COUNT =====
+
+function updateCharCount() {
+  var len = document.getElementById('reviewText').value.length;
+  document.getElementById('charCount').textContent = len;
+}
+
+// ===== PHOTO HANDLING =====
+
+function handlePhotos(files) {
+  var maxPhotos = 3;
+  var maxSize = 5 * 1024 * 1024; // 5MB
+
+  for (var i = 0; i < files.length && selectedPhotos.length < maxPhotos; i++) {
+    var file = files[i];
+    if (file.size > maxSize) {
+      alert('Photo "' + file.name + '" is too large (max 5MB). Please choose a smaller file.');
+      continue;
+    }
+    if (!file.type.startsWith('image/')) continue;
+    addPhoto(file);
+  }
+
+  // Reset input so same file can be re-selected
+  document.getElementById('photoInput').value = '';
+}
+
+function addPhoto(file) {
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    var dataUrl = e.target.result;
+    var idx = selectedPhotos.length;
+
+    selectedPhotos.push({ file: file, dataUrl: dataUrl });
+    renderPhotoPreviews();
+  };
+  reader.readAsDataURL(file);
+}
+
+function removePhoto(index) {
+  selectedPhotos.splice(index, 1);
+  renderPhotoPreviews();
+}
+
+function renderPhotoPreviews() {
+  var container = document.getElementById('photoPreviews');
+  container.innerHTML = '';
+
+  for (var i = 0; i < selectedPhotos.length; i++) {
+    var div = document.createElement('div');
+    div.className = 'photo-preview';
+    div.innerHTML = '<img src="' + selectedPhotos[i].dataUrl + '" alt="Photo ' + (i + 1) + '">'
+      + '<button type="button" class="remove-photo" onclick="removePhoto(' + i + ')">×</button>';
+    container.appendChild(div);
+  }
+
+  // Hide upload area if max reached
+  var area = document.querySelector('.photo-upload-area');
+  if (selectedPhotos.length >= 3) {
+    area.style.display = 'none';
+  } else {
+    area.style.display = '';
+  }
+}
+
+// ===== PHOTO RESIZE (client-side compression) =====
+
+function resizePhoto(dataUrl, maxWidth) {
+  return new Promise(function(resolve) {
+    var img = new Image();
+    img.onload = function() {
+      var w = img.width;
+      var h = img.height;
+
+      if (w > maxWidth) {
+        h = Math.round(h * maxWidth / w);
+        w = maxWidth;
+      }
+
+      var canvas = document.createElement('canvas');
+      canvas.width = w;
+      canvas.height = h;
+      var ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0, w, h);
+      resolve(canvas.toDataURL('image/jpeg', 0.8));
+    };
+    img.src = dataUrl;
+  });
+}
+
+// ===== SUBMIT =====
+
+function submitReview(e) {
+  e.preventDefault();
+
+  if (!currentRating) {
+    alert('Please select a star rating.');
+    return;
+  }
+
+  var text = document.getElementById('reviewText').value.trim();
+  if (!text) {
+    alert('Please write a review.');
+    return;
+  }
+
+  var btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.textContent = 'Submitting...';
+
+  // Resize photos then submit
+  var photoPromises = selectedPhotos.map(function(p) {
+    return resizePhoto(p.dataUrl, 1200);
+  });
+
+  Promise.all(photoPromises).then(function(resizedPhotos) {
+    var payload = {
+      action: 'submit-review',
+      token: currentToken,
+      stars: currentRating,
+      text: text,
+      photos: resizedPhotos
+    };
+
+    return fetch(REVIEW_GAS_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain' },
+      body: JSON.stringify(payload)
+    });
+  })
+  .then(function(r) { return r.json(); })
+  .then(function(data) {
+    if (data.success) {
+      showSuccess();
+    } else if (data.error === 'already_submitted') {
+      showError('Already Submitted', 'You have already submitted a review. Thank you!');
+    } else {
+      throw new Error(data.error || 'Unknown error');
+    }
+  })
+  .catch(function(err) {
+    alert('Sorry, something went wrong. Please try again or contact us at fujisoultours@gmail.com.');
+    btn.disabled = false;
+    btn.textContent = 'Submit Review';
+  });
+}
+
+// ===== HELPERS =====
+
+function escapeHtml(str) {
+  var div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+</script>
+
+</body>
+</html>

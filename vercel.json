@@ -1,6 +1,7 @@
 {
   "rewrites": [
-    { "source": "/group-tour", "destination": "/group-tour.html" }
+    { "source": "/group-tour", "destination": "/group-tour.html" },
+    { "source": "/review", "destination": "/review.html" }
   ],
   "functions": {
     "api/*.js": {
