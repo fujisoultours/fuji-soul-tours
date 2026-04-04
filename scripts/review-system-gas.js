@@ -181,7 +181,7 @@ function handleSubmitReview(data) {
     try {
       var folder = DriveApp.getFolderById(PHOTOS_FOLDER_ID);
       var urls = [];
-      for (var p = 0; p < data.photos.length && p < 5; p++) {
+      for (var p = 0; p < data.photos.length && p < 10; p++) {
         var photoData = data.photos[p];
         var mimeMatch = photoData.match(/^data:(image\/\w+);base64,/);
         var mimeType = mimeMatch ? mimeMatch[1] : 'image/jpeg';
@@ -468,9 +468,12 @@ function parseBokunEmail(body) {
         month = tmp;
       }
 
-      // Bounds check
+      // Bounds check — use explicit JST date to avoid timezone shift
       if (month >= 1 && month <= 12 && day >= 1 && day <= 31) {
-        tourDate = new Date(2000 + parseInt(dateMatch[3]), month - 1, day);
+        var year = 2000 + parseInt(dateMatch[3]);
+        var pad = function(n) { return n < 10 ? '0' + n : '' + n; };
+        var isoStr = year + '-' + pad(month) + '-' + pad(day) + 'T12:00:00+09:00';
+        tourDate = new Date(isoStr);
       } else {
         Logger.log('parseBokunEmail: invalid date values day=' + day + ' month=' + month);
       }
