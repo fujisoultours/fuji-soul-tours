@@ -97,9 +97,18 @@ function escapeReviewHtml(str) {
     grid.innerHTML = reviews.map(function(r) {
       var stars = '★'.repeat(r.stars) + '☆'.repeat(5 - r.stars);
       var truncated = r.text.length > maxLen ? r.text.slice(0, maxLen) + '…' : r.text;
+      var photosHtml = '';
+      if (r.photos && r.photos.length > 0) {
+        photosHtml = '<div class="review-photos">' + r.photos.map(function(url) {
+          return '<a href="' + escapeReviewHtml(url) + '" target="_blank" rel="noopener">'
+            + '<img src="' + escapeReviewHtml(url) + '" alt="Tour photo" class="review-photo" loading="lazy">'
+            + '</a>';
+        }).join('') + '</div>';
+      }
       return '<div class="review-card">'
         + '<div class="review-stars">' + stars + '</div>'
         + '<p class="review-text">"' + escapeReviewHtml(truncated) + '"</p>'
+        + photosHtml
         + '<div class="review-author">' + escapeReviewHtml(r.author) + '</div>'
         + '<div class="review-date">' + escapeReviewHtml(r.date) + ' · ' + escapeReviewHtml(r.source) + '</div>'
         + '</div>';
