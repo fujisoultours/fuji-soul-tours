@@ -77,6 +77,14 @@ function escapeReviewHtml(str) {
   return div.innerHTML;
 }
 
+function openPhotoLightbox(src) {
+  var lb = document.getElementById('photoLightbox');
+  if (lb) {
+    lb.querySelector('img').src = src;
+    lb.classList.add('active');
+  }
+}
+
 // Render reviews into the grid — scrolling is handled by CSS overflow-x: auto
 // and the shared scrollCarousel() function (same as dest carousel)
 (function() {
@@ -100,9 +108,7 @@ function escapeReviewHtml(str) {
       var photosHtml = '';
       if (r.photos && r.photos.length > 0) {
         photosHtml = '<div class="review-photos">' + r.photos.map(function(url) {
-          return '<a href="' + escapeReviewHtml(url) + '" target="_blank" rel="noopener">'
-            + '<img src="' + escapeReviewHtml(url) + '" alt="Tour photo" class="review-photo" loading="lazy">'
-            + '</a>';
+          return '<img src="' + escapeReviewHtml(url) + '" alt="Tour photo" class="review-photo" loading="lazy" onclick="openPhotoLightbox(this.src)">';
         }).join('') + '</div>';
       }
       return '<div class="review-card">'
@@ -117,6 +123,16 @@ function escapeReviewHtml(str) {
 
   // 1. Render static reviews immediately
   if (REVIEWS.length) renderReviews(REVIEWS);
+
+  // Lightbox for review photos
+  if (!document.getElementById('photoLightbox')) {
+    var overlay = document.createElement('div');
+    overlay.id = 'photoLightbox';
+    overlay.className = 'photo-lightbox';
+    overlay.innerHTML = '<img src="" alt="Tour photo">';
+    overlay.addEventListener('click', function() { overlay.classList.remove('active'); });
+    document.body.appendChild(overlay);
+  }
 
   // 2. Fetch approved direct reviews and merge
   if (REVIEW_GAS_ENDPOINT && REVIEW_GAS_ENDPOINT !== 'YOUR_GAS_ENDPOINT_HERE') {

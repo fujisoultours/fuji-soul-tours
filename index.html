@@ -386,7 +386,11 @@
     margin-bottom: 16px;
   }
   .review-photos { display: flex; gap: 8px; margin-bottom: 12px; }
-  .review-photo { width: 80px; height: 80px; object-fit: cover; border-radius: 8px; border: 1px solid var(--usu-hai); }
+  .review-photo { width: 80px; height: 80px; object-fit: cover; border-radius: 8px; border: 1px solid var(--usu-hai); cursor: pointer; transition: opacity 0.2s; }
+  .review-photo:hover { opacity: 0.8; }
+  .photo-lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 9999; justify-content: center; align-items: center; cursor: pointer; }
+  .photo-lightbox.active { display: flex; }
+  .photo-lightbox img { max-width: 90vw; max-height: 90vh; border-radius: 8px; object-fit: contain; }
   .review-author { font-size: 14px; font-weight: 600; color: var(--sumi); }
   .review-date { font-size: 14px; color: var(--hai); }
   @media (max-width: 600px) {
