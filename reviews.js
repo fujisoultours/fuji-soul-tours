@@ -132,7 +132,13 @@ function lightboxNav(dir) {
     var maxLen = 300;
     grid.innerHTML = reviews.map(function(r) {
       var stars = '★'.repeat(r.stars) + '☆'.repeat(5 - r.stars);
-      var truncated = r.text.length > maxLen ? r.text.slice(0, maxLen) + '…' : r.text;
+      var needsTruncate = r.text.length > maxLen;
+      var truncated = needsTruncate ? r.text.slice(0, maxLen) + '…' : r.text;
+      var textHtml = needsTruncate
+        ? '<p class="review-text review-truncated">"' + escapeReviewHtml(truncated) + '"</p>'
+          + '<p class="review-text review-full">"' + escapeReviewHtml(r.text) + '"</p>'
+          + '<button class="review-read-more">Read more</button>'
+        : '<p class="review-text">"' + escapeReviewHtml(r.text) + '"</p>';
       var photosHtml = '';
       if (r.photos && r.photos.length > 0) {
         var resolvedUrls = r.photos.map(function(url) {
@@ -150,13 +156,22 @@ function lightboxNav(dir) {
       }
       return '<div class="review-card">'
         + '<div class="review-stars">' + stars + '</div>'
-        + '<p class="review-text">"' + escapeReviewHtml(truncated) + '"</p>'
+        + textHtml
         + photosHtml
         + '<div class="review-author">' + escapeReviewHtml(r.author) + '</div>'
         + '<div class="review-date">' + escapeReviewHtml(r.date) + ' · ' + escapeReviewHtml(r.source) + '</div>'
         + '</div>';
     }).join('');
   }
+
+  // Delegated click handler for "Read more" / "Show less" toggle
+  grid.addEventListener('click', function(e) {
+    var btn = e.target.closest('.review-read-more');
+    if (!btn) return;
+    var card = btn.closest('.review-card');
+    var expanded = card.classList.toggle('expanded');
+    btn.textContent = expanded ? 'Show less' : 'Read more';
+  });
 
   // Delegated click handler for review photos (avoids stale global index references)
   grid.addEventListener('click', function(e) {
