@@ -676,11 +676,6 @@
   }
   .pricing-group-link a:hover { color: #fff; }
 
-  /* Private tour scarcity */
-  .pricing-scarcity {
-    text-align: center; margin-top: 12px;
-    font-size: 13px; color: #e67e22; font-weight: 600;
-  }
 
 @media (max-width: 1024px) {
     /* === MOBILE: NAV === */
@@ -1788,7 +1783,6 @@
         <div class="waitlist-success" id="waitlist-success">✓ You've been added to the waitlist! We'll email you if a spot opens.</div>
       </div>
 
-      <div class="pricing-scarcity">⚡ Limited availability in August — book early</div>
       <div class="pricing-features">
         <span><span class="check">✓</span> Free cancellation (24h+ notice)</span>
         <span><span class="check">✓</span> Instant confirmation</span>
@@ -1937,7 +1931,8 @@ if (hamburger && navLinks) {
     { cat: "booking", q: "Can children or infants join?", a: "Children 6+ are welcome. For under 6, a child seat rental ($50 USD) may be available depending on date/group size. Contact us with details." },
     { cat: "booking", q: "Can I book for more than 5 guests?", a: "Groups of 6–10: additional ¥100,000 for a larger van. 10+: we coordinate multiple vehicles. Contact us for a quote." },
     { cat: "booking", q: "What about mobility difficulties?", a: "We tailor the route for less walking. Walkers can be stored (max 3 guests). Wheelchairs cannot be accommodated. Contact us to plan." },
-    { cat: "booking", q: "What happens after I book?", a: "Your guide contacts you via WhatsApp/email to confirm your train schedule, ask about preferences, and create a personalized itinerary." },
+    { cat: "booking", q: "What happens after I book?", a: "You'll receive a booking confirmation email from Bokun. Then, your guide contacts you via WhatsApp or email to confirm your train schedule, ask about preferences, and create a personalized itinerary." },
+    { cat: "booking", q: "I haven't decided my train schedule yet. Can I still book?", a: "Yes! Book first, decide your train times later. You can change the tour start time anytime before the tour. Just let your guide know once your schedule is set." },
     { cat: "booking", q: "What is the Small Group Tour?", a: "A shared 6-hour Mt. Fuji experience for up to 20 guests, led by the same guide. Tours launch once 10 travelers sign up. Joining the waitlist is free — you only pay when the tour is confirmed. <a href='/group-tour'>Learn more & join the waitlist →</a>" },
     { cat: "booking", q: "How is the group tour different from private?", a: "Private tours (max 5 guests, 4 hours) are fully customizable. Group tours (up to 20 guests, 6 hours) follow a set itinerary at a more affordable per-person price. Same guide, same hidden spots, different vibe." },
     { cat: "weather", q: "When can you see Mt. Fuji?", a: "Best: Nov–Feb (60–73% visibility). Spring/Fall: 27–47%. Summer: 13–17%. Even on cloudy days, cultural experiences make the tour rewarding." },
@@ -2348,6 +2343,8 @@ function switchModelTab(n) { switchTab(".model-tab-btn", "model-panel-", 2, n); 
     sending = true;
     sendBtn.disabled = true;
     input.value = "";
+    input.blur();
+    input.dispatchEvent(new Event('input', { bubbles: true }));
     addMsg(text, "user");
     history.push({ role: "user", content: text });
     showTyping();
