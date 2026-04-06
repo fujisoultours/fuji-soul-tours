@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-24",
+  "lastUpdated": "2026-04-06",
   "sources": ["website", "instagram"],
   "tourOverview": {
     "name": "Fuji Soul Tours – Mt. Fuji Cultural Private Tour",
@@ -230,6 +230,10 @@
     {
       "q": "How do I buy Shinkansen tickets to Shin-Fuji?",
       "a": "Use SmartEX (https://smart-ex.jp/en/index.php) — the only official booking site for Shinkansen, with the best change and cancellation terms. All other booking sites are third-party. If the SmartEX mobile app cannot be downloaded on your device, you can book through the web browser instead. You can also buy tickets at the station, but booking ahead guarantees your seat. Remember: only the Kodama train stops at Shin-Fuji — not Nozomi or Hikari."
+    },
+    {
+      "q": "Why can't I find Shin-Fuji Station on Klook? / I can't find Shin-Fuji on Klook",
+      "a": "Klook and other third-party booking platforms often don't list Shin-Fuji Station because only the Kodama Shinkansen stops there (not Nozomi or Hikari). This is a Klook limitation, not a problem with the station itself — Shin-Fuji is a fully operational JR Tokaido Shinkansen station. To book Shinkansen tickets to Shin-Fuji, use SmartEX (https://smart-ex.jp/en/index.php), JR's official Shinkansen booking website. SmartEX lists all stations including Shin-Fuji and offers the best change/cancellation terms. If the SmartEX mobile app is unavailable in your country's app store, you can book through the web browser version instead. You can also buy tickets directly at any JR station in Japan."
     },
     {
       "q": "How do I get to Shin-Fuji from central Tokyo?",
