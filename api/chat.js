@@ -6,6 +6,38 @@ let kbCache = null;
 let kbLoadedAt = 0;
 const KB_CACHE_TTL = 5 * 60 * 1000;
 
+// ===== In-memory rate limiter =====
+// Protects against CORS-bypass abuse of the Anthropic API credit.
+// Note: Vercel serverless state is per-instance; cold starts reset counters.
+// For defense-in-depth add Vercel Firewall / Upstash Ratelimit in front.
+const RATE_LIMIT_MAX = 20; // requests per window
+const RATE_LIMIT_WINDOW_MS = 60 * 1000; // 1 minute
+const rateLimits = new Map();
+
+function getClientIp(req) {
+  const forwarded = req.headers["x-forwarded-for"];
+  if (forwarded) return String(forwarded).split(",")[0].trim();
+  return (req.socket && req.socket.remoteAddress) || "unknown";
+}
+
+function checkRateLimit(ip) {
+  const now = Date.now();
+  const record = rateLimits.get(ip) || { count: 0, resetAt: now + RATE_LIMIT_WINDOW_MS };
+  if (now > record.resetAt) {
+    record.count = 0;
+    record.resetAt = now + RATE_LIMIT_WINDOW_MS;
+  }
+  record.count++;
+  rateLimits.set(ip, record);
+  // Opportunistic cleanup to cap memory
+  if (rateLimits.size > 1000) {
+    for (const [k, v] of rateLimits) {
+      if (now > v.resetAt) rateLimits.delete(k);
+    }
+  }
+  return record.count <= RATE_LIMIT_MAX;
+}
+
 function loadKB() {
   const now = Date.now();
   if (kbCache && now - kbLoadedAt < KB_CACHE_TTL) return kbCache;
@@ -56,6 +88,12 @@ module.exports = async function handler(req, res) {
 
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
+  }
+
+  // Rate limit per client IP
+  const clientIp = getClientIp(req);
+  if (!checkRateLimit(clientIp)) {
+    return res.status(429).json({ error: "Too many requests. Please try again in a minute." });
   }
 
   const { message, history } = req.body;

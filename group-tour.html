@@ -580,7 +580,7 @@ function submitGroupWaitlist(e) {
   var btn = document.querySelector('.gt-submit');
   btn.disabled = true; btn.textContent = 'Submitting...';
 
-  fetch(GROUP_WAITLIST_ENDPOINT, {
+  fetch(GROUP_WAITLIST_ENDPOINT + '?origin=' + encodeURIComponent(location.origin), {
     method: 'POST',
     headers: {'Content-Type': 'text/plain'},
     body: JSON.stringify({ name: name, email: email, guests: guests, week: week, type: 'group-tour-waitlist' })

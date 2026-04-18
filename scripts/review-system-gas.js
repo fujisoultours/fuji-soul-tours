@@ -55,15 +55,20 @@ function doPost(e) {
   try {
     const data = JSON.parse(e.postData.contents);
 
-    // CSRF protection: require valid origin
+    // CSRF protection: require at least one of origin/referer,
+    // and reject if either is present but does not match an allowed origin.
     var origin = (e.parameter && e.parameter.origin) || '';
     var referer = '';
     try { referer = e.headers ? (e.headers['Referer'] || e.headers['referer'] || '') : ''; } catch(ignored) {}
     var allowedOrigins = ['https://www.fujisoultours.com', 'https://fujisoultours.com'];
-    var originOk = !origin || allowedOrigins.some(function(o) { return origin.indexOf(o) === 0; });
-    var refererOk = !referer || allowedOrigins.some(function(o) { return referer.indexOf(o) === 0; });
-    if (!originOk || !refererOk) {
-      return jsonResponse({ success: false, error: 'Forbidden' });
+    if (!origin && !referer) {
+      return jsonResponse({ success: false, error: 'Forbidden: missing origin and referer' });
+    }
+    if (origin && !allowedOrigins.some(function(o) { return origin.indexOf(o) === 0; })) {
+      return jsonResponse({ success: false, error: 'Forbidden: origin not allowed' });
+    }
+    if (referer && !allowedOrigins.some(function(o) { return referer.indexOf(o) === 0; })) {
+      return jsonResponse({ success: false, error: 'Forbidden: referer not allowed' });
     }
 
     // Also require a valid token in every POST (prevents blind submissions)
@@ -218,8 +223,8 @@ function onOpen() {
     .addItem('Send Review Request (selected row)', 'sendReviewRequest')
     .addItem('Send All Pending Requests', 'sendBulkReviewRequests')
     .addSeparator()
-    .addItem('Process Bokun Emails Now', 'processBokunEmails')
-    .addItem('Setup Auto-Import Trigger (15min)', 'setupBokunTrigger')
+    .addItem('Process Bokun Emails Now', 'importBokunEmailsForReviews')
+    .addItem('Setup Auto-Import Trigger (15min)', 'setupBokunReviewTrigger')
     .addSeparator()
     .addItem('Refresh Status Formatting', 'applyStatusFormatting')
     .addToUi();
@@ -363,12 +368,13 @@ function sendAdminNotification(customerName, stars, text) {
 // ===== BOKUN EMAIL AUTOMATION =====
 
 /**
- * Process Bokun booking notification emails from Gmail.
+ * Process Bokun booking notification emails from Gmail for the Reviews sheet.
  * Extracts customer name, email, tour date and adds to Reviews sheet.
  * Skips already-processed emails (labeled "ReviewProcessed") and duplicate bookings.
  * Run via time-based trigger (e.g. every 15 minutes).
+ * NOTE: Renamed from processBokunEmails to avoid conflict with bokun_booking_gas.js
  */
-function processBokunEmails() {
+function importBokunEmailsForReviews() {
   var label = getOrCreateLabel('ReviewProcessed');
   var threads = GmailApp.search('from:no-reply@bokun.io subject:"新規予約のお知らせ" -label:ReviewProcessed', 0, 50);
 
@@ -419,7 +425,7 @@ function processBokunEmails() {
   }
 
   if (added > 0) {
-    Logger.log('processBokunEmails: added ' + added + ' new booking(s)');
+    Logger.log('importBokunEmailsForReviews: added ' + added + ' new booking(s)');
   }
 }
 
@@ -500,24 +506,24 @@ function getOrCreateLabel(labelName) {
 }
 
 /**
- * Set up a time-based trigger to run processBokunEmails every 15 minutes.
+ * Set up a time-based trigger to run importBokunEmailsForReviews every 15 minutes.
  * Run this once manually from the script editor.
  */
-function setupBokunTrigger() {
+function setupBokunReviewTrigger() {
   // Remove existing triggers for this function
   var triggers = ScriptApp.getProjectTriggers();
   for (var i = 0; i < triggers.length; i++) {
-    if (triggers[i].getHandlerFunction() === 'processBokunEmails') {
+    if (triggers[i].getHandlerFunction() === 'importBokunEmailsForReviews') {
       ScriptApp.deleteTrigger(triggers[i]);
     }
   }
 
-  ScriptApp.newTrigger('processBokunEmails')
+  ScriptApp.newTrigger('importBokunEmailsForReviews')
     .timeBased()
     .everyMinutes(15)
     .create();
 
-  Logger.log('Trigger set: processBokunEmails runs every 15 minutes');
+  Logger.log('Trigger set: importBokunEmailsForReviews runs every 15 minutes');
 }
 
 // ===== HELPERS =====

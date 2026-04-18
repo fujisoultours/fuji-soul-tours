@@ -729,7 +729,7 @@ function submitReview(e) {
       photos: resizedPhotos
     };
 
-    return fetch(REVIEW_GAS_ENDPOINT, {
+    return fetch(REVIEW_GAS_ENDPOINT + '?origin=' + encodeURIComponent(location.origin), {
       method: 'POST',
       headers: { 'Content-Type': 'text/plain' },
       body: JSON.stringify(payload)

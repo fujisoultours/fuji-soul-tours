@@ -18,6 +18,28 @@ const FROM_EMAIL = 'fujisoultours@gmail.com';
 
 function doPost(e) {
   try {
+    // CSRF protection: require at least one of origin/referer,
+    // and reject if either is present but does not match an allowed origin.
+    var origin = (e.parameter && e.parameter.origin) || '';
+    var referer = '';
+    try { referer = e.headers ? (e.headers['Referer'] || e.headers['referer'] || '') : ''; } catch(ignored) {}
+    var allowedOrigins = ['https://www.fujisoultours.com', 'https://fujisoultours.com'];
+    if (!origin && !referer) {
+      return ContentService
+        .createTextOutput(JSON.stringify({ success: false, error: 'Forbidden: missing origin and referer' }))
+        .setMimeType(ContentService.MimeType.JSON);
+    }
+    if (origin && !allowedOrigins.some(function(o) { return origin.indexOf(o) === 0; })) {
+      return ContentService
+        .createTextOutput(JSON.stringify({ success: false, error: 'Forbidden: origin not allowed' }))
+        .setMimeType(ContentService.MimeType.JSON);
+    }
+    if (referer && !allowedOrigins.some(function(o) { return referer.indexOf(o) === 0; })) {
+      return ContentService
+        .createTextOutput(JSON.stringify({ success: false, error: 'Forbidden: referer not allowed' }))
+        .setMimeType(ContentService.MimeType.JSON);
+    }
+
     const data = JSON.parse(e.postData.contents);
     const sheet = getOrCreateSheet();
 
