@@ -2065,6 +2065,7 @@ function submitWaitlist(e) {
   }).then(function() {
     document.getElementById('waitlistForm').style.display = 'none';
     document.getElementById('waitlist-success').style.display = 'block';
+    gtag('event', 'waitlist_submit', {'event_category': 'waitlist', 'type': 'private', 'guests': guests});
   }).catch(function() {
     // Fallback to mailto if fetch fails
     var subject = encodeURIComponent('Waitlist Request - ' + date + ' - ' + name);
@@ -2072,6 +2073,7 @@ function submitWaitlist(e) {
     window.location.href = 'mailto:fujisoultours@gmail.com?subject=' + subject + '&body=' + body;
     document.getElementById('waitlistForm').style.display = 'none';
     document.getElementById('waitlist-success').style.display = 'block';
+    gtag('event', 'waitlist_submit', {'event_category': 'waitlist', 'type': 'private', 'guests': guests});
   }).finally(function() {
     btn.disabled = false; btn.textContent = 'Join Waitlist';
   });
@@ -2079,6 +2081,7 @@ function submitWaitlist(e) {
 
 // ===== BOKUN BOOKING =====
 function openBooking() {
+  gtag('event', 'book_now_click', {'event_category': 'booking'});
   var btn = document.getElementById('bokun_418f34f4_28e2_4185_85e4_7aa761106072');
   if (btn && !btn.disabled) { btn.click(); return true; }
   // If button is disabled (Bokun not yet loaded), trigger load and poll until ready
@@ -2118,6 +2121,56 @@ function switchModelTab(n) { switchTab(".model-tab-btn", "model-panel-", 2, n); 
 </script>
 
 <script src="reviews.js"></script>
+
+<!-- ===== GA4 Custom Event Tracking ===== -->
+<script>
+(function() {
+  // --- Section engagement tracking ---
+  // Fires 'section_view' on first appearance, 'section_engaged' after 5s dwell
+  var sections = ['concept','destinations','itinerary','included','book','reviews','faq','manage','waitlist-box'];
+  var timers = {}, viewed = {};
+  if (window.IntersectionObserver) {
+    sections.forEach(function(id) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            if (!viewed[id]) {
+              viewed[id] = true;
+              gtag('event', 'section_view', {'event_category': 'engagement', 'section': id});
+            }
+            timers[id] = setTimeout(function() {
+              gtag('event', 'section_engaged', {'event_category': 'engagement', 'section': id});
+            }, 5000);
+          } else {
+            clearTimeout(timers[id]);
+          }
+        });
+      }, {threshold: 0.3}).observe(el);
+    });
+  }
+
+  // --- Notify Me click tracking ---
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href="#waitlist-box"]');
+    if (el) gtag('event', 'notify_me_click', {'event_category': 'waitlist', 'type': 'private'});
+  });
+
+  // --- Bokun Widget progress tracking via postMessage ---
+  window.addEventListener('message', function(e) {
+    try {
+      if (!e.origin || e.origin.indexOf('bokun') === -1) return;
+      var data = typeof e.data === 'string' ? JSON.parse(e.data) : e.data;
+      if (!data) return;
+      var evtName = data.type || data.event || data.action;
+      if (evtName) {
+        gtag('event', 'bokun_widget', {'event_category': 'booking_widget', 'event_label': evtName});
+      }
+    } catch(err) {}
+  });
+})();
+</script>
 
 <!-- Bokun Widget Loader — lazy-loaded to prevent iOS scroll hijack -->
 <script>

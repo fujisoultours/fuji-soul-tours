@@ -587,6 +587,7 @@ function submitGroupWaitlist(e) {
   }).then(function(r) { return r.json(); }).then(function(data) {
     document.getElementById('gtForm').style.display = 'none';
     document.getElementById('gt-success').style.display = 'block';
+    gtag('event', 'waitlist_submit', {'event_category': 'waitlist', 'type': 'group', 'guests': guests});
     // Update counters with live data from server
     if (data && data.counts) renderWeekCounts(data.counts);
   }).catch(function() {
@@ -595,6 +596,7 @@ function submitGroupWaitlist(e) {
     window.location.href = 'mailto:fujisoultours@gmail.com?subject=' + subject + '&body=' + body;
     document.getElementById('gtForm').style.display = 'none';
     document.getElementById('gt-success').style.display = 'block';
+    gtag('event', 'waitlist_submit', {'event_category': 'waitlist', 'type': 'group', 'guests': guests});
   }).finally(function() {
     btn.disabled = false; btn.textContent = "Save My Spot — It's Free";
   });
