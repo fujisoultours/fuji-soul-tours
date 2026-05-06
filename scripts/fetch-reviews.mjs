@@ -34,19 +34,21 @@ function reviewKey(r) {
   return createHash('md5').update(norm).digest('hex');
 }
 
-function loadExistingReviews() {
-  if (!existsSync(REVIEWS_FILE)) return [];
+function loadExistingFile() {
+  if (!existsSync(REVIEWS_FILE)) return { reviews: [], renderCode: null };
   const content = readFileSync(REVIEWS_FILE, 'utf8');
   const match = content.match(/const REVIEWS\s*=\s*(\[[\s\S]*?\]);/);
-  if (!match) return [];
-  try {
-    return new Function(`return ${match[1]}`)();
-  } catch {
-    return [];
+  let reviews = [];
+  if (match) {
+    try { reviews = new Function(`return ${match[1]}`)(); } catch {}
   }
+  // Preserve everything after the closing ]; of the REVIEWS array
+  const splitMatch = content.match(/^([\s\S]*?\];)([\s\S]*)$/m);
+  const renderCode = splitMatch ? splitMatch[2] : null;
+  return { reviews, renderCode };
 }
 
-function generateReviewsJS(reviews) {
+function generateReviewsJS(reviews, existingRenderCode) {
   const header = `// =============================================
 // Fuji Soul Tours — Reviews Data
 // =============================================
@@ -61,43 +63,22 @@ function generateReviewsJS(reviews) {
 
   const lines = reviews.map(r => {
     const escaped = r.text.replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/\n/g, '\\n');
-    return `  {
-    stars: ${r.stars},
-    text: "${escaped}",
-    author: "${r.author}",
-    date: "${r.date}",
-    source: "${r.source}"
-  }`;
+    const fields = [
+      `    stars: ${r.stars}`,
+      `    text: "${escaped}"`,
+      `    author: "${r.author}"`,
+      `    date: "${r.date}"`,
+      `    source: "${r.source}"`,
+    ];
+    if (r.photos && r.photos.length > 0) {
+      const photoList = r.photos.map(p => `      "${p}"`).join(',\n');
+      fields.push(`    photos: [\n${photoList}\n    ]`);
+    }
+    return `  {\n${fields.join(',\n')}\n  }`;
   });
 
-  const renderCode = `
-
-// Render reviews into the grid — scrolling is handled by CSS overflow-x: auto
-// and the shared scrollCarousel() function (same as dest carousel)
-(function() {
-  const grid = document.getElementById('reviewsGrid');
-  if (!grid || !REVIEWS.length) return;
-
-  // Calculate average rating for hero badge
-  const avg = (REVIEWS.reduce((s, r) => s + r.stars, 0) / REVIEWS.length).toFixed(1);
-  const countEl = document.querySelector('.hero-badge');
-  if (countEl) {
-    countEl.textContent = '\u2605 ' + avg + ' Rated \u00b7 Private Tour';
-  }
-
-  const maxLen = 300;
-  grid.innerHTML = REVIEWS.map(r => {
-    const stars = '\u2605'.repeat(r.stars) + '\u2606'.repeat(5 - r.stars);
-    const truncated = r.text.length > maxLen ? r.text.slice(0, maxLen) + '\u2026' : r.text;
-    return \`<div class="review-card">
-        <div class="review-stars">\${stars}</div>
-        <p class="review-text">"\${truncated}"</p>
-        <div class="review-author">\${r.author}</div>
-        <div class="review-date">\${r.date} \u00b7 \${r.source}</div>
-      </div>\`;
-  }).join('');
-})();
-`;
+  // Preserve existing render code; never overwrite with a simplified template
+  const renderCode = existingRenderCode || '\n// WARNING: Render code missing — restore from git history (commit 17d94a6)\n';
 
   return header + 'const REVIEWS = [\n' + lines.join(',\n') + '\n];\n' + renderCode;
 }
@@ -127,7 +108,7 @@ async function main() {
     process.exit(0);
   }
 
-  const existingReviews = loadExistingReviews();
+  const { reviews: existingReviews, renderCode } = loadExistingFile();
   console.log(`📋 Existing reviews: ${existingReviews.length}`);
 
   // Merge: new reviews take priority, keep existing ones not in new set
@@ -159,7 +140,7 @@ async function main() {
     process.exit(0);
   }
 
-  writeFileSync(REVIEWS_FILE, generateReviewsJS(merged), 'utf8');
+  writeFileSync(REVIEWS_FILE, generateReviewsJS(merged, renderCode), 'utf8');
 
   const added = merged.length - existingReviews.length;
   console.log(`✅ reviews.js updated: ${merged.length} reviews total`);

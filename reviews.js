@@ -4,7 +4,7 @@
 // このファイルは scripts/fetch-reviews.mjs により自動生成されます。
 // 手動編集は次回同期時に上書きされます。
 //
-// 最終更新: 2026-05-06T11:53:36.379Z
+// 最終更新: 2026-05-06T12:05:44.517Z
 // ソース: Viator + TripAdvisor
 // =============================================
 
@@ -14,7 +14,18 @@ const REVIEWS = [
     text: "For years a bug in my operating system had me believing one could grasp all of the knowledge from foreign destinations through media. It was part of life. Economics was part of it too. Folks where I'm from rarely leave their back yards, let alone the state, nation, or the continent. I'll be vulnerable. I was afraid. I was dead wrong. \n\nI burned all the ships when I left my hometown. \n\nI never fit. Never felt at peace. That kid inside me screamed for the childhood he never had. I promised that little boy one day we would. Ed Mylett said it best \"I am so grateful for where I am. I am so appreciative of what I have, but I'm so dissatisfied with staying here.\" My therapist would say the same if asked about me…\n\nJapan cracked open my soul. \nI don't like booking tours when I travel. I love to drop in. Be local as much as I can. Be challenged to solve problems. My pace. My feelings. Fate brought Fuji Soul Tours ( IG: @fujisoultours ) into my feed. Stopping between my first week in Kyoto & second in Shibuya wasn't planned, but the risk profile fit. I had to learn how to navigate multiple high speed Shinkansen trains to get there. I had to figure it out, alone. \n\nI booked it. \n\nTo my surprise it was just me & two local guides. I expected a bunch of \"Gajin\" WALL-Es with me but it was just us. I learned so much about the country, experienced matcha, beer, and sake tastings, local food truck eats, all from their home town. The owner even taught me how to properly pray at the temples and shrines. God must have played a role because it poured the day before & my weather was flawless. I left a piece of my heart there, and I'll have to go back to get it. I'll be forever grateful to these two guys who shared laughs, knowledge, & answered all my \"Gajin\" questions free of judgement. They made me feel at home. Complete peace. Talking about entrepreneurship was icing on the cake, and it warmed my heart knowing I was helping a small town.",
     author: "Chris_H",
     date: "May 2026",
-    source: "Viator"
+    source: "Viator",
+    photos: [
+      "https://media.tacdn.com/media/photo-l/33/24/54/7b/caption.jpg",
+      "https://media.tacdn.com/media/photo-l/33/24/54/83/caption.jpg",
+      "https://media.tacdn.com/media/photo-l/33/24/55/2c/caption.jpg",
+      "https://media.tacdn.com/media/photo-l/33/24/55/2d/caption.jpg",
+      "https://media.tacdn.com/media/photo-l/33/24/55/2e/caption.jpg",
+      "https://media.tacdn.com/media/photo-l/33/24/55/2f/caption.jpg",
+      "https://media.tacdn.com/media/photo-l/33/24/55/30/caption.jpg",
+      "https://media.tacdn.com/media/photo-l/33/24/55/3d/caption.jpg",
+      "https://media.tacdn.com/media/photo-l/33/24/55/3e/caption.jpg"
+    ]
   },
   {
     stars: 5,
@@ -124,28 +135,176 @@ const REVIEWS = [
 ];
 
 
+
+// GAS endpoint for fetching approved direct reviews (set after deploying GAS)
+var REVIEW_GAS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbzvnmgqy_mVBy3XwHb2KoG2ncf7TmsJ4u0rLNUAAYnXm8XjgT67PDfdftfEd9lDkHfmyQ/exec';
+
+function escapeReviewHtml(str) {
+  var div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+var lightboxPhotos = [];
+var lightboxIndex = 0;
+var reviewPhotoSets = [];
+
+function openPhotoLightbox(src, photos, idx) {
+  lightboxPhotos = photos || [src];
+  lightboxIndex = idx || 0;
+  updateLightbox();
+  document.getElementById('photoLightbox').classList.add('active');
+}
+
+function updateLightbox() {
+  var lb = document.getElementById('photoLightbox');
+  if (!lb) return;
+  lb.querySelector('.lb-img').src = lightboxPhotos[lightboxIndex];
+  var prev = lb.querySelector('.lb-prev');
+  var next = lb.querySelector('.lb-next');
+  var counter = lb.querySelector('.lb-counter');
+  if (lightboxPhotos.length <= 1) {
+    prev.style.display = 'none';
+    next.style.display = 'none';
+    counter.style.display = 'none';
+  } else {
+    prev.style.display = '';
+    next.style.display = '';
+    counter.style.display = '';
+    counter.textContent = (lightboxIndex + 1) + ' / ' + lightboxPhotos.length;
+  }
+}
+
+function lightboxNav(dir) {
+  lightboxIndex = (lightboxIndex + dir + lightboxPhotos.length) % lightboxPhotos.length;
+  updateLightbox();
+}
+
 // Render reviews into the grid — scrolling is handled by CSS overflow-x: auto
 // and the shared scrollCarousel() function (same as dest carousel)
 (function() {
-  const grid = document.getElementById('reviewsGrid');
-  if (!grid || !REVIEWS.length) return;
+  var grid = document.getElementById('reviewsGrid');
+  if (!grid) return;
 
-  // Calculate average rating for hero badge
-  const avg = (REVIEWS.reduce((s, r) => s + r.stars, 0) / REVIEWS.length).toFixed(1);
-  const countEl = document.querySelector('.hero-badge');
-  if (countEl) {
-    countEl.textContent = '★ ' + avg + ' Rated · Private Tour';
+  function renderReviews(reviews) {
+    if (!reviews.length) return;
+    reviewPhotoSets = [];
+
+    // Calculate average rating for hero badge
+    var avg = (reviews.reduce(function(s, r) { return s + r.stars; }, 0) / reviews.length).toFixed(1);
+    var countEl = document.querySelector('.hero-badge');
+    if (countEl) {
+      countEl.textContent = '★ ' + avg + ' Rated · Private Tour';
+    }
+
+    var maxLen = 300;
+    grid.innerHTML = reviews.map(function(r) {
+      var stars = '★'.repeat(r.stars) + '☆'.repeat(5 - r.stars);
+      var needsTruncate = r.text.length > maxLen;
+      var truncated = needsTruncate ? r.text.slice(0, maxLen) + '…' : r.text;
+      var textHtml = needsTruncate
+        ? '<p class="review-text review-truncated">"' + escapeReviewHtml(truncated) + '"</p>'
+          + '<p class="review-text review-full">"' + escapeReviewHtml(r.text) + '"</p>'
+          + '<button class="review-read-more">Read more</button>'
+        : '<p class="review-text">"' + escapeReviewHtml(r.text) + '"</p>';
+      var photosHtml = '';
+      if (r.photos && r.photos.length > 0) {
+        var resolvedUrls = r.photos.map(function(url) {
+          var driveMatch = url.match(/drive\.google\.com\/file\/d\/([^\/]+)/);
+          if (driveMatch) return 'https://lh3.googleusercontent.com/d/' + driveMatch[1];
+          var openMatch = url.match(/drive\.google\.com\/open\?id=([^&]+)/);
+          if (openMatch) return 'https://lh3.googleusercontent.com/d/' + openMatch[1];
+          return url;
+        });
+        var setIdx = reviewPhotoSets.length;
+        reviewPhotoSets.push(resolvedUrls);
+        photosHtml = '<div class="review-photos">' + resolvedUrls.map(function(imgUrl, idx) {
+          return '<img src="' + escapeReviewHtml(imgUrl) + '" alt="Tour photo" class="review-photo" loading="lazy" data-set="' + setIdx + '" data-idx="' + idx + '" onerror="this.style.display=\'none\'">';
+        }).join('') + '</div>';
+      }
+      return '<div class="review-card">'
+        + '<div class="review-stars">' + stars + '</div>'
+        + textHtml
+        + photosHtml
+        + '<div class="review-author">' + escapeReviewHtml(r.author) + '</div>'
+        + '<div class="review-date">' + escapeReviewHtml(r.date) + ' · ' + escapeReviewHtml(r.source) + '</div>'
+        + '</div>';
+    }).join('');
   }
 
-  const maxLen = 300;
-  grid.innerHTML = REVIEWS.map(r => {
-    const stars = '★'.repeat(r.stars) + '☆'.repeat(5 - r.stars);
-    const truncated = r.text.length > maxLen ? r.text.slice(0, maxLen) + '…' : r.text;
-    return `<div class="review-card">
-        <div class="review-stars">${stars}</div>
-        <p class="review-text">"${truncated}"</p>
-        <div class="review-author">${r.author}</div>
-        <div class="review-date">${r.date} · ${r.source}</div>
-      </div>`;
-  }).join('');
+  // Delegated click handler for "Read more" / "Show less" toggle
+  grid.addEventListener('click', function(e) {
+    var btn = e.target.closest('.review-read-more');
+    if (!btn) return;
+    var card = btn.closest('.review-card');
+    var expanded = card.classList.toggle('expanded');
+    btn.textContent = expanded ? 'Show less' : 'Read more';
+  });
+
+  // Delegated click handler for review photos (avoids stale global index references)
+  grid.addEventListener('click', function(e) {
+    var img = e.target.closest('.review-photo');
+    if (!img) return;
+    var setIdx = parseInt(img.getAttribute('data-set'));
+    var idx = parseInt(img.getAttribute('data-idx'));
+    if (!isNaN(setIdx) && reviewPhotoSets[setIdx]) {
+      openPhotoLightbox(img.src, reviewPhotoSets[setIdx], idx);
+    }
+  });
+
+  // 1. Render static reviews immediately
+  if (REVIEWS.length) renderReviews(REVIEWS);
+
+  // Lightbox for review photos
+  if (!document.getElementById('photoLightbox')) {
+    var overlay = document.createElement('div');
+    overlay.id = 'photoLightbox';
+    overlay.className = 'photo-lightbox';
+    overlay.innerHTML = '<button type="button" class="lb-close" aria-label="Close" onclick="document.getElementById(\'photoLightbox\').classList.remove(\'active\')">&times;</button>'
+      + '<button type="button" class="lb-nav lb-prev" aria-label="Previous photo" onclick="event.stopPropagation();lightboxNav(-1)">&#8249;</button>'
+      + '<img class="lb-img" src="" alt="Tour photo">'
+      + '<button type="button" class="lb-nav lb-next" aria-label="Next photo" onclick="event.stopPropagation();lightboxNav(1)">&#8250;</button>'
+      + '<span class="lb-counter"></span>';
+    overlay.addEventListener('click', function(e) {
+      if (e.target === overlay) overlay.classList.remove('active');
+    });
+    document.addEventListener('keydown', function(e) {
+      if (!overlay.classList.contains('active')) return;
+      if (e.key === 'Escape') overlay.classList.remove('active');
+      if (e.key === 'ArrowLeft') lightboxNav(-1);
+      if (e.key === 'ArrowRight') lightboxNav(1);
+    });
+    document.body.appendChild(overlay);
+  }
+
+  // 2. Fetch approved direct reviews and merge (with timeout)
+  if (REVIEW_GAS_ENDPOINT && REVIEW_GAS_ENDPOINT !== 'YOUR_GAS_ENDPOINT_HERE') {
+    var fetchOpts = {};
+    if (typeof AbortController !== 'undefined') {
+      var ac = new AbortController();
+      setTimeout(function() { ac.abort(); }, 10000); // 10s timeout
+      fetchOpts.signal = ac.signal;
+    }
+    fetch(REVIEW_GAS_ENDPOINT + '?action=approved', fetchOpts)
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        if (data.success && data.reviews && data.reviews.length > 0) {
+          // Deduplicate by text (first 100 chars)
+          var existingTexts = {};
+          REVIEWS.forEach(function(r) { existingTexts[r.text.substring(0, 100)] = true; });
+
+          var newReviews = data.reviews.filter(function(r) {
+            return !existingTexts[r.text.substring(0, 100)];
+          });
+
+          if (newReviews.length > 0) {
+            var merged = newReviews.concat(REVIEWS);
+            renderReviews(merged);
+          }
+        }
+      })
+      .catch(function() {
+        // Silently fail — static reviews remain displayed
+      });
+  }
 })();
