@@ -159,7 +159,11 @@ function openPhotoLightbox(src, photos, idx) {
 function updateLightbox() {
   var lb = document.getElementById('photoLightbox');
   if (!lb) return;
-  lb.querySelector('.lb-img').src = lightboxPhotos[lightboxIndex];
+  var lbImg = lb.querySelector('.lb-img');
+  var originalSrc = lightboxPhotos[lightboxIndex];
+  var fullSrc = originalSrc.replace('/photo-l/', '/photo-o/').replace('/photo-m/', '/photo-o/');
+  lbImg.onerror = function() { if (this.src !== originalSrc) { this.onerror = null; this.src = originalSrc; } };
+  lbImg.src = fullSrc;
   var prev = lb.querySelector('.lb-prev');
   var next = lb.querySelector('.lb-next');
   var counter = lb.querySelector('.lb-counter');
