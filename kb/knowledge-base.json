@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-06",
+  "lastUpdated": "2026-05-11",
   "sources": ["website", "instagram"],
   "tourOverview": {
     "name": "Fuji Soul Tours – Mt. Fuji Cultural Private Tour",
@@ -19,15 +19,16 @@
   },
   "pricing": {
     "perPerson": {
-      "1guest": "$416 USD",
-      "2guests": "$209 USD per person",
-      "3to5guests": "$152 USD per person (best rate)"
+      "1guest": "¥69,042 JPY / $441 USD",
+      "2guests": "¥34,600 JPY / $221 USD per person",
+      "3to5guests": "¥25,142 JPY / $161 USD per person (best rate)"
     },
     "currencies": {
-      "JPY": "¥22,724~",
-      "USD": "$152~",
-      "AUD": "A$235~",
-      "CAD": "C$207~"
+      "JPY": "¥25,142~",
+      "USD": "$161~",
+      "EUR": "€136~",
+      "AUD": "A$222~",
+      "CAD": "C$219~"
     },
     "largeGroup": "For groups of 6–10, additional ¥100,000 (non-refundable, paid in advance) on top of the standard per-person rate for 5 guests.",
     "extensionRate": "$100 USD (¥16,500 JPY) per additional hour beyond the standard 4 hours.",
