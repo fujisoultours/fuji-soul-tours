@@ -42,6 +42,11 @@
     "Hidden photo spots — curated viewpoints locals love",
     "Luggage-friendly — large suitcases welcome"
   ],
+  "bookingCutoff": {
+    "minimumAdvance": "Bookings require at least 2 days advance notice. Same-day and next-day (tomorrow) bookings are not accepted by the booking system.",
+    "earliestBookable": "The earliest you can book is 2 days from today (the day after tomorrow), subject to availability.",
+    "note": "Even if you can see a date on the calendar, availability is limited — check the booking widget for real-time availability."
+  },
   "cancellationPolicy": {
     "24hPlus": "Full refund or free date change",
     "under24h": "No refund",
