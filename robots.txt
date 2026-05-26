@@ -1,0 +1,12 @@
+# Fuji Soul Tours - robots.txt
+# https://www.fujisoultours.com/
+
+User-agent: *
+Allow: /
+
+# Disallow API endpoints and internal files
+Disallow: /api/
+Disallow: /kb/
+
+# Sitemap
+Sitemap: https://www.fujisoultours.com/sitemap.xml
