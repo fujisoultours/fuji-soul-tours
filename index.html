@@ -11,6 +11,16 @@
   gtag('config', 'G-4P1XES4LQT');
 </script>
 
+<!-- Vercel Speed Insights (RUM: LCP/INP/CLS/FCP/TTFB) -->
+<script defer src="/_vercel/speed-insights/script.js"></script>
+
+<!-- Preload hero image (LCP element) — responsive WebP -->
+<link rel="preload" as="image"
+      imagesrcset="images/hero-768.webp 768w, images/hero.webp 1600w"
+      imagesizes="100vw"
+      type="image/webp"
+      fetchpriority="high">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
@@ -1299,7 +1309,12 @@
 <!-- HERO -->
 <header class="hero">
   <div class="hero-img-wrap">
-    <img src="images/hero.jpg" alt="Mt. Fuji Cultural Tour" class="hero-bg-img">
+    <picture>
+      <source media="(max-width: 768px)" type="image/webp" srcset="images/hero-768.webp">
+      <source media="(max-width: 768px)" srcset="images/hero-768.jpg">
+      <source type="image/webp" srcset="images/hero.webp">
+      <img src="images/hero.jpg" alt="Mt. Fuji Cultural Tour" class="hero-bg-img" fetchpriority="high" decoding="async">
+    </picture>
     <div class="hero-overlay"></div>
   </div>
   <div class="hero-top">
@@ -2199,7 +2214,7 @@ function switchModelTab(n) { switchTab(".model-tab-btn", "model-panel-", 2, n); 
 
 </script>
 
-<script src="reviews.js"></script>
+<script defer src="reviews.js"></script>
 
 <!-- ===== GA4 Custom Event Tracking ===== -->
 <script>
