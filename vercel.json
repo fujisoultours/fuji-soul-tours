@@ -1,7 +1,8 @@
 {
   "rewrites": [
     { "source": "/group-tour", "destination": "/group-tour.html" },
-    { "source": "/review", "destination": "/review.html" }
+    { "source": "/review", "destination": "/review.html" },
+    { "source": "/tokushoho", "destination": "/tokushoho.html" }
   ],
   "functions": {
     "api/*.js": {
@@ -14,6 +15,12 @@
       "headers": [
         { "key": "Access-Control-Allow-Methods", "value": "POST, OPTIONS" },
         { "key": "Access-Control-Allow-Headers", "value": "Content-Type" }
+      ]
+    },
+    {
+      "source": "/images/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=604800, stale-while-revalidate=86400" }
       ]
     }
   ]

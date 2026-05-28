@@ -266,7 +266,7 @@ function lightboxNav(dir) {
     overlay.className = 'photo-lightbox';
     overlay.innerHTML = '<button type="button" class="lb-close" aria-label="Close" onclick="document.getElementById(\'photoLightbox\').classList.remove(\'active\')">&times;</button>'
       + '<button type="button" class="lb-nav lb-prev" aria-label="Previous photo" onclick="event.stopPropagation();lightboxNav(-1)">&#8249;</button>'
-      + '<img class="lb-img" src="" alt="Tour photo">'
+      + '<img class="lb-img" alt="Tour photo">'
       + '<button type="button" class="lb-nav lb-next" aria-label="Next photo" onclick="event.stopPropagation();lightboxNav(1)">&#8250;</button>'
       + '<span class="lb-counter"></span>';
     overlay.addEventListener('click', function(e) {
