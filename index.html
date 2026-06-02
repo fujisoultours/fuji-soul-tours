@@ -599,6 +599,17 @@
   .currency-btn:hover { background: rgba(255,255,255,0.2); color: #fff; }
   .currency-btn.active { background: var(--shu); color: #fff; border-color: var(--shu); }
 
+  /* ===== PROMO / SALE ===== */
+  .promo-banner {
+    display: inline-block; margin: 0 auto 14px; padding: 7px 18px;
+    background: linear-gradient(135deg, #e74c3c, #c0392b); color: #fff;
+    border-radius: 20px; font-size: 13px; font-weight: 700; letter-spacing: 0.4px;
+    box-shadow: 0 2px 12px rgba(231,76,60,0.35);
+  }
+  .old-price { color: rgba(255,255,255,0.45); text-decoration: line-through; font-weight: 400; margin-right: 7px; }
+  .sale-price { color: #2ecc71; font-weight: 700; }
+  .pricing-box .price .old-price { font-size: 0.5em; }
+
   /* ===== WAITLIST FORM ===== */
   .waitlist-box {
     margin: 24px auto 0; max-width: 480px; background: rgba(255,255,255,0.07);
@@ -1808,6 +1819,7 @@
       <div class="section-label">Pricing</div>
       <h2 style="font-family:'Noto Serif JP',serif; font-size:15px; margin-bottom:8px;">Mt. Fuji Cultural Private Tour</h2>
       <p style="font-size:14px; color:rgba(255,255,255,0.6);">4 hours · Up to 5 guests · Shin-Fuji Station</p>
+      <div class="promo-banner" id="promoBanner">🏷️ Limited-Time Sale · 15% OFF · Ends June 16</div>
       <div class="currency-selector">
         <button class="currency-btn active" data-currency="USD" onclick="setCurrency('USD')">USD</button>
         <button class="currency-btn" data-currency="EUR" onclick="setCurrency('EUR')">EUR</button>
@@ -1815,18 +1827,18 @@
         <button class="currency-btn" data-currency="CAD" onclick="setCurrency('CAD')">CAD</button>
         <button class="currency-btn" data-currency="JPY" onclick="setCurrency('JPY')">JPY</button>
       </div>
-      <div class="price" id="priceDisplay">USD 159 ~</div>
+      <div class="price" id="priceDisplay"><span class="old-price">USD 159</span><span class="sale-price">USD 135</span> ~</div>
       <p class="price-note">per person · Price varies by group size</p>
       <div class="pricing-breakdown" style="margin:20px auto 24px;max-width:360px;text-align:left;">
         <table style="width:100%;border-collapse:collapse;font-size:14px;color:rgba(255,255,255,0.8);">
           <tr style="border-bottom:1px solid rgba(255,255,255,0.15);">
-            <td style="padding:8px 0;">1 guest</td><td data-price="1" style="text-align:right;padding:8px 0;font-weight:600;color:#fff;">USD 433 /person</td>
+            <td style="padding:8px 0;">1 guest</td><td data-price="1" style="text-align:right;padding:8px 0;font-weight:600;color:#fff;"><span class="old-price">USD 433</span><span class="sale-price">USD 368</span> /person</td>
           </tr>
           <tr style="border-bottom:1px solid rgba(255,255,255,0.15);">
-            <td style="padding:8px 0;">2 guests</td><td data-price="2" style="text-align:right;padding:8px 0;font-weight:600;color:#fff;">USD 217 /person</td>
+            <td style="padding:8px 0;">2 guests</td><td data-price="2" style="text-align:right;padding:8px 0;font-weight:600;color:#fff;"><span class="old-price">USD 217</span><span class="sale-price">USD 184</span> /person</td>
           </tr>
           <tr>
-            <td style="padding:8px 0;">3–5 guests</td><td data-price="35" style="text-align:right;padding:8px 0;font-weight:600;color:#fff;">USD 159 /person</td>
+            <td style="padding:8px 0;">3–5 guests</td><td data-price="35" style="text-align:right;padding:8px 0;font-weight:600;color:#fff;"><span class="old-price">USD 159</span><span class="sale-price">USD 135</span> /person</td>
           </tr>
         </table>
       </div>
@@ -2091,26 +2103,39 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
 // ===== CURRENCY SELECTOR =====
 const PRICES = {
-  JPY: { display: 'JPY 25,320 ~', phoneCC: 'JP', p1: 'JPY 69,000', p2: 'JPY 34,500', p35: 'JPY 25,320' },
-  USD: { display: 'USD 159 ~',    phoneCC: 'US', p1: 'USD 433', p2: 'USD 217', p35: 'USD 159' },
-  EUR: { display: 'EUR 146 ~',    phoneCC: 'DE', p1: 'EUR 399', p2: 'EUR 199', p35: 'EUR 146' },
-  AUD: { display: 'AUD 241 ~',    phoneCC: 'AU', p1: 'AUD 657', p2: 'AUD 329', p35: 'AUD 241' },
-  CAD: { display: 'CAD 222 ~',    phoneCC: 'CA', p1: 'CAD 605', p2: 'CAD 303', p35: 'CAD 222' }
+  JPY: { phoneCC: 'JP', p1: 'JPY 69,000', p2: 'JPY 34,500', p35: 'JPY 25,320' },
+  USD: { phoneCC: 'US', p1: 'USD 433', p2: 'USD 217', p35: 'USD 159' },
+  EUR: { phoneCC: 'DE', p1: 'EUR 399', p2: 'EUR 199', p35: 'EUR 146' },
+  AUD: { phoneCC: 'AU', p1: 'AUD 657', p2: 'AUD 329', p35: 'AUD 241' },
+  CAD: { phoneCC: 'CA', p1: 'CAD 605', p2: 'CAD 303', p35: 'CAD 222' }
 };
 const BOKUN_BASE = 'https://widgets.bokun.io/online-sales/9c7daabb-e81c-4ae1-b504-5451a5ca69ff/experience/1171469?partialView=1';
 
+// ===== PROMO: 15% OFF, ends June 16. To end the sale: set active:false (banner hides, strikethrough disappears, prices revert) and remove the static promo HTML in the pricing section. =====
+const PROMO = { active: true, rate: 0.85, campaign: 'promo15' };
+function saleOf(regular) {
+  const m = regular.match(/^([A-Z]{3})\s+([\d,]+)$/);
+  if (!m) return regular;
+  return m[1] + ' ' + Math.round(parseInt(m[2].replace(/,/g, ''), 10) * PROMO.rate).toLocaleString('en-US');
+}
+function priceHTML(regular) {
+  return PROMO.active
+    ? '<span class="old-price">' + regular + '</span><span class="sale-price">' + saleOf(regular) + '</span>'
+    : regular;
+}
+
 function setCurrency(currency) {
   const p = PRICES[currency];
-  document.getElementById('priceDisplay').textContent = p.display;
+  document.getElementById('priceDisplay').innerHTML = priceHTML(p.p35) + ' ~';
   document.querySelectorAll('.currency-btn').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.currency === currency);
   });
   // Update pricing breakdown table
   var rows = document.querySelectorAll('.pricing-breakdown td[data-price]');
   if (rows.length === 3) {
-    rows[0].textContent = p.p1 + ' /person';
-    rows[1].textContent = p.p2 + ' /person';
-    rows[2].textContent = p.p35 + ' /person';
+    rows[0].innerHTML = priceHTML(p.p1) + ' /person';
+    rows[1].innerHTML = priceHTML(p.p2) + ' /person';
+    rows[2].innerHTML = priceHTML(p.p35) + ' /person';
   }
   // Show exchange rate disclaimer for non-JPY currencies
   const exchangeNote = document.getElementById('exchangeRateNote');
@@ -2123,6 +2148,20 @@ function setCurrency(currency) {
     );
   }
 }
+
+// On load: tag promo sessions for measurement, or revert the static promo HTML if the sale is off.
+(function initPromo() {
+  const banner = document.getElementById('promoBanner');
+  if (PROMO.active) {
+    if (typeof gtag === 'function') {
+      gtag('event', 'promo_view', {'event_category': 'promo', 'campaign': PROMO.campaign, 'discount_rate': PROMO.rate});
+    }
+  } else {
+    if (banner) banner.style.display = 'none';
+    const active = document.querySelector('.currency-btn.active');
+    setCurrency(active ? active.dataset.currency : 'USD');
+  }
+})();
 
 // ===== DATE CHANGE FORM =====
 function submitDateChange(e) {
@@ -2175,7 +2214,7 @@ function submitWaitlist(e) {
 
 // ===== BOKUN BOOKING =====
 function openBooking() {
-  gtag('event', 'book_now_click', {'event_category': 'booking'});
+  gtag('event', 'book_now_click', {'event_category': 'booking', 'campaign': PROMO.active ? PROMO.campaign : 'none'});
   var btn = document.getElementById('bokun_418f34f4_28e2_4185_85e4_7aa761106072');
   if (btn && !btn.disabled) { btn.click(); return true; }
   // If button is disabled (Bokun not yet loaded), trigger load and poll until ready
