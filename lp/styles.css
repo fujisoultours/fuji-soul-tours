@@ -83,14 +83,18 @@ p { margin: 0; text-wrap: pretty; }
 .cta-micro { font-size: 13.5px; color: var(--mid); margin-top: 10px; }
 .cta-micro strong { color: var(--sale-light); }
 
-/* ---- promo chip (hidden when html[data-promo="off"]) ---- */
+/* ---- promo tag (hidden when html[data-promo="off"]) ----
+   Styled as a train-ticket stub — solid fare box + perforation + date —
+   to match the indigo-timetable system. */
 .promo-chip {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: oklch(0.93 0.04 30); color: var(--cta-deep);
-  border: 1px solid oklch(0.85 0.06 30);
-  font-size: 13px; font-weight: 700; letter-spacing: 0.04em;
-  padding: 5px 12px; border-radius: 999px;
+  display: inline-flex; align-items: stretch;
+  border: 1px solid var(--cta-deep); border-radius: 2px;
+  font-size: 11.5px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--cta-deep);
+  background: white; overflow: hidden;
 }
+.promo-chip .pc-off { background: var(--cta-deep); color: oklch(0.985 0.005 60); padding: 5px 11px; }
+.promo-chip .pc-ends { padding: 5px 11px; border-left: 1px dashed oklch(0.75 0.1 30); display: inline-flex; align-items: center; }
 html[data-promo="off"] .promo-only { display: none !important; }
 html[data-promo="off"] .old-price { display: none; }
 html[data-promo="off"] .sale-price { color: inherit; }
@@ -346,8 +350,12 @@ html[data-hero="bookcard"] .hero-card { display: block; align-self: center; }
 .book .section-lede { color: var(--on-night-dim); }
 .book-grid { display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 56px; margin-top: 48px; align-items: start; }
 
-/* booking price panel */
+/* booking price panel — sticky on desktop so it tracks the tall
+   Bokun calendar column instead of leaving a void below */
 .price-panel { display: flex; flex-direction: column; gap: 0; }
+@media (min-width: 881px) {
+  .price-panel { position: sticky; top: 100px; }
+}
 .panel-top { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 18px; flex-wrap: wrap; }
 .currency-row { display: flex; gap: 0; border: 1.5px solid var(--night-soft); border-radius: 5px; overflow: hidden; }
 .currency-btn {
@@ -384,7 +392,8 @@ html[data-booking="popup"] .widget-inline { display: none; }
 html[data-booking="popup"] .widget-popup { display: block; }
 .widget-popup { display: none; }
 
-.bokun-frame { margin-top: 20px; position: relative; min-height: 520px; border: 1px solid var(--hair); border-radius: 8px; overflow: hidden; }
+/* Bokun draws its own panel borders — no extra frame, just space + a hairline */
+.bokun-frame { margin-top: 18px; padding-top: 18px; position: relative; min-height: 520px; border-top: 1px solid var(--hair-soft); }
 .bokun-frame .bokunWidget { position: relative; z-index: 1; }
 .bokun-loading {
   position: absolute; inset: 0; z-index: 0;
