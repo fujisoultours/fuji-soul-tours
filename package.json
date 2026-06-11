@@ -2,6 +2,10 @@
   "name": "fuji-soul-tours",
   "version": "1.0.0",
   "private": true,
+  "scripts": {
+    "dev": "npx -y serve -l 3000 .",
+    "dev:full": "npx -y vercel dev"
+  },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.39.0"
   }
