@@ -121,7 +121,7 @@ const LP_ROUTES = [
     { time: '15:10', name: 'Depart Shin-Fuji', det: 'After a short buffer' },
     { time: '16:18', name: 'Arrive Tokyo ✓',  det: 'In time for dinner' },
   ]},
-  { label: 'Tokyo day trip', stops: [
+  { label: 'Tokyo half-day trip', stops: [
     { time: '6:57',  name: 'Depart Tokyo',    det: 'Kodama, ~1 h' },
     { time: '8:03',  name: 'Meet your guide', det: 'Shin-Fuji gate', tour: true },
     { time: '8:10',  name: '4-hour tour',     det: 'Hidden spots & culture', tour: true },
