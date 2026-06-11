@@ -291,18 +291,20 @@ html[data-hero="bookcard"] .hero-card { display: block; align-self: center; }
 @media (max-width: 760px) { .weather-grid { grid-template-columns: 1fr; gap: 36px; } }
 
 /* ============ ADD-ONS (upsell) ============ */
-.addons-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 48px; }
+/* 8 compact cards in 4×2 — same two rows as the original 6-card layout,
+   so the section doesn't grow with the extra experiences */
+.addons-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 44px; }
 .addon {
   background: white; border: 1px solid var(--hair); border-radius: 8px; overflow: hidden;
   display: flex; flex-direction: column;
 }
-.addon img { width: 100%; aspect-ratio: 16/9.5; object-fit: cover; }
-.addon-body { padding: 20px 22px 22px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
-.addon-body h3 { font-size: 18.5px; font-weight: 600; }
-.addon-body p { font-size: 14px; color: var(--ink-soft); flex: 1; }
-.addon-meta { display: flex; justify-content: space-between; align-items: baseline; margin-top: 10px; border-top: 1px solid var(--hair-soft); padding-top: 12px; }
-.addon-meta .a-price { font-weight: 700; font-size: 15px; }
-.addon-meta .a-dur { font-size: 13px; color: var(--mid); }
+.addon img { width: 100%; aspect-ratio: 16/10; object-fit: cover; }
+.addon-body { padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 5px; flex: 1; }
+.addon-body h3 { font-size: 16px; font-weight: 600; }
+.addon-body p { font-size: 12.5px; color: var(--ink-soft); flex: 1; line-height: 1.5; }
+.addon-meta { display: flex; justify-content: space-between; align-items: baseline; gap: 6px; flex-wrap: wrap; margin-top: 8px; border-top: 1px solid var(--hair-soft); padding-top: 9px; }
+.addon-meta .a-price { font-weight: 700; font-size: 12.5px; }
+.addon-meta .a-dur { font-size: 12px; color: var(--mid); }
 .addons-how {
   margin-top: 32px; background: var(--ai-tint); border: 1px solid oklch(0.89 0.03 250);
   border-radius: 8px; padding: 22px 28px; display: flex; gap: 16px; align-items: center; justify-content: space-between; flex-wrap: wrap;
@@ -310,7 +312,17 @@ html[data-hero="bookcard"] .hero-card { display: block; align-self: center; }
 .addons-how p { font-size: 15px; }
 .addons-how strong { color: var(--ai-deep); }
 @media (max-width: 880px) { .addons-grid { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 600px) { .addons-grid { grid-template-columns: 1fr; } }
+/* mobile: horizontal thumbnail cards keep 8 add-ons shorter than the
+   old 6 stacked cards */
+@media (max-width: 600px) {
+  .addons-grid { grid-template-columns: 1fr; gap: 10px; }
+  .addon { flex-direction: row; align-items: stretch; }
+  .addon img { width: 108px; min-width: 108px; height: auto; aspect-ratio: auto; }
+  .addon-body { padding: 12px 14px; }
+  .addon-body h3 { font-size: 15px; }
+  .addon-body p { font-size: 12px; }
+  .addon-meta { margin-top: 6px; padding-top: 7px; }
+}
 
 /* ============ REVIEWS ============ */
 /* Live cards are rendered into #reviewsGrid by the shared reviews.js
