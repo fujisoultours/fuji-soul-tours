@@ -9,11 +9,11 @@ const PROMO = { active: true, rate: 0.85, campaign: 'promo15' };
 
 // ---- Prices (mirrors production PRICES; full = pre-promo list prices) ----
 const LP_PRICES = {
-  USD: { phoneCC: 'US', p1: 432,   p2: 216,   p35: 159,   viator: 499 },
-  EUR: { phoneCC: 'DE', p1: 371,   p2: 185,   p35: 136,   viator: 460 },
-  AUD: { phoneCC: 'AU', p1: 602,   p2: 301,   p35: 221,   viator: 770 },
-  CAD: { phoneCC: 'CA', p1: 597,   p2: 298,   p35: 219,   viator: 700 },
-  JPY: { phoneCC: 'JP', p1: 69000, p2: 34500, p35: 25320, viator: 79965 },
+  USD: { phoneCC: 'US', p1: 432,   p2: 216,   p35: 159 },
+  EUR: { phoneCC: 'DE', p1: 371,   p2: 185,   p35: 136 },
+  AUD: { phoneCC: 'AU', p1: 602,   p2: 301,   p35: 221 },
+  CAD: { phoneCC: 'CA', p1: 597,   p2: 298,   p35: 219 },
+  JPY: { phoneCC: 'JP', p1: 69000, p2: 34500, p35: 25320 },
 };
 
 // ---- Bokun (channel + experience must match production) ----
@@ -36,7 +36,6 @@ function lpRenderPrices() {
   const promo = lpPromoOn();
   document.querySelectorAll('[data-price]').forEach((el) => {
     const key = el.dataset.price;
-    if (key === 'viator') { el.textContent = lpFmt(lpCurrency, p.viator); return; }
     if (key === 'hc-total') { el.textContent = lpFmt(lpCurrency, promo ? sale(p[lpHcTier]) : p[lpHcTier]); return; }
     const isFull = key.endsWith('-full');
     const tier = isFull ? key.replace('-full', '') : key;

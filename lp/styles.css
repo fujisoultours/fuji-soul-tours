@@ -418,9 +418,7 @@ html[data-hero="bookcard"] .hero-card { display: block; align-self: center; }
 .price-row .p-val { font-family: var(--font-display); font-size: 21px; font-weight: 600; display: flex; gap: 10px; align-items: baseline; white-space: nowrap; }
 .price-row .p-val .per { font-family: var(--font-body); font-size: 12.5px; color: var(--on-night-dim); }
 .price-row .sale-price { color: var(--sale-dark); }
-.viator-line { font-size: 14px; color: var(--on-night-dim); margin-top: 18px; max-width: 52ch; }
-.viator-line [data-price] { color: var(--on-night); font-weight: 700; }
-.book-guarantees { font-size: 13.5px; color: var(--on-night-dim); margin-top: 14px; }
+.book-guarantees { font-size: 13.5px; color: var(--on-night-dim); margin-top: 18px; }
 .book-fx { font-size: 12px; color: oklch(0.6 0.03 250); margin-top: 12px; }
 .book-fx a { color: inherit; }
 
