@@ -172,6 +172,23 @@ function scrollCarousel(btn, dir) {
 }
 window.scrollCarousel = scrollCarousel;
 
+// ---- Mobile nav: hamburger dropdown ----
+function lpInitNavMenu() {
+  const burger = document.getElementById('navBurger');
+  const menu = document.getElementById('navMenu');
+  if (!burger || !menu) return;
+  const close = () => { menu.classList.remove('open'); burger.setAttribute('aria-expanded', 'false'); };
+  burger.addEventListener('click', () => {
+    const open = menu.classList.toggle('open');
+    burger.setAttribute('aria-expanded', String(open));
+  });
+  menu.querySelectorAll('a').forEach((a) => a.addEventListener('click', close));
+  // tap outside the nav closes the menu
+  document.addEventListener('click', (e) => {
+    if (menu.classList.contains('open') && !e.target.closest('.nav')) close();
+  });
+}
+
 // ---- Mobile sticky booking bar: show after the hero, hide over #book ----
 function lpInitStickyBar() {
   const bar = document.getElementById('stickyBar');
@@ -494,6 +511,7 @@ function lpInitChatbot() {
 
 document.addEventListener('DOMContentLoaded', () => {
   lpInitPromo();
+  lpInitNavMenu();
   lpInitCurrency();
   lpInitHeroCard();
   lpInitRoutes();
