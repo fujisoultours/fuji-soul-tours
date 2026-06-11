@@ -348,7 +348,12 @@ html[data-hero="bookcard"] .hero-card { display: block; align-self: center; }
 .book .kicker::before { background: oklch(0.72 0.09 250); }
 .book h2 { color: var(--on-night); }
 .book .section-lede { color: var(--on-night-dim); }
-.book-grid { display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 56px; margin-top: 48px; align-items: start; }
+/* heading lives inside the left column so the widget card top-aligns
+   with the "Pick a date" h2; columns stretch so the sticky panel can
+   travel, while the widget card keeps its natural height */
+.book-grid { display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 56px; align-items: stretch; }
+.book-grid .widget-col { align-self: start; }
+.book .price-panel { margin-top: 40px; }
 
 /* booking price panel — sticky on desktop so it tracks the tall
    Bokun calendar column instead of leaving a void below */
