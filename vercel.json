@@ -2,7 +2,11 @@
   "rewrites": [
     { "source": "/group-tour", "destination": "/group-tour.html" },
     { "source": "/review", "destination": "/review.html" },
-    { "source": "/tokushoho", "destination": "/tokushoho.html" }
+    { "source": "/tokushoho", "destination": "/tokushoho.html" },
+    { "source": "/about", "destination": "/about.html" },
+    { "source": "/mt-fuji-stopover", "destination": "/mt-fuji-stopover.html" },
+    { "source": "/fujinomiya-yakisoba", "destination": "/fujinomiya-yakisoba.html" },
+    { "source": "/mt-fuji-without-crowds", "destination": "/mt-fuji-without-crowds.html" }
   ],
   "functions": {
     "api/*.js": {

@@ -194,6 +194,11 @@ function lpInitStickyBar() {
   if (!bar || !('IntersectionObserver' in window)) return;
   const hero = document.querySelector('.hero');
   const book = document.getElementById('book');
+  if (!hero || !book) {
+    // article pages: no hero/booking section — show after a bit of scroll
+    window.addEventListener('scroll', () => bar.classList.toggle('show', window.scrollY > 600), { passive: true });
+    return;
+  }
   let pastHero = false, overBook = false;
   const update = () => bar.classList.toggle('show', pastHero && !overBook);
   new IntersectionObserver((es) => { pastHero = !es[0].isIntersecting; update(); }, { rootMargin: '-60px 0px 0px 0px' }).observe(hero);
@@ -203,7 +208,8 @@ function lpInitStickyBar() {
 // ---- Promo flag → DOM attribute + GA session tag ----
 function lpInitPromo() {
   document.documentElement.dataset.promo = PROMO.active ? 'on' : 'off';
-  if (PROMO.active && typeof gtag === 'function') {
+  // only tag sessions on pages that actually show promo UI
+  if (PROMO.active && typeof gtag === 'function' && document.querySelector('.promo-only')) {
     gtag('event', 'promo_view', { 'event_category': 'promo', 'campaign': PROMO.campaign, 'discount_rate': PROMO.rate });
   }
 }

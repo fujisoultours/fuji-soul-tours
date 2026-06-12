@@ -739,3 +739,55 @@ html[data-stickybar="off"] .sticky-bar { display: none !important; }
   .chat-contact-btn { flex: 1; min-width: 0; justify-content: center; padding: 10px 8px; font-size: 12px; }
   .chat-contact-btn svg { width: 16px; height: 16px; }
 }
+
+/* ============ ARTICLE / SUBPAGES (/about, guides) ============ */
+.page-hero { padding: 52px 0 40px; border-bottom: 1px solid var(--hair-soft); }
+.crumbs { font-size: 12.5px; color: var(--mid); margin-bottom: 18px; }
+.crumbs a { color: var(--mid); text-decoration: none; }
+.crumbs a:hover { color: var(--ai); }
+.page-hero h1 { font-size: clamp(32px, 4.5vw, 52px); font-weight: 600; letter-spacing: -0.01em; max-width: 22ch; }
+.page-hero .page-kicker { color: var(--ai); font-size: 12.5px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; display: flex; align-items: center; gap: 12px; margin-bottom: 16px; font-family: var(--font-body); }
+.page-hero .page-kicker::before { content: ""; width: 28px; height: 1.5px; background: var(--ai); }
+.page-hero .lede { margin-top: 16px; max-width: 62ch; color: var(--ink-soft); font-size: 17.5px; }
+.article-section { padding: 52px 0 72px; }
+.article { max-width: 760px; }
+.article h2 { font-size: clamp(24px, 3vw, 32px); font-weight: 600; margin-top: 52px; }
+.article h2:first-child { margin-top: 0; }
+.article h3 { font-size: 19px; font-weight: 600; margin-top: 30px; }
+.article p { margin-top: 14px; color: var(--ink-soft); font-size: 16.5px; line-height: 1.75; }
+.article ul, .article ol { margin: 14px 0 0; padding-left: 22px; color: var(--ink-soft); }
+.article li { margin-top: 8px; line-height: 1.65; }
+.article strong { color: var(--ink); }
+.article a { color: var(--ai); }
+.article figure { margin: 30px 0 0; }
+.article figure img { border-radius: 6px; width: 100%; }
+.article figcaption { font-size: 12.5px; color: var(--mid); margin-top: 8px; }
+.info-table { width: 100%; border-collapse: collapse; margin-top: 18px; font-size: 15px; }
+.info-table th, .info-table td { text-align: left; padding: 11px 12px; border-bottom: 1px solid var(--hair-soft); vertical-align: top; color: var(--ink-soft); }
+.info-table th { color: var(--ink); font-weight: 600; white-space: nowrap; }
+.info-table thead th { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mid); border-bottom: 1.5px solid var(--hair); }
+.pull-quote { margin: 34px 0 0; border-left: 3px solid var(--ai); padding: 4px 0 4px 20px; font-family: var(--font-display); font-size: 21px; font-style: italic; line-height: 1.5; color: var(--ink); }
+.meta-stack { margin-top: 30px; background: white; border: 1px solid var(--hair); border-radius: 8px; padding: 6px 22px; }
+.meta-stack .ms-row { display: flex; gap: 18px; padding: 13px 0; border-bottom: 1px solid var(--hair-soft); font-size: 14.5px; color: var(--ink-soft); }
+.meta-stack .ms-row:last-child { border-bottom: none; }
+.meta-stack .ms-k { width: 110px; flex-shrink: 0; font-weight: 700; font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mid); padding-top: 3px; }
+.cta-banner { background: var(--night); color: var(--on-night); border-radius: 10px; padding: 34px 34px; margin-top: 56px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+.cta-banner h2 { color: var(--on-night); font-size: 24px; margin: 0; font-family: var(--font-display); }
+.cta-banner p { color: var(--on-night-dim); margin-top: 6px; font-size: 15px; max-width: 46ch; }
+.next-links { margin-top: 56px; border-top: 1px solid var(--hair); padding-top: 26px; }
+.next-links .nl-label { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mid); font-weight: 700; }
+.next-links ul { list-style: none; padding: 0; margin: 14px 0 0; }
+.next-links li { margin-top: 10px; }
+.next-links a { font-family: var(--font-display); font-size: 18.5px; font-weight: 600; text-decoration: none; color: var(--ink); }
+.next-links a:hover { color: var(--ai); }
+@media (max-width: 600px) {
+  .page-hero { padding: 36px 0 30px; }
+  /* wide tables scroll inside themselves instead of stretching the page */
+  .info-table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .info-table th { white-space: normal; }
+  .info-table th, .info-table td { font-size: 13.5px; padding: 9px 10px; min-width: 104px; }
+  .cta-banner { padding: 26px 22px; }
+  .cta-banner .btn-book { width: 100%; }
+  .meta-stack .ms-row { flex-direction: column; gap: 3px; }
+  .meta-stack .ms-k { width: auto; }
+}
