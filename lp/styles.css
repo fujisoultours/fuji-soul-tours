@@ -528,7 +528,20 @@ html[data-stickybar="off"] .sticky-bar { display: none !important; }
 @media (max-width: 600px) {
   body { font-size: 16px; }
   .section { padding: 56px 0; }
-  .hero { padding: 40px 0 56px; }
+  .hero { padding: 26px 0 52px; }
+
+  /* booking-first first viewport: headline → proof → price → CTA,
+     long copy drops below (visual order only — DOM/SEO unchanged) */
+  .hero-copy { display: flex; flex-direction: column; }
+  .hero-copy h1 { order: 1; }
+  .hero-proof { order: 2; margin-top: 14px; font-size: 13px; }
+  .hero-promo { order: 3; margin-top: 14px; }
+  .hero-price-row { order: 4; margin-top: 8px; }
+  .hero-ctas { order: 5; margin-top: 14px; }
+  .hero-sub { order: 6; margin-top: 20px; font-size: 16px; }
+  .cta-micro { order: 7; }
+  .hero h1 { font-size: 33px; }
+  .hero-kicker { font-size: 10.5px; letter-spacing: 0.12em; margin-bottom: 12px; }
 
   /* CTAs: full-width, stacked */
   .hero-ctas { flex-direction: column; align-items: stretch; gap: 14px; }
