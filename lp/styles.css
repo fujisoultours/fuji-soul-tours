@@ -552,6 +552,9 @@ html[data-stickybar="off"] .sticky-bar { display: none !important; }
   .hero-copy h1 { order: 1; }
   .hero-proof { order: 2; margin-top: 12px; font-size: 13px; }
   .hero-promo { order: 3; margin-top: 12px; }
+  .hero-promo .promo-chip { font-size: 10px; letter-spacing: 0.08em; }
+  .hero-promo .promo-chip .pc-off { padding: 3.5px 8px; }
+  .hero-promo .promo-chip .pc-ends { padding: 3.5px 8px; }
   .hero-price-row { order: 4; margin-top: 6px; }
   .hero-ctas { order: 5; margin-top: 12px; gap: 12px; }
   .hero-sub { order: 6; margin-top: 22px; font-size: 16px; }
