@@ -367,7 +367,18 @@ html[data-hero="bookcard"] .hero-card { display: block; align-self: center; }
   display: flex; align-items: center; justify-content: center;
 }
 .reviews-nav button:hover { background: var(--ai); color: white; border-color: var(--ai); }
-@media (max-width: 600px) { .review-card { min-width: 280px; max-width: 300px; padding: 20px; } }
+@media (max-width: 600px) {
+  .review-card { min-width: 280px; max-width: 300px; padding: 20px; }
+  /* cards keep their own height instead of stretching to the tallest
+     in the row, and long quotes clamp to 7 lines (reviews.js truncates
+     at 300 chars — too tall at this width; full text stays for SEO
+     and the Read more toggle) */
+  .reviews-grid { align-items: flex-start; }
+  .review-card .review-truncated {
+    display: -webkit-box; -webkit-box-orient: vertical;
+    -webkit-line-clamp: 7; overflow: hidden;
+  }
+}
 
 /* lightbox for review photos (markup injected by reviews.js) */
 .photo-lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 9999; justify-content: center; align-items: center; cursor: default; }
