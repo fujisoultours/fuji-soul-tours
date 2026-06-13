@@ -161,6 +161,21 @@ function lpInitRoutes() {
 
 // ---- Gallery lightbox (self-hosted, no third-party JS) ----
 function lpInitGallery() {
+  // randomize the gallery page (grid + story row) on each visit
+  const shuffle = (parent) => {
+    if (!parent) return;
+    const kids = [...parent.children];
+    for (let i = kids.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [kids[i], kids[j]] = [kids[j], kids[i]];
+    }
+    kids.forEach((k) => parent.appendChild(k));
+  };
+  if (document.querySelector('.gallery-grid')) {
+    shuffle(document.querySelector('.gallery-grid'));
+    shuffle(document.querySelector('.story-row'));
+  }
+
   const items = [...document.querySelectorAll('[data-glb]')];
   if (!items.length) return;
   const sources = items.map((el) => ({
@@ -216,6 +231,17 @@ function scrollCarousel(btn, dir) {
   carousel.scrollLeft += dir * (card.offsetWidth + 18);
 }
 window.scrollCarousel = scrollCarousel;
+
+// ---- Guest photo carousel (LP teaser) ----
+function scrollGuest(btn, dir) {
+  const wrap = btn.closest('.gallery-teaser');
+  const car = wrap && wrap.querySelector('.guest-carousel');
+  if (!car) return;
+  const card = car.querySelector('.guest-card');
+  if (!card) return;
+  car.scrollLeft += dir * (card.offsetWidth + 16) * 2;
+}
+window.scrollGuest = scrollGuest;
 
 // ---- Mobile nav: hamburger dropdown ----
 function lpInitNavMenu() {

@@ -464,21 +464,48 @@
   </div>
 </section>
 
-<!-- ================= GALLERY TEASER ================= -->
+<!-- ================= GALLERY TEASER (guest carousel) ================= -->
 <section class="section gallery-teaser" data-screen-label="Gallery teaser">
   <div class="wrap">
     <div class="teaser-head">
-      <h2>A tour day in pictures</h2>
-      <a class="teaser-link" href="/gallery">See the full gallery →</a>
+      <div>
+        <p class="kicker">From real tours</p>
+        <h2>The people we've shown around</h2>
+      </div>
+      <div class="guest-nav">
+        <button type="button" onclick="scrollGuest(this,-1)" aria-label="Previous">‹</button>
+        <button type="button" onclick="scrollGuest(this,1)" aria-label="Next">›</button>
+      </div>
     </div>
-    <div class="teaser-strip">
-      <a href="/gallery"><img src="images/gallery/g02_flowers.jpg" alt="Mt. Fuji above spring flower fields" loading="lazy"></a>
-      <a href="/gallery"><img src="images/gallery/g08_yakisoba.jpg" alt="Fujinomiya yakisoba" loading="lazy"></a>
-      <a href="/gallery"><img src="images/gallery/g09_tea.jpg" alt="Tea ceremony" loading="lazy"></a>
-      <a href="/gallery"><img src="images/gallery/g06_lake.jpg" alt="Mt. Fuji mirrored in a lake" loading="lazy"></a>
-      <a href="/gallery"><img src="images/gallery/g05_cows.jpg" alt="Cows on a plateau below Mt. Fuji" loading="lazy"></a>
-      <a href="/gallery"><img src="images/gallery/g03_sakura.jpg" alt="Mt. Fuji at sunrise above cherry blossoms" loading="lazy"></a>
+    <div class="guest-carousel-wrap">
+      <div class="guest-carousel">
+        <button class="guest-card" type="button" data-glb="images/gallery/gp01_kimono_group.jpg" data-glb-cap="Guests in kimono at the principal Fuji shrine.">
+          <img src="images/gallery/gp01_kimono_group.jpg" alt="Guests in kimono on tour" loading="lazy"><figcaption>Kimono at the shrine</figcaption>
+        </button>
+        <button class="guest-card" type="button" data-glb="images/gallery/gp03_couple_fuji.jpg" data-glb-cap="A couple with Mt. Fuji on a clear day.">
+          <img src="images/gallery/gp03_couple_fuji.jpg" alt="Couple with Mt. Fuji" loading="lazy"><figcaption>Clear-day viewpoint</figcaption>
+        </button>
+        <button class="guest-card" type="button" data-glb="images/gallery/gp02_wagashi_selfie.jpg" data-glb-cap="Guests and their guide with handmade wagashi sweets.">
+          <img src="images/gallery/gp02_wagashi_selfie.jpg" alt="Guests with their guide and wagashi" loading="lazy"><figcaption>Wagashi workshop</figcaption>
+        </button>
+        <button class="guest-card" type="button" data-glb="images/gallery/gp05_couple_cows.jpg" data-glb-cap="A couple at the highland plateau with Mt. Fuji and grazing cows.">
+          <img src="images/gallery/gp05_couple_cows.jpg" alt="Couple at the plateau with cows and Mt. Fuji" loading="lazy"><figcaption>The highland plateau</figcaption>
+        </button>
+        <button class="guest-card" type="button" data-glb="images/gallery/gp09_brewery_group.jpg" data-glb-cap="A group tasting sake at the 1830 brewery.">
+          <img src="images/gallery/gp09_brewery_group.jpg" alt="Guests at the sake brewery" loading="lazy"><figcaption>Sake tasting, est. 1830</figcaption>
+        </button>
+        <button class="guest-card" type="button" data-glb="images/gallery/gp04_couple_sakura.jpg" data-glb-cap="A couple and their guide among the cherry blossoms.">
+          <img src="images/gallery/gp04_couple_sakura.jpg" alt="Guests among cherry blossoms" loading="lazy"><figcaption>Cherry blossom season</figcaption>
+        </button>
+        <button class="guest-card" type="button" data-glb="images/gallery/gp06_bridge_group.jpg" data-glb-cap="A group at a local bridge viewpoint.">
+          <img src="images/gallery/gp06_bridge_group.jpg" alt="Group at a bridge viewpoint" loading="lazy"><figcaption>A local bridge spot</figcaption>
+        </button>
+        <button class="guest-card" type="button" data-glb="images/gallery/gp07_cafe_group.jpg" data-glb-cap="Guests over coffee on the southern side.">
+          <img src="images/gallery/gp07_cafe_group.jpg" alt="Guests at a local cafe" loading="lazy"><figcaption>A local cafe stop</figcaption>
+        </button>
+      </div>
     </div>
+    <p class="teaser-foot"><a href="/gallery">See more in the full gallery →</a></p>
   </div>
 </section>
 
