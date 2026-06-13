@@ -901,3 +901,7 @@ html[data-stickybar="off"] .sticky-bar { display: none !important; }
 .teaser-foot a:hover { text-decoration: underline; }
 @media (max-width: 900px) { .guest-nav { display: none; } .guest-card { flex-basis: calc((100% - 16px) / 2); } }
 @media (max-width: 600px) { .guest-card { flex-basis: 82%; } .gallery-teaser { padding: 44px 0; } }
+
+/* tighten the reviews → guest-carousel gap (same bg, stacked padding read as one big blank) */
+#reviews.section { padding-bottom: 28px; }
+.gallery-teaser { padding-top: 40px; padding-bottom: 56px; }
