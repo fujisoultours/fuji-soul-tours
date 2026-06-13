@@ -159,6 +159,52 @@ function lpInitRoutes() {
   lpRenderRoute(0);
 }
 
+// ---- Gallery lightbox (self-hosted, no third-party JS) ----
+function lpInitGallery() {
+  const items = [...document.querySelectorAll('[data-glb]')];
+  if (!items.length) return;
+  const sources = items.map((el) => ({
+    src: el.dataset.glb,
+    cap: el.dataset.glbCap || '',
+  }));
+
+  const overlay = document.createElement('div');
+  overlay.className = 'glb';
+  overlay.innerHTML =
+    '<button class="glb-btn glb-close" aria-label="Close">&times;</button>' +
+    '<button class="glb-btn glb-nav glb-prev" aria-label="Previous">&#8249;</button>' +
+    '<img alt="">' +
+    '<button class="glb-btn glb-nav glb-next" aria-label="Next">&#8250;</button>' +
+    '<p class="glb-cap"></p>';
+  document.body.appendChild(overlay);
+  const imgEl = overlay.querySelector('img');
+  const capEl = overlay.querySelector('.glb-cap');
+  let idx = 0;
+
+  const show = (i) => {
+    idx = (i + sources.length) % sources.length;
+    imgEl.src = sources[idx].src;
+    imgEl.alt = sources[idx].cap;
+    capEl.textContent = sources[idx].cap;
+  };
+  const open = (i) => { show(i); overlay.classList.add('open'); document.body.style.overflow = 'hidden'; };
+  const close = () => { overlay.classList.remove('open'); document.body.style.overflow = ''; };
+
+  items.forEach((el, i) => {
+    el.addEventListener('click', () => open(i));
+  });
+  overlay.querySelector('.glb-close').addEventListener('click', close);
+  overlay.querySelector('.glb-prev').addEventListener('click', (e) => { e.stopPropagation(); show(idx - 1); });
+  overlay.querySelector('.glb-next').addEventListener('click', (e) => { e.stopPropagation(); show(idx + 1); });
+  overlay.addEventListener('click', (e) => { if (e.target === overlay) close(); });
+  document.addEventListener('keydown', (e) => {
+    if (!overlay.classList.contains('open')) return;
+    if (e.key === 'Escape') close();
+    else if (e.key === 'ArrowLeft') show(idx - 1);
+    else if (e.key === 'ArrowRight') show(idx + 1);
+  });
+}
+
 // ---- Reviews carousel nav (used by reviews.js-rendered cards) ----
 function scrollCarousel(btn, dir) {
   const wrap = btn.closest('.reviews-carousel-wrap');
@@ -517,6 +563,7 @@ function lpInitChatbot() {
 document.addEventListener('DOMContentLoaded', () => {
   lpInitPromo();
   lpInitNavMenu();
+  lpInitGallery();
   lpInitCurrency();
   lpInitHeroCard();
   lpInitRoutes();

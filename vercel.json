@@ -4,6 +4,7 @@
     { "source": "/review", "destination": "/review.html" },
     { "source": "/tokushoho", "destination": "/tokushoho.html" },
     { "source": "/about", "destination": "/about.html" },
+    { "source": "/gallery", "destination": "/gallery.html" },
     { "source": "/soul-of-japan", "destination": "/soul-of-japan.html" },
     { "source": "/mt-fuji-stopover", "destination": "/mt-fuji-stopover.html" },
     { "source": "/fujinomiya-yakisoba", "destination": "/fujinomiya-yakisoba.html" },
