@@ -796,6 +796,14 @@ html[data-stickybar="off"] .sticky-bar { display: none !important; }
 .article figure { margin: 30px 0 0; }
 .article figure img { border-radius: 6px; width: 100%; max-height: 600px; object-fit: cover; }
 .article figcaption { font-size: 12.5px; color: var(--mid); margin-top: 8px; }
+/* Portrait figure — people shots shown upright, not cropped to landscape */
+.article figure.portrait { margin: 30px auto 0; max-width: 360px; }
+.article figure.portrait img { max-height: none; aspect-ratio: 3 / 4; object-fit: cover; }
+/* Homepage "meet your guide" credit row */
+.guide-credit { display: flex; align-items: center; gap: 14px; margin: 20px 0 4px; }
+.guide-credit img { width: 72px; height: 72px; border-radius: 50%; object-fit: cover; object-position: 50% 20%; flex-shrink: 0; }
+.guide-credit p { margin: 0; font-size: 14.5px; line-height: 1.55; color: var(--ink-soft); }
+.guide-credit strong { color: var(--ink); }
 .info-table { width: 100%; border-collapse: collapse; margin-top: 18px; font-size: 15px; }
 .info-table th, .info-table td { text-align: left; padding: 11px 12px; border-bottom: 1px solid var(--hair-soft); vertical-align: top; color: var(--ink-soft); }
 .info-table th { color: var(--ink); font-weight: 600; white-space: nowrap; }
