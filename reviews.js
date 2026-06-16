@@ -139,6 +139,14 @@ const REVIEWS = [
 // GAS endpoint for fetching approved direct reviews (set after deploying GAS)
 var REVIEW_GAS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbzvnmgqy_mVBy3XwHb2KoG2ncf7TmsJ4u0rLNUAAYnXm8XjgT67PDfdftfEd9lDkHfmyQ/exec';
 
+// Only reviews from these platforms are shown on the site. Each platform label
+// links to its public review page so visitors can read the full set there.
+// Any source NOT in this map (e.g. "Direct" submissions) is filtered out below.
+var REVIEW_SOURCE_LINKS = {
+  'Viator': 'https://www.viator.com/tours/Fuji/Shin-Fuji-station-Pick-up-Mt-Fuji-Cultural-Private-Tour/d50602-480933P5',
+  'Tripadvisor': 'https://www.tripadvisor.com/Attraction_Review-g298124-d27788193-Reviews-Fuji_Soul_Tours_Private_Mt_Fuji_Cultural_Experiences_Shin_Fuji_Shimizu-Shizuoka_.html'
+};
+
 function escapeReviewHtml(str) {
   var div = document.createElement('div');
   div.textContent = str;
@@ -191,6 +199,8 @@ function lightboxNav(dir) {
   if (!grid) return;
 
   function renderReviews(reviews) {
+    // Show only Viator / Tripadvisor reviews — drop "Direct" and any other source.
+    reviews = reviews.filter(function(r) { return Object.prototype.hasOwnProperty.call(REVIEW_SOURCE_LINKS, r.source); });
     if (!reviews.length) return;
     reviewPhotoSets = [];
 
@@ -226,12 +236,16 @@ function lightboxNav(dir) {
           return '<img src="' + escapeReviewHtml(imgUrl) + '" alt="Tour photo" class="review-photo" loading="lazy" data-set="' + setIdx + '" data-idx="' + idx + '" onerror="this.style.display=\'none\'">';
         }).join('') + '</div>';
       }
+      var srcUrl = REVIEW_SOURCE_LINKS[r.source];
+      var sourceHtml = srcUrl
+        ? '<a class="review-source-link" href="' + srcUrl + '" target="_blank" rel="noopener noreferrer">' + escapeReviewHtml(r.source) + '</a>'
+        : escapeReviewHtml(r.source);
       return '<div class="review-card">'
         + '<div class="review-stars">' + stars + '</div>'
         + textHtml
         + photosHtml
         + '<div class="review-author">' + escapeReviewHtml(r.author) + '</div>'
-        + '<div class="review-date">' + escapeReviewHtml(r.date) + ' · ' + escapeReviewHtml(r.source) + '</div>'
+        + '<div class="review-date">' + escapeReviewHtml(r.date) + ' · ' + sourceHtml + '</div>'
         + '</div>';
     }).join('');
   }

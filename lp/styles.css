@@ -356,6 +356,8 @@ html[data-hero="bookcard"] .hero-card { display: block; align-self: center; }
 .review-read-more:hover { text-decoration: underline; }
 .review-author { font-size: 14.5px; font-weight: 600; color: var(--ink); margin-top: auto; }
 .review-date { font-size: 13.5px; color: var(--mid); }
+.review-source-link { color: var(--ai); text-decoration: underline; text-underline-offset: 2px; text-decoration-thickness: 1px; }
+.review-source-link:hover { color: var(--ai-deep); }
 .review-photos { display: flex; gap: 6px; margin-bottom: 12px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
 .review-photos::-webkit-scrollbar { display: none; }
 .review-photo { width: 72px; height: 72px; min-width: 72px; object-fit: cover; border-radius: 6px; border: 1px solid var(--hair); cursor: pointer; transition: opacity 0.2s; scroll-snap-align: start; }
