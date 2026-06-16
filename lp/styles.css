@@ -108,7 +108,7 @@ html[data-promo="off"] .sale-price { color: inherit; }
   border-bottom: 1px solid var(--hair-soft);
 }
 .nav-inner { display: flex; align-items: center; gap: 28px; height: 68px; }
-.nav-logo { height: 34px; width: auto; }
+.nav-logo { height: 44px; width: auto; }
 .nav-links { display: flex; gap: 22px; margin-left: auto; }
 .nav-links a {
   color: var(--ink-soft); text-decoration: none; font-size: 14.5px; font-weight: 600; white-space: nowrap;
