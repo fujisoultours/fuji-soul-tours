@@ -59,14 +59,25 @@
 
 <nav class="nav" data-screen-label="Nav">
   <div class="wrap nav-inner">
-    <a href="/"><img class="nav-logo" src="images/logo.png" alt="Fuji Soul Tours"></a>
+    <a href="/" class="nav-logo-link" aria-label="Fuji Soul Tours — home"><img class="nav-logo" src="images/logo.png" alt="Fuji Soul Tours"></a>
     <div class="nav-links">
-      <a href="/">The Tour</a>
-      <a href="/mt-fuji-stopover">Stopover Guide</a>
-      <a href="/fujinomiya-yakisoba">Yakisoba</a>
-      <a href="/mt-fuji-without-crowds">Avoiding Crowds</a>
-      <a href="/soul-of-japan">Soul of Japan</a>
-      <a href="/about">About</a>
+      <a href="/#route">Your Route</a>
+      <a href="/#day">The Tour</a>
+      <a href="/#weather">Cloudy Days</a>
+      <a href="/#addons">Add-ons</a>
+      <a href="/#reviews">Reviews</a>
+      <a href="/#faq">FAQ</a>
+      <div class="nav-explore">
+        <button type="button" class="nav-explore-toggle" id="navExploreToggle" aria-expanded="false" aria-haspopup="true" aria-controls="navExploreMenu">Explore<span class="nav-explore-caret" aria-hidden="true">▾</span></button>
+        <div class="nav-explore-menu" id="navExploreMenu" role="menu" aria-label="Explore pages">
+          <a href="/about" role="menuitem">About<span>The founder's story</span></a>
+          <a href="/soul-of-japan" role="menuitem">Soul of Japan<span>Why Mt. Fuji matters</span></a>
+          <a href="/mt-fuji-stopover" role="menuitem">Stopover Guide<span>Mt. Fuji between Tokyo &amp; Kyoto</span></a>
+          <a href="/mt-fuji-without-crowds" role="menuitem">Avoiding Crowds<span>The quiet south side</span></a>
+          <a href="/gallery" role="menuitem">Gallery<span>A tour day in pictures</span></a>
+          <a href="/fujinomiya-yakisoba" role="menuitem">Fujinomiya Yakisoba<span>The local soul food</span></a>
+        </div>
+      </div>
     </div>
     <a class="btn-book" href="/#book">Book Now</a>
     <button class="nav-burger" id="navBurger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navMenu">
@@ -74,12 +85,19 @@
     </button>
   </div>
   <div class="nav-menu" id="navMenu">
-    <a href="/">The Tour</a>
-    <a href="/mt-fuji-stopover">Stopover Guide</a>
-    <a href="/fujinomiya-yakisoba">Yakisoba</a>
-    <a href="/mt-fuji-without-crowds">Avoiding Crowds</a>
-    <a href="/soul-of-japan">Soul of Japan</a>
+    <a href="/#route">Your Route</a>
+    <a href="/#day">The Tour</a>
+    <a href="/#weather">Cloudy Days</a>
+    <a href="/#addons">Add-ons</a>
+    <a href="/#reviews">Reviews</a>
+    <a href="/#faq">FAQ</a>
+    <div class="nav-menu-label">Explore</div>
     <a href="/about">About</a>
+    <a href="/soul-of-japan">Soul of Japan</a>
+    <a href="/mt-fuji-stopover">Stopover Guide</a>
+    <a href="/mt-fuji-without-crowds">Avoiding Crowds</a>
+    <a href="/gallery">Gallery</a>
+    <a href="/fujinomiya-yakisoba">Fujinomiya Yakisoba</a>
   </div>
 </nav>
 
@@ -168,9 +186,13 @@
     <img src="images/logo.png" alt="Fuji Soul Tours">
     <div class="foot-links">
       <a href="/#book">Pricing</a>
+      <a href="https://buy.stripe.com/00w00i3Sc49qeP43rUdfG00" target="_blank" rel="noopener">Extend your tour (+$100/hr)</a>
+      <a href="/gallery">Gallery</a>
       <a href="/about">About</a>
       <a href="/soul-of-japan">Soul of Japan</a>
       <a href="/mt-fuji-stopover">Stopover Guide</a>
+      <a href="/fujinomiya-yakisoba">Yakisoba</a>
+      <a href="/mt-fuji-without-crowds">Avoiding Crowds</a>
       <a href="/group-tour">Group Tour</a>
       <a href="mailto:fujisoultours@gmail.com">Cancel / change date</a>
       <a href="/tokushoho.html">特定商取引法に基づく表記</a>

@@ -67,23 +67,42 @@
     min-height: 100vh;
   }
 
-  /* Nav */
-  nav {
-    background: #fff;
+  /* Nav (unified header — self-contained, matches the other pages) */
+  .nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(255,255,255,0.92); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
     border-bottom: 1px solid var(--usu-hai);
-    padding: 14px 24px;
-    display: flex; align-items: center; justify-content: space-between;
-    max-width: 100%;
   }
-  .nav-logo {
-    display: flex; align-items: center; text-decoration: none;
-  }
-  .nav-logo img { height: 50px; width: auto; }
-  .nav-back {
-    font-size: 14px; font-weight: 500; color: var(--hai);
-    text-decoration: none; transition: color 0.2s;
-  }
-  .nav-back:hover { color: var(--sumi); }
+  .nav-inner { display: flex; align-items: center; gap: 24px; height: 68px; max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+  .nav-logo-link { display: inline-flex; align-items: center; line-height: 0; text-decoration: none; }
+  .nav-logo { height: 34px; width: auto; }
+  .nav-links { display: flex; gap: 20px; margin-left: auto; align-items: center; }
+  .nav-links > a { color: var(--sumi); text-decoration: none; font-size: 14.5px; font-weight: 600; white-space: nowrap; }
+  .nav-links > a:hover { color: var(--shu); }
+  .nav-explore { position: relative; display: flex; align-items: center; }
+  .nav-explore-toggle { display: inline-flex; align-items: center; gap: 4px; background: none; border: none; cursor: pointer; padding: 0; font-family: inherit; color: var(--sumi); font-size: 14.5px; font-weight: 600; white-space: nowrap; }
+  .nav-explore-toggle:hover, .nav-explore.open .nav-explore-toggle { color: var(--shu); }
+  .nav-explore-caret { font-size: 11px; line-height: 1; transition: transform 0.2s ease; }
+  .nav-explore.open .nav-explore-caret { transform: rotate(180deg); }
+  .nav-explore-menu { display: none; position: absolute; top: calc(100% + 14px); right: 0; min-width: 290px; background: #fff; border: 1px solid var(--usu-hai); border-radius: 14px; box-shadow: 0 14px 36px rgba(0,0,0,0.12); padding: 8px; z-index: 60; }
+  .nav-explore.open .nav-explore-menu { display: block; }
+  .nav-explore-menu a { display: block; padding: 9px 12px; border-radius: 9px; text-decoration: none; color: var(--sumi); font-size: 14px; font-weight: 600; white-space: nowrap; }
+  .nav-explore-menu a span { display: block; color: var(--hai); font-size: 12.5px; font-weight: 400; margin-top: 1px; }
+  .nav-explore-menu a:hover { background: var(--kinari); color: var(--shu); }
+  .nav .btn-book { background: var(--cta); color: #fff; padding: 10px 20px; font-size: 14.5px; font-weight: 600; border-radius: 8px; text-decoration: none; white-space: nowrap; display: inline-block; }
+  .nav .btn-book:hover { background: var(--cta-dark); }
+  .nav-burger { display: none; width: 44px; height: 44px; flex-shrink: 0; background: none; border: none; cursor: pointer; padding: 0; flex-direction: column; align-items: center; justify-content: center; gap: 5px; }
+  .nav-burger span { display: block; width: 22px; height: 2px; background: var(--sumi); transition: transform 0.2s ease, opacity 0.2s ease; }
+  .nav-burger[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-burger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .nav-burger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .nav-menu { display: none; border-top: 1px solid var(--usu-hai); background: #fff; }
+  .nav-menu.open { display: block; }
+  .nav-menu > a { display: block; padding: 14px 24px; min-height: 44px; box-sizing: border-box; color: var(--sumi); text-decoration: none; font-size: 15.5px; font-weight: 600; border-bottom: 1px solid var(--usu-hai); }
+  .nav-menu > a:active { color: var(--shu); background: var(--kinari); }
+  .nav-menu-label { padding: 13px 24px 5px; font-size: 11.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--hai); border-bottom: 1px solid var(--usu-hai); }
+  @media (max-width: 900px) { .nav-links { display: none; } .nav-burger { display: flex; } }
+  @media (min-width: 901px) { .nav-menu { display: none !important; } }
 
   /* Container */
   .container {
@@ -314,19 +333,13 @@
   .gt-nudge a:hover { background: var(--cta-dark); }
 
   /* Footer */
-  footer {
-    border-top: 1px solid var(--usu-hai);
-    padding: 32px 24px; text-align: center;
-    background: #fff;
-  }
-  .footer-brand {
-    font-family: 'Noto Serif JP', serif;
-    font-size: 14px; font-weight: 700; margin-bottom: 8px;
-  }
-  .footer-links { display: flex; justify-content: center; gap: 20px; margin-bottom: 8px; }
-  .footer-links a { font-size: 13px; color: var(--hai); text-decoration: none; }
-  .footer-links a:hover { color: var(--sumi); }
-  .footer-copy { font-size: 12px; color: var(--hai); }
+  footer { border-top: 1px solid var(--usu-hai); padding: 44px 24px 56px; background: #fff; }
+  .foot-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; max-width: 1120px; margin: 0 auto; }
+  .foot-inner img { height: 30px; }
+  .foot-links { display: flex; gap: 22px; font-size: 13.5px; flex-wrap: wrap; }
+  .foot-links a { color: var(--hai); text-decoration: none; }
+  .foot-links a:hover { color: var(--shu); }
+  .foot-copy { font-size: 12.5px; color: var(--hai); }
 
   /* Mobile */
   @media (max-width: 600px) {
@@ -346,9 +359,48 @@
 </head>
 <body>
 
-<nav>
-  <a href="/" class="nav-logo"><img src="images/logo.png" alt="Fuji Soul Tours"></a>
-  <a href="/" class="nav-back">← Private Tour</a>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo-link" aria-label="Fuji Soul Tours — home"><img class="nav-logo" src="images/logo.png" alt="Fuji Soul Tours"></a>
+    <div class="nav-links">
+      <a href="/#route">Your Route</a>
+      <a href="/#day">The Tour</a>
+      <a href="/#weather">Cloudy Days</a>
+      <a href="/#addons">Add-ons</a>
+      <a href="/#reviews">Reviews</a>
+      <a href="/#faq">FAQ</a>
+      <div class="nav-explore">
+        <button type="button" class="nav-explore-toggle" id="navExploreToggle" aria-expanded="false" aria-haspopup="true" aria-controls="navExploreMenu">Explore<span class="nav-explore-caret" aria-hidden="true">▾</span></button>
+        <div class="nav-explore-menu" id="navExploreMenu" role="menu" aria-label="Explore pages">
+          <a href="/about" role="menuitem">About<span>The founder's story</span></a>
+          <a href="/soul-of-japan" role="menuitem">Soul of Japan<span>Why Mt. Fuji matters</span></a>
+          <a href="/mt-fuji-stopover" role="menuitem">Stopover Guide<span>Mt. Fuji between Tokyo &amp; Kyoto</span></a>
+          <a href="/mt-fuji-without-crowds" role="menuitem">Avoiding Crowds<span>The quiet south side</span></a>
+          <a href="/gallery" role="menuitem">Gallery<span>A tour day in pictures</span></a>
+          <a href="/fujinomiya-yakisoba" role="menuitem">Fujinomiya Yakisoba<span>The local soul food</span></a>
+        </div>
+      </div>
+    </div>
+    <a class="btn-book" href="/#book">Book Now</a>
+    <button class="nav-burger" id="navBurger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navMenu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-menu" id="navMenu">
+    <a href="/#route">Your Route</a>
+    <a href="/#day">The Tour</a>
+    <a href="/#weather">Cloudy Days</a>
+    <a href="/#addons">Add-ons</a>
+    <a href="/#reviews">Reviews</a>
+    <a href="/#faq">FAQ</a>
+    <div class="nav-menu-label">Explore</div>
+    <a href="/about">About</a>
+    <a href="/soul-of-japan">Soul of Japan</a>
+    <a href="/mt-fuji-stopover">Stopover Guide</a>
+    <a href="/mt-fuji-without-crowds">Avoiding Crowds</a>
+    <a href="/gallery">Gallery</a>
+    <a href="/fujinomiya-yakisoba">Fujinomiya Yakisoba</a>
+  </div>
 </nav>
 
 <div class="container">
@@ -467,14 +519,24 @@
 
 </div>
 
-<footer>
-  <div class="footer-brand">Fuji Soul Tours</div>
-  <div class="footer-links">
-    <a href="mailto:fujisoultours@gmail.com">Email</a>
-    <a href="https://www.instagram.com/fujisoultours/" target="_blank" rel="noopener">Instagram</a>
-    <a href="https://wa.me/819039554101" target="_blank" rel="noopener">WhatsApp</a>
+<footer data-screen-label="Footer">
+  <div class="wrap foot-inner">
+    <img src="images/logo.png" alt="Fuji Soul Tours">
+    <div class="foot-links">
+      <a href="/#book">Pricing</a>
+      <a href="https://buy.stripe.com/00w00i3Sc49qeP43rUdfG00" target="_blank" rel="noopener">Extend your tour (+$100/hr)</a>
+      <a href="/gallery">Gallery</a>
+      <a href="/about">About</a>
+      <a href="/soul-of-japan">Soul of Japan</a>
+      <a href="/mt-fuji-stopover">Stopover Guide</a>
+      <a href="/fujinomiya-yakisoba">Yakisoba</a>
+      <a href="/mt-fuji-without-crowds">Avoiding Crowds</a>
+      <a href="/group-tour">Group Tour</a>
+      <a href="mailto:fujisoultours@gmail.com">Cancel / change date</a>
+      <a href="/tokushoho.html">特定商取引法に基づく表記</a>
+    </div>
+    <p class="foot-copy">© 2026 Fuji Soul Tours</p>
   </div>
-  <div class="footer-copy">&copy; 2026 Fuji Soul Tours</div>
 </footer>
 
 <script>
@@ -620,6 +682,24 @@ function submitGroupWaitlist(e) {
     btn.disabled = false; btn.textContent = "Save My Spot — It's Free";
   });
 }
+</script>
+<script>
+(function(){
+  var burger=document.getElementById('navBurger'), menu=document.getElementById('navMenu');
+  if(burger&&menu){
+    var closeM=function(){menu.classList.remove('open');burger.setAttribute('aria-expanded','false');};
+    burger.addEventListener('click',function(){var o=menu.classList.toggle('open');burger.setAttribute('aria-expanded',String(o));});
+    menu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',closeM);});
+    document.addEventListener('click',function(e){if(menu.classList.contains('open')&&!e.target.closest('.nav'))closeM();});
+  }
+  var wrap=document.querySelector('.nav-explore'), toggle=document.getElementById('navExploreToggle');
+  if(wrap&&toggle){
+    var closeE=function(){wrap.classList.remove('open');toggle.setAttribute('aria-expanded','false');};
+    toggle.addEventListener('click',function(e){e.stopPropagation();var o=wrap.classList.toggle('open');toggle.setAttribute('aria-expanded',String(o));});
+    document.addEventListener('click',function(e){if(wrap.classList.contains('open')&&!e.target.closest('.nav-explore'))closeE();});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')closeE();});
+  }
+})();
 </script>
 </body>
 </html>

@@ -260,6 +260,23 @@ function lpInitNavMenu() {
   });
 }
 
+// ---- Desktop "Explore" dropdown in the header ----
+function lpInitExplore() {
+  const wrap = document.querySelector('.nav-explore');
+  const toggle = document.getElementById('navExploreToggle');
+  if (!wrap || !toggle) return;
+  const close = () => { wrap.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false'); };
+  toggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const open = wrap.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', String(open));
+  });
+  document.addEventListener('click', (e) => {
+    if (wrap.classList.contains('open') && !e.target.closest('.nav-explore')) close();
+  });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+}
+
 // ---- Mobile sticky booking bar: show after the hero, hide over #book ----
 function lpInitStickyBar() {
   const bar = document.getElementById('stickyBar');
@@ -589,6 +606,7 @@ function lpInitChatbot() {
 document.addEventListener('DOMContentLoaded', () => {
   lpInitPromo();
   lpInitNavMenu();
+  lpInitExplore();
   lpInitGallery();
   lpInitCurrency();
   lpInitHeroCard();
