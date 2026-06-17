@@ -5,7 +5,7 @@
 // sale prices all revert in one flag. (Also disable Bokun price modulator
 // 20867, update TikTok/Instagram bios, and remove kb/knowledge-base.json
 // pricing.promo — see the Notion checklist.)
-const PROMO = { active: true, rate: 0.85, campaign: 'promo15' };
+const PROMO = { active: false, rate: 0.85, campaign: 'promo15' };
 
 // ---- Prices (mirrors production PRICES; full = pre-promo list prices) ----
 const LP_PRICES = {
