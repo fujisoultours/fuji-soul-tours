@@ -345,16 +345,20 @@ html[data-hero="bookcard"] .hero-card { display: block; align-self: center; }
 .addons-how p { font-size: 15px; }
 .addons-how strong { color: var(--ai-deep); }
 @media (max-width: 880px) { .addons-grid { grid-template-columns: 1fr 1fr; } }
-/* mobile: horizontal thumbnail cards keep 8 add-ons shorter than the
-   old 6 stacked cards */
+/* mobile: keep cards stacked (image on top) in a 2-up grid so each photo
+   stays landscape and uncropped — the old row layout stretched the image
+   into a tall, cropped vertical strip */
 @media (max-width: 600px) {
-  .addons-grid { grid-template-columns: 1fr; gap: 10px; }
-  .addon { flex-direction: row; align-items: stretch; }
-  .addon img { width: 108px; min-width: 108px; height: auto; aspect-ratio: auto; }
-  .addon-body { padding: 12px 14px; }
-  .addon-body h3 { font-size: 15px; }
-  .addon-body p { font-size: 12px; }
+  .addons-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .addon-body { padding: 11px 12px 13px; }
+  .addon-body h3 { font-size: 14px; line-height: 1.25; }
+  .addon-body p { font-size: 11.5px; line-height: 1.45; }
   .addon-meta { margin-top: 6px; padding-top: 7px; }
+  .addon-meta .a-price { font-size: 11.5px; }
+  .addon-meta .a-dur { font-size: 11px; }
+}
+@media (max-width: 360px) {
+  .addons-grid { grid-template-columns: 1fr; }
 }
 
 /* ============ REVIEWS ============ */
