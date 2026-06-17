@@ -346,9 +346,9 @@ html[data-hero="bookcard"] .hero-card { display: block; align-self: center; }
 .addons-how strong { color: var(--ai-deep); }
 @media (max-width: 880px) { .addons-grid { grid-template-columns: 1fr 1fr; } }
 /* mobile: horizontal cards (image left, text right), one per row — keeps the
-   section short instead of a very tall stack. The image keeps its NATURAL
-   shape (aspect-ratio:auto + object-fit:contain) and align-self:flex-start
-   stops it being stretched into a cropped vertical strip. */
+   cards wide instead of a tall portrait stack. The image keeps its NATURAL
+   shape (aspect-ratio:auto + object-fit:contain) and align-self:center (not
+   stretch) stops it being stretched into a cropped vertical strip. */
 @media (max-width: 600px) {
   .addons-grid { grid-template-columns: 1fr; gap: 12px; }
   .addon { flex-direction: row; align-items: flex-start; }
