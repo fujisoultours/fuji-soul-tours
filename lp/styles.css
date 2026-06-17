@@ -345,20 +345,21 @@ html[data-hero="bookcard"] .hero-card { display: block; align-self: center; }
 .addons-how p { font-size: 15px; }
 .addons-how strong { color: var(--ai-deep); }
 @media (max-width: 880px) { .addons-grid { grid-template-columns: 1fr 1fr; } }
-/* mobile: keep cards stacked (image on top) in a 2-up grid so each photo
-   stays landscape and uncropped — the old row layout stretched the image
-   into a tall, cropped vertical strip */
+/* mobile: horizontal cards (image left, text right), one per row — keeps the
+   section short instead of a very tall stack. The image keeps its NATURAL
+   shape (aspect-ratio:auto + object-fit:contain) and align-self:flex-start
+   stops it being stretched into a cropped vertical strip. */
 @media (max-width: 600px) {
-  .addons-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
-  .addon-body { padding: 11px 12px 13px; }
-  .addon-body h3 { font-size: 14px; line-height: 1.25; }
-  .addon-body p { font-size: 11.5px; line-height: 1.45; }
-  .addon-meta { margin-top: 6px; padding-top: 7px; }
-  .addon-meta .a-price { font-size: 11.5px; }
-  .addon-meta .a-dur { font-size: 11px; }
-}
-@media (max-width: 360px) {
-  .addons-grid { grid-template-columns: 1fr; }
+  .addons-grid { grid-template-columns: 1fr; gap: 12px; }
+  .addon { flex-direction: row; align-items: flex-start; }
+  .addon img {
+    width: 38%; min-width: 116px; max-width: 156px; flex-shrink: 0;
+    height: auto; aspect-ratio: auto; object-fit: contain; align-self: center;
+  }
+  .addon-body { padding: 12px 14px; }
+  .addon-body h3 { font-size: 15px; line-height: 1.25; }
+  .addon-body p { font-size: 12px; line-height: 1.45; }
+  .addon-meta { margin-top: 8px; padding-top: 8px; }
 }
 
 /* ============ REVIEWS ============ */
