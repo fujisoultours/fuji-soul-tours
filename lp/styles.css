@@ -368,6 +368,7 @@ html[data-hero="bookcard"] .hero-card { display: block; align-self: center; }
    guest carousel. Scoped to .addons-carousel so /experiences .addons-grid is
    untouched. */
 .addons-carousel-wrap { position: relative; margin-top: 44px; }
+.addons-seeall { margin-top: 12px; }
 .addons-carousel {
   display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch; scrollbar-width: none; scroll-behavior: smooth;
