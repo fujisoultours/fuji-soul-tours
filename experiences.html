@@ -43,7 +43,7 @@
   "mainEntity": {
     "@type": "ItemList",
     "itemListElement": [
-      {"@type": "ListItem", "position": 1, "name": "Hidden Mt. Fuji viewpoints"},
+      {"@type": "ListItem", "position": 1, "name": "Hidden Mt. Fuji viewpoint"},
       {"@type": "ListItem", "position": 2, "name": "Lakeside Double-Fuji reflection"},
       {"@type": "ListItem", "position": 3, "name": "Fujisan Hongu Sengen Shrine"},
       {"@type": "ListItem", "position": 4, "name": "Award-winning tea house"},
@@ -52,7 +52,9 @@
       {"@type": "ListItem", "position": 7, "name": "Mt. Fuji World Heritage Centre"},
       {"@type": "ListItem", "position": 8, "name": "Prestige golf-club Fuji lookout"},
       {"@type": "ListItem", "position": 9, "name": "Asagiri plateau Fuji view"},
-      {"@type": "ListItem", "position": 10, "name": "Shiraito Falls"}
+      {"@type": "ListItem", "position": 10, "name": "Shiraito Falls"},
+      {"@type": "ListItem", "position": 11, "name": "Local temple where monks train"},
+      {"@type": "ListItem", "position": 12, "name": "S.gelato locally sourced ice cream"}
     ]
   }
 }
@@ -78,6 +80,14 @@
     align-self: flex-start; background: var(--ai-tint); color: var(--ai-deep);
     font-size: 10.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
     padding: 3px 9px; border-radius: 999px; margin-bottom: 3px;
+  }
+
+  /* Equal-height meta footers so the divider line sits at the same level across
+     every experience card. The decorative-sushi card's two-part price wraps to a
+     second line; reserving that height keeps all dividers aligned. Only needed in
+     the 4-column layout — at ≤880px the price fits one line / cards are full-width. */
+  @media (min-width: 881px) {
+    .exp-grid .addon-meta { min-height: 56px; align-content: start; }
   }
 
   /* ===== Model course cards ===== */
@@ -190,8 +200,8 @@
         <img src="images/views/07_park_bench.jpg" alt="Couple on a park bench with Mt. Fuji rising behind, a quiet local viewpoint" loading="lazy">
         <div class="addon-body">
           <span class="addon-tag">Viewpoint</span>
-          <h3>Hidden Mt. Fuji viewpoints</h3>
-          <p>Seven secret local spots — a bridge, a plateau with grazing cows, a lakeside mirror. We pick the clearest the morning of your tour.</p>
+          <h3>Hidden Mt. Fuji viewpoint</h3>
+          <p>A quiet local park with sweeping, panoramic views of Mt. Fuji — and almost no tourists.</p>
           <div class="addon-meta"><span class="a-dur">Chosen on the day</span></div>
         </div>
       </article>
@@ -223,12 +233,21 @@
         </div>
       </article>
       <article class="addon">
-        <img src="images/views/08_temple_gate.jpg" alt="The torii gate of Fujisan Hongu Sengen Shrine with greenery behind" loading="lazy">
+        <img src="images/views/19_sengen_taisha.jpg" alt="The vermilion two-storey gate of Fujisan Hongu Sengen Shrine" loading="lazy">
         <div class="addon-body">
           <span class="addon-tag">Shrine</span>
           <h3>Fujisan Hongu Sengen Shrine</h3>
           <p>The head shrine of some 1,300 Sengen shrines, where the climb up Mt. Fuji traditionally began. Your guide explains why it matters.</p>
           <div class="addon-meta"><span class="a-dur">On every route</span></div>
+        </div>
+      </article>
+      <article class="addon">
+        <img src="images/views/08_temple_gate.jpg" alt="The great vermilion gate of a local Buddhist temple with Mt. Fuji rising behind" loading="lazy">
+        <div class="addon-body">
+          <span class="addon-tag">Temple</span>
+          <h3>Local temple where monks train</h3>
+          <p>A vast Buddhist temple where monks still train, its great vermilion gate framed by Mt. Fuji. Your guide shares its story.</p>
+          <div class="addon-meta"><span class="a-dur">Local landmark</span></div>
         </div>
       </article>
       <article class="addon">
@@ -250,6 +269,15 @@
         </div>
       </article>
       <article class="addon">
+        <img src="images/culture/11_gelato.png" alt="Matcha gelato and a matcha drink from S.gelato, a local Fujinomiya gelato shop" loading="lazy">
+        <div class="addon-body">
+          <span class="addon-tag">Sweets</span>
+          <h3>S.gelato</h3>
+          <p>Locally sourced ice cream, with mochi and matcha drinks too — a sweet local stop.</p>
+          <div class="addon-meta"><span class="a-dur">Sweet stop</span></div>
+        </div>
+      </article>
+      <article class="addon">
         <img src="images/culture/14_brewery_tour.jpg" alt="Inside a 190-year-old sake brewery with wooden barrels and brewing tanks" loading="lazy">
         <div class="addon-body">
           <span class="addon-tag">Brewery</span>
@@ -261,7 +289,7 @@
       <article class="addon">
         <img src="images/culture/03_heritage.png" alt="The inverted-cone wooden architecture of the Mt. Fuji World Heritage Centre" loading="lazy">
         <div class="addon-body">
-          <span class="addon-tag">Indoor</span>
+          <span class="addon-tag">Mt. Fuji Exhibits</span>
           <h3>Mt. Fuji World Heritage Centre</h3>
           <p>An inverted Fuji of wood and water; the mountain's whole story told indoors. Our go-to when the weather turns.</p>
           <div class="addon-meta"><span class="a-dur">Rain-friendly</span></div>
@@ -279,12 +307,12 @@
     </div>
 
     <p class="grid-label">Hands-on experiences <span class="gl-note">— add any to your booking</span></p>
-    <div class="addons-grid">
+    <div class="addons-grid exp-grid">
       <article class="addon">
         <img src="images/culture/13_wagashi.jpg" alt="Shaping seasonal wagashi sweets by hand" loading="lazy">
         <div class="addon-body">
           <h3>Wagashi sweets workshop</h3>
-          <p>Shape seasonal Japanese sweets from white bean paste — a 400-year-old art refined alongside the tea ceremony.</p>
+          <p>Shape seasonal Japanese sweets from white bean paste — nerikiri, a craft born in Edo-period Kyoto two to three centuries ago and refined alongside the tea ceremony.</p>
           <div class="addon-meta"><span class="a-price">&yen;3,000 / person</span><span class="a-dur">60 min</span></div>
         </div>
       </article>
@@ -301,7 +329,7 @@
         <div class="addon-body">
           <h3>Shinto purification prayer</h3>
           <p>A traditional oharai ceremony performed by shrine priests inside the main hall — open to everyone.</p>
-          <div class="addon-meta"><span class="a-price">&yen;5,000–6,000 / person</span><span class="a-dur">45 min</span></div>
+          <div class="addon-meta"><span class="a-price">&yen;5,000–6,000 / person</span><span class="a-dur">total 60 min</span></div>
         </div>
       </article>
       <article class="addon">
@@ -317,7 +345,7 @@
         <div class="addon-body">
           <h3>Kimono at the shrine</h3>
           <p>Dress in kimono with professional help and walk the principal Fuji shrine — the scenery does the rest.</p>
-          <div class="addon-meta"><span class="a-price">&yen;3,500 / person</span><span class="a-dur">20–30 min</span></div>
+          <div class="addon-meta"><span class="a-price">&yen;3,500 / person</span><span class="a-dur">total 60 min</span></div>
         </div>
       </article>
       <article class="addon">
@@ -391,7 +419,7 @@
       <article class="mc-card">
         <div class="mc-photo">
           <img src="images/views/07_park_bench.jpg" alt="A couple taking in a hidden Mt. Fuji viewpoint from a quiet park bench" loading="lazy">
-          <span class="mc-badge">3 stops · about 3 hrs</span>
+          <span class="mc-badge">3 stops · about 4 hrs</span>
         </div>
         <div class="mc-body">
           <p class="mc-kicker">Course 02</p>
