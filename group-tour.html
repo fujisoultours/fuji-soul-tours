@@ -201,21 +201,37 @@
   .gt-incl .txt { color: var(--sumi); }
   .gt-incl .txt .muted { color: var(--hai); }
 
-  /* Itinerary / model route */
-  .gt-route { list-style: none; padding: 0; }
-  .gt-route li {
-    display: flex; gap: 14px; align-items: flex-start;
-    padding-bottom: 16px; margin-bottom: 16px;
-    border-bottom: 1px dashed var(--usu-hai);
+  /* Itinerary — card timeline */
+  .gt-itin { display: flex; flex-direction: column; }
+  .gt-stop { display: grid; grid-template-columns: 52px 1fr; gap: 10px; }
+  .gt-stop-time { text-align: right; padding-top: 15px; white-space: nowrap; }
+  .gt-stop-time .arr { display: block; font-size: 14px; font-weight: 700; color: var(--shu); }
+  .gt-stop-time .dep { display: block; font-size: 12px; color: var(--hai); margin-top: 6px; }
+  .gt-stop-card {
+    background: #fff; border: 1px solid var(--usu-hai); border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    padding: 13px 15px; display: flex; gap: 11px; align-items: flex-start;
   }
-  .gt-route li:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
-  .gt-route .rt-time {
-    flex-shrink: 0; width: 50px; font-size: 13px; font-weight: 700;
-    color: var(--shu); padding-top: 1px;
+  .gt-stop-icon { font-size: 21px; line-height: 1.25; flex-shrink: 0; }
+  .gt-stop-main { flex: 1; min-width: 0; }
+  .gt-stop-main .en { font-size: 15px; font-weight: 700; color: var(--sumi); }
+  .gt-stop-main .ja { font-size: 12.5px; color: var(--hai); margin-top: 1px; }
+  .gt-stop-main .stay { font-size: 12.5px; color: var(--hai); margin-top: 7px; }
+  .gt-stop-main .fee { font-size: 13px; color: var(--sumi); margin-top: 5px; }
+  .gt-stop-main .fee::before { content: '\1F4B4  '; }
+  .gt-stop-main .desc { font-size: 13px; color: var(--hai); margin-top: 5px; line-height: 1.55; }
+  .gt-stop.endpoint .gt-stop-card { background: var(--kinari); border-color: transparent; box-shadow: none; }
+  .gt-move { display: grid; grid-template-columns: 52px 1fr; gap: 10px; }
+  .gt-move-label {
+    margin-left: 6px; padding: 7px 0 7px 18px;
+    border-left: 2px solid var(--usu-hai);
+    font-size: 12.5px; color: var(--hai);
   }
-  .gt-route .rt-body strong { display: block; font-size: 15px; color: var(--sumi); }
-  .gt-route .rt-body span { font-size: 13px; color: var(--hai); }
-  .gt-route-note { font-size: 12.5px; color: var(--hai); margin-top: 18px; font-style: italic; }
+  .gt-itin-note {
+    margin-top: 18px; padding: 14px 16px;
+    background: var(--kinari); border-radius: 10px;
+    font-size: 13px; color: var(--sumi); line-height: 1.6;
+  }
 
   /* How it works */
   .gt-steps { list-style: none; padding: 0; }
@@ -403,6 +419,9 @@
     .gt-guide { padding: 14px; }
     .gt-guide img { width: 44px; height: 44px; }
     .gt-price .amt { font-size: 22px; }
+    .gt-stop, .gt-move { grid-template-columns: 44px 1fr; gap: 9px; }
+    .gt-stop-time .arr { font-size: 13px; }
+    .gt-stop-card { padding: 12px 13px; }
     nav { padding: 12px 16px; }
     .nav-logo img { height: 36px; }
   }
@@ -516,38 +535,99 @@
 
   <div class="gt-block gt-itinerary">
     <h2>Your day — a model route</h2>
-    <p class="lede">Six hours by microbus, shaped by a Fuji native. Times are approximate.</p>
-    <ul class="gt-route">
-      <li>
-        <span class="rt-time">9:00</span>
-        <span class="rt-body"><strong>Meet at Shin-Fuji Station</strong><span>Your guide is waiting at the gate. Hop in the microbus.</span></span>
-      </li>
-      <li>
-        <span class="rt-time">9:40</span>
-        <span class="rt-body"><strong>Lake Tanuki</strong><span>Mirror-still water with Mt. Fuji reflected across it.</span></span>
-      </li>
-      <li>
-        <span class="rt-time">10:40</span>
-        <span class="rt-body"><strong>Shiraito Falls</strong><span>A wide curtain of spring-fed falls — a World Heritage site.</span></span>
-      </li>
-      <li>
-        <span class="rt-time">11:40</span>
-        <span class="rt-body"><strong>Fujisan Hongu Sengen Taisha</strong><span>The head shrine of Mt. Fuji worship.</span></span>
-      </li>
-      <li>
-        <span class="rt-time">12:30</span>
-        <span class="rt-body"><strong>Fujinomiya yakisoba lunch</strong><span>Award-winning local soul food (pay on site).</span></span>
-      </li>
-      <li>
-        <span class="rt-time">13:40</span>
-        <span class="rt-body"><strong>Fuji Kobayashi-en</strong><span>Award-winning green tea at a historic Fujinomiya tea house.</span></span>
-      </li>
-      <li>
-        <span class="rt-time">15:00</span>
-        <span class="rt-body"><strong>Back at Shin-Fuji Station</strong><span>Time for souvenirs before your train.</span></span>
-      </li>
-    </ul>
-    <p class="gt-route-note">Exact timings are shared on confirmation. Stops may shift with weather and traffic.</p>
+    <p class="lede">A shared 6-hour loop by microbus, shaped by a Fuji native. Times are approximate.</p>
+    <div class="gt-itin">
+
+      <div class="gt-stop endpoint">
+        <div class="gt-stop-time"><span class="arr">9:00</span></div>
+        <div class="gt-stop-card">
+          <span class="gt-stop-icon">🚉</span>
+          <div class="gt-stop-main">
+            <div class="en">Shin-Fuji Station</div>
+            <div class="desc">Tour start · pick-up. Your guide meets you at the gate — hop in the microbus.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gt-move"><div></div><div class="gt-move-label">🚗 Drive 60 min</div></div>
+
+      <div class="gt-stop">
+        <div class="gt-stop-time"><span class="arr">10:00</span><span class="dep">10:55</span></div>
+        <div class="gt-stop-card">
+          <span class="gt-stop-icon">🏞️</span>
+          <div class="gt-stop-main">
+            <div class="en">Lake Tanuki Viewing Spot</div>
+            <div class="ja">田貫湖</div>
+            <div class="stay">Stay 55 min</div>
+            <div class="fee">Free viewing · cycling 300 JPY/30 min or 500 JPY/60 min (cash only)</div>
+            <div class="desc">Mirror-still water with Mt. Fuji reflected across it.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gt-move"><div></div><div class="gt-move-label">🚗 Drive 15 min</div></div>
+
+      <div class="gt-stop">
+        <div class="gt-stop-time"><span class="arr">11:10</span><span class="dep">12:00</span></div>
+        <div class="gt-stop-card">
+          <span class="gt-stop-icon">💧</span>
+          <div class="gt-stop-main">
+            <div class="en">Shiraito Falls</div>
+            <div class="ja">白糸の滝 — “Falls of White Threads”</div>
+            <div class="stay">Stay 50 min</div>
+            <div class="fee">Free</div>
+            <div class="desc">A wide curtain of spring-fed falls — a UNESCO World Heritage site.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gt-move"><div></div><div class="gt-move-label">🚗 Drive 30 min</div></div>
+
+      <div class="gt-stop">
+        <div class="gt-stop-time"><span class="arr">12:30</span><span class="dep">13:15</span></div>
+        <div class="gt-stop-card">
+          <span class="gt-stop-icon">⛩️</span>
+          <div class="gt-stop-main">
+            <div class="en">Mt. Fuji Principal Shrine</div>
+            <div class="ja">富士山本宮浅間大社</div>
+            <div class="stay">Stay 45 min</div>
+            <div class="fee">Free</div>
+            <div class="desc">The principal shrine of Mt. Fuji worship.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gt-move"><div></div><div class="gt-move-label">🚶 Walk 10 min</div></div>
+
+      <div class="gt-stop">
+        <div class="gt-stop-time"><span class="arr">13:25</span><span class="dep">14:15</span></div>
+        <div class="gt-stop-card">
+          <span class="gt-stop-icon">🍜</span>
+          <div class="gt-stop-main">
+            <div class="en">Award-winning Yakisoba Lunch</div>
+            <div class="ja">富士宮やきそば（アンテナショップ）</div>
+            <div class="stay">Stay 50 min</div>
+            <div class="fee">¥900 / person</div>
+            <div class="desc">Award-winning local soul food — Fujinomiya yakisoba (stir-fried noodles).</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gt-move"><div></div><div class="gt-move-label">🚗 Drive 45 min</div></div>
+
+      <div class="gt-stop endpoint">
+        <div class="gt-stop-time"><span class="arr">15:00</span></div>
+        <div class="gt-stop-card">
+          <span class="gt-stop-icon">🚉</span>
+          <div class="gt-stop-main">
+            <div class="en">Shin-Fuji Station</div>
+            <div class="desc">Tour ends · total 6 hours. Time for souvenirs before your train.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="gt-itin-note">💴 Please bring some cash for lunch, tea and small fees. Let us know in advance about any dietary restrictions or mobility needs.</div>
   </div>
 
   <div class="gt-block gt-how">
