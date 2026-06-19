@@ -243,6 +243,17 @@ function scrollGuest(btn, dir) {
 }
 window.scrollGuest = scrollGuest;
 
+// ---- Add-ons carousel (#addons) ----
+function scrollAddons(btn, dir) {
+  const wrap = btn.closest('.addons-carousel-wrap');
+  const car = wrap && wrap.querySelector('.addons-carousel');
+  if (!car) return;
+  const card = car.querySelector('.addon');
+  if (!card) return;
+  car.scrollLeft += dir * (card.offsetWidth + 16) * 2;
+}
+window.scrollAddons = scrollAddons;
+
 // ---- Mobile nav: hamburger dropdown ----
 function lpInitNavMenu() {
   const burger = document.getElementById('navBurger');
