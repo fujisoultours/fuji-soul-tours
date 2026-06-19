@@ -17,7 +17,7 @@
 <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
 <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<meta name="description" content="Join our Small Group Mt. Fuji Tour — 6 hours with a local-born guide. Same hidden spots, shared adventure, more affordable. Sign up for the waitlist.">
+<meta name="description" content="Small-group Mt. Fuji tour every Wednesday from October 2026 — 6 hours with a local-born guide. Lake Tanuki, Shiraito Falls, Sengen Shrine, Fujinomiya yakisoba. From $98 per person (October pilot $68). Free, no-commitment waitlist.">
 
 <!-- Canonical -->
 <link rel="canonical" href="https://www.fujisoultours.com/group-tour.html">
@@ -25,16 +25,16 @@
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Fuji Soul Tours">
-<meta property="og:title" content="Small Group Mt. Fuji Tour — Fuji Soul Tours">
-<meta property="og:description" content="Join our Small Group Mt. Fuji Tour — 6 hours with a local-born guide. Same hidden spots, shared adventure, more affordable.">
+<meta property="og:title" content="Small Group Mt. Fuji Tour — Every Wednesday from Oct 2026">
+<meta property="og:description" content="A shared 6-hour Mt. Fuji tour with a local-born guide. Lake Tanuki, Shiraito Falls, Sengen Shrine, Fujinomiya yakisoba. From $98 per person (October pilot $68).">
 <meta property="og:url" content="https://www.fujisoultours.com/group-tour.html">
 <meta property="og:image" content="https://www.fujisoultours.com/images/hero.jpg">
 <meta property="og:locale" content="en_US">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Small Group Mt. Fuji Tour — Fuji Soul Tours">
-<meta name="twitter:description" content="6 hours with a local-born guide. Same hidden spots, shared adventure, more affordable.">
+<meta name="twitter:title" content="Small Group Mt. Fuji Tour — Every Wednesday from Oct 2026">
+<meta name="twitter:description" content="A shared 6-hour Mt. Fuji tour with a local-born guide. From $98 per person (October pilot $68).">
 <meta name="twitter:image" content="https://www.fujisoultours.com/images/hero.jpg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -160,17 +160,64 @@
   .gt-card .val { font-size: 18px; font-weight: 700; color: var(--sumi); }
   .gt-card .label { font-size: 12px; color: var(--hai); margin-top: 3px; }
 
-  /* How it works */
-  .gt-how {
+  /* Section shell shared by pricing / itinerary / how */
+  .gt-block {
     background: #fff; border-radius: 14px;
     padding: 28px; margin-bottom: 32px;
     border: 1px solid var(--usu-hai);
     box-shadow: 0 2px 8px rgba(0,0,0,0.04);
   }
-  .gt-how h2 {
+  .gt-block > h2 {
     font-size: 18px; font-weight: 700; color: var(--sumi);
-    margin-bottom: 20px;
+    margin-bottom: 6px;
   }
+  .gt-block > .lede {
+    font-size: 13px; color: var(--hai); margin-bottom: 20px;
+  }
+
+  /* Pricing */
+  .gt-price-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 12px; margin: 16px 0;
+  }
+  .gt-price {
+    background: var(--kinari); border-radius: 12px;
+    padding: 18px 14px; text-align: center;
+  }
+  .gt-price .who { font-size: 13px; color: var(--hai); margin-bottom: 4px; }
+  .gt-price .amt { font-size: 26px; font-weight: 700; color: var(--sumi); line-height: 1.1; }
+  .gt-price .per { font-size: 12px; color: var(--hai); margin-top: 2px; }
+  .gt-pilot {
+    background: #FFF4E5; border: 1px solid #F0C674;
+    border-radius: 12px; padding: 14px 16px;
+    font-size: 14px; color: #8A5A00; line-height: 1.6;
+    margin-bottom: 18px;
+  }
+  .gt-pilot strong { color: #6E4600; }
+  .gt-incl { font-size: 14px; line-height: 1.8; }
+  .gt-incl div { display: flex; gap: 8px; align-items: flex-start; }
+  .gt-incl .yes { color: var(--green); font-weight: 700; flex-shrink: 0; }
+  .gt-incl .no { color: var(--cta); font-weight: 700; flex-shrink: 0; }
+  .gt-incl .txt { color: var(--sumi); }
+  .gt-incl .txt .muted { color: var(--hai); }
+
+  /* Itinerary / model route */
+  .gt-route { list-style: none; padding: 0; }
+  .gt-route li {
+    display: flex; gap: 14px; align-items: flex-start;
+    padding-bottom: 16px; margin-bottom: 16px;
+    border-bottom: 1px dashed var(--usu-hai);
+  }
+  .gt-route li:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+  .gt-route .rt-time {
+    flex-shrink: 0; width: 50px; font-size: 13px; font-weight: 700;
+    color: var(--shu); padding-top: 1px;
+  }
+  .gt-route .rt-body strong { display: block; font-size: 15px; color: var(--sumi); }
+  .gt-route .rt-body span { font-size: 13px; color: var(--hai); }
+  .gt-route-note { font-size: 12.5px; color: var(--hai); margin-top: 18px; font-style: italic; }
+
+  /* How it works */
   .gt-steps { list-style: none; padding: 0; }
   .gt-steps li {
     display: flex; gap: 14px; align-items: flex-start;
@@ -200,16 +247,17 @@
   .gt-form-box .sub {
     font-size: 14px; color: var(--hai); margin-bottom: 20px;
   }
-  .gt-counter {
-    text-align: center; font-size: 14px; color: var(--shu);
-    font-weight: 600; margin-bottom: 18px;
-  }
   .gt-week-counts {
     margin-bottom: 28px;
   }
   .gt-week-counts > h3 {
     font-size: 16px; font-weight: 700; color: var(--sumi);
     margin-bottom: 14px;
+  }
+  .gt-counts-fallback {
+    font-size: 14px; color: var(--hai);
+    background: #fff; border: 1px solid var(--usu-hai);
+    border-radius: 10px; padding: 14px 16px; line-height: 1.6;
   }
   .month-group { margin-bottom: 8px; }
   .month-header {
@@ -223,7 +271,7 @@
   .month-group.collapsed .toggle { transform: rotate(-90deg); }
   .month-rows {
     overflow: hidden; transition: max-height 0.3s ease, opacity 0.2s;
-    max-height: 600px; opacity: 1;
+    max-height: 800px; opacity: 1;
   }
   .month-group.collapsed .month-rows {
     max-height: 0; opacity: 0;
@@ -235,7 +283,8 @@
     font-size: 14px; transition: border-color 0.2s;
   }
   .week-row:hover { border-color: var(--shu); }
-  .week-label { color: var(--sumi); font-weight: 500; min-width: 90px; }
+  .week-label { color: var(--sumi); font-weight: 500; min-width: 86px; display: flex; flex-direction: column; }
+  .week-label .pilot-tag { font-size: 10px; font-weight: 700; color: #8A5A00; letter-spacing: .04em; }
   .week-bar-wrap {
     flex: 1; margin: 0 12px; height: 6px;
     background: #E8F0F5; border-radius: 3px; overflow: hidden;
@@ -247,7 +296,7 @@
   .week-bar.under { background: #E74C3C; }
   .week-bar.ready { background: #27AE60; }
   .week-count {
-    font-size: 13px; color: var(--hai); white-space: nowrap; min-width: 60px; text-align: right;
+    font-size: 13px; color: var(--hai); white-space: nowrap; min-width: 84px; text-align: right;
   }
   .week-count .num { font-weight: 700; }
   .week-count .num.under { color: #E74C3C; }
@@ -257,6 +306,7 @@
     color: var(--sumi); margin-bottom: 5px; margin-top: 14px;
   }
   .gt-form-box label:first-of-type { margin-top: 0; }
+  .gt-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
   .gt-form-box input,
   .gt-form-box select {
     width: 100%; padding: 12px 14px;
@@ -308,7 +358,7 @@
     max-height: 0; overflow: hidden;
     transition: max-height 0.3s ease;
   }
-  .gt-faq-item.open .gt-faq-a { max-height: 400px; }
+  .gt-faq-item.open .gt-faq-a { max-height: 500px; }
   .gt-faq-a p {
     padding: 0 0 18px; font-size: 14px;
     color: var(--hai); line-height: 1.7;
@@ -348,10 +398,11 @@
     .gt-card { padding: 16px 10px; }
     .gt-card .val { font-size: 15px; }
     .gt-card .label { font-size: 11px; }
+    .gt-block { padding: 22px 18px; }
     .gt-form-box { padding: 22px 18px; }
-    .gt-how { padding: 22px 18px; }
     .gt-guide { padding: 14px; }
     .gt-guide img { width: 44px; height: 44px; }
+    .gt-price .amt { font-size: 22px; }
     nav { padding: 12px 16px; }
     .nav-logo img { height: 36px; }
   }
@@ -372,7 +423,6 @@
       <div class="nav-explore">
         <button type="button" class="nav-explore-toggle" id="navExploreToggle" aria-expanded="false" aria-haspopup="true" aria-controls="navExploreMenu">Explore<span class="nav-explore-caret" aria-hidden="true">▾</span></button>
         <div class="nav-explore-menu" id="navExploreMenu" role="menu" aria-label="Explore pages">
-          <a href="/experiences" role="menuitem">Destinations &amp; Experiences<span>Every place, experience &amp; sample course</span></a>
           <a href="/about" role="menuitem">About<span>The founder's story</span></a>
           <a href="/soul-of-japan" role="menuitem">Soul of Japan<span>Why Mt. Fuji matters</span></a>
           <a href="/mt-fuji-stopover" role="menuitem">Stopover Guide<span>Mt. Fuji between Tokyo &amp; Kyoto</span></a>
@@ -382,7 +432,7 @@
         </div>
       </div>
     </div>
-    <a class="btn-book" href="/#book">Book Now</a>
+    <a class="btn-book" href="#gt-form-box">Join Waitlist</a>
     <button class="nav-burger" id="navBurger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navMenu">
       <span></span><span></span><span></span>
     </button>
@@ -395,7 +445,6 @@
     <a href="/#reviews">Reviews</a>
     <a href="/#faq">FAQ</a>
     <div class="nav-menu-label">Explore</div>
-    <a href="/experiences">Destinations &amp; Experiences</a>
     <a href="/about">About</a>
     <a href="/soul-of-japan">Soul of Japan</a>
     <a href="/mt-fuji-stopover">Stopover Guide</a>
@@ -408,114 +457,204 @@
 <div class="container">
 
   <div class="gt-header">
-    <span class="gt-badge">New — October 2026</span>
+    <span class="gt-badge">New — Every Wednesday from Oct 2026</span>
     <h1>Small Group Tour</h1>
-    <p>Same expert guide. Same hidden spots. A shared adventure with fellow travelers.</p>
+    <p>Same local-born guide, same hidden Mt. Fuji — a shared 6-hour adventure, more affordable per person.</p>
   </div>
 
   <div class="gt-guide">
-    <img src="images/guide.jpg" alt="Guide Takumu" loading="lazy">
-    <p><strong>Led by Fuji Soul Tours guides</strong> — five-star private tours</p>
+    <img src="images/guide.jpg" alt="Fuji Soul Tours guide" loading="lazy">
+    <p><strong>Led by Fuji Soul Tours guides</strong> — our five-star private-tour team, now in a small group by chartered microbus.</p>
   </div>
 
   <div class="gt-details">
     <div class="gt-card">
       <div class="icon">⏱</div>
       <div class="val">6 Hours</div>
-      <div class="label">Duration</div>
+      <div class="label">9:00–15:00</div>
+    </div>
+    <div class="gt-card">
+      <div class="icon">📅</div>
+      <div class="val">Wednesdays</div>
+      <div class="label">Weekly from Oct 2026</div>
     </div>
     <div class="gt-card">
       <div class="icon">👥</div>
-      <div class="val">Up to 20</div>
-      <div class="label">Guests per tour</div>
-    </div>
-    <div class="gt-card">
-      <div class="icon">💰</div>
-      <div class="val">Coming Soon</div>
-      <div class="label">Early-bird pricing for waitlist</div>
+      <div class="val">Up to 15</div>
+      <div class="label">Runs at 10 adults</div>
     </div>
     <div class="gt-card">
       <div class="icon">📍</div>
       <div class="val">Shin-Fuji</div>
-      <div class="label">Meeting point</div>
+      <div class="label">Meet &amp; finish</div>
     </div>
   </div>
 
-  <div class="gt-how">
+  <div class="gt-block gt-pricing">
+    <h2>Pricing</h2>
+    <p class="lede">One simple price per person — no hidden group surcharges.</p>
+    <div class="gt-price-grid">
+      <div class="gt-price">
+        <div class="who">Adult</div>
+        <div class="amt">$98</div>
+        <div class="per">per person</div>
+      </div>
+      <div class="gt-price">
+        <div class="who">Child (6–12)</div>
+        <div class="amt">$49</div>
+        <div class="per">per person</div>
+      </div>
+    </div>
+    <div class="gt-pilot">
+      🎉 <strong>October pilot — 30% off.</strong> Every Wednesday in October 2026: Adult <strong>$68</strong> · Child <strong>$34</strong>. Standard pricing from November.
+    </div>
+    <div class="gt-incl">
+      <div><span class="yes">✓</span><span class="txt"><strong>Included:</strong> English-speaking local-born guide and private chartered microbus transport (operated with our local partner).</span></div>
+      <div><span class="no">✕</span><span class="txt"><strong>Not included:</strong> <span class="muted">lunch, tea, entrance fees and other on-site costs — pay as you go on the day.</span></span></div>
+    </div>
+  </div>
+
+  <div class="gt-block gt-itinerary">
+    <h2>Your day — a model route</h2>
+    <p class="lede">Six hours by microbus, shaped by a Fuji native. Times are approximate.</p>
+    <ul class="gt-route">
+      <li>
+        <span class="rt-time">9:00</span>
+        <span class="rt-body"><strong>Meet at Shin-Fuji Station</strong><span>Your guide is waiting at the gate. Hop in the microbus.</span></span>
+      </li>
+      <li>
+        <span class="rt-time">9:40</span>
+        <span class="rt-body"><strong>Lake Tanuki</strong><span>Mirror-still water with Mt. Fuji reflected across it.</span></span>
+      </li>
+      <li>
+        <span class="rt-time">10:40</span>
+        <span class="rt-body"><strong>Shiraito Falls</strong><span>A wide curtain of spring-fed falls — a World Heritage site.</span></span>
+      </li>
+      <li>
+        <span class="rt-time">11:40</span>
+        <span class="rt-body"><strong>Fujisan Hongu Sengen Taisha</strong><span>The head shrine of Mt. Fuji worship.</span></span>
+      </li>
+      <li>
+        <span class="rt-time">12:30</span>
+        <span class="rt-body"><strong>Fujinomiya yakisoba lunch</strong><span>Award-winning local soul food (pay on site).</span></span>
+      </li>
+      <li>
+        <span class="rt-time">13:40</span>
+        <span class="rt-body"><strong>Fuji Kobayashi-en</strong><span>Award-winning green tea at a historic Fujinomiya tea house.</span></span>
+      </li>
+      <li>
+        <span class="rt-time">15:00</span>
+        <span class="rt-body"><strong>Back at Shin-Fuji Station</strong><span>Time for souvenirs before your train.</span></span>
+      </li>
+    </ul>
+    <p class="gt-route-note">Exact timings are shared on confirmation. Stops may shift with weather and traffic.</p>
+  </div>
+
+  <div class="gt-block gt-how">
     <h2>How It Works</h2>
     <ul class="gt-steps">
       <li>
         <span class="step-num">1</span>
-        <span><strong>Join the waitlist</strong> — free, no commitment. Tell us how many guests you have.</span>
+        <span><strong>Join the waitlist</strong> — free, no commitment. Pick a Wednesday and tell us how many adults and children are in your group.</span>
       </li>
       <li>
         <span class="step-num">2</span>
-        <span><strong>We build your group</strong> — tours launch as groups fill up. We'll keep you updated on progress.</span>
+        <span><strong>We build the group</strong> — each Wednesday runs once 10 adults are signed up (up to 15 guests). We'll keep you posted on progress.</span>
       </li>
       <li>
         <span class="step-num">3</span>
-        <span><strong>Tour confirmed</strong> — once 10 travelers are in, we confirm the date and you pay. Full itinerary revealed at confirmation.</span>
+        <span><strong>Tour confirmed</strong> — once your Wednesday reaches 10 adults, we confirm the date and you pay by secure checkout. Full details follow at confirmation.</span>
       </li>
     </ul>
   </div>
 
   <div class="gt-week-counts" id="gt-week-counts">
-    <h3>Signup Progress by Week</h3>
+    <h3>Signup progress by Wednesday</h3>
     <div id="monthGroups"></div>
   </div>
 
   <div class="gt-form-box" id="gt-form-box">
     <h2>Save My Spot</h2>
-    <p class="sub">Pick your preferred week and join the waitlist.</p>
+    <p class="sub">Pick your Wednesday and join the waitlist — free, no payment now.</p>
     <form id="gtForm" onsubmit="submitGroupWaitlist(event)">
       <label for="gt-name">Name *</label>
       <input type="text" id="gt-name" placeholder="Your name" required>
       <label for="gt-email">Email *</label>
       <input type="email" id="gt-email" placeholder="your@email.com" required>
-      <label for="gt-guests">Number of Guests *</label>
-      <select id="gt-guests" required>
-        <option value="">Select</option>
-        <option value="1">1 guest</option>
-        <option value="2">2 guests</option>
-        <option value="3">3 guests</option>
-        <option value="4">4 guests</option>
-        <option value="5">5 guests</option>
-        <option value="6-10">6–10 guests</option>
-        <option value="11-15">11–15 guests</option>
-        <option value="16-20">16–20 guests</option>
-      </select>
-      <label for="gt-week">Preferred Week *</label>
+      <label for="gt-week">Preferred Wednesday *</label>
       <select id="gt-week" required>
-        <option value="">Select a week</option>
+        <option value="">Select a date</option>
       </select>
+      <div class="gt-form-row">
+        <div>
+          <label for="gt-adults">Adults *</label>
+          <select id="gt-adults" required>
+            <option value="">Select</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+            <option value="15">15</option>
+          </select>
+        </div>
+        <div>
+          <label for="gt-children">Children (6–12)</label>
+          <select id="gt-children">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+          </select>
+        </div>
+      </div>
       <button type="submit" class="gt-submit">Save My Spot — It's Free</button>
     </form>
-    <p class="gt-no-commit">No payment until your tour is confirmed</p>
-    <div class="gt-success" id="gt-success">✓ You're on the list! We'll email you with a confirmation shortly. Check your inbox.</div>
+    <p class="gt-no-commit">No payment until your Wednesday is confirmed</p>
+    <div class="gt-success" id="gt-success">✓ You're on the list! We'll email you as your Wednesday fills up. Check your inbox.</div>
   </div>
 
   <div class="gt-faq">
     <h2>Frequently Asked Questions</h2>
     <div class="gt-faq-item">
       <button class="gt-faq-q" onclick="this.parentElement.classList.toggle('open')">How does the group tour work?</button>
-      <div class="gt-faq-a"><p>We gather interested travelers into groups of 10–20. Once enough people sign up, we confirm a tour date and send you booking details. Joining the waitlist is completely free — you only pay once the tour is confirmed.</p></div>
+      <div class="gt-faq-a"><p>We run a small group tour every Wednesday from October 2026. You join the waitlist for the Wednesday you want — it's free. Once 10 adults are signed up for that date, we confirm the tour (up to 15 guests) and send you secure checkout. You only pay once your Wednesday is confirmed.</p></div>
     </div>
     <div class="gt-faq-item">
       <button class="gt-faq-q" onclick="this.parentElement.classList.toggle('open')">How is this different from the private tour?</button>
-      <div class="gt-faq-a"><p>The private tour (max 5 guests) is fully customizable — you choose your time, stops, and pace. The group tour is a shared experience with a set itinerary, longer duration (6 hours vs 4), and a more affordable per-person price. Same guide, same quality, different vibe.</p></div>
+      <div class="gt-faq-a"><p>The private tour (max 5 guests) is fully customizable — you choose your time, stops and pace, in about 4 hours. The group tour is a shared 6-hour experience on a set Wednesday route, with the same local-born guide, by microbus, at a lower per-person price.</p></div>
     </div>
     <div class="gt-faq-item">
-      <button class="gt-faq-q" onclick="this.parentElement.classList.toggle('open')">What if the group doesn't fill up?</button>
-      <div class="gt-faq-a"><p>If a group doesn't reach 10 people, you won't be charged. We'll offer you priority placement on the next group or a special offer on a private tour. No risk to you.</p></div>
+      <button class="gt-faq-q" onclick="this.parentElement.classList.toggle('open')">What's included in the price?</button>
+      <div class="gt-faq-a"><p>The price covers your English-speaking local-born guide and private microbus transport for the day. Lunch, tea, entrance fees and other on-site costs are not included — you pay for those as you go.</p></div>
     </div>
     <div class="gt-faq-item">
-      <button class="gt-faq-q" onclick="this.parentElement.classList.toggle('open')">When will exact pricing be announced?</button>
-      <div class="gt-faq-a"><p>Pricing will be shared with waitlist members first — before it goes public. Waitlist members also get early-bird pricing. Join now to lock in the best rate.</p></div>
+      <button class="gt-faq-q" onclick="this.parentElement.classList.toggle('open')">What if my Wednesday doesn't fill up?</button>
+      <div class="gt-faq-a"><p>If a Wednesday doesn't reach 10 adults, you won't be charged. We'll offer you priority on the next Wednesday or a special rate on a private tour. No risk to you.</p></div>
+    </div>
+    <div class="gt-faq-item">
+      <button class="gt-faq-q" onclick="this.parentElement.classList.toggle('open')">How much is it?</button>
+      <div class="gt-faq-a"><p>Adults are $98 per person and children (6–12) are $49. As a launch offer, every Wednesday in October 2026 is 30% off — Adult $68, Child $34. Standard pricing applies from November.</p></div>
     </div>
   </div>
 
   <div class="gt-nudge">
-    <p>Want a fully private, customizable experience?</p>
+    <p>Prefer a fully private, customizable experience?</p>
     <a href="/">Book a Private Tour →</a>
   </div>
 
@@ -544,31 +683,29 @@
 <script>
 // ===== CONFIG =====
 var GROUP_WAITLIST_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyJFs8R2BOUmta94dCP8BlSsOvHcQdTKg-eU3bKo28AQdgHAaj4C3pWlO5brd5pghzc/exec';
-var MAX_CAPACITY = 20;
-var MIN_GROUP = 10;
+var MAX_CAPACITY = 15;       // seats per Wednesday
+var MIN_GROUP = 10;          // adults needed to confirm a Wednesday
 var MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 
-// Generate weeks from Oct 5 2026 onward (Mon–Sun blocks)
-function generateWeeks2026() {
+// Generate every Wednesday from Oct 7 2026 to the last Wednesday of 2026
+function generateWednesdays2026() {
   var weeks = [];
-  var d = new Date(2026, 9, 5); // Oct 5, 2026 (Monday)
+  var d = new Date(2026, 9, 7); // Oct 7, 2026 (Wednesday)
   while (d.getFullYear() === 2026) {
-    var start = new Date(d);
-    var end = new Date(d);
-    end.setDate(end.getDate() + 6);
-    var sM = MONTHS[start.getMonth()], sD = start.getDate();
-    var eM = MONTHS[end.getMonth()], eD = end.getDate();
-    var label = sM === eM ? sM + ' ' + sD + '–' + eD : sM + ' ' + sD + '–' + eM + ' ' + eD;
-    var month = MONTHS[start.getMonth()] + ' 2026';
-    weeks.push({ label: label, month: month, startMonth: start.getMonth() });
+    var m = d.getMonth();
+    weeks.push({
+      label: MONTHS[m] + ' ' + d.getDate(),
+      month: MONTHS[m] + ' 2026',
+      isOctober: m === 9
+    });
     d.setDate(d.getDate() + 7);
   }
   return weeks;
 }
 
-var ALL_WEEKS = generateWeeks2026();
+var ALL_WEEKS = generateWednesdays2026();
 
-// Group weeks by month
+// Group Wednesdays by month
 function groupByMonth(weeks) {
   var groups = [];
   var currentMonth = null;
@@ -592,7 +729,7 @@ function populateWeekSelect() {
     g.weeks.forEach(function(w) {
       var opt = document.createElement('option');
       opt.value = w.label;
-      opt.textContent = w.label + ', 2026';
+      opt.textContent = w.label + ', 2026' + (w.isOctober ? ' — pilot −30%' : '');
       og.appendChild(opt);
     });
     sel.appendChild(og);
@@ -604,14 +741,12 @@ function renderWeekCounts(counts) {
   var container = document.getElementById('monthGroups');
   container.innerHTML = '';
   var groups = groupByMonth(ALL_WEEKS);
-  var now = new Date();
-  var currentMonthIdx = now.getMonth(); // 0-based
 
   groups.forEach(function(g, gi) {
     var monthDiv = document.createElement('div');
     monthDiv.className = 'month-group';
-    // Show first 2 months open, collapse the rest
-    if (gi > 1) monthDiv.classList.add('collapsed');
+    // Show first month open, collapse the rest
+    if (gi > 0) monthDiv.classList.add('collapsed');
 
     var header = document.createElement('div');
     header.className = 'month-header';
@@ -624,17 +759,18 @@ function renderWeekCounts(counts) {
 
     g.weeks.forEach(function(w) {
       var count = (counts && counts[w.label]) || 0;
-      var pct = Math.min(100, Math.round((count / MAX_CAPACITY) * 100));
+      var pct = Math.min(100, Math.round((count / MIN_GROUP) * 100));
       var isReady = count >= MIN_GROUP;
       var barClass = isReady ? 'ready' : 'under';
       var numClass = isReady ? 'ready' : 'under';
+      var pilot = w.isOctober ? '<span class="pilot-tag">PILOT −30%</span>' : '';
 
       var row = document.createElement('div');
       row.className = 'week-row';
       row.innerHTML =
-        '<span class="week-label">' + w.label + '</span>' +
+        '<span class="week-label">' + w.label + pilot + '</span>' +
         '<div class="week-bar-wrap"><div class="week-bar ' + barClass + '" style="width:' + pct + '%"></div></div>' +
-        '<span class="week-count"><span class="num ' + numClass + '">' + count + '</span> / ' + MAX_CAPACITY + '</span>';
+        '<span class="week-count"><span class="num ' + numClass + '">' + count + '</span> / ' + MIN_GROUP + ' adults</span>';
       rows.appendChild(row);
     });
 
@@ -643,43 +779,78 @@ function renderWeekCounts(counts) {
   });
 }
 
+// ===== COUNTS (waitlist progress) =====
+// Loads live signup counts. Falls back gracefully if the endpoint is
+// slow, unreachable, or returns an error — so visitors never see
+// misleading empty "0 / 10" bars presented as real data.
+function loadCounts() {
+  var controller = (typeof AbortController !== 'undefined') ? new AbortController() : null;
+  var timer = controller ? setTimeout(function() { controller.abort(); }, 8000) : null;
+  fetch(GROUP_WAITLIST_ENDPOINT + '?action=counts', controller ? { signal: controller.signal } : undefined)
+    .then(function(r) {
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      return r.json();
+    })
+    .then(function(data) {
+      if (timer) { clearTimeout(timer); }
+      if (data && data.counts) { renderWeekCounts(data.counts); }
+    })
+    .catch(function() {
+      if (timer) { clearTimeout(timer); }
+      showCountsFallback();
+    });
+}
+
+// Replace the progress bars with an honest note when counts can't load.
+function showCountsFallback() {
+  var container = document.getElementById('gt-week-counts');
+  if (!container) { return; }
+  container.innerHTML =
+    '<h3>Signup progress by Wednesday</h3>' +
+    '<p class="gt-counts-fallback">Live signup counts couldn’t load right now. Pick your Wednesday and join the waitlist below — we’ll email you as your date fills up.</p>';
+}
+
 // ===== INIT =====
 (function() {
   populateWeekSelect();
   renderWeekCounts({});
-  fetch(GROUP_WAITLIST_ENDPOINT + '?action=counts')
-    .then(function(r) { return r.json(); })
-    .then(function(data) { if (data.counts) renderWeekCounts(data.counts); })
-    .catch(function() {});
+  loadCounts();
 })();
 
 // ===== FORM SUBMIT =====
 function submitGroupWaitlist(e) {
   e.preventDefault();
-  var name   = document.getElementById('gt-name').value.trim();
-  var email  = document.getElementById('gt-email').value.trim();
-  var guests = document.getElementById('gt-guests').value;
-  var week   = document.getElementById('gt-week').value;
+  var name     = document.getElementById('gt-name').value.trim();
+  var email    = document.getElementById('gt-email').value.trim();
+  var week     = document.getElementById('gt-week').value;
+  var adults   = document.getElementById('gt-adults').value;
+  var children = document.getElementById('gt-children').value || '0';
   var btn = document.querySelector('.gt-submit');
   btn.disabled = true; btn.textContent = 'Submitting...';
+
+  var payload = {
+    name: name, email: email, week: week,
+    adults: adults, children: children,
+    guests: String((parseInt(adults, 10) || 0) + (parseInt(children, 10) || 0)),
+    type: 'group-tour-waitlist'
+  };
 
   fetch(GROUP_WAITLIST_ENDPOINT + '?origin=' + encodeURIComponent(location.origin), {
     method: 'POST',
     headers: {'Content-Type': 'text/plain'},
-    body: JSON.stringify({ name: name, email: email, guests: guests, week: week, type: 'group-tour-waitlist' })
-  }).then(function(r) { return r.json(); }).then(function(data) {
+    body: JSON.stringify(payload)
+  }).then(function(r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); }).then(function(data) {
     document.getElementById('gtForm').style.display = 'none';
     document.getElementById('gt-success').style.display = 'block';
-    gtag('event', 'waitlist_submit', {'event_category': 'waitlist', 'type': 'group', 'guests': guests});
-    // Update counters with live data from server
+    gtag('event', 'waitlist_submit', {'event_category': 'waitlist', 'type': 'group', 'guests': payload.guests});
     if (data && data.counts) renderWeekCounts(data.counts);
   }).catch(function() {
     var subject = encodeURIComponent('Group Tour Waitlist - ' + name);
-    var body = encodeURIComponent('GROUP TOUR WAITLIST\n===================\nName: ' + name + '\nEmail: ' + email + '\nGuests: ' + guests + '\nWeek: ' + week + '\n\n---\nSent from fujisoultours.com/group-tour');
+    var body = encodeURIComponent('GROUP TOUR WAITLIST\n===================\nName: ' + name + '\nEmail: ' + email + '\nWednesday: ' + week + '\nAdults: ' + adults + '\nChildren: ' + children + '\n\n---\nSent from fujisoultours.com/group-tour');
     window.location.href = 'mailto:fujisoultours@gmail.com?subject=' + subject + '&body=' + body;
     document.getElementById('gtForm').style.display = 'none';
     document.getElementById('gt-success').style.display = 'block';
-    gtag('event', 'waitlist_submit', {'event_category': 'waitlist', 'type': 'group', 'guests': guests});
+    gtag('event', 'waitlist_submit', {'event_category': 'waitlist', 'type': 'group', 'guests': payload.guests});
   }).finally(function() {
     btn.disabled = false; btn.textContent = "Save My Spot — It's Free";
   });
