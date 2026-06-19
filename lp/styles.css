@@ -830,6 +830,9 @@ html[data-stickybar="off"] .sticky-bar { display: none !important; }
 .page-hero .page-kicker { color: var(--ai); font-size: 12.5px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; display: flex; align-items: center; gap: 12px; margin-bottom: 16px; font-family: var(--font-body); }
 .page-hero .page-kicker::before { content: ""; width: 28px; height: 1.5px; background: var(--ai); }
 .page-hero .lede { margin-top: 16px; max-width: 62ch; color: var(--ink-soft); font-size: 17.5px; }
+/* slim variant (e.g. /experiences): compact header that keeps the H1 for SEO */
+.page-hero-slim { padding: 26px 0 18px; }
+.page-hero-slim h1 { font-size: clamp(23px, 3vw, 30px); max-width: none; }
 .article-section { padding: 52px 0 72px; }
 .article { max-width: 760px; }
 .article h2 { font-size: clamp(24px, 3vw, 32px); font-weight: 600; margin-top: 52px; }
