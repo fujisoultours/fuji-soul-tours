@@ -785,6 +785,24 @@ function generateWednesdays2026() {
 
 var ALL_WEEKS = generateWednesdays2026();
 
+// Map legacy week-block labels (old waitlist data, e.g. "Oct 12–18") to the
+// Wednesday of that week so existing sign-ups show on the new date-based bars.
+// Pre-October requests (Aug/Sep) are intentionally NOT mapped, so they don't show.
+var LEGACY_WEEK_TO_WED = {
+  'Oct 12–18': 'Oct 14',
+  'Oct 19–25': 'Oct 21',
+  'Nov 9–15': 'Nov 11'
+};
+function mapCounts(raw) {
+  var out = {};
+  if (!raw) return out;
+  Object.keys(raw).forEach(function(k) {
+    var key = LEGACY_WEEK_TO_WED[k] || k;
+    out[key] = (out[key] || 0) + raw[k];
+  });
+  return out;
+}
+
 // Group Wednesdays by month
 function groupByMonth(weeks) {
   var groups = [];
@@ -873,7 +891,7 @@ function loadCounts() {
     })
     .then(function(data) {
       if (timer) { clearTimeout(timer); }
-      if (data && data.counts) { renderWeekCounts(data.counts); }
+      if (data && data.counts) { renderWeekCounts(mapCounts(data.counts)); }
     })
     .catch(function() {
       if (timer) { clearTimeout(timer); }
@@ -923,7 +941,7 @@ function submitGroupWaitlist(e) {
     document.getElementById('gtForm').style.display = 'none';
     document.getElementById('gt-success').style.display = 'block';
     gtag('event', 'waitlist_submit', {'event_category': 'waitlist', 'type': 'group', 'guests': payload.guests});
-    if (data && data.counts) renderWeekCounts(data.counts);
+    if (data && data.counts) renderWeekCounts(mapCounts(data.counts));
   }).catch(function() {
     var subject = encodeURIComponent('Group Tour Waitlist - ' + name);
     var body = encodeURIComponent('GROUP TOUR WAITLIST\n===================\nName: ' + name + '\nEmail: ' + email + '\nWednesday: ' + week + '\nAdults: ' + adults + '\nChildren: ' + children + '\n\n---\nSent from fujisoultours.com/group-tour');
