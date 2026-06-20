@@ -9,7 +9,8 @@
     { "source": "/soul-of-japan", "destination": "/soul-of-japan.html" },
     { "source": "/mt-fuji-stopover", "destination": "/mt-fuji-stopover.html" },
     { "source": "/fujinomiya-yakisoba", "destination": "/fujinomiya-yakisoba.html" },
-    { "source": "/mt-fuji-without-crowds", "destination": "/mt-fuji-without-crowds.html" }
+    { "source": "/mt-fuji-without-crowds", "destination": "/mt-fuji-without-crowds.html" },
+    { "source": "/mt-fuji-green-tea", "destination": "/mt-fuji-green-tea.html" }
   ],
   "functions": {
     "api/*.js": {
