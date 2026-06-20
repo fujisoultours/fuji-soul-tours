@@ -134,6 +134,18 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Public+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="lp/styles.css">
+<style>
+  /* page-scoped: Travel guides cards (#guides) */
+  .guides-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 44px; }
+  .guide-card { display: flex; flex-direction: column; background: var(--paper); border: 1px solid var(--hair); border-radius: 10px; overflow: hidden; text-decoration: none; color: inherit; transition: border-color .15s ease, transform .15s ease; }
+  .guide-card:hover { border-color: var(--ink-soft); transform: translateY(-2px); }
+  .guide-card img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; display: block; }
+  .guide-body { padding: 15px 18px 18px; }
+  .guide-body h3 { font-size: 17px; font-weight: 600; font-family: var(--font-display); letter-spacing: -0.01em; }
+  .guide-body p { font-size: 13.5px; color: var(--ink-soft); line-height: 1.5; margin-top: 6px; }
+  @media (max-width: 880px) { .guides-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { .guides-grid { grid-template-columns: 1fr; } }
+</style>
 </head>
 <body>
 
@@ -158,6 +170,7 @@
           <a href="/mt-fuji-without-crowds" role="menuitem">Avoiding Crowds<span>The quiet south side</span></a>
           <a href="/gallery" role="menuitem">Gallery<span>A tour day in pictures</span></a>
           <a href="/fujinomiya-yakisoba" role="menuitem">Fujinomiya Yakisoba<span>The local soul food</span></a>
+          <a href="/mt-fuji-green-tea" role="menuitem">Green Tea<span>Shizuoka tea at Mt. Fuji's foot</span></a>
           <a href="/group-tour" role="menuitem">Group Tour<span>Weekly small-group tour</span></a>
         </div>
       </div>
@@ -182,6 +195,7 @@
     <a href="/mt-fuji-without-crowds">Avoiding Crowds</a>
     <a href="/gallery">Gallery</a>
     <a href="/fujinomiya-yakisoba">Fujinomiya Yakisoba</a>
+    <a href="/mt-fuji-green-tea">Green Tea</a>
     <a href="/group-tour">Group Tour</a>
   </div>
 </nav>
@@ -631,6 +645,52 @@
   </div>
 </section>
 
+<!-- ================= TRAVEL GUIDES ================= -->
+<section class="section section-alt" id="guides" data-screen-label="Travel guides">
+  <div class="wrap">
+    <p class="kicker">Before you go</p>
+    <h2>Travel guides</h2>
+    <p class="section-lede">Want to go deeper? Short reads on the trains, the food and the quiet local culture at Mt. Fuji's foot — no booking required.</p>
+    <div class="guides-grid">
+      <a class="guide-card" href="/mt-fuji-stopover">
+        <img src="images/views/11_flower_field.jpg" alt="Mt. Fuji above spring flower fields on its southern side" loading="lazy">
+        <div class="guide-body">
+          <h3>Mt. Fuji stopover: Tokyo ⇄ Kyoto</h3>
+          <p>See Fuji in half a day off the bullet train — which train stops, luggage, sample timetables.</p>
+        </div>
+      </a>
+      <a class="guide-card" href="/mt-fuji-green-tea">
+        <img src="images/greentea/greentea-hall.jpg" alt="A traditional wooden tea hall and garden at the foot of Mt. Fuji" loading="lazy">
+        <div class="guide-body">
+          <h3>Green tea at the foot of Mt. Fuji</h3>
+          <p>Shizuoka sencha the slow way — one cup, a seasonal sweet, a 400-year-old hall.</p>
+        </div>
+      </a>
+      <a class="guide-card" href="/mt-fuji-without-crowds">
+        <img src="images/views/07_park_bench.jpg" alt="A quiet bench with a clear view of Mt. Fuji" loading="lazy">
+        <div class="guide-body">
+          <h3>Seeing Mt. Fuji without the crowds</h3>
+          <p>The quiet southern side, season by season — and a plan for cloudy days.</p>
+        </div>
+      </a>
+      <a class="guide-card" href="/fujinomiya-yakisoba">
+        <img src="images/culture/16_yakisoba_griddle.jpg" alt="Fujinomiya yakisoba griddled to order on a teppan" loading="lazy">
+        <div class="guide-body">
+          <h3>Fujinomiya yakisoba</h3>
+          <p>Japan's B-1 Grand Prix champion soul food — only at Mt. Fuji's foot.</p>
+        </div>
+      </a>
+      <a class="guide-card" href="/soul-of-japan">
+        <img src="images/views/08_temple_gate.jpg" alt="A temple gate framing Mt. Fuji" loading="lazy">
+        <div class="guide-body">
+          <h3>The soul of Japan</h3>
+          <p>Why Mt. Fuji matters — the culture and meaning behind the mountain.</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- ================= CONTACT ================= -->
 <section class="section section-alt" id="contact" data-screen-label="Contact">
   <div class="wrap">
@@ -674,6 +734,7 @@
       <a href="/soul-of-japan">Soul of Japan</a>
       <a href="/mt-fuji-stopover">Stopover Guide</a>
       <a href="/fujinomiya-yakisoba">Yakisoba</a>
+      <a href="/mt-fuji-green-tea">Green Tea</a>
       <a href="/mt-fuji-without-crowds">Avoiding Crowds</a>
       <a href="/group-tour">Group Tour</a>
       <a href="mailto:fujisoultours@gmail.com">Cancel / change date</a>
