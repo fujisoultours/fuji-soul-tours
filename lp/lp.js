@@ -24,7 +24,7 @@ const BOKUN_POPUP_BASE = 'https://widgets.bokun.io/online-sales/' + BOKUN_CHANNE
 const lpFmt = (cur, n) => `${cur} ${n.toLocaleString('en-US')}`;
 
 let lpCurrency = 'USD';
-let lpHcTier = 'p2';
+let lpHcTier = 'p35';
 
 function lpPromoOn() {
   return PROMO.active;
