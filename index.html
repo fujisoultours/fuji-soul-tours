@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-hero="split" data-booking="inline" data-promo="on" data-stickybar="on">
+<html lang="en" data-hero="split" data-booking="inline" data-promo="off" data-stickybar="on">
 <head>
 <meta charset="UTF-8">
 <!-- Google tag (gtag.js) -->
@@ -20,6 +20,10 @@
       imagesizes="(max-width: 880px) 100vw, 45vw"
       type="image/webp"
       fetchpriority="high">
+
+<!-- Warm up the Bokun booking-widget origin so the live calendar paints sooner -->
+<link rel="preconnect" href="https://widgets.bokun.io" crossorigin>
+<link rel="dns-prefetch" href="https://widgets.bokun.io">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
@@ -216,7 +220,7 @@
              lp.js re-renders them from LP_PRICES + PROMO at load. -->
         <div class="hero-price-row">
           <span class="from">From</span>
-          <span class="price"><span class="old-price" data-price="p35-full">USD 159</span> <span data-price="p35">USD 135</span></span>
+          <span class="price"><span class="old-price" data-price="p35-full">USD 159</span> <span data-price="p35">USD 159</span></span>
           <span class="per">/ person · group of 3–5</span>
         </div>
         <div class="hero-ctas">
@@ -241,13 +245,13 @@
         <h3>Plan your stopover</h3>
         <p class="hc-sub">Pick your group — we shape the day around your trains.</p>
         <div class="hc-groups" role="group" aria-label="Group size">
-          <button class="hc-group" type="button" data-tier="p1" aria-pressed="false"><span class="g-n">1 guest</span><span class="g-p" data-price="p1">USD 367</span></button>
-          <button class="hc-group" type="button" data-tier="p2" aria-pressed="true"><span class="g-n">2 guests</span><span class="g-p" data-price="p2">USD 184</span></button>
-          <button class="hc-group" type="button" data-tier="p35" aria-pressed="false"><span class="g-n">3–5</span><span class="g-p" data-price="p35">USD 135</span></button>
+          <button class="hc-group" type="button" data-tier="p1" aria-pressed="false"><span class="g-n">1 guest</span><span class="g-p" data-price="p1">USD 432</span></button>
+          <button class="hc-group" type="button" data-tier="p2" aria-pressed="true"><span class="g-n">2 guests</span><span class="g-p" data-price="p2">USD 216</span></button>
+          <button class="hc-group" type="button" data-tier="p35" aria-pressed="false"><span class="g-n">3–5</span><span class="g-p" data-price="p35">USD 159</span></button>
         </div>
         <div class="hc-total">
           <span class="t-label">Per person <span class="promo-only">· 15% off applied</span></span>
-          <span class="t-val" data-price="hc-total">USD 135</span>
+          <span class="t-val" data-price="hc-total">USD 216</span>
         </div>
         <a class="btn-book" href="#book">Check availability →</a>
         <p class="hc-note">Free cancellation up to 24 h · Instant confirmation</p>
@@ -563,15 +567,15 @@
         <div class="price-rows">
           <div class="price-row">
             <span class="p-label">1 guest</span>
-            <span class="p-val"><span class="old-price" data-price="p1-full">USD 432</span><span class="sale-price" data-price="p1">USD 367</span><span class="per">/ person</span></span>
+            <span class="p-val"><span class="old-price" data-price="p1-full">USD 432</span><span class="sale-price" data-price="p1">USD 432</span><span class="per">/ person</span></span>
           </div>
           <div class="price-row">
             <span class="p-label">2 guests</span>
-            <span class="p-val"><span class="old-price" data-price="p2-full">USD 216</span><span class="sale-price" data-price="p2">USD 184</span><span class="per">/ person</span></span>
+            <span class="p-val"><span class="old-price" data-price="p2-full">USD 216</span><span class="sale-price" data-price="p2">USD 216</span><span class="per">/ person</span></span>
           </div>
           <div class="price-row">
             <span class="p-label">3–5 guests</span>
-            <span class="p-val"><span class="old-price" data-price="p35-full">USD 159</span><span class="sale-price" data-price="p35">USD 135</span><span class="per">/ person</span></span>
+            <span class="p-val"><span class="old-price" data-price="p35-full">USD 159</span><span class="sale-price" data-price="p35">USD 159</span><span class="per">/ person</span></span>
           </div>
         </div>
         <p class="book-price-hint">The calendar shows the total for your party size — per-person cost drops as you add guests.</p>
@@ -753,7 +757,7 @@
 <!-- ================= MOBILE STICKY BOOKING BAR ================= -->
 <div class="sticky-bar" id="stickyBar" data-screen-label="Mobile sticky booking bar">
   <div class="sb-price">
-    <span class="sb-from">From <span class="old-price" data-price="p35-full">USD 159</span> <strong data-price="p35">USD 135</strong> <span class="sb-per">/ person</span></span>
+    <span class="sb-from">From <span class="old-price" data-price="p35-full">USD 159</span> <strong data-price="p35">USD 159</strong> <span class="sb-per">/ person</span></span>
     <span class="sb-promo promo-only">15% OFF · Ends June 16</span>
   </div>
   <a class="btn-book" href="#book">Book Now</a>

@@ -346,8 +346,8 @@ function lpInitPromo() {
         }
       }).observe(cal, { childList: true, subtree: true });
     }
-    // Load after 3 seconds or when the booking section approaches (whichever first)
-    const timer = setTimeout(window._loadBokun, 3000);
+    // Load after 1.5 seconds or when the booking section approaches (whichever first)
+    const timer = setTimeout(window._loadBokun, 1500);
     const bookSection = document.getElementById('book');
     if (bookSection && window.IntersectionObserver) {
       new IntersectionObserver(function (entries, obs) {
