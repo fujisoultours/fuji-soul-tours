@@ -4,11 +4,74 @@
 // このファイルは scripts/fetch-reviews.mjs により自動生成されます。
 // 手動編集は次回同期時に上書きされます。
 //
-// 最終更新: 2026-05-06T12:05:44.517Z
+// 最終更新: 2026-07-08T11:50:52.382Z
 // ソース: Viator + TripAdvisor
 // =============================================
 
 const REVIEWS = [
+  {
+    stars: 5,
+    text: "This was without a doubt one of the highlights of our entire Japan trip.\nThe tour was perfectly planned and offered a wonderful mix of nature, culture, local food, and authentic experiences. From the breathtaking views of Mt. Fuji and Lake Tanuki to the shrine visit, Fujinomiya yakisoba, sake tasting, and the wagashi and tea experience, every stop felt thoughtfully chosen and added something special to the day.\nWhat truly made this tour exceptional, however, were Taku and Kio. They were incredibly warm, knowledgeable, and genuinely passionate about sharing their region with us. They adapted the day seamlessly to the weather and conditions, making sure we had the best possible experience throughout. We never felt rushed, and their kindness and hospitality made us feel more like friends than guests.\nIf you are looking for a memorable and authentic Mt. Fuji experience, we cannot recommend this tour highly enough. Thank you, Taku and Kio, for an unforgettable day!",
+    author: "Simone_W",
+    date: "June 2026",
+    source: "Viator"
+  },
+  {
+    stars: 5,
+    text: "Even though the day ended up being overcast and rainy, we caught a glimpse of the impressive mountain and enjoyed every step of the tour - the lake, falls, lunch, the shrine and sake tasting. Taku and Noriko were the perfect guides, balancing local information with history as well as helping meet special needs such as a pharmacy and a specialty coffee shop.",
+    author: "Gunjan_T",
+    date: "June 2026",
+    source: "Viator"
+  },
+  {
+    stars: 5,
+    text: "Fuji Soul Tours was an incredible experience and easily one of the highlights of my trip. The tour felt thoughtful, personal, and well-paced from start to finish. Everything was organized smoothly, but it never felt rushed or overly touristy even through we did a few hour tour in between Osaka and Tokyo.\n\nTakumu and Noriko were knowledgeable, friendly, and genuinely passionate about the area, which made the experience feel much more meaningful than just checking off photo spots. Their communication is awesome as well. We got a cloudy day, but were able to get a slight view of Mt. Fuji. The stops gave a great mix of scenery, culture, and local character.\n\nI'd highly recommend Fuji Soul Tours to anyone looking for a memorable, easy, and more personal way to experience Mt. Fuji.",
+    author: "Ernie_Y",
+    date: "June 2026",
+    source: "Tripadvisor"
+  },
+  {
+    stars: 5,
+    text: "Our Mt. Fuji tour with Takumu and Noriko was definitely a highlight of our trip to Japan. Most of the other tours I looked into were a 10+ hour day on a crowded bus. It was certainly worth the upgrade to book this private experience. My husband and I built the experience into our travel day from Osaka to Tokyo using the Shinkansen and it couldn't have gone more smoothly. The tour itself was phenomenal. Takumu is a local to the area so he knew all the best hidden spots. There was not another tourist in site! Noriko was also a joy and so friendly. Lunch was some of the best spicy noodles we've ever had and the afternoon just flew by. We were also lucky to have perfect weather and a clear view of Mt. Fuji which also helped make the day extra special. Would highly recommend! Thank you Takumu and Noriko!",
+    author: "Kayla_H",
+    date: "June 2026",
+    source: "Tripadvisor"
+  },
+  {
+    stars: 5,
+    text: "Taku and Kio were great guides around the Fuji area. They took us to a viewpoint to see Mount Fuji that avoided some cloud cover which was great. We enjoyed the lunch and other stops. Thank you!",
+    author: "Lindsey",
+    date: "June 2026",
+    source: "Tripadvisor"
+  },
+  {
+    stars: 5,
+    text: "Taku and Noriko are awesome people. They were very knowledgeable about any questions we asked. They were super sweet and easy to talk to. The tour took us to some unique spots that we probably wouldn't have known about unless we were local to the area.",
+    author: "Bryson_P",
+    date: "May 2026",
+    source: "Viator"
+  },
+  {
+    stars: 5,
+    text: "An absolutely unforgettable experience with Taku & Kio!\n\nThis was easily one of the highlights of our Japan trip. From the moment we met, they made us feel welcomed and gave us a genuine local experience that went far beyond the typical tourist stops.\n\nSeeing Mt. Fuji fully visible was incredible, but what truly made the day special was everything around it — the amazing locally sourced ice cream, the beautiful terrace views at the UNESCO World Heritage Centre, learning about the history and significance of Fujisan Hongu Sengen Shrine, enjoying authentic Fujinomiya yakisoba, and finishing it all with locally brewed draft beer.\n\nTaku & Kio were knowledgeable, friendly, passionate, and made the entire day feel personal and memorable. You can tell they truly care about showing guests the real side of Japan.\n\nHighly recommend this tour to anyone visiting Japan — especially if you want something authentic, relaxed, and unforgettable.",
+    author: "Saurabh_M",
+    date: "May 2026",
+    source: "Viator"
+  },
+  {
+    stars: 5,
+    text: "Taku san is an incredible guide, his itinerary is great and all his experiences feel unique and refreshing in a nation that is troubled by overtourism and everyone seeing the same things. Not only is the itinerary great but Taku is incredibly accommodating even adjusting the itinerary to our liking. Without a doubt this was one of my favorite tours of all Japan and don't recommend skipping this hidden gem",
+    author: "Manuel_M",
+    date: "May 2026",
+    source: "Viator"
+  },
+  {
+    stars: 5,
+    text: "Taku and Kio were great guides. We learned so much history, saw beautiful sights and got a closer look at key traditions in the Japanese culture like tea ceremonies. Although it rained, we were still able to visit the Sengen Shrine, the Fujinomiya yakisoba, the sake tasting at Fuji Takasago Brewery, and the green tea experience at Fuji Kobayashi-En. Highly recommend the experience!",
+    author: "Valerie_M",
+    date: "May 2026",
+    source: "Tripadvisor"
+  },
   {
     stars: 5,
     text: "For years a bug in my operating system had me believing one could grasp all of the knowledge from foreign destinations through media. It was part of life. Economics was part of it too. Folks where I'm from rarely leave their back yards, let alone the state, nation, or the continent. I'll be vulnerable. I was afraid. I was dead wrong. \n\nI burned all the ships when I left my hometown. \n\nI never fit. Never felt at peace. That kid inside me screamed for the childhood he never had. I promised that little boy one day we would. Ed Mylett said it best \"I am so grateful for where I am. I am so appreciative of what I have, but I'm so dissatisfied with staying here.\" My therapist would say the same if asked about me…\n\nJapan cracked open my soul. \nI don't like booking tours when I travel. I love to drop in. Be local as much as I can. Be challenged to solve problems. My pace. My feelings. Fate brought Fuji Soul Tours ( IG: @fujisoultours ) into my feed. Stopping between my first week in Kyoto & second in Shibuya wasn't planned, but the risk profile fit. I had to learn how to navigate multiple high speed Shinkansen trains to get there. I had to figure it out, alone. \n\nI booked it. \n\nTo my surprise it was just me & two local guides. I expected a bunch of \"Gajin\" WALL-Es with me but it was just us. I learned so much about the country, experienced matcha, beer, and sake tastings, local food truck eats, all from their home town. The owner even taught me how to properly pray at the temples and shrines. God must have played a role because it poured the day before & my weather was flawless. I left a piece of my heart there, and I'll have to go back to get it. I'll be forever grateful to these two guys who shared laughs, knowledge, & answered all my \"Gajin\" questions free of judgement. They made me feel at home. Complete peace. Talking about entrepreneurship was icing on the cake, and it warmed my heart knowing I was helping a small town.",
@@ -133,6 +196,7 @@ const REVIEWS = [
     source: "Tripadvisor"
   }
 ];
+
 
 
 
