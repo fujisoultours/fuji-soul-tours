@@ -149,6 +149,44 @@
   .guide-body p { font-size: 13.5px; color: var(--ink-soft); line-height: 1.5; margin-top: 6px; }
   @media (max-width: 880px) { .guides-grid { grid-template-columns: 1fr 1fr; } }
   @media (max-width: 560px) { .guides-grid { grid-template-columns: 1fr; } }
+
+  /* page-scoped: hero group link + Private-or-Group comparison (#compare) */
+  .hero-group-link { margin-top: 14px; font-size: 14.5px; }
+  .hero-group-link a { font-weight: 700; }
+  .hero-group-link .tag { font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; background: var(--cta); color: white; border-radius: 99px; padding: 2px 8px; margin-right: 8px; }
+  /* ≤600px: lp/styles.css reorders .hero-copy children (order 1–7) — keep this link last */
+  @media (max-width: 600px) { .hero-group-link { order: 8; } }
+
+  .cmp-grid { display: grid; grid-template-columns: 3fr 1fr; gap: 22px; margin-top: 40px; align-items: stretch; }
+  .cmp-card { background: white; border: 1px solid var(--hair); border-radius: 8px; box-shadow: 0 18px 44px -30px oklch(0.3 0.05 255 / 0.35); }
+  .cmp-private { overflow: hidden; display: grid; grid-template-columns: 1fr 1.15fr; }
+  .cmp-photo img { width: 100%; height: 100%; object-fit: cover; min-height: 320px; }
+  .cmp-body { padding: 28px; display: flex; flex-direction: column; gap: 13px; }
+  .cmp-head { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .cmp-head h3 { font-size: 25px; font-weight: 600; }
+  .cmp-badge { font-size: 11.5px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; padding: 4px 10px; border-radius: 99px; white-space: nowrap; }
+  .cmp-badge.pop { background: var(--ai-tint); color: var(--ai-deep); }
+  .cmp-badge.new { background: var(--cta); color: white; align-self: flex-start; }
+  .cmp-sub { font-size: 15px; color: var(--ink-soft); }
+  .cmp-facts { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 7px 18px; font-size: 14px; color: var(--ink-soft); font-weight: 600; }
+  .cmp-facts li::before { content: "✓ "; color: var(--ok); }
+  .cmp-cta-row { margin-top: auto; padding-top: 8px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  .cmp-price { font-size: 14.5px; color: var(--mid); }
+  .cmp-price strong { font-family: var(--font-display); font-size: 24px; color: var(--ink); }
+  .cmp-group { padding: 24px 22px; display: flex; flex-direction: column; gap: 12px; }
+  .cmp-group h3 { font-size: 21px; font-weight: 600; }
+  .cmp-group .cmp-sub { font-size: 14px; }
+  .cmp-group .cmp-facts { flex-direction: column; gap: 6px; }
+  .cmp-price-sm { font-size: 13.5px; color: var(--mid); margin-top: auto; padding-top: 6px; }
+  .cmp-price-sm strong { font-family: var(--font-display); font-size: 22px; color: var(--ink); }
+  .cmp-price-sm span { display: block; color: var(--ink-soft); font-weight: 600; font-size: 12.5px; margin-top: 2px; }
+  .cmp-group .btn-ghost { text-align: center; cursor: pointer; font-size: 15px; }
+  .cmp-group-details { font-size: 13px; text-align: center; }
+  @media (max-width: 880px) {
+    .cmp-grid { grid-template-columns: 1fr; gap: 16px; }
+    .cmp-private { grid-template-columns: 1fr; }
+    .cmp-photo img { height: 190px; min-height: 0; }
+  }
 </style>
 </head>
 <body>
@@ -228,6 +266,7 @@
           <a class="btn-ghost" href="#day">See the day plan ↓</a>
         </div>
         <p class="cta-micro">Free cancellation &amp; free date change up to 24 h before · Instant confirmation.</p>
+        <p class="hero-group-link"><span class="tag">New</span>Traveling solo? <a href="#compare">Wednesday Group Tour — USD 98 →</a></p>
       </div>
 
       <!-- variant: split photo -->
@@ -540,6 +579,52 @@
       </div>
     </div>
     <p class="teaser-foot"><a href="/gallery">See more in the full gallery →</a></p>
+  </div>
+</section>
+
+<!-- ================= PRIVATE OR GROUP ================= -->
+<section class="section" id="compare" data-screen-label="Private or group">
+  <div class="wrap">
+    <p class="kicker">Private or group?</p>
+    <h2>Two ways to meet Mt. Fuji</h2>
+    <p class="section-lede">Most guests book the private stopover. From October to December, there's also a small-group day every Wednesday.</p>
+
+    <div class="cmp-grid">
+      <article class="cmp-card cmp-private">
+        <div class="cmp-photo"><img src="images/hero.jpg" alt="Mt. Fuji from a hidden local viewpoint" loading="lazy"></div>
+        <div class="cmp-body">
+          <div class="cmp-head">
+            <h3>Private Half-Day Tour</h3>
+            <span class="cmp-badge pop">★ 5.0 · Most popular</span>
+          </div>
+          <p class="cmp-sub">Your own guide and van, shaped around your Shinkansen times — hidden viewpoints, the principal Fuji shrine and award-winning yakisoba.</p>
+          <ul class="cmp-facts">
+            <li>4 hours · any day</li>
+            <li>Just your group (1–5)</li>
+            <li>Luggage welcome</li>
+            <li>Free cancellation 24 h</li>
+          </ul>
+          <div class="cmp-cta-row">
+            <span class="cmp-price">From <strong>USD 159</strong> / person · 3–5 guests</span>
+            <a class="btn-book" href="#book">Check dates &amp; book</a>
+          </div>
+        </div>
+      </article>
+
+      <aside class="cmp-card cmp-group">
+        <span class="cmp-badge new">New · Oct–Dec 2026</span>
+        <h3>Wednesday Group Tour</h3>
+        <p class="cmp-sub">Join other travelers for a 6-hour minibus day — Lake Tanuki, Shiraito Falls, the shrine and a yakisoba stop.</p>
+        <ul class="cmp-facts">
+          <li>Every Wednesday</li>
+          <li>Small group · max 15</li>
+          <li>From Shin-Fuji Station</li>
+        </ul>
+        <div class="cmp-price-sm"><strong>USD 98</strong> / person<span>All ages · departs with 10+ guests</span></div>
+        <button class="btn-ghost bokunButton" type="button" id="bokun_group_compare" data-src="https://widgets.bokun.io/online-sales/9c7daabb-e81c-4ae1-b504-5451a5ca69ff/experience/1247586?partialView=1&amp;currency=USD&amp;phoneCountryCode=US" data-testid="widget-group-book-button">Check Wednesday dates →</button>
+        <a class="cmp-group-details" href="/group-tour">Tour details →</a>
+      </aside>
+    </div>
   </div>
 </section>
 
