@@ -425,6 +425,13 @@ html[data-hero="bookcard"] .hero-card { display: block; align-self: center; }
 .review-stars { color: var(--star); font-size: 14px; margin-bottom: 12px; letter-spacing: 2px; }
 .review-text { font-size: 15px; color: var(--ink-soft); line-height: 1.62; margin-bottom: 16px; }
 .review-full { display: none; }
+/* Long quotes hold the FULL text but clamp to 7 lines; reviews.js then
+   raises the clamp per card to fill the leftover space (cards stretch to
+   the row's tallest, which used to leave a blank gap above the author). */
+.review-truncated {
+  display: -webkit-box; -webkit-box-orient: vertical;
+  -webkit-line-clamp: 7; overflow: hidden;
+}
 .review-card.expanded .review-truncated { display: none; }
 .review-card.expanded .review-full { display: block; }
 .review-read-more {
@@ -451,14 +458,9 @@ html[data-hero="bookcard"] .hero-card { display: block; align-self: center; }
 @media (max-width: 600px) {
   .review-card { min-width: 280px; max-width: 300px; padding: 20px; }
   /* cards keep their own height instead of stretching to the tallest
-     in the row, and long quotes clamp to 7 lines (reviews.js truncates
-     at 300 chars — too tall at this width; full text stays for SEO
-     and the Read more toggle) */
+     in the row (the base 7-line clamp on .review-truncated above already
+     keeps long quotes short at this width) */
   .reviews-grid { align-items: flex-start; }
-  .review-card .review-truncated {
-    display: -webkit-box; -webkit-box-orient: vertical;
-    -webkit-line-clamp: 7; overflow: hidden;
-  }
 }
 
 /* lightbox for review photos (markup injected by reviews.js) */

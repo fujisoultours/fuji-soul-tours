@@ -279,9 +279,11 @@ function lightboxNav(dir) {
     grid.innerHTML = reviews.map(function(r) {
       var stars = '★'.repeat(r.stars) + '☆'.repeat(5 - r.stars);
       var needsTruncate = r.text.length > maxLen;
-      var truncated = needsTruncate ? r.text.slice(0, maxLen) + '…' : r.text;
+      // Long quotes render the FULL text twice: .review-truncated is cut by a
+      // CSS line-clamp (raised per card by fillReviewClamps below so the text
+      // fills the card's leftover height), .review-full is the Read-more target.
       var textHtml = needsTruncate
-        ? '<p class="review-text review-truncated">"' + escapeReviewHtml(truncated) + '"</p>'
+        ? '<p class="review-text review-truncated">"' + escapeReviewHtml(r.text) + '"</p>'
           + '<p class="review-text review-full">"' + escapeReviewHtml(r.text) + '"</p>'
           + '<button class="review-read-more">Read more</button>'
         : '<p class="review-text">"' + escapeReviewHtml(r.text) + '"</p>';
@@ -312,7 +314,56 @@ function lightboxNav(dir) {
         + '<div class="review-date">' + escapeReviewHtml(r.date) + ' · ' + sourceHtml + '</div>'
         + '</div>';
     }).join('');
+    // Synchronous on purpose: getBoundingClientRect forces layout, and
+    // requestAnimationFrame never fires on hidden/background pages.
+    fillReviewClamps();
   }
+
+  // Cards stretch to the row's tallest card (flex align-items: stretch), so a
+  // 7-line clamp used to leave a blank gap above the author line. Measure each
+  // card's leftover space and raise the clamp until the text fills it; if the
+  // whole quote fits, drop the Read-more toggle and reclaim its space too.
+  var CLAMP_BASE = 7; // keep in sync with .review-truncated line-clamp in CSS
+  function fillReviewClamps() {
+    var cards = grid.querySelectorAll('.review-card');
+    Array.prototype.forEach.call(cards, function(card) {
+      var t = card.querySelector('.review-truncated');
+      if (!t) return;
+      var btn = card.querySelector('.review-read-more');
+      var author = card.querySelector('.review-author');
+      if (!author || !author.previousElementSibling) return;
+      // Reset to the CSS base before measuring (resize/re-render can shrink space)
+      t.style.webkitLineClamp = '';
+      if (btn) btn.style.display = '';
+      if (card.classList.contains('expanded')) return; // full text already shown
+      var lineH = parseFloat(getComputedStyle(t).lineHeight) || 24;
+      // Two passes: hiding the Read-more button frees one more line's worth
+      for (var pass = 0; pass < 2; pass++) {
+        var prev = author.previousElementSibling;
+        var free = author.getBoundingClientRect().top
+          - prev.getBoundingClientRect().bottom
+          - (parseFloat(getComputedStyle(prev).marginBottom) || 0);
+        var extra = Math.floor(free / lineH);
+        if (extra > 0) {
+          var current = parseInt(t.style.webkitLineClamp, 10) || CLAMP_BASE;
+          t.style.webkitLineClamp = String(current + extra);
+        }
+        var fits = t.scrollHeight <= t.clientHeight + 2;
+        if (btn) btn.style.display = fits ? 'none' : '';
+        if (!fits || !btn) break;
+      }
+    });
+  }
+
+  // Re-measure once webfonts swap in (line height changes) and on resize
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(function() { fillReviewClamps(); });
+  }
+  var clampResizeTimer;
+  window.addEventListener('resize', function() {
+    clearTimeout(clampResizeTimer);
+    clampResizeTimer = setTimeout(fillReviewClamps, 150);
+  });
 
   // Delegated click handler for "Read more" / "Show less" toggle
   grid.addEventListener('click', function(e) {
@@ -321,6 +372,8 @@ function lightboxNav(dir) {
     var card = btn.closest('.review-card');
     var expanded = card.classList.toggle('expanded');
     btn.textContent = expanded ? 'Show less' : 'Read more';
+    // Row height changes with the expanded card — refit the other cards
+    fillReviewClamps();
   });
 
   // Delegated click handler for review photos (avoids stale global index references)

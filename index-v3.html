@@ -1138,6 +1138,9 @@ button { font-family: inherit; cursor: pointer; }
     .review-card .review-stars { color: var(--c-accent); font-size: 13px; letter-spacing: 3px; line-height: 1; }
     .review-card .review-text { font-family: var(--font-display); font-size: 17px; line-height: 1.55; color: var(--c-fg); font-weight: 400; margin: 16px 0 0; }
     .review-card .review-full { display: none; }
+    /* Long quotes hold the FULL text clamped to 7 lines; reviews.js raises the
+       clamp per card to fill the card's leftover height (fillReviewClamps). */
+    .review-card .review-truncated { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 7; overflow: hidden; }
     .review-card.expanded .review-truncated { display: none; }
     .review-card.expanded .review-full { display: block; }
     .review-read-more { align-self: flex-start; background: none; border: 0; color: var(--c-accent); cursor: pointer; font-family: var(--font-body); font-size: 13px; font-weight: 500; padding: 0; margin: 12px 0 0; }
