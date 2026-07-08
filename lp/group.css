@@ -1,0 +1,84 @@
+/* group.css — Wednesday Group Tour page-specific styles.
+   Extends lp/styles.css (same tokens, same system). */
+
+/* ---- hero facts strip ---- */
+.gt-facts { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--hair); margin-top: 48px; }
+.gt-facts > div { padding: 22px 24px 0; border-left: 1px solid var(--hair-soft); }
+.gt-facts > div:first-child { border-left: none; padding-left: 0; }
+.gt-facts .k { font-family: var(--font-display); font-size: clamp(24px, 2.6vw, 34px); font-weight: 600; line-height: 1.1; }
+.gt-facts .k em { font-style: italic; color: var(--ai); }
+.gt-facts .k .unit { font-family: var(--font-body); font-size: 14px; font-weight: 600; color: var(--mid); margin-left: 6px; }
+.gt-facts .v { font-size: 13px; color: var(--mid); margin-top: 8px; }
+@media (max-width: 700px) {
+  .gt-facts { grid-template-columns: 1fr; margin-top: 36px; }
+  .gt-facts > div { padding: 16px 0 0; border-left: none; border-top: 1px solid var(--hair-soft); margin-top: 16px; }
+  .gt-facts > div:first-child { border-top: none; margin-top: 0; padding-top: 0; }
+}
+
+/* ---- timeline reuses .day-* from styles.css ---- */
+
+/* ---- included / not included ---- */
+.inc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-top: 48px; }
+.inc-col h3 {
+  font-family: var(--font-body); font-size: 13px; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  padding-bottom: 12px; border-bottom: 1px solid var(--hair); margin-bottom: 4px;
+}
+.inc-col.in h3 { color: var(--ai); }
+.inc-col.out h3 { color: var(--mid); }
+.inc-row { display: grid; grid-template-columns: 24px 1fr; gap: 14px; padding: 18px 0; border-bottom: 1px solid var(--hair-soft); }
+.inc-row:last-child { border-bottom: none; }
+.inc-mark { font-weight: 700; color: var(--mid); }
+.inc-col.in .inc-mark { color: var(--ai); }
+.inc-row .k { font-family: var(--font-display); font-size: 17.5px; font-weight: 600; }
+.inc-row .v { font-size: 14.5px; color: var(--ink-soft); margin-top: 4px; }
+@media (max-width: 800px) { .inc-grid { grid-template-columns: 1fr; gap: 20px; } }
+
+/* ---- booking note under the Bokun calendar ---- */
+.wed-note { margin-top: 24px; font-size: 13.5px; color: var(--mid); }
+.wed-note strong { color: var(--ink); }
+
+/* ---- pricing (night panel like #book) ---- */
+.gtp-grid { display: grid; grid-template-columns: 1fr 1.05fr; gap: 56px; margin-top: 48px; align-items: start; }
+.gtp-price { font-family: var(--font-display); font-size: clamp(64px, 8vw, 104px); font-weight: 600; line-height: 0.95; letter-spacing: -0.02em; }
+.gtp-price .unit { display: block; font-family: var(--font-body); font-size: 14px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-night-dim); margin-top: 14px; }
+.gtp-lines { border-top: 1px solid var(--night-soft); margin-top: 28px; }
+.gtp-line { display: flex; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--night-soft); font-size: 15px; color: var(--on-night-dim); line-height: 1.5; }
+.gtp-line .n { font-family: var(--font-body); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: oklch(0.72 0.09 250); padding-top: 4px; flex-shrink: 0; }
+.gtp-line strong { color: var(--on-night); }
+.gtp-table { border-top: 1px solid var(--hair); margin-top: 8px; }
+.gtp-trow { display: flex; justify-content: space-between; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--hair-soft); font-size: 14.5px; }
+.gtp-trow .l { color: var(--ink-soft); }
+.gtp-trow .r { font-weight: 600; }
+.gtp-cta-wrap { margin-top: 28px; }
+@media (max-width: 880px) { .gtp-grid { grid-template-columns: 1fr; gap: 40px; } }
+
+/* ---- why wednesday ---- */
+.why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid var(--hair); margin-top: 48px; }
+.why-cell { padding: 30px 32px 30px 0; border-left: 1px solid var(--hair); border-bottom: 1px solid var(--hair); }
+.why-cell:first-child { border-left: none; }
+.why-cell:not(:first-child) { padding-left: 32px; }
+.why-mark { font-family: var(--font-display); font-size: 38px; color: var(--ai); line-height: 1; margin-bottom: 16px; }
+.why-cell h3 { font-size: 21px; font-weight: 600; margin-bottom: 10px; }
+.why-cell p { font-size: 14.5px; color: var(--ink-soft); }
+@media (max-width: 800px) {
+  .why-grid { grid-template-columns: 1fr; }
+  .why-cell { padding: 24px 0; border-left: none; }
+  .why-cell:not(:first-child) { padding-left: 0; }
+}
+
+/* ---- cross-sell to private ---- */
+.xsell {
+  display: flex; align-items: center; gap: 32px; flex-wrap: wrap;
+  background: white; border: 1px solid var(--hair); border-radius: 8px;
+  padding: 34px 38px; margin-top: 0;
+}
+.xsell-text { flex: 1; min-width: 260px; }
+.xsell-text h3 { font-size: 24px; font-weight: 600; margin-bottom: 8px; }
+.xsell-text p { font-size: 15px; color: var(--ink-soft); max-width: 60ch; }
+@media (max-width: 600px) { .xsell { padding: 26px 22px; } .xsell .btn-book { width: 100%; } }
+
+/* mobile CTA stacking (mirrors LP) */
+@media (max-width: 600px) {
+  .gtp-cta-wrap .btn-book { width: 100%; }
+}
