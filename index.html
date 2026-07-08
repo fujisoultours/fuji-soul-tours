@@ -151,8 +151,12 @@
   @media (max-width: 560px) { .guides-grid { grid-template-columns: 1fr; } }
 
   /* page-scoped: hero group link + Private-or-Group comparison (#compare) */
-  .hero-group-link { margin-top: 14px; font-size: 14.5px; }
-  .hero-group-link a { font-weight: 700; }
+  .hero-group-link { margin-top: 16px; }
+  .hero-group-cta { display: inline-flex; align-items: center; gap: 11px; border: 1px solid var(--hair); background: #fff; border-radius: 10px; padding: 10px 16px 10px 12px; text-decoration: none; box-shadow: 0 8px 22px -16px oklch(0.3 0.05 255 / 0.55); transition: border-color 0.15s ease, transform 0.15s ease; }
+  .hero-group-cta:hover { border-color: var(--ai); transform: translateY(-1px); }
+  .hero-group-cta .wed { background: var(--ai); color: #fff; font-size: 10.5px; font-weight: 800; letter-spacing: 0.09em; padding: 4px 8px; border-radius: 6px; line-height: 1; }
+  .hero-group-cta .txt { color: var(--ink); font-weight: 600; font-size: 14.5px; }
+  .hero-group-cta .txt b { color: var(--ai); font-weight: 800; }
   /* ≤600px: lp/styles.css reorders .hero-copy children (order 1–7) — keep this link last */
   @media (max-width: 600px) { .hero-group-link { order: 8; } }
 
@@ -265,7 +269,7 @@
           <a class="btn-ghost" href="#day">See the day plan ↓</a>
         </div>
         <p class="cta-micro">Free cancellation &amp; free date change up to 24 h before · Instant confirmation.</p>
-        <p class="hero-group-link"><a href="#compare">Wanna join a group tour? →</a></p>
+        <p class="hero-group-link"><a class="hero-group-cta" href="#compare"><span class="wed">WED</span><span class="txt">Join a small-group tour — <b>$98</b> →</span></a></p>
       </div>
 
       <!-- variant: split photo -->
