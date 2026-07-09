@@ -83,19 +83,7 @@ p { margin: 0; text-wrap: pretty; }
 .cta-micro { font-size: 13.5px; color: var(--mid); margin-top: 10px; }
 .cta-micro strong { color: var(--sale-light); }
 
-/* ---- promo tag (hidden when html[data-promo="off"]) ----
-   Styled as a train-ticket stub — solid fare box + perforation + date —
-   to match the indigo-timetable system. */
-.promo-chip {
-  display: inline-flex; align-items: stretch;
-  border: 1px solid var(--cta-deep); border-radius: 2px;
-  font-size: 11.5px; font-weight: 700; letter-spacing: 0.1em;
-  text-transform: uppercase; color: var(--cta-deep);
-  background: white; overflow: hidden;
-}
-.promo-chip .pc-off { background: var(--cta-deep); color: oklch(0.985 0.005 60); padding: 5px 11px; }
-.promo-chip .pc-ends { padding: 5px 11px; border-left: 1px dashed oklch(0.75 0.1 30); display: inline-flex; align-items: center; }
-html[data-promo="off"] .promo-only { display: none !important; }
+/* ---- promo pricing (strike-through full price, toggled via html[data-promo]) ---- */
 html[data-promo="off"] .old-price { display: none; }
 html[data-promo="off"] .sale-price { color: inherit; }
 .old-price { text-decoration: line-through; opacity: 0.55; font-weight: 500; }
@@ -185,7 +173,6 @@ html[data-promo="off"] .sale-price { color: inherit; }
 .hero-sub { margin-top: 20px; font-size: 18px; color: var(--ink-soft); max-width: 520px; }
 .hero-proof { margin-top: 24px; font-size: 14.5px; font-weight: 600; color: var(--ink-soft); line-height: 1.7; text-wrap: balance; max-width: 46ch; }
 .hero-proof .star { color: var(--star); }
-.hero-promo { margin-top: 26px; }
 .hero-price-row { display: flex; align-items: baseline; gap: 12px; margin-top: 12px; flex-wrap: wrap; }
 .hero-price-row .from { font-size: 14px; color: var(--mid); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; }
 .hero-price-row .price { font-family: var(--font-display); font-size: 34px; font-weight: 600; }
@@ -259,7 +246,7 @@ html[data-hero="bookcard"] .hero-card { display: block; align-self: center; }
   margin-top: 28px; background: white; border: 1px solid var(--hair);
   border-radius: 8px; padding: 34px 38px;
 }
-.route-stops { display: flex; align-items: stretch; gap: 0; }
+.route-stops { display: flex; align-items: stretch; }
 .route-stop { flex: 1; position: relative; }
 .route-stop .r-time { font-family: var(--font-display); font-size: 24px; font-weight: 600; }
 .route-stop .r-name { font-size: 14px; font-weight: 700; margin-top: 2px; }
@@ -490,7 +477,7 @@ html[data-hero="bookcard"] .hero-card { display: block; align-self: center; }
 
 /* booking price panel — sticky on desktop so it tracks the tall
    Bokun calendar column instead of leaving a void below */
-.price-panel { display: flex; flex-direction: column; gap: 0; }
+.price-panel { display: flex; flex-direction: column; }
 @media (min-width: 881px) {
   .price-panel { position: sticky; top: 100px; }
 }
@@ -503,7 +490,6 @@ html[data-hero="bookcard"] .hero-card { display: block; align-self: center; }
 }
 .currency-btn + .currency-btn { border-left: 1px solid var(--night-soft); }
 .currency-btn[aria-pressed="true"] { background: var(--on-night); color: var(--night); }
-.promo-line { font-size: 13px; font-weight: 700; color: var(--sale-dark); letter-spacing: 0.02em; }
 .price-rows { border-top: 1px solid var(--night-soft); }
 .price-row {
   display: flex; align-items: baseline; justify-content: space-between;
@@ -611,9 +597,6 @@ footer { border-top: 1px solid var(--hair); padding: 44px 0 56px; }
 html[data-stickybar="off"] .sticky-bar { display: none !important; }
 @media (max-width: 880px) {
   .sticky-bar { display: flex; }
-}
-
-@media (max-width: 880px) {
   .book-grid { grid-template-columns: 1fr; gap: 40px; }
   .section { padding: 64px 0; }
   .wrap { padding: 0 20px; }
@@ -635,12 +618,8 @@ html[data-stickybar="off"] .sticky-bar { display: none !important; }
   .hero-copy { display: flex; flex-direction: column; }
   .hero-copy h1 { order: 1; }
   .hero-proof { order: 2; margin-top: 12px; font-size: 13px; }
-  .hero-promo { order: 3; margin-top: 12px; }
-  .hero-promo .promo-chip { font-size: 10px; letter-spacing: 0.08em; }
-  .hero-promo .promo-chip .pc-off { padding: 3.5px 8px; }
-  .hero-promo .promo-chip .pc-ends { padding: 3.5px 8px; }
   .hero-price-row { order: 4; margin-top: 6px; }
-  .hero-ctas { order: 5; margin-top: 12px; gap: 12px; }
+  .hero-ctas { order: 5; margin-top: 12px; }
   .hero-sub { order: 6; margin-top: 22px; font-size: 16px; }
   .cta-micro { order: 7; }
   .hero h1 { font-size: 30px; }
@@ -662,7 +641,6 @@ html[data-stickybar="off"] .sticky-bar { display: none !important; }
   .currency-btn { padding: 13px 0; flex: 1; min-height: 44px; }
   .currency-row { width: 100%; }
   .panel-top { flex-direction: column; align-items: stretch; gap: 10px; }
-  .promo-line { text-align: center; }
 
   /* widget card: reclaim width for the calendar */
   .widget-col { padding: 22px 18px; }
@@ -734,7 +712,7 @@ html[data-stickybar="off"] .sticky-bar { display: none !important; }
   display: flex; align-items: center; justify-content: center; flex-shrink: 0;
 }
 .chatbot-header-icon svg { width: 20px; height: 20px; }
-.chatbot-header-text h3 { font-size: 15px; font-weight: 600; margin: 0; font-family: var(--font-body); }
+.chatbot-header-text h3 { font-size: 15px; font-weight: 600; font-family: var(--font-body); }
 .chatbot-header-text p { font-size: 12px; opacity: 0.85; margin: 2px 0 0; }
 
 .chatbot-messages {
@@ -874,7 +852,7 @@ html[data-stickybar="off"] .sticky-bar { display: none !important; }
 .meta-stack .ms-row:last-child { border-bottom: none; }
 .meta-stack .ms-k { width: 110px; flex-shrink: 0; font-weight: 700; font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mid); padding-top: 3px; }
 .cta-banner { background: var(--night); color: var(--on-night); border-radius: 10px; padding: 34px 34px; margin-top: 56px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
-.cta-banner h2 { color: var(--on-night); font-size: 24px; margin: 0; font-family: var(--font-display); }
+.cta-banner h2 { color: var(--on-night); font-size: 24px; margin: 0; }
 .cta-banner p { color: var(--on-night-dim); margin-top: 6px; font-size: 15px; max-width: 46ch; }
 .next-links { margin-top: 56px; border-top: 1px solid var(--hair); padding-top: 26px; }
 .next-links .nl-label { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mid); font-weight: 700; }
@@ -939,21 +917,6 @@ html[data-stickybar="off"] .sticky-bar { display: none !important; }
 .btn-ig:hover { transform: translateY(-1px); background: var(--ai-deep); color: white; }
 .btn-ig svg { width: 20px; height: 20px; }
 
-/* LP gallery teaser strip */
-.gallery-teaser { background: var(--paper-deep); }
-.gallery-teaser .teaser-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 22px; }
-.gallery-teaser h2 { font-size: clamp(24px, 3vw, 34px); font-weight: 600; }
-.gallery-teaser .teaser-link { font-weight: 600; font-size: 15px; white-space: nowrap; text-decoration: none; }
-.gallery-teaser .teaser-link:hover { text-decoration: underline; }
-.teaser-strip { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; }
-.teaser-strip a { display: block; aspect-ratio: 1; border-radius: 6px; overflow: hidden; }
-.teaser-strip img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease; }
-.teaser-strip a:hover img { transform: scale(1.06); }
-@media (max-width: 760px) {
-  .teaser-strip { grid-template-columns: repeat(3, 1fr); }
-  .teaser-strip a:nth-child(n+7) { display: none; }
-}
-
 /* gallery lightbox (built by lp.js) */
 .glb { display: none; position: fixed; inset: 0; z-index: 9999; background: rgba(12,16,28,0.92); align-items: center; justify-content: center; }
 .glb.open { display: flex; }
@@ -968,7 +931,7 @@ html[data-stickybar="off"] .sticky-bar { display: none !important; }
 @media (max-width: 600px) { .glb-nav { font-size: 30px; padding: 12px; } }
 
 /* ============ LP GUEST CAROUSEL (teaser) ============ */
-.gallery-teaser { padding: 56px 0; }
+.gallery-teaser { background: var(--paper-deep); }
 .gallery-teaser .teaser-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 24px; }
 .gallery-teaser .teaser-head h2 { font-size: clamp(24px, 3vw, 34px); font-weight: 600; }
 .gallery-teaser .teaser-head .kicker { margin-bottom: 10px; }
@@ -1002,7 +965,7 @@ html[data-stickybar="off"] .sticky-bar { display: none !important; }
 .teaser-foot a { font-weight: 600; font-size: 15px; text-decoration: none; }
 .teaser-foot a:hover { text-decoration: underline; }
 @media (max-width: 900px) { .guest-nav { display: none; } .guest-card { flex-basis: calc((100% - 16px) / 2); } }
-@media (max-width: 600px) { .guest-card { flex-basis: 82%; } .gallery-teaser { padding: 44px 0; } }
+@media (max-width: 600px) { .guest-card { flex-basis: 82%; } }
 
 /* tighten the reviews → guest-carousel gap (same bg, stacked padding read as one big blank) */
 #reviews.section { padding-bottom: 28px; }

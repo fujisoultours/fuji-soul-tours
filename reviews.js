@@ -268,13 +268,6 @@ function lightboxNav(dir) {
     if (!reviews.length) return;
     reviewPhotoSets = [];
 
-    // Calculate average rating for hero badge
-    var avg = (reviews.reduce(function(s, r) { return s + r.stars; }, 0) / reviews.length).toFixed(1);
-    var countEl = document.querySelector('.hero-badge');
-    if (countEl) {
-      countEl.textContent = '★ ' + avg + ' Rated · Private Tour';
-    }
-
     var maxLen = 300;
     grid.innerHTML = reviews.map(function(r) {
       var stars = '★'.repeat(r.stars) + '☆'.repeat(5 - r.stars);
@@ -413,7 +406,7 @@ function lightboxNav(dir) {
   }
 
   // 2. Fetch approved direct reviews and merge (with timeout)
-  if (REVIEW_GAS_ENDPOINT && REVIEW_GAS_ENDPOINT !== 'YOUR_GAS_ENDPOINT_HERE') {
+  if (REVIEW_GAS_ENDPOINT) {
     var fetchOpts = {};
     if (typeof AbortController !== 'undefined') {
       var ac = new AbortController();

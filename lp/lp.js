@@ -1,10 +1,11 @@
 // lp.js — Booking-First LP interactions. Plain JS, no framework (SEO-safe).
 
-// ===== PROMO: 15% OFF, ends June 16 (promo15). =====
-// Teardown on 6/16: set active:false here — strikethroughs, promo chips and
-// sale prices all revert in one flag. (Also disable Bokun price modulator
-// 20867, update TikTok/Instagram bios, and remove kb/knowledge-base.json
-// pricing.promo — see the Notion checklist.)
+// ===== PROMO pricing flag =====
+// active:true renders sale prices + strike-through full prices via the
+// [data-price] / .old-price bindings. Campaign banners (.promo-only markup)
+// were removed after promo15 ended (June 2026) — re-add them for the next
+// campaign. (Also sync Bokun price modulator + TikTok/Instagram bios +
+// kb/knowledge-base.json pricing — see the Notion checklist.)
 const PROMO = { active: false, rate: 0.85, campaign: 'promo15' };
 
 // ---- Prices (mirrors production PRICES; full = pre-promo list prices) ----
@@ -243,7 +244,7 @@ function scrollGuest(btn, dir) {
 }
 window.scrollGuest = scrollGuest;
 
-// ---- Add-ons carousel (#addons) ----
+// ---- Add-ons carousel (#experiences) ----
 function scrollAddons(btn, dir) {
   const wrap = btn.closest('.addons-carousel-wrap');
   const car = wrap && wrap.querySelector('.addons-carousel');
@@ -354,10 +355,13 @@ function lpInitPromo() {
         if (entries[0].isIntersecting) { clearTimeout(timer); window._loadBokun(); obs.disconnect(); }
       }, { rootMargin: '400px' }).observe(bookSection);
     }
-    // Also load on any booking CTA click
-    document.addEventListener('click', function (e) {
-      if (e.target.closest('.btn-book, .bokunButton')) window._loadBokun();
-    }, { once: true });
+    // Also load on the first booking CTA click
+    document.addEventListener('click', function onCtaClick(e) {
+      if (e.target.closest('.btn-book, .bokunButton')) {
+        window._loadBokun();
+        document.removeEventListener('click', onCtaClick);
+      }
+    });
   });
 })();
 
@@ -366,7 +370,7 @@ function lpInitTracking() {
   if (typeof gtag !== 'function') return;
 
   // Section engagement: 'section_view' on first appearance, 'section_engaged' after 5s dwell
-  const sections = ['route', 'day', 'weather', 'addons', 'reviews', 'book', 'faq', 'contact'];
+  const sections = ['route', 'day', 'weather', 'experiences', 'reviews', 'book', 'faq', 'contact'];
   const timers = {}, viewed = {};
   if (window.IntersectionObserver) {
     sections.forEach(function (id) {

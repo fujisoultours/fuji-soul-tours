@@ -29,12 +29,12 @@ src="https://www.facebook.com/tr?id=991295620485360&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
 
-
+<script defer src="/_vercel/speed-insights/script.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Write a Review — Fuji Soul Tours</title>
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
 <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
-<link rel="icon" type="image/png" sizes="192x192" href="/fvicon192.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <meta name="description" content="Share your Fuji Soul Tours experience. Write a review and help future travelers.">
 
@@ -64,11 +64,8 @@ src="https://www.facebook.com/tr?id=991295620485360&ev=PageView&noscript=1"
   :root {
     --shu: #0077B6;
     --shu-dark: #005A8C;
-    --cta: #C0392B;
-    --cta-dark: #A93226;
     --sumi: #1a1a1a;
     --shiro: #FAFAF8;
-    --kinari: #EEF4F8;
     --hai: #6B6B6B;
     --usu-hai: #DEE8EE;
     --gold: #B8860B;
@@ -165,7 +162,6 @@ src="https://www.facebook.com/tr?id=991295620485360&ev=PageView&noscript=1"
     color: var(--usu-hai);
     cursor: pointer;
     transition: color 0.15s, transform 0.15s;
-    padding: 0;
     line-height: 1;
   }
 
@@ -674,8 +670,6 @@ function addPhoto(file) {
   var reader = new FileReader();
   reader.onload = function(e) {
     var dataUrl = e.target.result;
-    var idx = selectedPhotos.length;
-
     selectedPhotos.push({ file: file, dataUrl: dataUrl });
     renderPhotoPreviews();
   };

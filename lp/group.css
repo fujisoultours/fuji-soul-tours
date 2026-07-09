@@ -57,14 +57,14 @@
 .xsell {
   display: flex; align-items: center; gap: 32px; flex-wrap: wrap;
   background: white; border: 1px solid var(--hair); border-radius: 8px;
-  padding: 34px 38px; margin-top: 0;
+  padding: 34px 38px;
 }
 .xsell-text { flex: 1; min-width: 260px; }
 .xsell-text h3 { font-size: 24px; font-weight: 600; margin-bottom: 8px; }
 .xsell-text p { font-size: 15px; color: var(--ink-soft); max-width: 60ch; }
-@media (max-width: 600px) { .xsell { padding: 26px 22px; } .xsell .btn-book { width: 100%; } }
-
-/* mobile CTA stacking (mirrors LP) */
+/* mobile: tighter xsell + full-width CTAs (mirrors LP) */
 @media (max-width: 600px) {
+  .xsell { padding: 26px 22px; }
+  .xsell .btn-book { width: 100%; }
   .gtp-cta-wrap .btn-book { width: 100%; }
 }
