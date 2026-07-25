@@ -365,6 +365,14 @@ function lpInitPromo() {
   });
 })();
 
+// Which tour a booking CTA belongs to: the Bokun product id in data-src wins
+// (1247586 = Wednesday group tour, sold from the home comparison card too),
+// otherwise the page the CTA sits on decides.
+function lpTourType(el) {
+  if ((el.dataset.src || '').indexOf('1247586') !== -1) return 'group';
+  return location.pathname.indexOf('/group-tour') === 0 ? 'group' : 'private';
+}
+
 // ===== GA4 custom event tracking =====
 function lpInitTracking() {
   if (typeof gtag !== 'function') return;
@@ -394,12 +402,13 @@ function lpInitTracking() {
     });
   }
 
-  // Booking CTA clicks (anchors to #book + the Bokun popup button)
+  // Booking CTA clicks (anchors to #book, the compare-card CTAs + the Bokun popup button).
+  // 'data-no-track' opts a CTA out (cross-sell links that only navigate to the other tour).
   document.addEventListener('click', function (e) {
-    const el = e.target.closest('a.btn-book, button.bokunButton');
-    if (!el) return;
+    const el = e.target.closest('a.btn-book, a.cmp-book, button.bokunButton');
+    if (!el || el.hasAttribute('data-no-track')) return;
     const label = el.closest('[data-screen-label]')?.dataset.screenLabel || 'page';
-    gtag('event', 'book_now_click', { 'event_category': 'booking', 'event_label': label, 'campaign': PROMO.active ? PROMO.campaign : '' });
+    gtag('event', 'book_now_click', { 'event_category': 'booking', 'event_label': label, 'tour_type': lpTourType(el), 'campaign': PROMO.active ? PROMO.campaign : '' });
   });
 
   // Bokun widget progress via postMessage
