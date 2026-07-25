@@ -15,6 +15,35 @@
   .gt-facts > div:first-child { border-top: none; margin-top: 0; padding-top: 0; }
 }
 
+/* ---- departure confirmation promise (sits under the hero facts strip) ---- */
+.gt-assure {
+  margin-top: 40px; background: var(--ai-tint);
+  border: 1px solid var(--hair); border-radius: 10px; padding: 28px 30px 24px;
+}
+.gt-assure-kicker {
+  font-family: var(--font-body); font-size: 11.5px; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--ai);
+  display: flex; align-items: center; gap: 10px;
+}
+.gt-assure-kicker::before { content: ""; width: 24px; height: 1.5px; background: var(--ai); flex-shrink: 0; }
+.gt-assure-lead {
+  font-family: var(--font-display); font-size: clamp(21px, 2.2vw, 27px);
+  font-weight: 600; line-height: 1.35; margin-top: 12px; color: var(--ink);
+}
+.gt-assure-lead strong { color: var(--ai-deep); }
+.gt-assure-grid { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 22px; border-top: 1px solid var(--hair); }
+.gt-assure-item { padding: 18px 22px 0; border-left: 1px solid var(--hair); }
+.gt-assure-item:first-child { border-left: none; padding-left: 0; }
+.gt-assure .ga-n { font-family: var(--font-body); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: var(--ai); }
+.gt-assure .ga-k { font-family: var(--font-display); font-size: 17.5px; font-weight: 600; color: var(--ink); margin-top: 8px; }
+.gt-assure .ga-v { font-size: 14px; color: var(--ink-soft); margin-top: 6px; line-height: 1.55; }
+@media (max-width: 700px) {
+  .gt-assure { margin-top: 32px; padding: 22px 20px 20px; border-radius: 8px; }
+  .gt-assure-grid { grid-template-columns: 1fr; margin-top: 18px; }
+  .gt-assure-item { padding: 16px 0 0; border-left: none; border-top: 1px solid var(--hair); }
+  .gt-assure-item:first-child { border-top: none; padding-top: 14px; }
+}
+
 /* ---- timeline reuses .day-* from styles.css ---- */
 
 /* ---- included / not included ---- */
