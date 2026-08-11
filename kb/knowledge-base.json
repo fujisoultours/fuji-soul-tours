@@ -30,12 +30,12 @@
       "AUD": "A$221~",
       "CAD": "C$219~"
     },
-    "largeGroup": "For groups of 6–10, additional ¥100,000 (non-refundable, paid in advance) on top of the standard per-person rate for 5 guests.",
+    "largeGroup": "Groups of 6–15 travel by private mini bus (from October 2026): USD 980 for 6–10 guests, then USD 98 per adult from 11 guests. Ages 4–9 are half price and under 4 travel free; USD 980 is the minimum for any mini-bus booking. The mini bus is a booking request — request at least 7 days ahead, we confirm within 48 hours or refund in full. Payment is taken when the request is sent and refunded in full if we cannot confirm. Free cancellation up to 3 days before. Departures currently run October–December 2026. From 11 guests it works out at USD 98 per adult — the same per-person price as the Wednesday group tour, but fully private: any day of the week, your own route and pace.",
     "extensionRate": "$100 USD (¥16,500 JPY) per additional hour beyond the standard 4 hours.",
     "extras": "Activities and food at stops are paid separately on-site (not included in tour price)."
   },
   "whatsIncluded": [
-    "Private tour for your group only (max 5 guests)",
+    "Private tour for your group only (van 1–5 guests; private mini bus 6–15 guests, October–December 2026)",
     "Premium air-conditioned van with luggage storage",
     "Local-born English-speaking guide",
     "Bottled water (one per person)",
@@ -215,7 +215,7 @@
     },
     {
       "q": "Can I book for more than 5 guests?",
-      "a": "Our standard tour accommodates up to 5 guests. For groups of 6–10, we may be able to arrange a larger van — this requires an additional ¥100,000 (non-refundable, paid in advance) on top of the standard per-person rate for 5 guests. For groups larger than 10, we coordinate multiple vehicles. Please contact us for a custom quote."
+      "a": "Yes. The private van seats up to 5 guests; for 6–15 guests we run a private mini bus (from October 2026). It is USD 980 for 6–10 guests, then USD 98 per adult from 11 guests — ages 4–9 are half price, under 4 travel free, and USD 980 is the minimum for any mini-bus booking. Because the bus comes with its own driver it is a booking request, not an instant booking: request at least 7 days ahead and we confirm within 48 hours, or refund you in full. Payment is taken when you send the request and refunded in full if we cannot confirm. Free cancellation up to 3 days before the tour. Departures currently run October–December 2026. From 11 guests it works out at USD 98 per adult — the same per-person price as the Wednesday group tour, but fully private: any day of the week, your own route and pace."
     },
     {
       "q": "What if someone in my group has mobility difficulties?",

@@ -21,6 +21,9 @@ const LP_PRICES = {
 const BOKUN_CHANNEL = '9c7daabb-e81c-4ae1-b504-5451a5ca69ff';
 const BOKUN_CALENDAR_BASE = 'https://widgets.bokun.io/online-sales/' + BOKUN_CHANNEL + '/experience-calendar/1171469?partialView=1';
 const BOKUN_POPUP_BASE = 'https://widgets.bokun.io/online-sales/' + BOKUN_CHANNEL + '/experience/1171469?partialView=1';
+// Mini bus (6–15 guests) is a separate Bokun product and is on-request, so it
+// only ever gets the popup widget — there is no instant-booking calendar.
+const BOKUN_MINIBUS_POPUP_BASE = 'https://widgets.bokun.io/online-sales/' + BOKUN_CHANNEL + '/experience/1268772?partialView=1';
 
 const lpFmt = (cur, n) => `${cur} ${n.toLocaleString('en-US')}`;
 
@@ -58,6 +61,47 @@ function lpUpdateBokunSrc() {
   if (cal) cal.setAttribute('data-src', BOKUN_CALENDAR_BASE + q);
   const pop = document.getElementById('bokun_418f34f4_28e2_4185_85e4_7aa761106072');
   if (pop) pop.setAttribute('data-src', BOKUN_POPUP_BASE + q);
+  // The mini bus is quoted in USD on the page (Bokun only carries an explicit
+  // USD/JPY price for it), so its widget stays in USD whatever the selector says
+  // — otherwise the popup would open in a different currency than the panel.
+  const bus = document.getElementById('bokun_minibus_request');
+  if (bus) bus.setAttribute('data-src', BOKUN_MINIBUS_POPUP_BASE + '&currency=USD&phoneCountryCode=' + p.phoneCC);
+}
+
+// ---- Vehicle chooser (private van vs mini bus) ----
+// Toggles every [data-veh-panel] block in the booking section. The van keeps
+// the inline calendar; the mini bus swaps in the request card.
+function lpInitVehicle() {
+  const cards = document.querySelectorAll('.veh-card');
+  if (!cards.length) return;
+  const show = (veh) => {
+    cards.forEach((c) => c.setAttribute('aria-pressed', String(c.dataset.veh === veh)));
+    document.querySelectorAll('[data-veh-panel]').forEach((el) => {
+      el.hidden = el.dataset.vehPanel !== veh;
+    });
+  };
+  cards.forEach((c) => c.addEventListener('click', () => show(c.dataset.veh)));
+  // cross-sell rows switch in place; the href is only the no-JS fallback.
+  // Links inside #book keep the scroll position; links elsewhere (hero,
+  // compare section) also bring the booking section into view.
+  document.querySelectorAll('[data-veh-link]').forEach((a) => {
+    a.addEventListener('click', (e) => {
+      e.preventDefault();
+      const card = document.querySelector('.veh-card[data-veh="' + a.dataset.vehLink + '"]');
+      if (card) card.click();
+      if (!a.closest('.book')) {
+        // jump on the next frame: the panel swap above changes layout, which
+        // cancels an in-flight smooth scroll and strands the viewport
+        requestAnimationFrame(() => {
+          const book = document.getElementById('book');
+          if (book) book.scrollIntoView();
+        });
+      }
+    });
+  });
+  // ?veh=bus deep-links straight to the mini bus (used by the FAQ + price panel)
+  const wanted = new URLSearchParams(location.search).get('veh');
+  show(wanted === 'bus' ? 'bus' : 'van');
 }
 
 // ---- Currency segment control ----
@@ -386,6 +430,7 @@ function lpInitPromo() {
 // otherwise the page the CTA sits on decides.
 function lpTourType(el) {
   if ((el.dataset.src || '').indexOf('1247586') !== -1) return 'group';
+  if ((el.dataset.src || '').indexOf('1268772') !== -1) return 'minibus';
   return location.pathname.indexOf('/group-tour') === 0 ? 'group' : 'private';
 }
 
@@ -649,6 +694,7 @@ document.addEventListener('DOMContentLoaded', () => {
   lpInitExplore();
   lpInitGallery();
   lpInitCurrency();
+  lpInitVehicle();
   lpInitHeroCard();
   lpInitRoutes();
   lpInitStickyBar();

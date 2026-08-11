@@ -471,6 +471,24 @@ html[data-hero="bookcard"] .hero-card { display: block; align-self: center; }
 /* heading lives inside the left column so the widget card top-aligns
    with the "Pick a date" h2; columns stretch so the sticky panel can
    travel, while the widget card keeps its natural height */
+/* vehicle chooser — [hidden] has to beat the display rules below */
+.book [data-veh-panel][hidden] { display: none !important; }
+.veh-pick { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 26px 0 4px; max-width: 620px; }
+.veh-card {
+  font-family: var(--font-body); text-align: left; cursor: pointer;
+  display: flex; flex-direction: column; gap: 3px;
+  padding: 15px 18px; border-radius: 8px;
+  background: transparent; color: var(--on-night-dim);
+  border: 1.5px solid var(--night-soft);
+  transition: border-color 0.15s, background 0.15s, color 0.15s;
+}
+.veh-card:hover { border-color: var(--on-night-dim); }
+.veh-card[aria-pressed="true"] { background: var(--night-soft); border-color: var(--on-night); color: var(--on-night); }
+.veh-card .veh-name { font-family: var(--font-display); font-size: 17.5px; font-weight: 600; color: var(--on-night); }
+.veh-card .veh-cap { font-size: 13.5px; font-weight: 600; }
+.veh-card .veh-note { font-size: 12px; }
+.veh-card:focus-visible { outline: 2px solid var(--on-night); outline-offset: 2px; }
+
 .book-grid { display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 56px; align-items: stretch; }
 .book-grid .widget-col { align-self: start; }
 .book .price-panel { margin-top: 40px; }
@@ -502,6 +520,9 @@ html[data-hero="bookcard"] .hero-card { display: block; align-self: center; }
 .book-price-hint { font-size: 13px; line-height: 1.5; color: var(--on-night-dim); margin-top: 14px; }
 .book-guarantees { font-size: 13.5px; color: var(--on-night-dim); margin-top: 18px; }
 .book-fx { font-size: 12px; color: oklch(0.6 0.03 250); margin-top: 12px; }
+/* the mini bus panel puts purchase-critical facts here (season, cut-off),
+   so it gets the readable dim tone rather than the faint FX-disclaimer one */
+.price-panel[data-veh-panel="bus"] .book-fx { color: var(--on-night-dim); }
 .book-fx a { color: inherit; }
 
 /* booking widget column — 2 variants via html[data-booking] */
@@ -536,6 +557,39 @@ html[data-booking="popup"] .widget-popup { display: block; }
 .widget-popup .pop-quote cite { display: block; font-style: normal; font-size: 12.5px; margin-top: 6px; color: var(--mid); }
 .widget-popup .btn-book { width: 100%; }
 .widget-popup .pop-alt { text-align: center; margin-top: 14px; font-size: 13.5px; }
+
+/* mini bus: on-request card (no calendar — every date is confirmed by hand) */
+.req-steps { list-style: none; margin: 22px 0 24px; padding: 0; border-top: 1px solid var(--hair-soft); }
+.req-steps li {
+  display: flex; gap: 12px; align-items: flex-start;
+  padding: 14px 2px; border-bottom: 1px solid var(--hair-soft);
+  font-size: 14.5px; color: var(--ink-soft); line-height: 1.5;
+}
+.req-steps .req-n {
+  flex: 0 0 auto; width: 22px; height: 22px; border-radius: 50%;
+  background: var(--ai-tint); color: var(--ai-deep);
+  font-size: 12px; font-weight: 700; line-height: 22px; text-align: center;
+}
+.widget-request .btn-book { width: 100%; }
+.widget-request .pop-alt { text-align: center; margin-top: 14px; font-size: 13px; color: var(--mid); }
+
+/* mini bus conditions that decide whether a booking is possible at all
+   (season, lead time, answer time) — lifted out of the small print */
+.fact-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+.chip {
+  font-size: 12px; font-weight: 700; letter-spacing: .02em; white-space: nowrap;
+  padding: 5px 12px; border: 1px solid var(--night-soft); border-radius: 999px;
+  color: var(--on-night-dim);
+}
+.price-row { flex-wrap: wrap; }
+.p-eq { flex-basis: 100%; font-size: 12px; color: var(--on-night-dim); text-align: right; margin-top: 2px; }
+/* cross-sell to the other vehicle, styled as one more row of the price table */
+.xsell {
+  display: block; padding: 13px 2px; border-bottom: 1px solid var(--night-soft);
+  font-size: 13.5px; font-weight: 600; color: var(--on-night-dim);
+  text-decoration: none; transition: color .15s;
+}
+.xsell:hover { color: var(--on-night); }
 
 /* ============ FAQ ============ */
 .faq-list { margin-top: 44px; border-top: 1px solid var(--hair); }
@@ -598,6 +652,15 @@ html[data-stickybar="off"] .sticky-bar { display: none !important; }
 @media (max-width: 880px) {
   .sticky-bar { display: flex; }
   .book-grid { grid-template-columns: 1fr; gap: 40px; }
+  /* cards stay 2-up on mobile — vertical space pays for the fact chips,
+     the per-person equivalent and the cross-sell row instead */
+  .veh-pick { grid-template-columns: 1fr 1fr; gap: 10px; max-width: none; }
+  .veh-card { padding: 12px 13px; }
+  .veh-card .veh-name { font-size: 16.5px; }
+  .veh-card .veh-note { font-size: 11.5px; }
+  .book .price-panel { margin-top: 28px; }
+  .fact-chips { gap: 6px; margin-bottom: 14px; }
+  .chip { font-size: 11.5px; padding: 4px 10px; }
   .section { padding: 64px 0; }
   .wrap { padding: 0 20px; }
 }
