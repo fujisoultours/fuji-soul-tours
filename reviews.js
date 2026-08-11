@@ -4,11 +4,25 @@
 // このファイルは scripts/fetch-reviews.mjs により自動生成されます。
 // 手動編集は次回同期時に上書きされます。
 //
-// 最終更新: 2026-07-08T11:50:52.382Z
+// 最終更新: 2026-08-11T08:30:30.246Z
 // ソース: Viator + TripAdvisor
 // =============================================
 
 const REVIEWS = [
+  {
+    stars: 5,
+    text: "We had such an incredible day with Taku as he showed us around Shimizu. Unfortunately Mt Fuji didn't reveal herself (which is NOT uncommon) but Taku made sure we had an unforgettable day anyway. He was in contact with us ahead of time to get an idea of what we would like to see, and offered additional options to enhance our experience, including a kimono rental, Saki and beer tasting from local breweries. Lunch was included on our tour, and we had delicious Fukiyama local ramen... it was amazing!! It was a hot day, so Taku thought of everything including UV umbrellas, water and cooling towels for it entire group. And tasty snacks for the ride back. We were on a cruise ship, but Taku and his brother picked us up at the cruise terminal and got us back in plenty of time. I will definitely find Taku again for a tour, the next time we are back in Shimizu.",
+    author: "KImberly_W",
+    date: "August 2026",
+    source: "Viator"
+  },
+  {
+    stars: 5,
+    text: "Noriko and Takumu were fantastic guides who weren't not only knowledgeable but super friendly and kind. Coming from a hectic Tokyo adventure this tour provided peaceful views and beautiful culture. We truly would have missed out had we not of booked Fuji Soul Tours. The Fuji God even blessed us with a peek at the top in July!",
+    author: "Maria_C",
+    date: "July 2026",
+    source: "Tripadvisor"
+  },
   {
     stars: 5,
     text: "This was without a doubt one of the highlights of our entire Japan trip.\nThe tour was perfectly planned and offered a wonderful mix of nature, culture, local food, and authentic experiences. From the breathtaking views of Mt. Fuji and Lake Tanuki to the shrine visit, Fujinomiya yakisoba, sake tasting, and the wagashi and tea experience, every stop felt thoughtfully chosen and added something special to the day.\nWhat truly made this tour exceptional, however, were Taku and Kio. They were incredibly warm, knowledgeable, and genuinely passionate about sharing their region with us. They adapted the day seamlessly to the weather and conditions, making sure we had the best possible experience throughout. We never felt rushed, and their kindness and hospitality made us feel more like friends than guests.\nIf you are looking for a memorable and authentic Mt. Fuji experience, we cannot recommend this tour highly enough. Thank you, Taku and Kio, for an unforgettable day!",
@@ -196,6 +210,7 @@ const REVIEWS = [
     source: "Tripadvisor"
   }
 ];
+
 
 
 
