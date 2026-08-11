@@ -179,10 +179,16 @@ function lpInitGallery() {
 
   const items = [...document.querySelectorAll('[data-glb]')];
   if (!items.length) return;
-  const sources = items.map((el) => ({
-    src: el.dataset.glb,
-    cap: el.dataset.glbCap || '',
-  }));
+  // A photo can appear on a page twice (experiences reuses shots between the
+  // model-course cards and the destination cards). Collapse those to one slide
+  // so paging with ‹ › doesn't show the same image again.
+  const sources = [];
+  const slideOf = items.map((el) => {
+    const src = el.dataset.glb;
+    const existing = sources.findIndex((s) => s.src === src);
+    if (existing !== -1) return existing;
+    return sources.push({ src, cap: el.dataset.glbCap || '' }) - 1;
+  });
 
   const overlay = document.createElement('div');
   overlay.className = 'glb';
@@ -207,7 +213,17 @@ function lpInitGallery() {
   const close = () => { overlay.classList.remove('open'); document.body.style.overflow = ''; };
 
   items.forEach((el, i) => {
-    el.addEventListener('click', () => open(i));
+    el.addEventListener('click', () => open(slideOf[i]));
+    // Gallery/teaser triggers are <button>s and already keyboard-operable; the
+    // experiences page hangs data-glb straight off the <img>, so give those the
+    // same affordances rather than leaving them mouse-only.
+    if (!el.matches('button, a')) {
+      if (!el.hasAttribute('tabindex')) el.tabIndex = 0;
+      if (!el.hasAttribute('role')) el.setAttribute('role', 'button');
+      el.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(slideOf[i]); }
+      });
+    }
   });
   overlay.querySelector('.glb-close').addEventListener('click', close);
   overlay.querySelector('.glb-prev').addEventListener('click', (e) => { e.stopPropagation(); show(idx - 1); });

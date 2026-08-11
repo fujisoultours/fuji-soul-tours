@@ -918,6 +918,10 @@ html[data-stickybar="off"] .sticky-bar { display: none !important; }
 .btn-ig svg { width: 20px; height: 20px; }
 
 /* gallery lightbox (built by lp.js) */
+/* Images that open the lightbox directly (experiences page) need the affordance
+   the <button> triggers get for free. */
+img[data-glb] { cursor: zoom-in; }
+img[data-glb]:focus-visible { outline: 2px solid var(--ai); outline-offset: 2px; }
 .glb { display: none; position: fixed; inset: 0; z-index: 9999; background: rgba(12,16,28,0.92); align-items: center; justify-content: center; }
 .glb.open { display: flex; }
 .glb img { max-width: 92vw; max-height: 88vh; border-radius: 6px; object-fit: contain; }
