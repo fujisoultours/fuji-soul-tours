@@ -109,9 +109,9 @@
     {
       "name": "Prestige Golf-Club Lookout",
       "duration": "30–90 min",
-      "cost": "Lunch about ¥1,500–2,000, cash only (view only is free)",
+      "cost": "Lunch about ¥2,000–2,800, cash only (stopping in just for the view is free)",
       "booking": "Required — weekdays only",
-      "description": "A rare, wide-open Mt. Fuji panorama from a prestigious golf club. You can have lunch at the club restaurant facing the mountain, or just stop in for the view — a dress code applies either way, so ask us for the details before the tour. Weekdays only, by reservation. You do not play golf here; this is a viewpoint and lunch stop"
+      "description": "A rare, wide-open Mt. Fuji panorama from a prestigious golf club. You can have lunch at the club restaurant facing the mountain (about ¥2,000–2,800, cash only), or just stop in for the view at no cost — a dress code applies either way, so ask us for the details before the tour. Weekdays only, by reservation. You do not play golf here; this is a viewpoint and lunch stop"
     },
     {
       "name": "Jinba Falls (hidden local waterfall)",
@@ -132,14 +132,14 @@
     {
       "name": "UNESCO Heritage Center (Fujisan Hongu Sengen Shrine)",
       "duration": "20–90 min",
-      "cost": "¥300",
+      "cost": "¥500",
       "booking": "Not needed",
       "description": "Interactive exhibits on Mt. Fuji's cultural and natural significance. Reflection pond + red torii gate"
     },
     {
       "name": "Café Matcha / Green Tea",
       "duration": "30 min",
-      "cost": "¥900/person",
+      "cost": "¥1,000/person",
       "booking": "Not needed",
       "description": "Authentic matcha or green tea + traditional sweets at a peaceful tea house café"
     },
@@ -191,6 +191,13 @@
       "cost": "~¥500–800",
       "booking": "Not needed",
       "description": "Sweet treats featuring local mochi and premium matcha or green tea"
+    },
+    {
+      "name": "Local Temple Where Monks Train",
+      "duration": "20–40 min",
+      "cost": "Free",
+      "booking": "Not needed",
+      "description": "A vast Buddhist temple where monks still train, its great vermilion gate framed by Mt. Fuji. Free to visit, and your guide shares its story"
     }
   ],
   "faq": [
@@ -248,7 +255,7 @@
     },
     {
       "q": "Are entry fees and food included in the tour price?",
-      "a": "No. The tour price covers private transportation, your guide, and bottled water. All entry fees, food, drinks, and activity costs at each stop are paid separately on-site. Each destination card on our website shows the estimated cost so you can plan ahead."
+      "a": "No. The tour price covers private transportation, your guide, and bottled water. All entry fees, food, drinks, and activity costs at each stop are paid separately on-site. Every destination and experience card on our website shows its cost — many of the destinations are free — so you can plan ahead."
     },
     {
       "q": "How do I buy Shinkansen tickets to Shin-Fuji?",
@@ -367,14 +374,14 @@
     {
       "name": "Traditional Clothing Shop",
       "duration": "15–30 min",
-      "cost": "Varies (shopping only)",
+      "cost": "From about ¥1,000 (shopping only)",
       "booking": "Not needed",
       "description": "A traditional Japanese clothing shop: jinbei in classic wave, dragon and floral prints, plus tenugui hand towels and sashes. Shopping only — no dressing or rental experience here. A good stop for something you will actually wear at home"
     },
     {
       "name": "Hand-Made Food Sample Shop",
       "duration": "15–30 min",
-      "cost": "From about ¥400 per item (shopping only)",
+      "cost": "About ¥400–1,000 per item (shopping only)",
       "booking": "Not needed",
       "description": "Japan's uncanny replica food, made by hand in Fujinomiya. Sushi, tempura and fruit turned into keychains and magnets — small, light souvenirs. Shopping only: this stop is browsing and buying, NOT a hands-on food-sample making workshop"
     }
