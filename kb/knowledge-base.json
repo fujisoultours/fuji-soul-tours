@@ -1,6 +1,9 @@
 {
-  "lastUpdated": "2026-05-11",
-  "sources": ["website", "instagram"],
+  "lastUpdated": "2026-08-25",
+  "sources": [
+    "website",
+    "instagram"
+  ],
   "tourOverview": {
     "name": "Fuji Soul Tours – Mt. Fuji Cultural Private Tour",
     "tagline": "Turn your Shinkansen travel day into a Mt. Fuji cultural highlight.",
@@ -102,6 +105,20 @@
       "cost": "Free",
       "booking": "Not needed",
       "description": "Peaceful local park with unobstructed Fuji views, away from tourist crowds"
+    },
+    {
+      "name": "Prestige Golf-Club Lookout",
+      "duration": "30–90 min",
+      "cost": "Lunch about ¥1,500–2,000, cash only (view only is free)",
+      "booking": "Required — weekdays only",
+      "description": "A rare, wide-open Mt. Fuji panorama from a prestigious golf club. You can have lunch at the club restaurant facing the mountain, or just stop in for the view — a dress code applies either way, so ask us for the details before the tour. Weekdays only, by reservation. You do not play golf here; this is a viewpoint and lunch stop"
+    },
+    {
+      "name": "Jinba Falls (hidden local waterfall)",
+      "duration": "20–40 min",
+      "cost": "Free",
+      "booking": "Not needed",
+      "description": "A quiet waterfall in the forest that few visitors find — Mt. Fuji's snowmelt resurfacing into a clear emerald pool after decades underground. You can walk right to the water's edge, about as close to the mountain's spring water as you can get. A hidden gem, not on the usual tourist route"
     }
   ],
   "culturalExperiences": [
@@ -344,6 +361,22 @@
       "q": "Can I plan Tokyo to Kyoto via Mt. Fuji as one trip?",
       "a": "Yes, that's exactly what the tour is designed for. Stop at Shin-Fuji on your Shinkansen journey, do the 4h tour, then continue to your next destination.",
       "source": "WhatsApp - CustomerA"
+    }
+  ],
+  "shoppingStops": [
+    {
+      "name": "Traditional Clothing Shop",
+      "duration": "15–30 min",
+      "cost": "Varies (shopping only)",
+      "booking": "Not needed",
+      "description": "A traditional Japanese clothing shop: jinbei in classic wave, dragon and floral prints, plus tenugui hand towels and sashes. Shopping only — no dressing or rental experience here. A good stop for something you will actually wear at home"
+    },
+    {
+      "name": "Hand-Made Food Sample Shop",
+      "duration": "15–30 min",
+      "cost": "From about ¥400 per item (shopping only)",
+      "booking": "Not needed",
+      "description": "Japan's uncanny replica food, made by hand in Fujinomiya. Sushi, tempura and fruit turned into keychains and magnets — small, light souvenirs. Shopping only: this stop is browsing and buying, NOT a hands-on food-sample making workshop"
     }
   ]
 }
