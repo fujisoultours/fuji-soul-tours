@@ -109,9 +109,9 @@
     {
       "name": "Prestige Golf-Club Lookout",
       "duration": "30–90 min",
-      "cost": "Lunch about ¥2,000–2,800, cash only (stopping in just for the view is free)",
+      "cost": "Lunch ¥2,000–2,800/person, cash only (stopping in just for the view is free)",
       "booking": "Required — weekdays only",
-      "description": "A rare, wide-open Mt. Fuji panorama from a prestigious golf club. You can have lunch at the club restaurant facing the mountain (about ¥2,000–2,800, cash only), or just stop in for the view at no cost — a dress code applies either way, so ask us for the details before the tour. Weekdays only, by reservation. You do not play golf here; this is a viewpoint and lunch stop"
+      "description": "A rare, wide-open Mt. Fuji panorama from a prestigious golf club. You can have lunch at the club restaurant facing the mountain (about ¥2,000–2,800 per person, cash only), or just stop in for the view at no cost — a dress code applies either way, so ask us for the details before the tour. Weekdays only, by reservation. You do not play golf here; this is a viewpoint and lunch stop"
     },
     {
       "name": "Jinba Falls (hidden local waterfall)",
@@ -125,14 +125,14 @@
     {
       "name": "Award-Winning Local Lunch (Yakisoba)",
       "duration": "30–45 min",
-      "cost": "~¥700–900",
+      "cost": "¥900/person",
       "booking": "Not needed",
       "description": "Regional soul food — a beloved local specialty you can only find in this area"
     },
     {
       "name": "UNESCO Heritage Center (Fujisan Hongu Sengen Shrine)",
       "duration": "20–90 min",
-      "cost": "¥500",
+      "cost": "¥500/person",
       "booking": "Not needed",
       "description": "Interactive exhibits on Mt. Fuji's cultural and natural significance. Reflection pond + red torii gate"
     },
@@ -174,7 +174,7 @@
     {
       "name": "Local Craft Beer Taproom",
       "duration": "20–60 min",
-      "cost": "~¥700+",
+      "cost": "¥700+/person",
       "booking": "Weekends only",
       "description": "Small-batch craft beers brewed with Mt. Fuji spring water and organic local grains"
     },
@@ -188,7 +188,7 @@
     {
       "name": "Mochi Gelato & Matcha/Green Tea Latte",
       "duration": "15–30 min",
-      "cost": "~¥500–800",
+      "cost": "¥500–800/person",
       "booking": "Not needed",
       "description": "Sweet treats featuring local mochi and premium matcha or green tea"
     },
@@ -374,14 +374,14 @@
     {
       "name": "Traditional Clothing Shop",
       "duration": "15–30 min",
-      "cost": "From about ¥1,000 (shopping only)",
+      "cost": "¥1,000+/item (shopping only)",
       "booking": "Not needed",
       "description": "A traditional Japanese clothing shop: jinbei in classic wave, dragon and floral prints, plus tenugui hand towels and sashes. Shopping only — no dressing or rental experience here. A good stop for something you will actually wear at home"
     },
     {
       "name": "Hand-Made Food Sample Shop",
       "duration": "15–30 min",
-      "cost": "About ¥400–1,000 per item (shopping only)",
+      "cost": "¥400–1,000/item (shopping only)",
       "booking": "Not needed",
       "description": "Japan's uncanny replica food, made by hand in Fujinomiya. Sushi, tempura and fruit turned into keychains and magnets — small, light souvenirs. Shopping only: this stop is browsing and buying, NOT a hands-on food-sample making workshop"
     }
