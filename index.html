@@ -52,7 +52,7 @@ src="https://www.facebook.com/tr?id=991295620485360&ev=PageView&noscript=1"
 <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
 <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<meta name="description" content="Private half-day Mt. Fuji tour from Shin-Fuji Station — a Shinkansen stopover between Tokyo and Kyoto. Hidden viewpoints, shrine, yakisoba. 1–15 guests.">
+<meta name="description" content="Private half-day Mt. Fuji tour from Shin-Fuji Station — a Shinkansen stopover between Tokyo and Kyoto. Hidden viewpoints, shrine, yakisoba. 1–5 by van, 6–15 by mini bus.">
 
 <!-- Canonical -->
 <link rel="canonical" href="https://www.fujisoultours.com/">
@@ -143,7 +143,7 @@ src="https://www.facebook.com/tr?id=991295620485360&ev=PageView&noscript=1"
     {"@type": "Question", "name": "What happens to our luggage?", "acceptedAnswer": {"@type": "Answer", "text": "Bring it along — the van has luggage storage for up to 3 guests' large cases. Larger groups use station lockers (¥300–800, cash). You'll have everything with you when you board your next train."}},
     {"@type": "Question", "name": "Which Shinkansen stops at Shin-Fuji?", "acceptedAnswer": {"@type": "Answer", "text": "Only the Kodama — not Nozomi or Hikari. It's covered by the JR Pass and usually less crowded. Tip: sit in seat E from Tokyo or seat A from Kyoto/Osaka for Fuji views from the train."}},
     {"@type": "Question", "name": "What are the odds we actually see Mt. Fuji?", "acceptedAnswer": {"@type": "Answer", "text": "It varies by season — winter is clearest, summer is shyest. The earlier your tour starts, the better your chances. If the mountain hides, the cloudy-day plan (shrine prayer, sake brewery, teahouse, UNESCO Center) is why guests still leave five-star reviews."}},
-    {"@type": "Question", "name": "Can we cancel or change the date?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — full refund or free date change with 24+ hours notice. Within 24 hours, no refund. Cancelling takes one click from your confirmation email."}},
+    {"@type": "Question", "name": "Can we cancel or change the date?", "acceptedAnswer": {"@type": "Answer", "text": "Private van tour (1-5 guests): full refund or free date change with 24+ hours notice; within 24 hours, no refund. Private mini bus (6-15 guests): free cancellation up to 3 days before departure. Wednesday group tour: non-refundable once booked - full refund or free transfer if your Wednesday does not reach 10 guests. Cancelling takes one click from your confirmation email."}},
     {"@type": "Question", "name": "We're a group of 6 or more — possible?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — from October 2026 we run a private mini bus for 6-15 guests. It is USD 980 for 6-10 guests, then USD 98 per adult from 11 guests. Because the bus needs a driver, it is a booking request: request at least 7 days ahead and we confirm within 48 hours, or refund you in full. Departures currently run October-December 2026. From 11 guests it works out at USD 98 per adult - the same per-person price as the Wednesday group tour, but the bus is all yours: any day of the week, your own route and pace."}},
     {"@type": "Question", "name": "Traveling with small children?", "acceptedAnswer": {"@type": "Answer", "text": "Children under 6 need a child seat by Japanese law — contact us in advance and we'll arrange it."}},
     {"@type": "Question", "name": "Can the tour be longer than 4 hours?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — add extra hours at $100/hour. Select the quantity at checkout or message us after booking."}},
@@ -181,9 +181,9 @@ src="https://www.facebook.com/tr?id=991295620485360&ev=PageView&noscript=1"
   .cmp-grid { display: grid; grid-template-columns: 3fr 1fr; gap: 22px; margin-top: 40px; align-items: stretch; }
   .cmp-card { background: white; border: 1px solid var(--hair); border-radius: 8px; box-shadow: 0 18px 44px -30px oklch(0.3 0.05 255 / 0.35); }
   .cmp-private { overflow: hidden; display: grid; grid-template-columns: 1fr 1.15fr; }
-  .cmp-photo img { width: 100%; height: 100%; object-fit: cover; min-height: 320px; }
-  .cmp-body { padding: 28px; display: flex; flex-direction: column; gap: 13px; }
-  .cmp-head { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .cmp-photo img { width: 100%; height: 100%; object-fit: cover; min-height: 280px; }
+  .cmp-body { padding: 22px 24px; display: flex; flex-direction: column; gap: 11px; }
+  .cmp-head { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
   .cmp-head h3 { font-size: 25px; font-weight: 600; }
   .cmp-badge { font-size: 11.5px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; padding: 4px 10px; border-radius: 99px; white-space: nowrap; }
   .cmp-badge.pop { background: var(--ai-tint); color: var(--ai-deep); }
@@ -197,6 +197,15 @@ src="https://www.facebook.com/tr?id=991295620485360&ev=PageView&noscript=1"
   .cmp-price .cap { font-size: 12.5px; color: var(--ink-soft); font-weight: 600; }
   .cmp-price .amt { font-size: 14.5px; color: var(--mid); }
   .cmp-price .amt strong { font-family: var(--font-display); font-size: 24px; color: var(--ink); }
+  /* the private tour is one product with two vehicles — each row carries its own conditions */
+  .cmp-vehicles { display: flex; flex-direction: column; gap: 6px; }
+  .cmp-veh { display: flex; justify-content: space-between; align-items: center; gap: 8px 12px; flex-wrap: wrap; border: 1px solid var(--hair); border-radius: 8px; padding: 8px 12px; text-decoration: none; color: inherit; transition: border-color 0.15s ease, background 0.15s ease; }
+  .cmp-veh:hover { border-color: var(--ai); background: oklch(0.98 0.008 255); }
+  .v-name { font-size: 14.5px; font-weight: 700; color: var(--ink); }
+  .v-cond { flex-basis: 100%; order: 3; font-size: 12px; color: var(--ink-soft); line-height: 1.45; }
+  .v-price { text-align: right; display: flex; flex-direction: column; gap: 1px; }
+  .v-price .v-tier { font-size: 12.5px; color: var(--mid); line-height: 1.4; }
+  .v-price .v-tier strong { font-family: var(--font-display); font-size: 15px; color: var(--ink); }
   .cmp-group { padding: 28px 24px; display: flex; flex-direction: column; gap: 12px; }
   .cmp-group h3 { font-size: 21px; font-weight: 600; }
   .cmp-group .cmp-sub { font-size: 14px; }
@@ -209,6 +218,7 @@ src="https://www.facebook.com/tr?id=991295620485360&ev=PageView&noscript=1"
   .cmp-secondary:hover { color: var(--ink); }
   @media (max-width: 880px) {
     .cmp-grid { grid-template-columns: 1fr; gap: 16px; }
+    .cmp-veh .v-price { text-align: left; margin-right: auto; }
     .cmp-private { grid-template-columns: 1fr; }
     .cmp-photo img { height: 190px; min-height: 0; }
   }
@@ -618,21 +628,30 @@ src="https://www.facebook.com/tr?id=991295620485360&ev=PageView&noscript=1"
         <div class="cmp-photo"><img src="images/hero.jpg" alt="Mt. Fuji from a hidden local viewpoint" loading="lazy"></div>
         <div class="cmp-body">
           <div class="cmp-head">
-            <h3>Private Half-Day Tour</h3>
             <span class="cmp-badge pop">★ 5.0 · Most popular</span>
+            <h3>Private Half-Day Tour</h3>
           </div>
-          <p class="cmp-sub">Your own guide and van, shaped around your Shinkansen times — hidden viewpoints, the principal Fuji shrine and award-winning yakisoba.</p>
+          <p class="cmp-sub">Your own guide and vehicle, shaped around your Shinkansen times.</p>
           <ul class="cmp-facts">
-            <li>4 hours · any day</li>
+            <li>4 hours · your route</li>
             <li>Just your group (1–15)</li>
             <li>Luggage welcome</li>
-            <li>Free cancellation 24 h</li>
           </ul>
           <div class="cmp-foot">
-            <div class="cmp-price"><span class="cap">From · 3–5 guests</span><span class="amt"><strong>USD 159</strong> / person</span></div>
+            <div class="cmp-vehicles">
+              <a class="cmp-veh" href="?veh=van#book" data-veh-link="van">
+                <span class="v-name">Van · 1–5 guests</span>
+                <span class="v-cond">Any day, all year · Instant confirmation · Free cancellation 24&nbsp;h</span>
+                <span class="v-price"><span class="v-tier"><strong>USD 432</strong> / person · 1</span><span class="v-tier"><strong>USD 216</strong> / person · 2</span><span class="v-tier"><strong>USD 159</strong> / person · 3–5</span></span>
+              </a>
+              <a class="cmp-veh" href="?veh=bus#book" data-veh-link="bus">
+                <span class="v-name">Mini bus · 6–15 guests</span>
+                <span class="v-cond">New · Oct–Dec 2026 · Booking request (48&nbsp;h) · Free cancellation 3&nbsp;days</span>
+                <span class="v-price"><span class="v-tier"><strong>USD 980</strong> / group · 6–10</span><span class="v-tier"><strong>USD 98</strong> / adult · 11–15</span></span>
+              </a>
+            </div>
             <a class="cmp-book red" href="#book">Check dates &amp; book</a>
             <a class="cmp-secondary" href="#day">See the day plan →</a>
-            <a class="cmp-secondary" href="?veh=bus#book" data-veh-link="bus">6–15 guests? Private mini bus →</a>
           </div>
         </div>
       </article>
@@ -795,7 +814,7 @@ src="https://www.facebook.com/tr?id=991295620485360&ev=PageView&noscript=1"
       </details>
       <details>
         <summary>Can we cancel or change the date?</summary>
-        <p class="faq-a">Yes — full refund or free date change with 24+ hours notice. Within 24 hours, no refund. Cancelling takes one click from your confirmation email.</p>
+        <p class="faq-a">Private van tour (1–5 guests): full refund or free date change with 24+ hours notice — within 24 hours, no refund. Private mini bus (6–15 guests): free cancellation up to 3 days before departure. Wednesday group tour: non-refundable once booked — full refund or free transfer if your Wednesday doesn’t reach 10 guests. Cancelling takes one click from your confirmation email.</p>
       </details>
       <details>
         <summary>We're a group of 6 or more — possible?</summary>
