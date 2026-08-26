@@ -497,6 +497,36 @@ function lpInitNavScrollGuard() {
   });
 }
 
+// ---- Suppress Bokun's own stale scroll restore (its iframe-resizer) ----
+// Bokun's host-side resizer keeps the page position it captured while the
+// widget was booting (normally y=0) and re-applies it with scrollTo once the
+// iframe finishes its size handshake. On mobile that lands seconds after the
+// visitor tapped Book Now, yanking them from #book back to the hero — measured
+// on iPhone WebKit, where the handshake finishes long after the first tap.
+function lpInitBokunScrollGuard() {
+  if (!document.querySelector('.bokunWidget, .bokunButton')) return;
+  const native = window.scrollTo.bind(window);
+  let armed = true;
+  let popupTap = 0;
+  const disarm = (ms) => setTimeout(function () { armed = false; }, ms);
+  window.addEventListener('message', function (e) {
+    if (!armed || typeof e.data !== 'string') return;
+    if (e.data.indexOf('[iFrameSizer]bokunWidget') === 0 && e.data.indexOf(':init') !== -1) disarm(2500);
+  });
+  // Bokun's mobile popup parks the page at the top on purpose while its
+  // full-screen modal is open — that one is wanted, so let it through.
+  document.addEventListener('click', function (e) {
+    if (e.target.closest('.bokunButton')) popupTap = Date.now();
+  }, true);
+  disarm(45000); // never guard forever, e.g. if Bokun never boots
+  window.scrollTo = function (x, y) {
+    const top = (typeof x === 'object' && x !== null) ? (x.top || 0) : (y || 0);
+    // only block a jump back to the top while the visitor is deep in the page
+    if (armed && window.scrollY > 500 && top < 100 && Date.now() - popupTap > 3000) return;
+    return native.apply(window, arguments);
+  };
+}
+
 // ===== Chatbot (Ask AI → /api/chat) =====
 function lpInitChatbot() {
   const toggle = document.getElementById('chatToggle');
@@ -689,6 +719,7 @@ function lpInitChatbot() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  lpInitBokunScrollGuard(); // first: must wrap scrollTo before Bokun loads
   lpInitPromo();
   lpInitNavMenu();
   lpInitExplore();
