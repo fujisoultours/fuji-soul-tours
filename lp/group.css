@@ -66,7 +66,7 @@
 /* ---- live seat counts, sits below the Bokun calendar in #book ---- */
 .gt-seats {
   margin-top: 24px; background: white;
-  border: 1px solid var(--hair); border-radius: 10px; padding: 16px 22px 6px;
+  border: 1px solid var(--hair); border-radius: 10px; padding: 16px 22px 12px;
 }
 .gt-seats-title {
   font-family: var(--font-body); font-size: 11.5px; font-weight: 700; letter-spacing: 0.14em;
@@ -79,7 +79,7 @@
 /* same row shape as .gtp-trow in the pricing table */
 .gt-seats-row {
   display: flex; justify-content: space-between; gap: 16px; break-inside: avoid;
-  padding: 4px 0; border-bottom: 1px solid var(--hair-soft);
+  padding: 4px 0; border-top: 1px solid var(--hair-soft);
   font-size: 14px; line-height: 1.45;
 }
 .gs-date { font-family: var(--font-display); font-size: 15px; font-weight: 600; }
@@ -88,7 +88,7 @@
 .gt-seats-row.is-confirmed .gs-count { color: var(--ok); font-weight: 600; }
 .gt-seats-row.is-last .gs-count { color: var(--cta-deep); }
 @media (max-width: 700px) {
-  .gt-seats { margin-top: 20px; padding: 14px 16px 4px; border-radius: 8px; }
+  .gt-seats { margin-top: 20px; padding: 14px 16px 10px; border-radius: 8px; }
   .gt-seats-list { columns: 1; }
   .gt-seats-row { font-size: 13px; padding: 4px 0; }
   .gs-date { font-size: 14.5px; }
