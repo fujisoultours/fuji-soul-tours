@@ -123,13 +123,13 @@ html[data-promo="off"] .sale-price { color: inherit; }
 }
 .nav-menu a:last-child { border-bottom: none; }
 .nav-menu a:active { color: var(--ai); background: var(--ai-tint); }
-@media (max-width: 900px) {
+@media (max-width: 1060px) {
   .nav-links { display: none; }
   .nav-inner { gap: 14px; }
   .nav .btn-book { margin-left: auto; }
   .nav-burger { display: flex; }
 }
-@media (min-width: 901px) { .nav-menu { display: none !important; } }
+@media (min-width: 1061px) { .nav-menu { display: none !important; } }
 
 /* logo links home on every page */
 .nav-logo-link { display: inline-flex; align-items: center; line-height: 0; }
