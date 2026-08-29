@@ -43,6 +43,10 @@
     {
       "source": "/mt-fuji-green-tea",
       "destination": "/mt-fuji-green-tea.html"
+    },
+    {
+      "source": "/payments",
+      "destination": "/payments.html"
     }
   ],
   "functions": {
