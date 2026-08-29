@@ -1,16 +1,49 @@
 {
   "rewrites": [
-    { "source": "/group-tour", "destination": "/group-tour.html" },
-    { "source": "/review", "destination": "/review.html" },
-    { "source": "/tokushoho", "destination": "/tokushoho.html" },
-    { "source": "/about", "destination": "/about.html" },
-    { "source": "/experiences", "destination": "/experiences.html" },
-    { "source": "/gallery", "destination": "/gallery.html" },
-    { "source": "/soul-of-japan", "destination": "/soul-of-japan.html" },
-    { "source": "/mt-fuji-stopover", "destination": "/mt-fuji-stopover.html" },
-    { "source": "/fujinomiya-yakisoba", "destination": "/fujinomiya-yakisoba.html" },
-    { "source": "/mt-fuji-without-crowds", "destination": "/mt-fuji-without-crowds.html" },
-    { "source": "/mt-fuji-green-tea", "destination": "/mt-fuji-green-tea.html" }
+    {
+      "source": "/group-tour",
+      "destination": "/group-tour.html"
+    },
+    {
+      "source": "/review",
+      "destination": "/review.html"
+    },
+    {
+      "source": "/tokushoho",
+      "destination": "/tokushoho.html"
+    },
+    {
+      "source": "/about",
+      "destination": "/about.html"
+    },
+    {
+      "source": "/experiences",
+      "destination": "/experiences.html"
+    },
+    {
+      "source": "/gallery",
+      "destination": "/gallery.html"
+    },
+    {
+      "source": "/soul-of-japan",
+      "destination": "/soul-of-japan.html"
+    },
+    {
+      "source": "/mt-fuji-stopover",
+      "destination": "/mt-fuji-stopover.html"
+    },
+    {
+      "source": "/fujinomiya-yakisoba",
+      "destination": "/fujinomiya-yakisoba.html"
+    },
+    {
+      "source": "/mt-fuji-without-crowds",
+      "destination": "/mt-fuji-without-crowds.html"
+    },
+    {
+      "source": "/mt-fuji-green-tea",
+      "destination": "/mt-fuji-green-tea.html"
+    }
   ],
   "functions": {
     "api/*.js": {
@@ -19,16 +52,42 @@
   },
   "headers": [
     {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
+      ]
+    },
+    {
       "source": "/api/(.*)",
       "headers": [
-        { "key": "Access-Control-Allow-Methods", "value": "POST, OPTIONS" },
-        { "key": "Access-Control-Allow-Headers", "value": "Content-Type" }
+        {
+          "key": "Access-Control-Allow-Methods",
+          "value": "POST, OPTIONS"
+        },
+        {
+          "key": "Access-Control-Allow-Headers",
+          "value": "Content-Type"
+        }
       ]
     },
     {
       "source": "/images/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=604800, stale-while-revalidate=86400" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=604800, stale-while-revalidate=86400"
+        }
       ]
     }
   ]

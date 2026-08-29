@@ -584,8 +584,17 @@ function lpInitChatbot() {
   }
 
   function formatMarkdown(text) {
-    return text
-      .replace(/\[([^\]]+)\]\((https?:\/\/[^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>')
+    // Escape HTML first so model output can never inject markup, then apply the
+    // (self-generated, safe) markdown tags. href is restricted to http(s) and
+    // quotes are already escaped, so no attribute breakout / javascript: URIs.
+    const escaped = String(text)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+    return escaped
+      .replace(/\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>')
       .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
       .replace(/\n- /g, '\n<li>')
       .replace(/^- /g, '<li>')
