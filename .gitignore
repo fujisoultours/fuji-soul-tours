@@ -1,2 +1,7 @@
 node_modules/
 .claude/
+
+# --- secrets: never commit env files ---
+.env*
+!.env.example
+!.env*.example
