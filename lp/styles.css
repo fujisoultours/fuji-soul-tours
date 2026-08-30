@@ -164,7 +164,7 @@ html[data-promo="off"] .sale-price { color: inherit; }
   text-transform: uppercase; color: var(--mid); border-bottom: 1px solid var(--hair-soft);
 }
 
-/* ============ HERO (3 variants via html[data-hero]) ============ */
+/* ============ HERO ============ */
 .hero { padding: 64px 0 72px; }
 .hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items: stretch; }
 /* lives inside the h1 (SEO) but renders as the small kicker line */
@@ -183,42 +183,11 @@ html[data-promo="off"] .sale-price { color: inherit; }
 .hero-photo picture { display: block; height: 100%; }
 .hero-photo img { width: 100%; height: 100%; object-fit: cover; min-height: 460px; }
 
-/* variant: editorial — copy-first, photo strip below */
-html[data-hero="editorial"] .hero-grid { grid-template-columns: 1fr; gap: 44px; }
-html[data-hero="editorial"] .hero h1 { font-size: clamp(44px, 6vw, 80px); max-width: 17ch; }
-html[data-hero="editorial"] .hero-photo { display: none; }
-html[data-hero="editorial"] .hero-strip { display: grid; }
-.hero-strip { display: none; grid-template-columns: 1.6fr 1fr 1fr; gap: 14px; }
-.hero-strip img { width: 100%; height: 260px; object-fit: cover; border-radius: 4px; }
 
-/* variant: bookcard — quick-pick card on the right */
-html[data-hero="bookcard"] .hero-photo { display: none; }
-html[data-hero="bookcard"] .hero-card { display: block; align-self: center; }
-.hero-card {
-  display: none; background: white; border: 1px solid var(--hair);
-  border-radius: 8px; padding: 28px; box-shadow: 0 24px 60px -28px oklch(0.3 0.05 255 / 0.4);
-}
-.hero-card h3 { font-size: 20px; font-weight: 600; margin-bottom: 4px; }
-.hero-card .hc-sub { font-size: 13.5px; color: var(--mid); margin-bottom: 18px; }
-.hc-groups { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 16px; }
-.hc-group {
-  border: 1.5px solid var(--hair); border-radius: 6px; background: white;
-  padding: 10px 6px; text-align: center; cursor: pointer; font-family: var(--font-body);
-}
-.hc-group .g-n { font-weight: 700; font-size: 14px; display: block; }
-.hc-group .g-p { font-size: 12.5px; color: var(--mid); display: block; margin-top: 2px; }
-.hc-group[aria-pressed="true"] { border-color: var(--ai); background: var(--ai-tint); }
-.hc-total { display: flex; align-items: baseline; justify-content: space-between; border-top: 1px solid var(--hair-soft); padding-top: 14px; margin-bottom: 16px; }
-.hc-total .t-label { font-size: 13px; color: var(--mid); }
-.hc-total .t-val { font-family: var(--font-display); font-size: 26px; font-weight: 600; }
-.hero-card .btn-book { width: 100%; }
-.hc-note { font-size: 12.5px; color: var(--mid); text-align: center; margin-top: 10px; }
 
 @media (max-width: 880px) {
   .hero-grid { grid-template-columns: 1fr; gap: 36px; }
   .hero-photo img { min-height: 0; aspect-ratio: 4/2.9; }
-  .hero-strip { grid-template-columns: 1fr 1fr; }
-  .hero-strip img:first-child { grid-column: 1 / -1; }
 }
 
 /* ============ TRUST BAR ============ */
@@ -526,16 +495,13 @@ html[data-hero="bookcard"] .hero-card { display: block; align-self: center; }
 .price-panel[data-veh-panel="bus"] .book-fx { color: var(--on-night-dim); }
 .book-fx a { color: inherit; }
 
-/* booking widget column — 2 variants via html[data-booking] */
+/* booking widget column */
 .widget-col { background: white; color: var(--ink); border-radius: 10px; padding: 30px; box-shadow: 0 30px 80px -30px oklch(0.1 0.03 255 / 0.6); }
 .widget-col h3 { font-size: 20px; font-weight: 600; }
 .widget-col .w-sub { font-size: 13.5px; color: var(--mid); margin-top: 4px; }
 
-/* variant A: inline availability calendar (real Bokun embed) */
+/* inline availability calendar (real Bokun embed) */
 .widget-inline { display: block; }
-html[data-booking="popup"] .widget-inline { display: none; }
-html[data-booking="popup"] .widget-popup { display: block; }
-.widget-popup { display: none; }
 
 /* Bokun draws its own panel borders — no extra frame, just space + a hairline */
 .bokun-frame { margin-top: 18px; padding-top: 18px; position: relative; min-height: 520px; border-top: 1px solid var(--hair-soft); }
@@ -553,11 +519,6 @@ html[data-booking="popup"] .widget-popup { display: block; }
 @keyframes bokunSpin { to { transform: rotate(360deg); } }
 .cal-note { font-size: 14px; color: var(--mid); text-align: center; margin-top: 12px; }
 
-/* variant B: popup button card */
-.widget-popup .pop-quote { margin: 22px 0; border-left: 3px solid var(--hair); padding-left: 16px; font-size: 14.5px; color: var(--ink-soft); font-style: italic; }
-.widget-popup .pop-quote cite { display: block; font-style: normal; font-size: 12.5px; margin-top: 6px; color: var(--mid); }
-.widget-popup .btn-book { width: 100%; }
-.widget-popup .pop-alt { text-align: center; margin-top: 14px; font-size: 13.5px; }
 
 /* mini bus: on-request card (no calendar — every date is confirmed by hand) */
 .req-steps { list-style: none; margin: 22px 0 24px; padding: 0; border-top: 1px solid var(--hair-soft); }
@@ -723,12 +684,6 @@ html[data-stickybar="off"] .sticky-bar { display: none !important; }
   .hero-price-row .price { font-size: 30px; }
   .faq-list summary { font-size: 17px; }
 
-  /* hero variants on mobile */
-  .hero-strip { grid-template-columns: 1fr; }
-  .hero-strip img { height: 180px; }
-  .hero-strip img:first-child { height: 230px; }
-  .hc-groups { grid-template-columns: repeat(3, 1fr); }
-  .hc-group { padding: 12px 4px; }
 }
 
 /* ============ CHATBOT (Ask AI — wired to /api/chat) ============ */

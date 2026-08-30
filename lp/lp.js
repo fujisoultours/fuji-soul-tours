@@ -20,7 +20,6 @@ const LP_PRICES = {
 // ---- Bokun (channel + experience must match production) ----
 const BOKUN_CHANNEL = '9c7daabb-e81c-4ae1-b504-5451a5ca69ff';
 const BOKUN_CALENDAR_BASE = 'https://widgets.bokun.io/online-sales/' + BOKUN_CHANNEL + '/experience-calendar/1171469?partialView=1';
-const BOKUN_POPUP_BASE = 'https://widgets.bokun.io/online-sales/' + BOKUN_CHANNEL + '/experience/1171469?partialView=1';
 // Mini bus (6–15 guests) is a separate Bokun product and is on-request, so it
 // only ever gets the popup widget — there is no instant-booking calendar.
 const BOKUN_MINIBUS_POPUP_BASE = 'https://widgets.bokun.io/online-sales/' + BOKUN_CHANNEL + '/experience/1268772?partialView=1';
@@ -28,7 +27,6 @@ const BOKUN_MINIBUS_POPUP_BASE = 'https://widgets.bokun.io/online-sales/' + BOKU
 const lpFmt = (cur, n) => `${cur} ${n.toLocaleString('en-US')}`;
 
 let lpCurrency = 'USD';
-let lpHcTier = 'p2';
 
 function lpPromoOn() {
   return PROMO.active;
@@ -40,7 +38,6 @@ function lpRenderPrices() {
   const promo = lpPromoOn();
   document.querySelectorAll('[data-price]').forEach((el) => {
     const key = el.dataset.price;
-    if (key === 'hc-total') { el.textContent = lpFmt(lpCurrency, promo ? sale(p[lpHcTier]) : p[lpHcTier]); return; }
     const isFull = key.endsWith('-full');
     const tier = isFull ? key.replace('-full', '') : key;
     if (!(tier in p)) return;
@@ -59,8 +56,6 @@ function lpUpdateBokunSrc() {
   const q = '&currency=' + lpCurrency + '&phoneCountryCode=' + p.phoneCC;
   const cal = document.getElementById('bokunCalendar');
   if (cal) cal.setAttribute('data-src', BOKUN_CALENDAR_BASE + q);
-  const pop = document.getElementById('bokun_418f34f4_28e2_4185_85e4_7aa761106072');
-  if (pop) pop.setAttribute('data-src', BOKUN_POPUP_BASE + q);
   // The mini bus is quoted in USD on the page (Bokun only carries an explicit
   // USD/JPY price for it), so its widget stays in USD whatever the selector says
   // — otherwise the popup would open in a different currency than the panel.
@@ -124,16 +119,6 @@ function lpInitCurrency() {
   });
 }
 
-// ---- Hero quick-pick card (bookcard hero variant) ----
-function lpInitHeroCard() {
-  document.querySelectorAll('.hc-group').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      lpHcTier = btn.dataset.tier;
-      document.querySelectorAll('.hc-group').forEach((x) => x.setAttribute('aria-pressed', String(x === btn)));
-      lpRenderPrices();
-    });
-  });
-}
 
 // ---- Route tabs ----
 const LP_ROUTES = [
@@ -806,7 +791,6 @@ document.addEventListener('DOMContentLoaded', () => {
   lpInitGallery();
   lpInitCurrency();
   lpInitVehicle();
-  lpInitHeroCard();
   lpInitRoutes();
   lpInitStickyBar();
   lpInitNavScrollGuard();
