@@ -64,6 +64,7 @@ src="https://www.facebook.com/tr?id=991295620485360&ev=PageView&noscript=1"
 <script defer src="lp/group.js"></script>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to main content</a>
 
 <!-- ================= NAV ================= -->
 <nav class="nav" data-screen-label="Nav">
@@ -77,17 +78,17 @@ src="https://www.facebook.com/tr?id=991295620485360&ev=PageView&noscript=1"
       <a href="/">Private Tour</a>
       <div class="nav-explore">
         <button type="button" class="nav-explore-toggle" id="navExploreToggle" aria-expanded="false" aria-haspopup="true" aria-controls="navExploreMenu">Explore<span class="nav-explore-caret" aria-hidden="true">▾</span></button>
-        <div class="nav-explore-menu" id="navExploreMenu" role="menu" aria-label="Explore pages">
-          <a href="/experiences" role="menuitem">Destinations &amp; Experiences<span>Every place, experience &amp; sample course</span></a>
-          <a href="/about" role="menuitem">About<span>The founder's story</span></a>
-          <a href="/soul-of-japan" role="menuitem">Soul of Japan<span>Why Mt. Fuji matters</span></a>
-          <a href="/mt-fuji-stopover" role="menuitem">Stopover Guide<span>Mt. Fuji between Tokyo &amp; Kyoto</span></a>
-          <a href="/mt-fuji-without-crowds" role="menuitem">Avoiding Crowds<span>The quiet south side</span></a>
-          <a href="/gallery" role="menuitem">Gallery<span>A tour day in pictures</span></a>
-          <a href="/fujinomiya-yakisoba" role="menuitem">Fujinomiya Yakisoba<span>The local soul food</span></a>
-          <a href="/mt-fuji-green-tea" role="menuitem">Green Tea<span>Shizuoka tea at Mt. Fuji's foot</span></a>
-          <a href="/payments" role="menuitem">Payments<span>Tour extensions &amp; official payment links</span></a>
-          <a href="/group-tour" role="menuitem">Group Tour<span>Weekly small-group tour</span></a>
+        <div class="nav-explore-menu" id="navExploreMenu" aria-label="Explore pages">
+          <a href="/experiences">Destinations &amp; Experiences<span>Every place, experience &amp; sample course</span></a>
+          <a href="/about">About<span>The founder's story</span></a>
+          <a href="/soul-of-japan">Soul of Japan<span>Why Mt. Fuji matters</span></a>
+          <a href="/mt-fuji-stopover">Stopover Guide<span>Mt. Fuji between Tokyo &amp; Kyoto</span></a>
+          <a href="/mt-fuji-without-crowds">Avoiding Crowds<span>The quiet south side</span></a>
+          <a href="/gallery">Gallery<span>A tour day in pictures</span></a>
+          <a href="/fujinomiya-yakisoba">Fujinomiya Yakisoba<span>The local soul food</span></a>
+          <a href="/mt-fuji-green-tea">Green Tea<span>Shizuoka tea at Mt. Fuji's foot</span></a>
+          <a href="/payments">Payments<span>Tour extensions &amp; official payment links</span></a>
+          <a href="/group-tour">Group Tour<span>Weekly small-group tour</span></a>
         </div>
       </div>
     </div>
@@ -115,6 +116,8 @@ src="https://www.facebook.com/tr?id=991295620485360&ev=PageView&noscript=1"
     <a href="/group-tour">Group Tour</a>
   </div>
 </nav>
+
+<main id="main">
 
 <!-- ================= HERO ================= -->
 <header class="hero" data-screen-label="Hero">
@@ -395,8 +398,8 @@ src="https://www.facebook.com/tr?id=991295620485360&ev=PageView&noscript=1"
 <!-- ================= CROSS-SELL ================= -->
 <section class="section" data-screen-label="Private tour cross-sell">
   <div class="wrap">
-    <div class="xsell">
-      <div class="xsell-text">
+    <div class="gt-xsell">
+      <div class="gt-xsell-text">
         <h3>Want fully customized dates and route?</h3>
         <p>Our 4-hour Private Tour runs any day of the week — your choice of stops, your pace, your van. Same Shin-Fuji meet, same Fuji-area guides.</p>
       </div>
@@ -406,12 +409,14 @@ src="https://www.facebook.com/tr?id=991295620485360&ev=PageView&noscript=1"
 </section>
 
 <!-- ================= FOOTER ================= -->
+</main>
+
 <footer data-screen-label="Footer">
   <div class="wrap foot-inner">
     <img src="images/logo.png" alt="Fuji Soul Tours">
     <div class="foot-links">
       <a href="/#book">Pricing</a>
-      <a href="https://buy.stripe.com/00w00i3Sc49qeP43rUdfG00" target="_blank" rel="noopener">Extend your tour (+$100/hr)</a>
+      <a href="https://buy.stripe.com/00w00i3Sc49qeP43rUdfG00" target="_blank" rel="noopener">Extend your tour (+$100/hr)<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in new tab)</span></a>
       <a href="/gallery">Gallery</a>
       <a href="/about">About</a>
       <a href="/soul-of-japan">Soul of Japan</a>

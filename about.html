@@ -78,6 +78,7 @@ src="https://www.facebook.com/tr?id=991295620485360&ev=PageView&noscript=1"
 <link rel="stylesheet" href="lp/styles.css">
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to main content</a>
 
 <nav class="nav" data-screen-label="Nav">
   <div class="wrap nav-inner">
@@ -92,16 +93,16 @@ src="https://www.facebook.com/tr?id=991295620485360&ev=PageView&noscript=1"
       <a href="/group-tour">Group Tour</a>
       <div class="nav-explore">
         <button type="button" class="nav-explore-toggle" id="navExploreToggle" aria-expanded="false" aria-haspopup="true" aria-controls="navExploreMenu">Explore<span class="nav-explore-caret" aria-hidden="true">▾</span></button>
-        <div class="nav-explore-menu" id="navExploreMenu" role="menu" aria-label="Explore pages">
-          <a href="/experiences" role="menuitem">Destinations &amp; Experiences<span>Every place, experience &amp; sample course</span></a>
-          <a href="/about" role="menuitem">About<span>The founder's story</span></a>
-          <a href="/soul-of-japan" role="menuitem">Soul of Japan<span>Why Mt. Fuji matters</span></a>
-          <a href="/mt-fuji-stopover" role="menuitem">Stopover Guide<span>Mt. Fuji between Tokyo &amp; Kyoto</span></a>
-          <a href="/mt-fuji-without-crowds" role="menuitem">Avoiding Crowds<span>The quiet south side</span></a>
-          <a href="/gallery" role="menuitem">Gallery<span>A tour day in pictures</span></a>
-          <a href="/fujinomiya-yakisoba" role="menuitem">Fujinomiya Yakisoba<span>The local soul food</span></a>
-          <a href="/mt-fuji-green-tea" role="menuitem">Green Tea<span>Shizuoka tea at Mt. Fuji's foot</span></a>
-          <a href="/payments" role="menuitem">Payments<span>Tour extensions &amp; official payment links</span></a>
+        <div class="nav-explore-menu" id="navExploreMenu" aria-label="Explore pages">
+          <a href="/experiences">Destinations &amp; Experiences<span>Every place, experience &amp; sample course</span></a>
+          <a href="/about">About<span>The founder's story</span></a>
+          <a href="/soul-of-japan">Soul of Japan<span>Why Mt. Fuji matters</span></a>
+          <a href="/mt-fuji-stopover">Stopover Guide<span>Mt. Fuji between Tokyo &amp; Kyoto</span></a>
+          <a href="/mt-fuji-without-crowds">Avoiding Crowds<span>The quiet south side</span></a>
+          <a href="/gallery">Gallery<span>A tour day in pictures</span></a>
+          <a href="/fujinomiya-yakisoba">Fujinomiya Yakisoba<span>The local soul food</span></a>
+          <a href="/mt-fuji-green-tea">Green Tea<span>Shizuoka tea at Mt. Fuji's foot</span></a>
+          <a href="/payments">Payments<span>Tour extensions &amp; official payment links</span></a>
         </div>
       </div>
     </div>
@@ -140,7 +141,7 @@ src="https://www.facebook.com/tr?id=991295620485360&ev=PageView&noscript=1"
   </div>
 </header>
 
-<main class="article-section">
+<main id="main" class="article-section">
   <div class="wrap article">
 
     <h2>The founder's story</h2>
@@ -201,7 +202,7 @@ src="https://www.facebook.com/tr?id=991295620485360&ev=PageView&noscript=1"
     <img src="images/logo.png" alt="Fuji Soul Tours">
     <div class="foot-links">
       <a href="/#book">Pricing</a>
-      <a href="https://buy.stripe.com/00w00i3Sc49qeP43rUdfG00" target="_blank" rel="noopener">Extend your tour (+$100/hr)</a>
+      <a href="https://buy.stripe.com/00w00i3Sc49qeP43rUdfG00" target="_blank" rel="noopener">Extend your tour (+$100/hr)<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in new tab)</span></a>
       <a href="/gallery">Gallery</a>
       <a href="/about">About</a>
       <a href="/soul-of-japan">Soul of Japan</a>
@@ -243,11 +244,11 @@ src="https://www.facebook.com/tr?id=991295620485360&ev=PageView&noscript=1"
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
     </button>
   </div>
-  <div class="chatbot-messages" id="chatMessages">
+  <div class="chatbot-messages" id="chatMessages" aria-live="polite">
     <div class="chat-msg bot">Hey! 👋 Got questions about the tour? Ask me anything — pricing, how to get here, what's included, or the best time to visit. I'm here to help!</div>
   </div>
   <div class="chatbot-input">
-    <input type="text" id="chatInput" placeholder="Type your question..." autocomplete="off" maxlength="500">
+    <input type="text" id="chatInput" placeholder="Type your question..." aria-label="Type your question" autocomplete="off">
     <button id="chatSend" aria-label="Send">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
     </button>

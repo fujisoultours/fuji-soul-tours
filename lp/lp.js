@@ -188,15 +188,16 @@ function lpRenderRoute(i) {
 function lpInitRoutes() {
   const tabs = document.querySelector('.route-tabs');
   if (!tabs) return;
+  // Toggle buttons, not ARIA tabs: a real tablist needs tabpanel wiring plus
+  // arrow-key navigation, and a half-implemented role is worse than none.
   LP_ROUTES.forEach((r, i) => {
     const b = document.createElement('button');
     b.type = 'button';
     b.className = 'route-tab';
-    b.setAttribute('role', 'tab');
-    b.setAttribute('aria-selected', String(i === 0));
+    b.setAttribute('aria-pressed', String(i === 0));
     b.textContent = r.label;
     b.addEventListener('click', () => {
-      tabs.querySelectorAll('.route-tab').forEach((x, j) => x.setAttribute('aria-selected', String(i === j)));
+      tabs.querySelectorAll('.route-tab').forEach((x, j) => x.setAttribute('aria-pressed', String(i === j)));
       lpRenderRoute(i);
     });
     tabs.appendChild(b);
@@ -236,6 +237,9 @@ function lpInitGallery() {
 
   const overlay = document.createElement('div');
   overlay.className = 'glb';
+  overlay.setAttribute('role', 'dialog');
+  overlay.setAttribute('aria-modal', 'true');
+  overlay.setAttribute('aria-label', 'Photo viewer');
   overlay.innerHTML =
     '<button class="glb-btn glb-close" aria-label="Close">&times;</button>' +
     '<button class="glb-btn glb-nav glb-prev" aria-label="Previous">&#8249;</button>' +
@@ -253,8 +257,17 @@ function lpInitGallery() {
     imgEl.alt = sources[idx].cap;
     capEl.textContent = sources[idx].cap;
   };
-  const open = (i) => { show(i); overlay.classList.add('open'); document.body.style.overflow = 'hidden'; };
-  const close = () => { overlay.classList.remove('open'); document.body.style.overflow = ''; };
+  let returnFocus = null;
+  const open = (i) => {
+    show(i); returnFocus = document.activeElement;
+    overlay.classList.add('open'); document.body.style.overflow = 'hidden';
+    overlay.querySelector('.glb-close').focus();
+  };
+  const close = () => {
+    overlay.classList.remove('open'); document.body.style.overflow = '';
+    if (returnFocus && typeof returnFocus.focus === 'function') returnFocus.focus();
+    returnFocus = null;
+  };
 
   items.forEach((el, i) => {
     el.addEventListener('click', () => open(slideOf[i]));
@@ -278,6 +291,15 @@ function lpInitGallery() {
     if (e.key === 'Escape') close();
     else if (e.key === 'ArrowLeft') show(idx - 1);
     else if (e.key === 'ArrowRight') show(idx + 1);
+    else if (e.key === 'Tab') {
+      // dialog focus trap across the three buttons
+      const btns = [...overlay.querySelectorAll('button')].filter((b) => b.offsetParent !== null);
+      if (!btns.length) return;
+      const first = btns[0], last = btns[btns.length - 1];
+      if (!overlay.contains(document.activeElement)) { e.preventDefault(); first.focus(); }
+      else if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
   });
 }
 
@@ -289,7 +311,8 @@ function scrollCarousel(btn, dir) {
   if (!carousel) return;
   const card = carousel.querySelector('.review-card');
   if (!card) return;
-  carousel.scrollLeft += dir * (card.offsetWidth + 18);
+  const gap = parseFloat(getComputedStyle(carousel).gap) || 18;
+  carousel.scrollLeft += dir * (card.offsetWidth + gap);
 }
 window.scrollCarousel = scrollCarousel;
 
@@ -300,7 +323,8 @@ function scrollGuest(btn, dir) {
   if (!car) return;
   const card = car.querySelector('.guest-card');
   if (!card) return;
-  car.scrollLeft += dir * (card.offsetWidth + 16) * 2;
+  const gap = parseFloat(getComputedStyle(car).gap) || 16;
+  car.scrollLeft += dir * (card.offsetWidth + gap) * 2;
 }
 window.scrollGuest = scrollGuest;
 
@@ -311,7 +335,8 @@ function scrollAddons(btn, dir) {
   if (!car) return;
   const card = car.querySelector('.addon');
   if (!card) return;
-  car.scrollLeft += dir * (card.offsetWidth + 16) * 2;
+  const gap = parseFloat(getComputedStyle(car).gap) || 16;
+  car.scrollLeft += dir * (card.offsetWidth + gap) * 2;
 }
 window.scrollAddons = scrollAddons;
 
@@ -541,17 +566,28 @@ function lpInitChatbot() {
   function closeChat() {
     toggle.classList.remove('active');
     win.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
     document.body.style.overflow = '';
   }
 
+  toggle.setAttribute('aria-expanded', 'false');
+  toggle.setAttribute('aria-controls', 'chatWindow');
   toggle.addEventListener('click', function () {
     toggle.classList.toggle('active');
     win.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', String(win.classList.contains('open')));
     if (win.classList.contains('open')) {
       if (window.innerWidth <= 480) document.body.style.overflow = 'hidden';
       input.focus();
     } else {
       document.body.style.overflow = '';
+    }
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && win.classList.contains('open')) {
+      closeChat();
+      toggle.focus();
     }
   });
 
@@ -727,6 +763,41 @@ function lpInitChatbot() {
   });
 }
 
+// ---- Carousel position ("3 / 8") — DADS lists current position as a
+// required carousel element. Injected into each nav row, updated on scroll
+// so it tracks buttons and swipes alike. ----
+function lpInitCarouselPos() {
+  const sets = [
+    { wrap: '.addons-carousel-wrap',  track: '.addons-carousel', card: '.addon, .addon-viewmore', nav: '.addons-nav' },
+    { wrap: '.reviews-carousel-wrap', track: '.reviews-grid',    card: '.review-card',            nav: '.reviews-nav' },
+    { wrap: '.gallery-teaser',        track: '.guest-carousel',  card: '.guest-card',             nav: '.guest-nav' }
+  ];
+  sets.forEach((s) => {
+    const wrap = document.querySelector(s.wrap);
+    const track = wrap && wrap.querySelector(s.track);
+    const nav = wrap && wrap.querySelector(s.nav);
+    if (!track || !nav) return;
+    const pos = document.createElement('span');
+    pos.className = 'car-pos';
+    pos.setAttribute('aria-live', 'polite');
+    nav.insertBefore(pos, nav.firstChild);
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      const cards = track.querySelectorAll(s.card);
+      if (!cards.length) { pos.textContent = ''; return; }
+      const first = cards[0];
+      const gap = parseFloat(getComputedStyle(track).gap) || 16;
+      const step = first.offsetWidth + gap;
+      const i = Math.min(cards.length, Math.round(track.scrollLeft / step) + 1);
+      pos.textContent = i + ' / ' + cards.length;
+    };
+    track.addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(update); });
+    window.addEventListener('resize', () => { if (!raf) raf = requestAnimationFrame(update); });
+    update();
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   lpInitBokunScrollGuard(); // first: must wrap scrollTo before Bokun loads
   lpInitPromo();
@@ -741,6 +812,7 @@ document.addEventListener('DOMContentLoaded', () => {
   lpInitNavScrollGuard();
   lpInitTracking();
   lpInitChatbot();
+  lpInitCarouselPos();
   lpUpdateBokunSrc();
   lpRenderPrices();
 });

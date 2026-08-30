@@ -235,12 +235,27 @@ function escapeReviewHtml(str) {
 var lightboxPhotos = [];
 var lightboxIndex = 0;
 var reviewPhotoSets = [];
+var lightboxReturnFocus = null;
 
 function openPhotoLightbox(src, photos, idx) {
   lightboxPhotos = photos || [src];
   lightboxIndex = idx || 0;
   updateLightbox();
-  document.getElementById('photoLightbox').classList.add('active');
+  var lb = document.getElementById('photoLightbox');
+  lightboxReturnFocus = document.activeElement;
+  lb.classList.add('active');
+  document.body.style.overflow = 'hidden';
+  var closeBtn = lb.querySelector('.lb-close');
+  if (closeBtn) closeBtn.focus();
+}
+
+function closePhotoLightbox() {
+  var lb = document.getElementById('photoLightbox');
+  if (!lb) return;
+  lb.classList.remove('active');
+  document.body.style.overflow = '';
+  if (lightboxReturnFocus && typeof lightboxReturnFocus.focus === 'function') lightboxReturnFocus.focus();
+  lightboxReturnFocus = null;
 }
 
 function updateLightbox() {
@@ -293,7 +308,7 @@ function lightboxNav(dir) {
       var textHtml = needsTruncate
         ? '<p class="review-text review-truncated">"' + escapeReviewHtml(r.text) + '"</p>'
           + '<p class="review-text review-full">"' + escapeReviewHtml(r.text) + '"</p>'
-          + '<button class="review-read-more">Read more</button>'
+          + '<button class="review-read-more" aria-label="Read full review by ' + escapeReviewHtml(r.author) + '">Read more</button>'
         : '<p class="review-text">"' + escapeReviewHtml(r.text) + '"</p>';
       var photosHtml = '';
       if (r.photos && r.photos.length > 0) {
@@ -307,7 +322,7 @@ function lightboxNav(dir) {
         var setIdx = reviewPhotoSets.length;
         reviewPhotoSets.push(resolvedUrls);
         photosHtml = '<div class="review-photos">' + resolvedUrls.map(function(imgUrl, idx) {
-          return '<img src="' + escapeReviewHtml(imgUrl) + '" alt="Tour photo" class="review-photo" loading="lazy" data-set="' + setIdx + '" data-idx="' + idx + '" onerror="this.style.display=\'none\'">';
+          return '<img src="' + escapeReviewHtml(imgUrl) + '" alt="View tour photo ' + (idx + 1) + ' by ' + escapeReviewHtml(r.author) + '" class="review-photo" tabindex="0" role="button" loading="lazy" data-set="' + setIdx + '" data-idx="' + idx + '" onerror="this.style.display=\'none\'">';
         }).join('') + '</div>';
       }
       var srcUrl = REVIEW_SOURCE_LINKS[r.source];
@@ -315,7 +330,7 @@ function lightboxNav(dir) {
         ? '<a class="review-source-link" href="' + srcUrl + '" target="_blank" rel="noopener noreferrer">' + escapeReviewHtml(r.source) + '</a>'
         : escapeReviewHtml(r.source);
       return '<div class="review-card">'
-        + '<div class="review-stars">' + stars + '</div>'
+        + '<div class="review-stars">' + stars + '<span class="review-rating">' + r.stars + '.0</span></div>'
         + textHtml
         + photosHtml
         + '<div class="review-author">' + escapeReviewHtml(r.author) + '</div>'
@@ -385,14 +400,24 @@ function lightboxNav(dir) {
   });
 
   // Delegated click handler for review photos (avoids stale global index references)
-  grid.addEventListener('click', function(e) {
-    var img = e.target.closest('.review-photo');
-    if (!img) return;
-    var setIdx = parseInt(img.getAttribute('data-set'));
-    var idx = parseInt(img.getAttribute('data-idx'));
+  function openFromPhotoEl(img) {
+    var setIdx = parseInt(img.getAttribute('data-set'), 10);
+    var idx = parseInt(img.getAttribute('data-idx'), 10);
     if (!isNaN(setIdx) && reviewPhotoSets[setIdx]) {
       openPhotoLightbox(img.src, reviewPhotoSets[setIdx], idx);
     }
+  }
+  grid.addEventListener('click', function(e) {
+    var img = e.target.closest('.review-photo');
+    if (img) openFromPhotoEl(img);
+  });
+  // Photos carry role="button" — honor Enter/Space so they are keyboard-operable
+  grid.addEventListener('keydown', function(e) {
+    if (e.key !== 'Enter' && e.key !== ' ') return;
+    var img = e.target.closest('.review-photo');
+    if (!img) return;
+    e.preventDefault();
+    openFromPhotoEl(img);
   });
 
   // 1. Render static reviews immediately
@@ -403,19 +428,33 @@ function lightboxNav(dir) {
     var overlay = document.createElement('div');
     overlay.id = 'photoLightbox';
     overlay.className = 'photo-lightbox';
-    overlay.innerHTML = '<button type="button" class="lb-close" aria-label="Close" onclick="document.getElementById(\'photoLightbox\').classList.remove(\'active\')">&times;</button>'
+    overlay.setAttribute('role', 'dialog');
+    overlay.setAttribute('aria-modal', 'true');
+    overlay.setAttribute('aria-label', 'Review photo viewer');
+    overlay.innerHTML = '<button type="button" class="lb-close" aria-label="Close" onclick="closePhotoLightbox()">&times;</button>'
       + '<button type="button" class="lb-nav lb-prev" aria-label="Previous photo" onclick="event.stopPropagation();lightboxNav(-1)">&#8249;</button>'
       + '<img class="lb-img" alt="Tour photo">'
       + '<button type="button" class="lb-nav lb-next" aria-label="Next photo" onclick="event.stopPropagation();lightboxNav(1)">&#8250;</button>'
       + '<span class="lb-counter"></span>';
     overlay.addEventListener('click', function(e) {
-      if (e.target === overlay) overlay.classList.remove('active');
+      if (e.target === overlay) closePhotoLightbox();
     });
     document.addEventListener('keydown', function(e) {
       if (!overlay.classList.contains('active')) return;
-      if (e.key === 'Escape') overlay.classList.remove('active');
+      if (e.key === 'Escape') closePhotoLightbox();
       if (e.key === 'ArrowLeft') lightboxNav(-1);
       if (e.key === 'ArrowRight') lightboxNav(1);
+      if (e.key === 'Tab') {
+        // keep focus inside the dialog (close / prev / next)
+        var btns = Array.prototype.filter.call(overlay.querySelectorAll('button'), function(b) {
+          return b.style.display !== 'none';
+        });
+        if (!btns.length) return;
+        var first = btns[0], last = btns[btns.length - 1];
+        if (!overlay.contains(document.activeElement)) { e.preventDefault(); first.focus(); }
+        else if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
     });
     document.body.appendChild(overlay);
   }

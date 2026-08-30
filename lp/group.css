@@ -114,17 +114,19 @@
 @media (max-width: 880px) { .gtp-grid { grid-template-columns: 1fr; gap: 40px; } }
 
 /* ---- cross-sell to private ---- */
-.xsell {
+/* renamed from .xsell: styles.css owns .xsell for the night price panel, and
+   its dim on-night color leaked into this white card (2.0:1 heading) */
+.gt-xsell {
   display: flex; align-items: center; gap: 32px; flex-wrap: wrap;
-  background: white; border: 1px solid var(--hair); border-radius: 8px;
-  padding: 34px 38px;
+  background: white; border: 1px solid var(--hair-strong); border-radius: 8px;
+  padding: 34px 38px; color: var(--ink);
 }
-.xsell-text { flex: 1; min-width: 260px; }
-.xsell-text h3 { font-size: 24px; font-weight: 600; margin-bottom: 8px; }
-.xsell-text p { font-size: 15px; color: var(--ink-soft); max-width: 60ch; }
+.gt-xsell-text { flex: 1; min-width: 260px; }
+.gt-xsell-text h3 { font-size: 24px; font-weight: 600; margin-bottom: 8px; }
+.gt-xsell-text p { font-size: 15px; color: var(--ink-soft); max-width: 60ch; }
 /* mobile: tighter xsell + full-width CTAs (mirrors LP) */
 @media (max-width: 600px) {
-  .xsell { padding: 26px 22px; }
-  .xsell .btn-book { width: 100%; }
+  .gt-xsell { padding: 26px 22px; }
+  .gt-xsell .btn-book { width: 100%; }
   .gtp-cta-wrap .btn-book { width: 100%; }
 }
