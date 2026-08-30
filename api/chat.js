@@ -97,6 +97,10 @@ module.exports = async function handler(req, res) {
     return res.status(429).json({ error: "Too many requests. Please try again in a minute." });
   }
 
+  if (!req.body || typeof req.body !== "object") {
+    return res.status(400).json({ error: "Invalid request body" });
+  }
+
   const { message, history } = req.body;
 
   if (!message || typeof message !== "string" || message.trim().length === 0) {
@@ -107,6 +111,21 @@ module.exports = async function handler(req, res) {
     return res.status(400).json({ error: "Message too long (max 1000 chars)" });
   }
 
+  // Sanitize history before anything can throw on it: drop null/non-object
+  // entries, foreign roles, non-string or oversized content.
+  const safeHistory = Array.isArray(history)
+    ? history
+        .slice(-10)
+        .filter(
+          (m) =>
+            m &&
+            typeof m === "object" &&
+            (m.role === "user" || m.role === "assistant") &&
+            typeof m.content === "string" &&
+            m.content.length <= 2000
+        )
+    : [];
+
   const apiKey = process.env.ANTHROPIC_API_KEY;
   if (!apiKey) {
     return res.status(500).json({ error: "AI service not configured" });
@@ -116,19 +135,10 @@ module.exports = async function handler(req, res) {
     const kb = loadKB();
     const client = new Anthropic({ apiKey });
 
-    const messages = [];
-
-    if (Array.isArray(history)) {
-      const recentHistory = history.slice(-10);
-      for (const msg of recentHistory) {
-        if (msg.role === "user" || msg.role === "assistant") {
-          messages.push({
-            role: msg.role,
-            content: msg.content,
-          });
-        }
-      }
-    }
+    const messages = safeHistory.map((msg) => ({
+      role: msg.role,
+      content: msg.content,
+    }));
 
     messages.push({ role: "user", content: message.trim() });
 
