@@ -1,0 +1,152 @@
+# =============================================================================
+# Fuji Soul Tours — 事実の正本 (single source of truth for numbers)
+# -----------------------------------------------------------------------------
+# ルール:
+#   - 価格・人数・締切・キャンセル条件など「数字の事実」はこのファイルにだけ書く。
+#   - HTML / lp.js / 特商法ページに書かれた同じ数字は、`npm run build` の
+#     check-facts でこのファイルと照合され、食い違うとビルドが止まる。
+#   - 値を変えるときはここを変え、check-facts が指摘する箇所を直す。
+#   - AIチャットには facts 全体がそのまま渡される（説明文はコメントではなく
+#     `note` キーに書くと、チャットにも伝わる）。
+#   - 法定正本は tokushoho.html（特定商取引法ページ）。
+#     「特商法ページ未記載」とコメントした項目は、サイト本文にだけ存在する。
+# =============================================================================
+
+business:
+  name: Fuji Soul Tours
+  name_ja: フジソウルツアーズ
+  representative: Takumu (Taku) Makino
+  representative_ja: 牧野 巧武
+  postal_code: "418-0051"
+  address_ja: 静岡県富士宮市淀師1657-10
+  address_en: Yodoshi 1657-10, Fujinomiya, Shizuoka, Japan
+  phone: "+81-90-3955-4101"
+  whatsapp_url: https://wa.me/819039554101
+  email: fujisoultours@gmail.com
+  website: https://www.fujisoultours.com
+  instagram_url: https://www.instagram.com/fujisoultours
+  rating: 5.0
+  review_count: 27
+  review_platforms: [TripAdvisor, Viator]
+
+private_van:
+  label: Private Mt. Fuji Cultural Tour — van (1–5 guests)
+  bokun_experience_id: 1171469
+  duration_hours: 4
+  guests_min: 1
+  guests_max: 5
+  meeting_point: Shin-Fuji Station gate exit
+  # 価格。JPY が定価、他通貨は固定換算（Bokun の請求額は予約時レートで変動）
+  price:
+    JPY: { p1: 69000, p2: 34500, p35: 25320 }
+    USD: { p1: 432,   p2: 216,   p35: 159 }
+    EUR: { p1: 371,   p2: 185,   p35: 136 }
+    AUD: { p1: 602,   p2: 301,   p35: 221 }
+    CAD: { p1: 597,   p2: 298,   p35: 219 }
+  price_note: >-
+    p1 = 1 guest (total), p2 = per person for 2 guests, p35 = per person for
+    3–5 guests. Non-JPY prices are approximate; the checkout charges in the
+    selected currency at the booking-time exchange rate.
+  phone_cc: { USD: US, EUR: DE, AUD: AU, CAD: CA, JPY: JP }
+  confirmation: instant
+  cancellation:
+    free_until_hours_before: 24
+    within_24h_refund: none
+    date_change_free_until_hours_before: 24
+    how: Email fujisoultours@gmail.com, or use the manage-booking link in the confirmation email
+  weather_or_force_majeure: Full refund or date change if the tour is cancelled by Fuji Soul Tours
+  # --- 以下は特商法ページ未記載 ---
+  booking_min_advance_days: 2          # サイト本文にも無し（public-extra.md とチャットのルールのみ）
+  large_suitcases_in_van_max_guests: 3
+  station_locker_jpy: "300–800 per piece, cash"
+  walker_users_max_guests: 3
+  wheelchair: not accommodated (vehicle not equipped)
+  train_buffer_minutes: 30
+
+private_minibus:
+  label: Private Mt. Fuji Cultural Tour — mini bus (6–15 guests)
+  bokun_experience_id: 1268772
+  duration_hours: 4
+  guests_min: 6
+  guests_max: 15
+  currency: USD
+  price_6_10_group_usd: 980
+  price_11_15_adult_usd: 98
+  child_4_9_usd_from_11_guests: 49
+  adult_age_from: 10
+  free_age_under: 4
+  minimum_booking_usd: 980
+  season: October–December 2026
+  booking_min_advance_days: 7
+  booking_type: request
+  confirmation_within_hours: 48
+  unconfirmed_refund: full
+  cancellation:
+    free_until_days_before: 3
+    after_that_refund: none
+    date_change_until_days_before: 3
+
+group_tour_wednesday:
+  label: The Wednesday Mt. Fuji Tour — small group
+  bokun_experience_id: 1247586
+  price_per_person_usd: 98
+  price_note: Flat price, all ages
+  weekday: Wednesday
+  start: "09:00"
+  end: "15:00"
+  arrive_at_station_by: "08:45"
+  duration_hours: 6
+  capacity: 15
+  min_to_run: 10
+  season: October–December 2026
+  run_decision_days_before: 7
+  booking_cutoff_days_before: 3
+  guest_cancellation_refund: none
+  if_not_running: free transfer to another Wednesday or full refund
+  charged_at: booking
+  lunch_yakisoba_jpy: 900
+  # 特商法ページ未記載（要追記）
+
+extensions:
+  # 特商法ページ未記載
+  per_30min_usd: 60
+  per_hour_usd: 100
+  unit: per group, not per person
+  approval: Get the OK first — from Fuji Soul Tours before the tour day, or from the guide during the tour
+  payment_page: https://www.fujisoultours.com/payments
+  stripe_link_30min: https://buy.stripe.com/00w8wO3Sc5duayO2nQdfG03
+  stripe_link_1hour: https://buy.stripe.com/00w00i3Sc49qeP43rUdfG00
+
+onsite_costs:
+  note: Paid separately on-site; not included in any tour price.
+  # 特商法ページ記載分
+  campsite_cafe: "¥1,500 / group + ¥500 / person"
+  heritage_center_per_person_jpy: 500
+  matcha_cafe_per_person_jpy: 1000
+  matcha_handson_per_person_jpy: 3000
+  tea_ceremony_per_group_jpy: 20000
+  kimono_per_person_jpy: 3500
+  kimono_cash_only: true
+  yakisoba_per_person_jpy: 900
+  # 特商法ページ未記載（サイト本文のみ）
+  golf_club_lunch_per_person_jpy: "2,000–2,800 (cash only, weekdays only)"
+  wagashi_workshop_per_person_jpy: 3000
+  oharai_prayer_per_person_jpy: "5,000–6,000"
+  maki_sushi: "¥5,500 / person + ¥2,000 / group"
+  gelato_per_person_jpy: "500–800"
+  clothing_shop_per_item_jpy: "1,000+"
+  food_samples_per_item_jpy: "400–1,000"
+  child_seat_rental_usd: 50            # サイト本文にも無し（public-extra.md のみ）
+
+payment:
+  card_brands: [Visa, Mastercard, American Express]
+  tour_checkout: Bokun (secure checkout; card processing by Stripe)
+  extensions_checkout: Stripe Payment Links
+  timing: charged at booking
+
+ids:
+  bokun_channel_uuid: 9c7daabb-e81c-4ae1-b504-5451a5ca69ff
+  ga4_measurement_id: G-4P1XES4LQT
+  meta_pixel_id: "991295620485360"
+  viator_product_code: d50602-480933P5
+  tripadvisor_listing: g298124-d27788193

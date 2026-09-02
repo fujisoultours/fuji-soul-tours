@@ -5,7 +5,7 @@
 // [data-price] / .old-price bindings. Campaign banners (.promo-only markup)
 // were removed after promo15 ended (June 2026) — re-add them for the next
 // campaign. (Also sync Bokun price modulator + TikTok/Instagram bios +
-// kb/knowledge-base.json pricing — see the Notion checklist.)
+// content/facts.yaml — `npm run build` fails until every page agrees with it.)
 const PROMO = { active: false, rate: 0.85, campaign: 'promo15' };
 
 // ---- Prices (mirrors production PRICES; full = pre-promo list prices) ----

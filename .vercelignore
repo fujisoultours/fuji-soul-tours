@@ -1,0 +1,11 @@
+# Keep CLI deploys identical to Git deploys: only what the site needs.
+node_modules
+.git
+.claude
+.github
+.vercel
+.env*
+.DS_Store
+v2
+v3
+/*.md

@@ -1,0 +1,402 @@
+{
+  "siteUrl": "https://www.fujisoultours.com",
+  "contact": {
+    "email": "fujisoultours@gmail.com",
+    "instagram": "https://www.instagram.com/fujisoultours",
+    "whatsapp": "https://wa.me/819039554101",
+    "whatsappNumber": "+81-90-3955-4101"
+  },
+  "facts": {
+    "business": {
+      "name": "Fuji Soul Tours",
+      "name_ja": "フジソウルツアーズ",
+      "representative": "Takumu (Taku) Makino",
+      "representative_ja": "牧野 巧武",
+      "postal_code": "418-0051",
+      "address_ja": "静岡県富士宮市淀師1657-10",
+      "address_en": "Yodoshi 1657-10, Fujinomiya, Shizuoka, Japan",
+      "phone": "+81-90-3955-4101",
+      "whatsapp_url": "https://wa.me/819039554101",
+      "email": "fujisoultours@gmail.com",
+      "website": "https://www.fujisoultours.com",
+      "instagram_url": "https://www.instagram.com/fujisoultours",
+      "rating": 5,
+      "review_count": 27,
+      "review_platforms": [
+        "TripAdvisor",
+        "Viator"
+      ]
+    },
+    "private_van": {
+      "label": "Private Mt. Fuji Cultural Tour — van (1–5 guests)",
+      "bokun_experience_id": 1171469,
+      "duration_hours": 4,
+      "guests_min": 1,
+      "guests_max": 5,
+      "meeting_point": "Shin-Fuji Station gate exit",
+      "price": {
+        "JPY": {
+          "p1": 69000,
+          "p2": 34500,
+          "p35": 25320
+        },
+        "USD": {
+          "p1": 432,
+          "p2": 216,
+          "p35": 159
+        },
+        "EUR": {
+          "p1": 371,
+          "p2": 185,
+          "p35": 136
+        },
+        "AUD": {
+          "p1": 602,
+          "p2": 301,
+          "p35": 221
+        },
+        "CAD": {
+          "p1": 597,
+          "p2": 298,
+          "p35": 219
+        }
+      },
+      "price_note": "p1 = 1 guest (total), p2 = per person for 2 guests, p35 = per person for 3–5 guests. Non-JPY prices are approximate; the checkout charges in the selected currency at the booking-time exchange rate.",
+      "phone_cc": {
+        "USD": "US",
+        "EUR": "DE",
+        "AUD": "AU",
+        "CAD": "CA",
+        "JPY": "JP"
+      },
+      "confirmation": "instant",
+      "cancellation": {
+        "free_until_hours_before": 24,
+        "within_24h_refund": "none",
+        "date_change_free_until_hours_before": 24,
+        "how": "Email fujisoultours@gmail.com, or use the manage-booking link in the confirmation email"
+      },
+      "weather_or_force_majeure": "Full refund or date change if the tour is cancelled by Fuji Soul Tours",
+      "booking_min_advance_days": 2,
+      "large_suitcases_in_van_max_guests": 3,
+      "station_locker_jpy": "300–800 per piece, cash",
+      "walker_users_max_guests": 3,
+      "wheelchair": "not accommodated (vehicle not equipped)",
+      "train_buffer_minutes": 30
+    },
+    "private_minibus": {
+      "label": "Private Mt. Fuji Cultural Tour — mini bus (6–15 guests)",
+      "bokun_experience_id": 1268772,
+      "duration_hours": 4,
+      "guests_min": 6,
+      "guests_max": 15,
+      "currency": "USD",
+      "price_6_10_group_usd": 980,
+      "price_11_15_adult_usd": 98,
+      "child_4_9_usd_from_11_guests": 49,
+      "adult_age_from": 10,
+      "free_age_under": 4,
+      "minimum_booking_usd": 980,
+      "season": "October–December 2026",
+      "booking_min_advance_days": 7,
+      "booking_type": "request",
+      "confirmation_within_hours": 48,
+      "unconfirmed_refund": "full",
+      "cancellation": {
+        "free_until_days_before": 3,
+        "after_that_refund": "none",
+        "date_change_until_days_before": 3
+      }
+    },
+    "group_tour_wednesday": {
+      "label": "The Wednesday Mt. Fuji Tour — small group",
+      "bokun_experience_id": 1247586,
+      "price_per_person_usd": 98,
+      "price_note": "Flat price, all ages",
+      "weekday": "Wednesday",
+      "start": "09:00",
+      "end": "15:00",
+      "arrive_at_station_by": "08:45",
+      "duration_hours": 6,
+      "capacity": 15,
+      "min_to_run": 10,
+      "season": "October–December 2026",
+      "run_decision_days_before": 7,
+      "booking_cutoff_days_before": 3,
+      "guest_cancellation_refund": "none",
+      "if_not_running": "free transfer to another Wednesday or full refund",
+      "charged_at": "booking",
+      "lunch_yakisoba_jpy": 900
+    },
+    "extensions": {
+      "per_30min_usd": 60,
+      "per_hour_usd": 100,
+      "unit": "per group, not per person",
+      "approval": "Get the OK first — from Fuji Soul Tours before the tour day, or from the guide during the tour",
+      "payment_page": "https://www.fujisoultours.com/payments",
+      "stripe_link_30min": "https://buy.stripe.com/00w8wO3Sc5duayO2nQdfG03",
+      "stripe_link_1hour": "https://buy.stripe.com/00w00i3Sc49qeP43rUdfG00"
+    },
+    "onsite_costs": {
+      "note": "Paid separately on-site; not included in any tour price.",
+      "campsite_cafe": "¥1,500 / group + ¥500 / person",
+      "heritage_center_per_person_jpy": 500,
+      "matcha_cafe_per_person_jpy": 1000,
+      "matcha_handson_per_person_jpy": 3000,
+      "tea_ceremony_per_group_jpy": 20000,
+      "kimono_per_person_jpy": 3500,
+      "kimono_cash_only": true,
+      "yakisoba_per_person_jpy": 900,
+      "golf_club_lunch_per_person_jpy": "2,000–2,800 (cash only, weekdays only)",
+      "wagashi_workshop_per_person_jpy": 3000,
+      "oharai_prayer_per_person_jpy": "5,000–6,000",
+      "maki_sushi": "¥5,500 / person + ¥2,000 / group",
+      "gelato_per_person_jpy": "500–800",
+      "clothing_shop_per_item_jpy": "1,000+",
+      "food_samples_per_item_jpy": "400–1,000",
+      "child_seat_rental_usd": 50
+    },
+    "payment": {
+      "card_brands": [
+        "Visa",
+        "Mastercard",
+        "American Express"
+      ],
+      "tour_checkout": "Bokun (secure checkout; card processing by Stripe)",
+      "extensions_checkout": "Stripe Payment Links",
+      "timing": "charged at booking"
+    },
+    "ids": {
+      "bokun_channel_uuid": "9c7daabb-e81c-4ae1-b504-5451a5ca69ff",
+      "ga4_measurement_id": "G-4P1XES4LQT",
+      "meta_pixel_id": "991295620485360",
+      "viator_product_code": "d50602-480933P5",
+      "tripadvisor_listing": "g298124-d27788193"
+    }
+  },
+  "routes": [
+    {
+      "label": "Tokyo → Kyoto",
+      "stops": [
+        "6:57 Depart Tokyo — Kodama, ~1 h",
+        "8:03 Meet your guide — Shin-Fuji gate",
+        "8:10 4-hour tour — Hidden spots & culture",
+        "13:08 Depart Shin-Fuji — Buffer for lunch first",
+        "15:15 Arrive Kyoto ✓ — Full evening ahead"
+      ]
+    },
+    {
+      "label": "Tokyo → Osaka",
+      "stops": [
+        "6:57 Depart Tokyo — Kodama, ~1 h",
+        "8:03 Meet your guide — Shin-Fuji gate",
+        "8:10 4-hour tour — Hidden spots & culture",
+        "13:08 Depart Shin-Fuji — Buffer for lunch first",
+        "15:30 Arrive Shin-Osaka ✓ — Full evening ahead"
+      ]
+    },
+    {
+      "label": "Kyoto → Tokyo",
+      "stops": [
+        "8:30 Depart Kyoto — Nozomi, ~2 h",
+        "10:36 Meet your guide — Shin-Fuji gate",
+        "10:45 4-hour tour — Hidden spots & culture",
+        "15:10 Depart Shin-Fuji — After a short buffer",
+        "16:18 Arrive Tokyo ✓ — In time for dinner"
+      ]
+    },
+    {
+      "label": "Osaka → Tokyo",
+      "stops": [
+        "8:15 Depart Shin-Osaka — Nozomi, ~2.5 h",
+        "10:36 Meet your guide — Shin-Fuji gate",
+        "10:45 4-hour tour — Hidden spots & culture",
+        "15:10 Depart Shin-Fuji — After a short buffer",
+        "16:18 Arrive Tokyo ✓ — In time for dinner"
+      ]
+    },
+    {
+      "label": "Tokyo half-day trip",
+      "stops": [
+        "6:57 Depart Tokyo — Kodama, ~1 h",
+        "8:03 Meet your guide — Shin-Fuji gate",
+        "8:10 4-hour tour — Hidden spots & culture",
+        "13:10 Depart Shin-Fuji — Buffer for lunch first",
+        "14:18 Back in Tokyo ✓ — Whole afternoon free"
+      ]
+    }
+  ],
+  "extra": "# Additional guidance for the AI guide (not on the website)\n\n## Booking lead time\n- Bookings require at least 2 days advance notice. Same-day and next-day (tomorrow) bookings are not accepted by the booking system.\n- The earliest you can book is 2 days from today (the day after tomorrow), subject to availability.\n- Even if you can see a date on the calendar, availability is limited — check the booking widget for real-time availability.\n\n## Start time and meeting\n- Start times are flexible and adjusted to your train schedule; tours start between 7:00 AM and 2:00 PM.\n- The earlier the better — morning hours tend to offer clearer views of Mt. Fuji.\n- Meeting point: Shin-Fuji Station exit. Your guide will wait right at the gate exit with a \"Fuji Soul Tours\" sign.\n\n## Your guide\n- Local-born, Fuji-native, bilingual English speaker with 10+ years of local expertise.\n- Philosophy: show you the Mt. Fuji that locals know and love, not just what's in guidebooks and viral reels. No tourist traps, only places we'd take our own family.\n\n## What's included in the private tour price\n- Private tour for your group only (van 1–5 guests; private mini bus 6–15 guests, October–December 2026)\n- Premium air-conditioned van with luggage storage\n- Local-born English-speaking guide\n- Bottled water (one per person)\n- Hidden photo spots — curated viewpoints locals love\n- Luggage-friendly — large suitcases welcome\n- Not included: entry fees, food, drinks and activity costs at each stop are paid separately on-site. Every destination and experience card on the website shows its cost — many destinations are free.\n\n## Photo spots we may visit (exact locations are kept private)\n- Campsite café near Mt. Fuji (Fumotoppara) — 30–60 min — stunning view of Mt. Fuji through big windows in a campsite café (reservation required)\n- Panoramic bridge view — 15–30 min — elevated Mt. Fuji view near the station, perfect for arrival photos\n- Plateau view with cows — 15–45 min — up-close dramatic Fuji panorama with cows\n- Lakeside viewing spot — 20–45 min — Mt. Fuji reflected on still waters, the \"Double Fuji\" mirror image\n- Convenience-store shots (FamilyMart / 7-Eleven with Mt. Fuji) — 10–20 min — the iconic convenience store with a perfect Mt. Fuji backdrop\n- Highland park viewpoint — 15–30 min — peaceful local park with unobstructed Fuji views, away from tourist crowds\n- Local craft beer taproom — 20–60 min — small-batch craft beers brewed with Mt. Fuji spring water and organic local grains (weekends only)\n- We keep our curated spots private — it's the core value of the crowd-free experience. Exact locations are shared only with booked guests so these hidden gems stay uncrowded. We can share general descriptions of what you'll see, but not specific addresses or map pins.\n\n## Cash\n- Bring Japanese Yen cash. Some spots are cash-only — lockers, kimono rental, shrine offerings, certain cafés. Most restaurants and shops also accept cards.\n\n## Shinkansen tickets\n- Book Shinkansen tickets via SmartEX (https://smart-ex.jp/en/index.php) — the only official Shinkansen booking site, with the best change and cancellation terms. All other sites are third-party. If the SmartEX mobile app cannot be downloaded on your device, use the web browser instead. You can also buy at the station, but advance booking guarantees your seat.\n- Klook and other third-party platforms often don't list Shin-Fuji Station because only the Kodama stops there (not Nozomi or Hikari). This is a platform limitation, not a problem with the station — Shin-Fuji is a fully operational JR Tokaido Shinkansen station. Use SmartEX or buy at any JR station.\n- From central Tokyo, take a taxi or train to Tokyo Station or Shinagawa Station (Shinagawa is about 13 minutes by taxi from central Tokyo), then ride the Kodama about 1 hour to Shin-Fuji.\n\n## Hotel pickup\n- We cannot pick you up from your hotel in Tokyo. The tour starts and ends at Shin-Fuji Station only. The bullet train takes about 1 hour from Tokyo, versus 2.5+ hours by car.\n\n## Weather, delays and Mt. Fuji visibility\n- If the weather is bad or your train is delayed, we have backup plans with alternative cultural experiences and offer flexible rescheduling. Real-time communication via WhatsApp.\n- Even when Mt. Fuji hides in the clouds, cultural experiences make the tour rewarding. Your guide adjusts the route to maximize your experience regardless of visibility.\n\n## Children and infants\n- Japanese law requires a child safety seat for children aged 5 and under. Depending on the date and number of guests, a child seat can be arranged (rental fee $50 USD). Infants count as a passenger but do not need a separate booking — book for the number of adults only. Please contact us with your date, group size and child's age so we can check.\n\n## Customising the tour\n- You can add or swap destinations and experiences based on your interests and timing. After booking, share your preferences and we'll tailor the itinerary.\n- After you book, your guide reaches out via WhatsApp or email to (1) confirm your train schedule, (2) ask about your activity preferences, (3) create a personalised itinerary. The itinerary can be revised until tour day.\n- If your wish list won't fit in 4 hours, your guide will create an itinerary showing the extra time needed, and you can decide to either trim activities or pay for an extension.\n\n## Reviews\n- Reviews are on TripAdvisor and Viator, rated 5.0 stars. Search for \"Fuji Soul Tours\" on either platform.",
+  "pages": [
+    {
+      "url": "/",
+      "title": "Private Mt. Fuji Half-Day Tour Between Tokyo & Kyoto | Fuji Soul Tours",
+      "description": "Private half-day Mt. Fuji tour from Shin-Fuji Station — a Shinkansen stopover between Tokyo and Kyoto. Hidden viewpoints, shrine, yakisoba. 1–5 by van, 6–15 by mini bus.",
+      "lang": "en",
+      "text": "# Half-day private Mt. Fuji tour from Shin-Fuji Station Four hours. The Mt. Fuji most travelers miss.\n\nStep off the Tokyo–Kyoto Shinkansen at Shin-Fuji for a half-day stopover: a local-born guide, hidden viewpoints, the principal Fuji shrine and award-winning yakisoba — then back on your train, luggage and all.\n\n★ 5.0 on Viator & Tripadvisor · Private — just your group (1–15) · Luggage welcome\n\nFrom USD 159 / person · group of 3–5\n\nVan (1–5): free cancellation & date change up to 24 h before · Instant confirmation. Mini bus (6–15): Oct–Dec · on request.\n\nWED Join a small-group tour — $98 →\n\n★ 5.0 Viator & Tripadvisor reviews\n\nPrivate Your group only · van + guide\n\nHalf-day Fits between your trains\n\nFree 24 h Van tour cancellation & changes\n\nIt fits between your trains\n\n## Mt. Fuji in half a day — not a full-day bus tour\n\nMost Mt. Fuji tours cost you an entire day round-tripping by bus from Tokyo. A Shin-Fuji stopover changes that: the Shinkansen drops you right at the mountain's foot — the easiest way to see Mt. Fuji between Tokyo and Kyoto. We meet you at the gate, tour for four hours, and have you back on your train with buffer to spare.\n\nTimes are examples — after booking, send us your train times and we plan the day around them. Only Kodama trains stop at Shin-Fuji (covered by JR Pass).\n\nYour four hours\n\n## A day shaped by a Fuji native, not a script\n\nThese routes were shaped by someone born in the shadow of the mountain , and they run with two bilingual guides who know them just as well. Every tour is tailored to the weather, the season, and you — this is a typical highlights day.\n\nTakumu (Taku) Makino , founder, born at the foot of Mt. Fuji — the tours he designed are hosted by his two bilingual guides. Their story →\n\n0:00\nMeet at the station gate\n\nYour guide is waiting with a sign. Luggage goes in the van or station lockers.\n\n0:45\nHidden Mt. Fuji viewpoint\n\nPicked the morning of your tour from seven local spots — bridge, plateau with cows, lakeside mirror, or the famous convenience-store shot.\n\n1:20\nPrincipal shrine of Fuji worship\n\nFujisan Hongu Sengen Shrine — where climbing the mountain traditionally began. Your guide explains why it matters.\n\n1:50\nAward-winning yakisoba lunch\n\nFujinomiya's B-1 Grand Prix soul food, at a family-run spot locals queue for. ~¥900.\n\n3:00\nGreen tea or matcha at an award-winning tea house\n\nGreen tea that has won Japan's Prime Minister's Award, served with seasonal sweets in a tea house built from a single 400-year-old tree.\n\n4:00\nBack at your platform\n\nWith buffer time for souvenirs before your train onward.\n\nPark viewpoint — 45 min from the station, no crowds\n\nFujinomiya yakisoba\n\nThe tea house — Prime Minister's Award-winning green tea\n\nHonest answer to the big question\n\n## “What if Mt. Fuji hides?”\n\nFuji shows itself fully on roughly one day in three. We don't pretend otherwise — we plan for it, checking visibility in real time and rerouting by the hour.\n\n### ☀️ Clear day\n\n- Hidden panoramic viewpoints, chosen that morning\n- Lakeside “Double Fuji” mirror reflection\n- Sengen Shrine with the peak behind the torii\n- Yakisoba lunch & matcha — the cultural core stays\n\n### ☁️ Cloudy day\n\n- Special prayer inside Sengen Shrine\n- UNESCO World Heritage Center — Fuji's story, indoors\n- Sake tasting at a 190-year-old brewery\n- Matcha workshop at the award-winning tea house\n\n“\n\nUnfortunately the day we were at Mount Fuji it was raining. Our guide immediately found an alternative activity we thoroughly enjoyed — a private tea ceremony. The food was amazing!\n— Annette M. · February 2026 · Viator · ★★★★★\n\nExplore\n\n## Destinations & experiences\n\nFrom hidden Fuji viewpoints to hands-on sessions with local masters — a taste of where we'll take you and what you can do, plus three sample itineraries to start from. Browse them all, then tell us what catches your eye.\n\n### Mt. Fuji view & lunch at a prestige golf club\n\nA rare, wide-open Mt. Fuji panorama from a prestigious golf club, with lunch at its restaurant facing the mountain. Lunch is cash only, and a dress code applies — ask us for the details. Weekdays only, by reservation. Stopping in just for the view is welcome too — the dress code still applies.\n\n¥2,000–2,800 / person Weekdays only\n\n### Wagashi sweets workshop\n\nShape seasonal Japanese sweets from white bean paste — nerikiri, a craft born in Edo-period Kyoto two to three centuries ago and refined alongside the tea ceremony.\n\n¥3,000 / person 60 min\n\n### Whisk your own matcha\n\nLearn the traditional preparation under expert guidance, then drink the bowl you made. Tatami or table seating.\n\n¥3,000 / person 60 min\n\n### Sake tasting, est. 1830s\n\nUp to three sakes in mini cups, brewed with pure Mt. Fuji spring water. The free tasting is the 190-year-old brewery's courtesy to browsing customers — no obligation to buy if nothing wins you over.\n\nFree · mini cups 20 min\n\n### Shinto purification prayer\n\nA traditional oharai ceremony performed by shrine priests inside the main hall — open to everyone.\n\n¥5,000–6,000 / person total 60 min\n\nView all destinations & experiences Every place, experience & sample itinerary\n\nHow to add: mention any experience in the booking notes, or message us after booking — we check availability and confirm before your tour date.\n\nWhat travelers say\n\n## Every review so far: five stars\n\n★★★★★ 5.0 · Viator & Tripadvisor\n\nFrom real tours\n\n## The people we've shown around\n\nSee more in the full gallery →\n\nPrivate or group?\n\n## Two ways to meet Mt. Fuji\n\nMost guests book the private stopover. From October to December, there's also a small-group day every Wednesday.\n\n★ 5.0 · Most popular\n\n### Private Half-Day Tour\n\nYour own guide and vehicle, shaped around your Shinkansen times.\n\n- 4 hours · your route\n- Just your group (1–15)\n- Luggage welcome\n\nVan · 1–5 guests Any day, all year · Instant confirmation · Free cancellation 24 h USD 432 / person · 1 USD 216 / person · 2 USD 159 / person · 3–5 Mini bus · 6–15 guests New · Oct–Dec 2026 · Booking request (48 h) · Free cancellation 3 days USD 980 / group · 6–10 USD 98 / adult · 11–15\nCheck dates & book See the day plan →\n\nNew · Oct–Dec 2026\n\n### Wednesday Group Tour\n\nJoin other travelers for a 6-hour minibus day — Lake Tanuki, Shiraito Falls, the shrine and a yakisoba stop.\n\n- Every Wednesday\n- Small group · max 15\n- From Shin-Fuji Station\n\nAll ages · departs with 10+ guests USD 98 / person\nTour details →\n\nBook direct\n\n## Pick a date. We plan the rest.\n\n## Request a date. We arrange the rest.\n\n4 hours · up to 5 guests · private van, local-born bilingual guide, hidden spots. After booking, send your train times and we tailor the day.\n\n4 hours · 6–15 guests · private mini bus with its own driver, local-born bilingual guide, hidden spots. Once we confirm, send your train times and we tailor the day.\n\n1 guest USD 432 / person\n\n2 guests USD 216 / person\n\n3–5 guests USD 159 / person\n6–15 guests? Private mini bus — new for Oct–Dec →\n\nThe calendar shows the total for your party size — per-person cost drops as you add guests.\n\nFree cancellation & date change (24 h+) · Instant confirmation · Secure checkout\n\nNon-JPY prices are approximate.\n\nRuns Oct–Dec 2026 Book 7+ days ahead Answer within 48 h\n\n6–10 guests USD 980 / group ≈ USD 98–163 per person\n\n11–15 guests USD 98 / adult\n5 or fewer? Private van — instant confirmation →\n\nAges 10 and over are adults. Ages 4–9 are half price — USD 49 each from 11 guests. Under 4 travel free. USD 980 is the minimum for any mini-bus booking.\n\nFree cancellation up to 3 days before · Secure checkout\n\nMini-bus prices are quoted in USD.\n\n### Choose your date\n\nLive availability — selecting a date starts secure checkout.\n\nPowered by Bokun — secure checkout · Free cancellation up to 24 h before\n\n### Request your date\n\nThe mini bus comes with its own driver, so we confirm every date by hand.\n\n- 1 Pick a date and group size — payment is taken when you send the request.\n- 2 We arrange the driver and confirm within 48 hours.\n- 3 If we can’t confirm, you’re refunded in full — automatically.\n\nSecure checkout via Bokun · Full refund if we can’t confirm\n\nBefore you book\n\n## Frequently asked questions\n\nBefore you go\n\n## Travel guides\n\nWant to go deeper? Short reads on the trains, the food and the quiet local culture at Mt. Fuji's foot — no booking required.\n\nQuestions first?\n\n## A human answers, fast\n\nWhatsApp Message us directly Email fujisoultours@gmail.com Instagram @fujisoultours",
+      "faq": [
+        {
+          "q": "What happens to our luggage?",
+          "a": "Bring it along — the van has luggage storage for up to 3 guests' large cases. Larger groups use station lockers (¥300–800, cash). You'll have everything with you when you board your next train."
+        },
+        {
+          "q": "Which Shinkansen stops at Shin-Fuji?",
+          "a": "Only the Kodama (こだま) — not Nozomi or Hikari. It's covered by the JR Pass and usually less crowded. Tip: sit in seat E from Tokyo or seat A from Kyoto/Osaka for Fuji views from the train."
+        },
+        {
+          "q": "What are the odds we actually see Mt. Fuji?",
+          "a": "Honestly: it varies by season — winter is clearest, summer is shyest. The earlier your tour starts, the better your chances. And if the mountain hides, the cloudy-day plan (shrine prayer, sake brewery, teahouse, UNESCO Center) is why guests still leave five-star reviews. See the “What if Mt. Fuji hides?” section above."
+        },
+        {
+          "q": "Can we cancel or change the date?",
+          "a": "Private van tour (1–5 guests): full refund or free date change with 24+ hours notice — within 24 hours, no refund. Private mini bus (6–15 guests): free cancellation up to 3 days before departure. Wednesday group tour: non-refundable once booked — full refund or free transfer if your Wednesday doesn’t reach 10 guests. For van and mini-bus bookings, cancelling takes one click from your confirmation email."
+        },
+        {
+          "q": "We're a group of 6 or more — possible?",
+          "a": "Yes — from October 2026 we run a private mini bus for 6–15 guests. See mini-bus pricing and dates. It's USD 980 for 6–10 guests, then USD 98 per adult from 11 guests. Because the bus needs a driver, it's a request rather than an instant booking: request at least 7 days ahead and we confirm within 48 hours, or refund you in full. Departures currently run October–December 2026. From 11 guests it works out at USD 98 per adult — the same per-person price as the Wednesday group tour, but the bus is all yours: any day of the week, your own route and pace."
+        },
+        {
+          "q": "Traveling with small children?",
+          "a": "Children under 6 need a child seat by Japanese law — contact us in advance and we'll arrange it."
+        },
+        {
+          "q": "When should we book our onward train?",
+          "a": "The tour runs 4 hours from your chosen start time, and we ask for a 30-minute buffer between tour end and your train — so pick a train that departs at least 30 minutes after the tour ends. Since Kodama trains run only about twice an hour, the wait at the station can approach an hour; if you'd rather keep touring than wait, you can add 30 minutes for $60 per group (see below)."
+        },
+        {
+          "q": "Can the tour be longer than 4 hours?",
+          "a": "Yes — extend by 30 minutes for $60 per group, or add full hours at $100/hour per group (not per person; select the quantity at checkout). Both links also live on our Payments page — get the OK first: from us before the tour day, or from your guide during the tour."
+        },
+        {
+          "q": "Limited mobility in the group?",
+          "a": "Wheelchairs unfortunately can't be accommodated, but we welcome up to 3 guests using walkers and adjust the route to minimize walking. Tell us when booking."
+        }
+      ]
+    },
+    {
+      "url": "/group-tour",
+      "title": "The Wednesday Mt. Fuji Tour · $98 Group Tour from Shin-Fuji | Fuji Soul Tours",
+      "description": "A guided 6-hour Mt. Fuji cultural group tour, every Wednesday, October – December 2026. $98 USD per person, all ages, instant confirmation. 9:00 – 15:00 from Shin-Fuji Station.",
+      "lang": "en",
+      "text": "New · Group Tour · Oct – Dec 2026\n\n# The Wednesday Mt. Fuji Tour.\n\nA guided 6-hour Fuji-area cultural tour. Same crew, same crowd-free hour-by-hour rhythm — every Wednesday, October to December 2026. $98 USD per person.\n\nInstant confirmation · We tell you one week before whether your Wednesday runs — free transfer or full refund if it doesn't.\n\n9:00 — 15:00\n\nShin-Fuji meet · Shin-Fuji back\n\nEvery Wed.\n\nOctober – December 2026 · runs rain or shine\n\n$98 USD / person\n\n10 – 15 guests · confirmed one week before\n\nDeparture confirmation\n\nWe tell you one week before whether your Wednesday runs.\n\n01\nOne week before\n\nWe check the numbers and email you. 10 guests or more and your Wednesday is confirmed to run.\n\n02\nIf it's under 10\n\nThe tour doesn't run, and you choose: a free transfer to another Wednesday, or a full refund of everything you paid.\n\n03\nAfter it's confirmed\n\nBookings stay open until 3 days before, up to 15 guests. Cancellations by guests are non-refundable.\n\nThe day, hour by hour\n\n## Six hours, four stops, one Wednesday\n\nA model course for the day. Courses may change depending on the destinations' availability or weather conditions — your guide adjusts pacing so the group stays together.\n\n09:00\nShin-Fuji meet\n\nJR gate — hop in the microbus.\n\n10:00\nLake Tanuki\n\nMirror-still Fuji reflection. 55 min.\n\n11:10\nShiraito Falls\n\nUNESCO water curtains. 50 min.\n\n12:30\nFuji Sengen Shrine\n\nPrincipal shrine of Fuji worship. 45 min.\n\n13:25\nYakisoba lunch\n\nAward-winning local shop. ~¥900.\n\n15:00\nBack to Shin-Fuji\n\nIn time for any train.\n\nFuji Sengen Shrine — vermillion gates, ancient cedars\n\nShiraito Falls — UNESCO World Heritage water curtains\n\nAward-winning Fujinomiya yakisoba · ~¥900\n\nWeather-proof Shrine, falls & lunch carry a cloudy day\n\nModel course May change with availability or weather\n\nOne crew Same guides & driver, every week\n\nRain or shine Only a typhoon stops us for weather\n\nWhat's included\n\n## Flat price. No hidden extras.\n\nOne line item, one price, no upsells on the day. Here's exactly what your $98 USD covers — and the short list of things it doesn't.\n\n### Included · with your $98\n\n+\n\nEnglish-speaking local guide\n\nA local-born guide from our five-star private-tour team. They handle pacing, photos, and any cultural translation you'd like.\n\n+\n\nChartered microbus\n\nGroup transport between Shin-Fuji and every stop, operated with our local partner.\n\n+\n\n6-hour guided course\n\nA four-stop model course. Courses may change depending on the destinations' availability or weather conditions.\n\n+\n\nGroup of 10 – 15\n\nBigger than the private tour, far smaller than a bus. Confirmed one week before — free transfer or full refund if it doesn't reach 10.\n\n### Not included\n\n—\n\nShinkansen tickets\n\nBook your own. The Kodama is about 1 h from Tokyo, 2 h 20 from Kyoto — aim to arrive at Shin-Fuji by 08:45.\n\n—\n\nLunch (~¥900)\n\nPay at the yakisoba shop on the day. Cash recommended. Tell us about dietary needs in advance.\n\n—\n\nTea, entries & on-site costs\n\nPay as you go on the day — tea, optional lake cycling, small offerings. We'll flag costs in advance.\n\nAvailable Wednesdays\n\n## Pick a Wednesday. Book in minutes.\n\nLive availability for every Wednesday, October – December 2026. $98 USD per person, charged at booking, instant confirmation by email.\n\nPowered by Bokun — secure checkout\n\nEach Wednesday runs once 10 guests are booked (up to 15). We email you one week before departure to confirm. Fewer than 10 guests at that point? Choose a free transfer to another Wednesday or a full refund. Once confirmed, bookings stay open until 3 days before. Cancellations by guests are non-refundable.\n\nPricing\n\n## One price. Every Wednesday.\n\n$98 USD per person, all ages, flat. Same price whether you arrive solo, as a pair, or with friends — no surcharges, no peak pricing.\n\n$98 USD / person · all ages\n\n01 English-speaking local-born guide for the full 6 hours.\n\n02 Chartered microbus + group of 10 – 15 guests.\n\n03 Four-stop model course — may change with availability or weather.\n\n04 Charged at booking · instant confirmation · non-refundable if you cancel.\n\n05 Confirmed one week before. Under 10 guests at that point — free transfer or full refund.\n\n### At a glance\n\nThe shape of every Wednesday.\n\nGroup size 10 – 15 guests\n\nFrequency Every Wednesday\n\nDuration 9:00 – 15:00 (6 hours)\n\nMeet / end Shin-Fuji Station\n\nDeparture confirmed 1 week before\n\nIf under 10 at that point Free transfer or refund\n\nBooking cut-off 3 days before\n\nGuest cancellation Non-refundable\n\nSeason Oct – Dec 2026\n\nQuestions\n\n## Frequently asked questions\n\n### Want fully customized dates and route?\n\nOur 4-hour Private Tour runs any day of the week — your choice of stops, your pace, your van. Same Shin-Fuji meet, same Fuji-area guides.",
+      "faq": [
+        {
+          "q": "How does the group tour work?",
+          "a": "We run a small group tour every Wednesday, October to December 2026. Pick the Wednesday you want and book — USD 98 per person (all ages), charged at booking with instant confirmation (up to 15 guests). The tour runs once 10 guests are booked for that date. We check the numbers one week before departure and email you either way: 10 or more and you're confirmed to go; fewer than 10 and you choose a free transfer to another Wednesday or a full refund. Once a Wednesday is confirmed, bookings stay open until 3 days before, up to 15 guests."
+        },
+        {
+          "q": "Can I cancel or get a refund?",
+          "a": "If you cancel, your booking is non-refundable — all sales are final. The one exception is when the decision is ours: if your Wednesday hasn't reached 10 guests one week before departure, it doesn't run, and you choose a free transfer to another Wednesday or a full refund of everything you paid."
+        },
+        {
+          "q": "How is this different from the private tour?",
+          "a": "The private tour is fully customizable — you choose your time, stops and pace, in about 4 hours. It takes 1–5 guests by van, or 6–15 by private mini bus from October 2026. The group tour is a shared 6-hour experience on a Wednesday model course, with the same local-born guide, by microbus, at a lower per-person price. Worth knowing if you're a big party: from 11 guests the private mini bus works out at USD 98 per adult — the same per-person price as this group tour, but the bus is all yours, any day of the week."
+        },
+        {
+          "q": "What's included in the price?",
+          "a": "The price covers your English-speaking local-born guide and private microbus transport for the day. Lunch, tea, entrance fees and other on-site costs are not included — you pay for those as you go."
+        },
+        {
+          "q": "What if my Wednesday doesn't fill up?",
+          "a": "We check the numbers one week before departure. If fewer than 10 guests are booked, we'll email you and you choose: a free transfer to another Wednesday, or a full refund of everything you paid. You'll never be left guessing on the day — no risk to you."
+        },
+        {
+          "q": "How much is it?",
+          "a": "USD 98 per person — one flat price for all ages. Lunch, tea, entrance fees and other on-site costs are not included; you pay for those as you go on the day."
+        }
+      ]
+    },
+    {
+      "url": "/experiences",
+      "title": "Mt. Fuji Destinations & Experiences | Fuji Soul Tours",
+      "description": "Every place and hands-on experience on our private half-day Mt. Fuji tour from Shin-Fuji Station — hidden viewpoints, the great shrine, a 190-year-old sake brewery, tea ceremony, yakisoba and more — plus three sample model courses.",
+      "lang": "en",
+      "text": "# Destinations & experiences\n\nThree ways to spend the day\n\n## Sample model courses\n\nEvery tour is private and shaped around your train times — here are three sample days to start from. Mix in any experience below, and your guide adapts to the weather and season on the day.\n\n4 stops · about 4 hrs\n\nCourse 01\n\n### Classic highlights\n\nThe signature half-day: a secret viewpoint, the great shrine, soul-food lunch and award-winning tea.\n\nStop 1\n\nHidden Fuji viewpoint\n\nA local spot chosen that morning for the day's clearest view.\n\nStop 2\n\nSengen Shrine\n\nThe head shrine of Fuji worship, the peak behind the torii.\n\nStop 3\n\nFujinomiya yakisoba lunch\n\nB-1 Grand Prix soul food at a family-run counter.\n\nStop 4\n\nAward-winning tea house\n\nMatcha and seasonal sweets in a 400-year-old hall.\n\n3 stops · about 4 hrs\n\nCourse 02\n\n### The essentials\n\nTight on time between trains? The three you can't miss — a secret viewpoint, soul-food yakisoba, and green tea in a historic tea house.\n\nStop 1\n\nHidden Fuji view spot\n\nA local lookout chosen that morning for the clearest view.\n\nStop 2\n\nFujinomiya yakisoba\n\nB-1 Grand Prix soul food at a family-run counter.\n\nStop 3\n\nGreen tea at the tea house\n\nUnwind over award-winning green tea and seasonal sweets in a 400-year-old hall — relaxed, no formal ceremony.\n\n4 stops · about 4 hrs\n\nCourse 03\n\n### Falls & heritage\n\nThe famous Shiraito Falls and the architectural World Heritage Centre, rounded off with local noodles and green tea.\n\nStop 1\n\nShiraito Falls\n\nThe “Falls of White Threads” — a UNESCO curtain of Mt. Fuji snowmelt.\n\nStop 2\n\nMt. Fuji World Heritage Centre\n\nThe mountain's whole story under an inverted Fuji of wood.\n\nStop 3\n\nFujinomiya yakisoba\n\nB-1 Grand Prix soul food at a family-run counter.\n\nStop 4\n\nGreen tea at the tea house\n\nAward-winning green tea and seasonal sweets in a 400-year-old hall.\n\nThese are starting points, not fixed routes. Every tour is private and built around your schedule — a van for 1–5 guests, or a mini bus for 6–15 (October–December 2026). Send us your train times after booking and we plan the day around them.\n\n## Destinations — places on your route\n\nViewpoint\n\n### Hidden Mt. Fuji viewpoint\n\nA quiet local park with sweeping, panoramic views of Mt. Fuji — and almost no tourists.\n\nFree Chosen on the day\n\nViewpoint\n\n### Lakeside “Double Fuji”\n\nMt. Fuji mirrored upside-down on still water — the reflection shot travellers cross the country for, minutes from the station.\n\nFree Clear, calm mornings\n\nViewpoint\n\n### Asagiri plateau\n\nA wide-open highland of dairy pasture where Mt. Fuji rises unobstructed above grazing cows — the mountain at its most expansive.\n\nFree Clear-day pick\n\nViewpoint\n\n### Prestige golf-club lookout\n\nA rare, wide-open Mt. Fuji panorama from a prestigious golf club. Have lunch at the restaurant facing the mountain (¥2,000–2,800 per person, cash), or just stop in for the view — a dress code applies either way. Weekdays only, by reservation.\n\nFree · view only Weekdays\n\nWaterfall\n\n### Shiraito Falls\n\nThe “Falls of White Threads” — a 20-metre-high, 150-metre-wide curtain of Mt. Fuji snowmelt and a UNESCO World Heritage site, often hung with a rainbow.\n\nFree UNESCO site\n\nWaterfall\n\n### Jinba Falls\n\nA local waterfall few visitors find — Mt. Fuji’s snowmelt resurfacing into an emerald pool after decades underground. You can walk right to the water’s edge, about as close to the mountain’s spring water as you can get.\n\nFree Hidden gem\n\nShrine\n\n### Fujisan Hongu Sengen Shrine\n\nThe head shrine of some 1,300 Sengen shrines, where the climb up Mt. Fuji traditionally began. Your guide explains why it matters.\n\nFree On every route\n\nTemple\n\n### Local temple where monks train\n\nA vast Buddhist temple where monks still train, its great vermilion gate framed by Mt. Fuji. Your guide shares its story.\n\nFree Local landmark\n\nTea house\n\n### Award-winning tea house\n\nGreen tea that has won Japan's Prime Minister's Award, served with seasonal sweets in a hall built from a single 400-year-old tree.\n\n¥1,000 / person Tea & sweets\n\nLocal food\n\n### Fujinomiya yakisoba\n\nB-1 Grand Prix soul food with a chewy local noodle, at a family-run spot locals queue for.\n\n¥900 / person Lunch stop\n\nSweets\n\n### S.gelato\n\nLocally sourced ice cream, with mochi and matcha drinks too — a sweet local stop.\n\n¥500–800 / person Dessert\n\nBrewery\n\n### 190-year-old sake brewery\n\nSake brewed since the 1830s with pure Mt. Fuji snowmelt, in a working brewery the town grew around. The tasting is the brewery’s courtesy to browsing customers — no obligation to buy.\n\nFree Brewery’s courtesy\n\nMt. Fuji Exhibits\n\n### Mt. Fuji World Heritage Centre\n\nAn inverted Fuji of wood and water; the mountain's whole story told indoors. Our go-to when the weather turns.\n\n¥500 / person Rain-friendly\n\nShopping\n\n### Traditional clothing shop\n\nJinbei in classic wave, dragon and floral prints, hung above cases of tenugui hand towels and sashes. A good stop for something you will actually wear at home.\n\n¥1,000+ / item Souvenirs\n\nShopping\n\n### Hand-made food samples\n\nJapan’s uncanny replica food, made by hand here in Fujinomiya. Sushi, tempura and fruit turned into keychains and magnets — small, light souvenirs that survive the flight home.\n\n¥400–1,000 / item Souvenirs\n\n## Experiences — add any to your booking\n\n### Try Japan's best green tea\n\nHand-picked, organic, non-fertilised green tea — a Prime Minister's Award winner. Drink it, then season and eat the steeped leaves, with hand-made traditional sweets on the side. Just tea, savoured at the café.\n\n¥1,000 / person 40 min\n\n### Wagashi sweets workshop\n\nShape seasonal Japanese sweets from white bean paste — nerikiri, a craft born in Edo-period Kyoto two to three centuries ago and refined alongside the tea ceremony.\n\n¥3,000 / person 60 min\n\n### Whisk your own matcha\n\nLearn the traditional preparation under expert guidance, then drink the bowl you made. Tatami or table seating.\n\n¥3,000 / person 60 min\n\n### Tea ceremony with a master\n\nA tea master prepares matcha before you with full explanation — omotenashi in a traditional tea room. Book a month or more ahead.\n\n¥20,000 / group 60 min\n\n### Shinto purification prayer\n\nA traditional oharai ceremony performed by shrine priests inside the main hall — open to everyone.\n\n¥5,000–6,000 / person total 60 min\n\n### Sake brewery tour & tasting\n\nA guided walk inside the working brewery with a tasting of sake made from Mt. Fuji spring water. Offered free as a courtesy — reserve ahead.\n\nFree · tasting incl. 60 min\n\n### Kimono at the shrine\n\nDress in kimono with professional help and walk the principal Fuji shrine — the scenery does the rest.\n\n¥3,500 / person total 60 min\n\n### Maki Sushi\n\nRoll peach-blossom patterned sushi, an Edo-era festival art — no raw fish. Eat it on-site or take it onto your train.\n\n¥5,500 / person + ¥2,000 / group 60 min"
+    },
+    {
+      "url": "/payments",
+      "title": "Payments & Tour Extensions | Fuji Soul Tours",
+      "description": "Official payment links for Fuji Soul Tours — extend your private Mt. Fuji tour by 30 minutes ($60/group) or by the hour ($100/hour). Secure Stripe checkout.",
+      "lang": "en",
+      "text": "Official payment links\n\n# Payments & tour extensions\n\nEvery payment link we use is on this page. All payments are processed by Stripe over a secure checkout, and a receipt goes straight to your email. If a link isn't listed here or in our own emails, it isn't ours.\n\n## Tour extension — 30 minutes\n\n$60 / 30 minutes / group\n\nAdds 30 minutes to your private tour. One payment covers the whole group — $60 total, not per person.\n\n## Tour extension — 1 hour\n\n$100 / hour / group\n\nAdds a full hour to your private tour. One payment covers the whole group — $100 per hour, not per person. For more hours, choose the quantity at checkout.\n\n## How extending works\n\n- Get the OK before you pay. Before the tour day, message us; during the tour, just ask your guide. Extensions depend on the day's schedule and your train, so please pay only after the extra time is confirmed.\n- Pay via the link above. It takes about a minute on your phone, and the receipt arrives by email.\n- Show your guide the payment-complete screen. If you're extending during the tour, show the confirmation screen on your phone to your guide — but please wait until the vehicle is stopped; never while your guide is driving.\n\nWhy extensions exist: the tour runs 4 hours and we ask for a 30-minute buffer between tour end and your Shinkansen departure. Kodama trains run only about twice an hour, so the station wait can approach an hour — extending lets you spend that time on the tour instead.\n\nPayments are processed by Stripe, Inc. — Fuji Soul Tours never sees or stores your card details. For cancellations and date changes, see the Manage Booking section or email fujisoultours@gmail.com ."
+    },
+    {
+      "url": "/about",
+      "title": "About Fuji Soul Tours — Born at the Foot of Mt. Fuji",
+      "description": "Fuji Soul Tours was founded by Takumu Makino, born and raised at the foot of Mt. Fuji in Fujinomiya. Why we run private, half-day, local-side tours — and who guides them.",
+      "lang": "en",
+      "text": "About Fuji Soul Tours\n\n# Born at the foot of the mountain\n\nFuji Soul Tours runs private, half-day cultural tours from Shin-Fuji Station — built by someone who grew up with Mt. Fuji outside the window, for travelers who want the local side of it.\n\n## The founder's story\n\nTakumu (Taku) Makino — founder, born at the mountain's southern foot in Fujinomiya.\n\nI was born and raised at the foot of Mt. Fuji — eighteen years with the mountain as the shape of every morning, not a destination on anyone's itinerary.\n\nThen I left. Four years in Osaka, studying the language and society of Northern Europe; a year interning in Vietnam; six and a half in Tokyo, hosting foreign executives for a multinational company and working alongside colleagues and clients from all over the world. I spent my twenties learning how to make people from somewhere else feel at home in Japan.\n\nWhat kept catching my eye was how most visitors met Mt. Fuji — herded into 50-seat coaches, photographed at the same three crowded viewpoints, bused back having barely heard a word in their own language. For the people who grew up here, the mountain isn't a backdrop. It's a presence, a weather system, a deity in some senses, a story your grandmother told you.\n\n\"I want guests to leave knowing why this mountain matters here — not just that it's tall.\"\n\nThe shape of every morning — dawn over the rooftops of the southern foot.\n\nSo I came home, and started curating the parts and pieces of this place I love most into a four-hour day . Private. Slow. Local-side. Bilingual. Built around your schedule, not ours. Maximum five guests, because past that you stop being on a trip and start being on a tour.\n\nThese days I'm less often the one guiding — that's deliberate. The tours run with two bilingual guides I work with: same routes, same instincts, same stories to tell. The standard is the one I'd want if I were the guest.\n\nFounder Takumu (Taku) Makino\n\nBorn At the foot of Mt. Fuji's southern face — Fujinomiya\n\nLanguages English · Japanese (native bilingual)\n\nBefore this Osaka · Vietnam · Tokyo — hosting foreign executives for a multinational company\n\n## Who guides your day\n\nEvery tour is led by one of two bilingual guides Takumu works with — a consistent pair, not a freelance pool. Same hidden viewpoints, same family-run lunch spots, same instinct for reading the weather and rerouting by the hour. You'll be told who your guide is before the tour.\n\n## What we mean by \"Soul\"\n\nIt's the word in our name, and it's a promise about how we guide: every stop comes with its why . Why most Japanese visit shrines without being religious, why the streets stay spotless with no trash cans, why everything at the mountain's foot tastes of its water — we wrote the whole philosophy down here ."
+    },
+    {
+      "url": "/mt-fuji-stopover",
+      "title": "Mt. Fuji Stopover Between Tokyo & Kyoto: The Shin-Fuji Guide",
+      "description": "How to see Mt. Fuji in half a day when moving between Tokyo and Kyoto: hop off the Shinkansen at Shin-Fuji Station. Trains, luggage, sample timetables and what to do.",
+      "lang": "en",
+      "text": "Travel guide\n\n# Mt. Fuji between Tokyo and Kyoto: the stopover guide\n\nYou're taking the Shinkansen — the bullet train — from Tokyo to Kyoto (or back) and wondering if you can fit Mt. Fuji in without losing a day. You can — in half a day, with your luggage. Here's exactly how the Shin-Fuji stopover works.\n\n## Why a stopover beats a day trip\n\nMost travelers see Mt. Fuji on a full-day bus tour from Tokyo : two to three hours out, the same back, and a whole day of your itinerary gone. But the Tokaido Shinkansen — the bullet train you're already taking between Tokyo and Kyoto — passes right by the mountain's southern foot.\n\nShin-Fuji Station sits about an hour from Tokyo and roughly two hours from Kyoto. Step off mid-journey, spend four hours at the mountain, and board a later train onward. You arrive in Kyoto (or Tokyo) the same evening, having traded a travel day for a Mt. Fuji day. That's the entire trick.\n\nThe southern side of Mt. Fuji — all of this sits within reach of Shin-Fuji Station.\n\n## The trains: what to know before you book\n\n- Only the Kodama (こだま) stops at Shin-Fuji — not the Nozomi or Hikari. The Kodama is the all-stations service: slower overall, usually less crowded, and covered by the JR Pass.\n- Book through SmartEX (smart-ex.jp), JR's official Shinkansen booking site — it lists all stations including Shin-Fuji and has the best change and cancellation terms. Many third-party apps simply don't show Shin-Fuji because the Nozomi skips it.\n- Window seats for Fuji views from the train: seat E heading from Tokyo, seat A heading from Kyoto or Osaka.\n- If you're on a Nozomi, you can transfer to a Kodama at Shizuoka or Mishima — your guide can help you plan connections after booking.\n\n## What about luggage?\n\nThis is the question everyone asks, and it's the easiest one. On a private tour , the van stores large cases for up to three guests — your bags ride with you. Bigger groups use the coin lockers at Shin-Fuji Station (¥300–800, cash). Either way, you walk back onto your train with everything you arrived with.\n\nThe private van's cargo space — room for your cases while you tour.\n\n## Sample stopover timetables\n\nThese are example timings — after booking, you send us your train times and the day is planned around them. We ask for a 30-minute buffer between tour end and your train's departure; since Kodama trains run only about twice an hour, a station wait of up to an hour is normal (or extend the tour instead — see the FAQ ).\n\nRoute | Step off | Tour | Back on board | Arrive\n\nTokyo → Kyoto | Depart Tokyo 6:57, arrive Shin-Fuji 8:03 | 8:10–12:10 | 13:08 | Kyoto 15:15 — full evening ahead\nKyoto → Tokyo | Depart Kyoto 8:30, arrive Shin-Fuji 10:36 | 10:45–14:45 | 15:38 | Tokyo 16:46 — in time for dinner\nTokyo round trip | Depart Tokyo 6:57, arrive Shin-Fuji 8:03 | 8:10–12:10 | 13:10 | Tokyo 14:18 — afternoon free\n\n## What can you actually do in four hours?\n\nGuests at a park viewpoint mid-tour — four hours is more than it sounds.\n\nMore than you'd think, because everything sits close to the station on the quiet southern side of the mountain:\n\n- Hidden viewpoints — chosen the morning of your visit for the clearest angle on the mountain ( here's how locals avoid the crowds )\n- Fujisan Hongu Sengen Taisha — the principal shrine of Mt. Fuji worship, where climbs traditionally began\n- Fujinomiya yakisoba — the region's B-1 Grand Prix–winning soul food, at a family-run shop ( full story here )\n- Green tea or matcha at an award-winning tea house built from a single 400-year-old tree\n\nYou can do this independently with taxis and patience — or as a private half-day tour where a local-born bilingual guide meets you at the ticket gate, drives the day, and has you back on the platform with buffer to spare. Either way, the stopover is worth it.\n\n## Mt. Fuji stopover FAQ",
+      "faq": [
+        {
+          "q": "Can you stop at Mt. Fuji on the bullet train between Tokyo and Kyoto?",
+          "a": "Yes. The Tokaido Shinkansen — the bullet train between Tokyo and Kyoto — passes the southern foot of Mt. Fuji, and the all-stations Kodama service stops at Shin-Fuji Station, about an hour from Tokyo and roughly two from Kyoto. Step off mid-journey, spend about four hours at the mountain, and board a later train onward the same day."
+        },
+        {
+          "q": "Which bullet train stops near Mt. Fuji?",
+          "a": "Only the Kodama (こだま) stops at Shin-Fuji Station — not the Nozomi or Hikari. It is covered by the JR Pass and is usually less crowded. Book through SmartEX, JR's official site, which lists Shin-Fuji; many third-party apps hide the stop because the Nozomi skips it."
+        },
+        {
+          "q": "How long do you need for a Mt. Fuji stopover?",
+          "a": "About four hours on the ground is enough, because everything sits close to Shin-Fuji Station on the quiet southern side — a viewpoint, the Fujisan Hongu Sengen shrine, Fujinomiya yakisoba and a teahouse all fit comfortably before your onward train."
+        },
+        {
+          "q": "Can I do the Mt. Fuji stopover with my luggage?",
+          "a": "Yes. On a private tour the van carries large cases for up to three guests, so your bags ride with you. Bigger groups use the coin lockers at Shin-Fuji Station (¥300–800, cash). Either way you board your next train with everything you arrived with."
+        },
+        {
+          "q": "Do I need a tour, or can I do the Shin-Fuji stopover on my own?",
+          "a": "You can do it independently with taxis and some planning. A private half-day tour removes the friction — a local-born bilingual guide meets you at the ticket gate, drives the day, stores your luggage, and has you back on the platform with time to spare."
+        }
+      ]
+    },
+    {
+      "url": "/mt-fuji-without-crowds",
+      "title": "How to See Mt. Fuji Without the Crowds — a Local's Guide",
+      "description": "Skip the tour-bus viewpoints. A local's guide to seeing Mt. Fuji without the crowds: the quiet southern side, when visibility is best, and what to do if the mountain hides.",
+      "lang": "en",
+      "text": "Local's guide\n\n# How to see Mt. Fuji without the crowds\n\nThe famous viewpoints come with tour buses, tripod queues and convenience-store barricades. Locals see the same mountain in peace — by standing on the other side of it. Here's how.\n\n## The trick: switch sides\n\nNearly all international tourism concentrates on Mt. Fuji's northern side — the Kawaguchiko lakes and the famous pagoda shot. The photos are real, and so are the crowds that come with every tour bus from Tokyo.\n\nThe southern side — Fujinomiya, at the mountain's foot — is where Fuji worship historically began and where locals actually live with the mountain. It has its own lakes-and-plateau viewpoints, the principal shrine of Fuji worship, and a fraction of the visitors, because the big buses don't come here. It's also the easy side to reach if you're already on the Tokyo–Kyoto Shinkansen: Shin-Fuji Station is right there .\n\nA park viewpoint on the southern side — a bench, the mountain, and nobody fighting for the shot.\n\n## Go where the locals point you\n\nOn the southern side the best angle changes with the day — cloud cover, season, snowline. Locals keep a mental list of spots and pick on the morning itself. Ours runs to seven local viewpoints : a bridge that frames the peak, a highland plateau with grazing cows, a lakeside \"double Fuji\" mirror reflection, a quiet park bench above the city, and yes — a convenience-store shot without the barricades and crowds of the famous one.\n\nThat morning-of flexibility is the real luxury. A fixed itinerary drives to a viewpoint and hopes; a local picks the viewpoint that's working today .\n\nThe lakeside \"double Fuji\" — and an empty deck to see it from.\n\nThe highland plateau — cows, grass, and the mountain to yourself.\n\n## When can you actually see Mt. Fuji?\n\nHonest numbers, because the mountain hides more often than brochures admit:\n\nSeason | Chance of seeing Mt. Fuji\n\nNovember – February | Best — roughly 60–73% of days\nSpring & Fall | Roughly 27–47% of days\nSummer | Shyest — roughly 13–17% of days\n\nTwo rules of thumb apply year-round: mornings beat afternoons (clouds build over the day), and a clear winter morning is about as close to a guarantee as Fuji ever gives.\n\nSpring, just after sunrise — first light on the snowcap, cherry blossoms below.\n\n## And if the mountain hides?\n\nPlan for it rather than gamble. The southern side is dense with indoor and cultural experiences that don't depend on visibility: a special prayer inside Fujisan Hongu Sengen Taisha , the UNESCO World Heritage Center that tells the mountain's story indoors, sake tasting at a 190-year-old brewery , and an award-winning tea house . On our tours this isn't a consolation prize — rainy-day guests regularly leave five-star reviews. The cloudy-day plan is laid out on the tour page ."
+    },
+    {
+      "url": "/fujinomiya-yakisoba",
+      "title": "Fujinomiya Yakisoba: Mt. Fuji's B-1 Grand Prix Soul Food",
+      "description": "Fujinomiya yakisoba won Japan's first national B-1 Grand Prix — and you can only get the real thing at the foot of Mt. Fuji. What makes it different and where locals eat it.",
+      "lang": "en",
+      "text": "Local food\n\n# Fujinomiya yakisoba: the champion soul food of Mt. Fuji's foot\n\nJapan ranks its regional comfort foods in a national competition — and the noodles from this small city at the foot of Mt. Fuji took the very first crown. Here's what makes them different, and where locals actually eat them.\n\n## What is Fujinomiya yakisoba?\n\nYakisoba — stir-fried noodles with vegetables, meat and a savory sauce — exists all over Japan. But Fujinomiya yakisoba is its own protected style, born in this one city and famously hard to replicate elsewhere.\n\nWhat sets it apart: noticeably firm, chewy noodles made by local makers using the area's cold Mt. Fuji spring water; niku-kasu (savory pork cracklings) fried into the mix instead of plain oil; and a finishing dusting of dried sardine-and-mackerel powder instead of the usual seaweed flakes. The result is chewier, smokier and more savory than yakisoba anywhere else in Japan.\n\nGriddled to order — firm noodles, pork cracklings, fish powder. ~¥900 at a family-run shop.\n\n## The B-1 Grand Prix story\n\nThe B-1 Grand Prix is Japan's national championship of B-kyu gurume — \"B-class gourmet,\" the cheap, beloved everyday dishes that locals are proudest of. When the first nationwide competition was held in 2006, Fujinomiya yakisoba won it. Then it won again in 2007. Two consecutive national titles put this small city on Japan's food map for good, and the dish remains the benchmark every other B-1 contender is measured against.\n\nFor Fujinomiya, it was never a gimmick: the noodles have been griddled at family-run shops and shotengai stalls here since the post-war years. The competition just told the rest of Japan what locals already knew.\n\n## Where to eat it like a local\n\nFollow the orange banners — yakisoba shops cluster around Fujinomiya's old center.\n\nYou'll find Fujinomiya yakisoba around the city's old center near Fujisan Hongu Sengen Taisha , the principal shrine of Mt. Fuji worship — many shops griddle it to order on a flat teppan in front of you, and a generous plate runs about ¥900 .\n\nOn our private half-day tour , lunch is at a family-run spot that locals queue for — the kind of place with a handful of seats and a teppan that's been seasoned by decades of service. Your guide orders, explains what you're eating and why it matters here, and handles the Japanese. It's consistently one of the most-mentioned moments in our guest reviews .\n\n## Fitting it into your trip\n\nFujinomiya — the mountain is part of the streetscape here.\n\nFujinomiya sits at Mt. Fuji's southern foot, about 30 minutes from Shin-Fuji Station on the Tokyo–Kyoto Shinkansen line. If you're traveling between the two cities, you can step off, spend half a day at the mountain — viewpoints, the shrine, yakisoba lunch, a 400-year-old tea house — and continue the same day. Our stopover guide covers the trains, luggage and timings."
+    },
+    {
+      "url": "/mt-fuji-green-tea",
+      "title": "Mt. Fuji Green Tea: Shizuoka's Quiet Tea Culture at the Mountain's Foot",
+      "description": "At the foot of Mt. Fuji lies Shizuoka, Japan's tea country. Taste award-winning sencha the slow way — one cup, low and unhurried, with a seasonal sweet, in a 400-year-old wooden hall.",
+      "lang": "en",
+      "text": "Local culture\n\n# Green tea at the foot of Mt. Fuji\n\nMost visitors come to Mt. Fuji for the mountain. Its southern foot hides a quieter pleasure: sencha — Japan's everyday green tea, grown in the country's most famous tea region and best tasted slowly, far from the crowds.\n\n## Shizuoka — Japan's tea country\n\nShizuoka isn't as famous abroad as Tokyo or Kyoto, but to Japan it's tea country. The prefecture grows roughly one-third to 40% of the nation's green tea , depending on how you measure it — about 36% of all crude tea and 41% of sencha in recent figures. The city at Mt. Fuji's southern foot is a tea town in its own right, where tea is the top crop by planted area and many growers still do everything themselves — growing, processing and selling their own leaf. It's raised on the clean water and air of the mountain; in places the tea fields and Fuji sit in a single view.\n\n## A tea garden that values care over scale\n\nThe garden we visit isn't a big commercial operation. It's a family-run tea garden, around sixty years old, that grows, processes and sells its own tea by hand — less factory, more small estate, closer to the way a small winery makes its wine. The leaf is hand-picked, grown without chemical fertilizer, and taken from the first soft sprouts of the season , the tenderest and most fragrant part of the plant. None of it is showy — and yet the garden's tea has won Japan's Prime Minister's Award, among other national honors. Premium, but not flashy: exactly the kind of local, uncrowded place that's hard to find on your own.\n\n## One cup, served slow and low\n\nThis isn't a quick cup from a vending machine, and it isn't bitter the way many visitors expect — made from hand-picked young leaves, it's soft, deeply fragrant and rich in umami . You're served a single, carefully prepared tea — one type, one cup — and shown how to draw the best from it. A small lidded cup holds about four grams of leaf. The first pour is deliberately cool, around 40°C, coaxing out sweetness and aroma rather than bitterness; you sip it through a narrow gap between the lid and the cup. Then a little hotter water for a second steeping, hotter again for a third, so the same leaf shows a different face each time — a slow, attentive way to taste how one tea changes.\n\n## A seasonal sweet, made by hand\n\nThe tea doesn't come alone. With it comes a hand-made Japanese sweet — usually nerikiri , sweet white-bean paste shaped into the flowers of the moment: hydrangea in the rainy season, cherry blossom in spring. It isn't just something sweet; it's a small, edible expression of the season. Tasting the umami of the tea against its gentle sweetness carries one of the quiet ideas at the heart of Japanese culture — that you eat and drink the season, not just the food.\n\n## Then you eat the leaves\n\nHere's the part that surprises even Japanese guests: you eat the tea leaves. Most green tea leaves are made only for steeping, never for eating. But when the leaf is this tender — young, hand-picked, top grade — the steeped leaves become a small dish of their own. After the final infusion they're lifted into a bowl and seasoned with soy sauce, a little bonito, sometimes a touch of yuzu. Green tea you don't just drink, but eat.\n\n## A room built from a single 400-year-old tree\n\nThe setting is part of it. The café sits in a traditional wooden hall built — remarkably — from a single 400-year-old Japanese cedar , a trunk so vast it would take five adults with arms outstretched to circle it. Like Japan's old shrines and temples, it's joined with interlocking woodwork and almost no nails or metal. Nothing here is grand or decorative; it's minimal, calm and full of empty space — which suits a tea that's about subtlety, not spectacle: fine aroma, umami, the shift of temperature, the feel of the season.\n\nComing all this way for Mt. Fuji and only looking at the mountain would be a shame. At its foot is a green-tea culture shaped by the same water, air and climate — the local, unhurried side of Fuji that most visitors never reach."
+    },
+    {
+      "url": "/soul-of-japan",
+      "title": "The Soul of Things: Why Japan Is the Way It Is | Fuji Soul Tours",
+      "description": "Why do Japanese visit shrines without being religious? Why are the streets spotless with no trash cans? We try to tell the soul of things — the invisible forces behind what you'll see in Japan.",
+      "lang": "en",
+      "text": "Our philosophy\n\n# We try to tell the soul of things\n\nIt's the word in our name. Most tours show you what Japan looks like; we'd rather you leave knowing why it is the way it is — the invisible forces behind the shrine, the spotless street, the mountain itself.\n\n## What \"soul\" means here\n\nThe mountain over a temple gate on the quiet southern side — presence, not backdrop.\n\nFor the people who grew up at its foot, Mt. Fuji isn't a backdrop. It's a presence, a weather system, a deity in some senses, a story your grandmother told you. That gap — between the mountain on a postcard and the mountain as it's actually lived with — is what Fuji Soul Tours was built to close .\n\nSo on tour, every stop comes with its why . Why this shrine is where Fuji worship began. Why the tea house has stood for centuries. Why locals queue at a particular yakisoba griddle. You can photograph Japan in a day; understanding even a small piece of it is what you'll still be talking about years later.\n\n## Why do most Japanese visit shrines — without considering themselves religious?\n\nFujisan Hongu Sengen Taisha — the principal shrine of Mt. Fuji worship.\n\nMany Japanese people don't identify as religious in a Western sense — yet nearly everyone visits shrines on New Year's, attends Buddhist funerals, and prays at temples for good luck. How?\n\nShinto and Buddhism in Japan are not competing belief systems — they've coexisted and blended for over 1,400 years. Shinto, rooted in the idea that gods (kami) dwell in nature — mountains, rivers, trees — is less a set of doctrines than a way of relating to the world. Buddhism, which arrived from China in the 6th century, added a framework for life's rituals: birth, death, the afterlife.\n\nThe result is a culture where spiritual practice is habitual and communal, not confessional. You don't need to \"believe\" to participate — just as people around the world celebrate Christmas without being devout. For most Japanese, visiting Mt. Fuji's shrine isn't an act of faith; it's an act of being Japanese.\n\nOn tour, your guide shows the small courtesies — how to bow, purify your hands, and pay respects.\n\n## Why are Japan's streets so clean — with almost no public trash cans?\n\nJapan removed most public trash cans in the 1990s following security concerns — yet streets stayed immaculate. Visitors are often baffled. The answer isn't enforcement. It's three overlapping worldviews that have shaped behavior for centuries:\n\n- Shinto: 清浄 (purity) — spaces, especially sacred ones, must be kept clean and pure. A cluttered, dirty space is one where kami cannot dwell. The habit extends from the shrine to the street.\n- Zen Buddhism: cleaning as practice (修行) — in Zen temples, sweeping and scrubbing are not chores but meditation. Japanese schools still begin the day with students cleaning their own classrooms.\n- Confucian 和 (harmony) — one should not impose burden on others. Leaving litter isn't just untidy; it's a disruption of collective harmony. So people carry their trash home.\n\nNo single force explains it. It's the intersection of all three — and once you see it, you see it everywhere in Japan.\n\n## Why everything here tastes of the mountain\n\nSpring water from the mountain feeds the gardens, breweries and tea fields below it.\n\nOne more thread ties the whole region together: water. Snow that falls on Mt. Fuji filters down through volcanic rock and emerges at its southern foot as some of Japan's purest spring water. It's why a 190-year-old brewery makes sake here, why the local tea is good enough to win national awards, and why Fujinomiya's noodle makers credit the water for their yakisoba. Drink anything on the southern side and, in a real sense, you're tasting the mountain."
+    },
+    {
+      "url": "/gallery",
+      "title": "Photo Gallery — A Mt. Fuji Tour Day in Pictures | Fuji Soul Tours",
+      "description": "A Mt. Fuji tour day in pictures — hidden viewpoints, the principal Fuji shrine, Fujinomiya yakisoba, tea ceremony and more from Fuji Soul Tours' private half-day tours.",
+      "lang": "en",
+      "text": "A tour day in pictures\n\n# The mountain, the food, the quiet side\n\nReal moments from our private half-day tours at the foot of Mt. Fuji — hidden viewpoints, the principal Fuji shrine, award-winning yakisoba and a tea house older than most countries. Tap any photo to view it full-size.\n\n## See the latest on Instagram\n\nWe post from the road — recent tours, the day's clearest viewpoint, and what's good to eat right now."
+    },
+    {
+      "url": "/tokushoho",
+      "title": "特定商取引法に基づく表記 - Fuji Soul Tours",
+      "description": "Fuji Soul Tours の特定商取引法に基づく表記。事業者情報・料金・キャンセルポリシー等。",
+      "lang": "ja",
+      "text": "本ページは、特定商取引に関する法律（特定商取引法）第11条に基づき、通信販売に関する事項を表示するものです。\n\n## 事業者情報\n\n販売業者 | Fuji Soul Tours（フジソウルツアーズ）\n運営統括責任者 | 牧野 巧武\n所在地 | 〒418-0051 静岡県富士宮市淀師1657-10\n電話番号 | 090-3955-4101\nメールアドレス | fujisoultours@gmail.com\nウェブサイト | https://www.fujisoultours.com\n\n## サービス内容・価格\n\nサービス名 | 富士山文化プライベートツアー（新富士駅発・約4時間）\n販売価格 | - 1名様：¥69,000\n- 2名様：¥69,000（お一人様あたり¥34,500）\n- 3〜5名様：¥25,320〜/人\n- 6〜10名様（マイクロバス）：US$980／グループ\n- 11〜15名様（マイクロバス）：US$98／人（大人）\n\n※ 価格はグループ人数により異なります。実際の請求額は予約時の為替レートにより変動します。\n※ マイクロバス（6〜15名）は米ドル建てです。10歳以上が大人料金、4〜9歳は半額（11名様以上でUS$49）、3歳以下は無料。1回のご予約の最低金額はUS$980です。催行期間は2026年10月〜12月で、ご予約は出発日の7日前までの受付となります。\n追加料金（現地精算） | - キャンプサイトカフェ：¥1,500/グループ＋¥500/人\n- 文化遺産センター：¥500/人\n- 抹茶カフェ：¥1,000/人\n- 抹茶体験：¥3,000/人\n- 茶道体験：¥20,000/グループ\n- 着物レンタル：¥3,500/人（現金のみ）\n- 地元グルメ：¥900/人\n\n## お支払い・予約について\n\n支払方法 | クレジットカード（Visa・Mastercard・American Express等）\n※ Stripe決済システムを利用しています。\n支払時期 | ご予約（オンライン決済）完了時にお支払いいただきます。\nサービス提供時期 | ご予約いただいたツアー催行日当日。\n予約確認 | エルグランド（1〜5名）はご予約後、即時確認メールをお送りします。\nマイクロバス（6〜15名）は予約リクエスト制です。運転手の手配が必要なため、ご予約後48時間以内に催行可否をご連絡します。催行できない場合はお支払いいただいた金額を全額返金いたします。\n\n## キャンセル・返金について\n\nキャンセルポリシー | - エルグランド（1〜5名）／24時間前まで： 全額返金または無料日程変更（空き状況による）\n- エルグランド（1〜5名）／24時間以内： 返金不可\n- マイクロバス（6〜15名）／3日前まで： 全額返金\n- マイクロバス（6〜15名）／3日前以降： 返金不可\n\n※ 悪天候・天災・不可抗力によるツアー中止の場合は全額返金または日程変更を承ります。\n日程変更 | エルグランド（1〜5名）は24時間前までであれば無料で日程変更が可能です。マイクロバス（6〜15名）は運転手の再手配が必要なため、3日前までにご連絡ください（空き状況により承ります）。 fujisoultours@gmail.com までメールにてお申し込みください。\n\n## その他\n\n動作環境 | 最新のウェブブラウザ（Chrome・Safari・Firefox等）をご利用ください。\n個人情報の取扱い | ご予約に際してお預かりした個人情報は、ツアー運営・お客様対応の目的にのみ使用し、第三者への提供は行いません。\nお問い合わせ | fujisoultours@gmail.com\nWhatsApp: +81-90-3955-4101"
+    }
+  ]
+}

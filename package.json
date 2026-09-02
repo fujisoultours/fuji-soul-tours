@@ -3,10 +3,15 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "build": "node scripts/check-facts.mjs && node scripts/build-kb.mjs",
+    "kb:check": "node scripts/check-facts.mjs",
+    "kb:build": "node scripts/build-kb.mjs",
     "dev": "npx -y serve -l 3000 .",
     "dev:full": "npx -y vercel dev"
   },
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.39.0"
+    "@anthropic-ai/sdk": "^0.39.0",
+    "node-html-parser": "^7.1.0",
+    "yaml": "^2.9.0"
   }
 }
